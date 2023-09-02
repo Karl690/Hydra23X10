@@ -32,7 +32,7 @@
         <string>.</string>
       </IncludeDirectories>
       <LDFLAGS>--specs=nano.specs --specs=nosys.specs -Wl,-Map=output.map -u _printf_float</LDFLAGS>
-      <LinkerScript>F:/HYREL/WORK/HydraX10VG/HydraX10VG/link.ld</LinkerScript>
+      <LinkerScript>F:/HYREL/WORK/Hydra23X10/Hydra23X10/link.ld</LinkerScript>
       <COMMONFLAGS>-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard</COMMONFLAGS>
       <EnableLinkerGroups>true</EnableLinkerGroups>
     </CompilationFlags>

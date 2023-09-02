@@ -41,6 +41,7 @@
     <BSP_VERSION>1.0</BSP_VERSION>
     <InPlaceBSPSubdir>BSP</InPlaceBSPSubdir>
     <RelativeBSPPath />
+    <ProjectName>Hydra23X10</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -380,14 +381,14 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
-    <None Include="HydraX10VG-Debug.vgdbsettings" />
-    <None Include="HydraX10VG-Debug_EngineHR_Hydra.vgdbsettings" />
-    <None Include="HydraX10VG-Debug_EngineSR_30M.vgdbsettings" />
-    <None Include="HydraX10VG-Debug_HYDRA_DIAGS.vgdbsettings" />
-    <None Include="HydraX10VG-Release.vgdbsettings" />
-    <None Include="HydraX10VG-Release_EngineHR_Hydra.vgdbsettings" />
-    <None Include="HydraX10VG-Release_EngineSR_30M.vgdbsettings" />
-    <None Include="HydraX10VG-Release_HYDRA_DIAGS.vgdbsettings" />
+    <None Include="Hydra23X10-Debug.vgdbsettings" />
+    <None Include="Hydra23X10-Debug_EngineHR_Hydra.vgdbsettings" />
+    <None Include="Hydra23X10-Debug_EngineSR_30M.vgdbsettings" />
+    <None Include="Hydra23X10-Debug_HYDRA_DIAGS.vgdbsettings" />
+    <None Include="Hydra23X10-Release.vgdbsettings" />
+    <None Include="Hydra23X10-Release_EngineHR_Hydra.vgdbsettings" />
+    <None Include="Hydra23X10-Release_EngineSR_30M.vgdbsettings" />
+    <None Include="Hydra23X10-Release_HYDRA_DIAGS.vgdbsettings" />
     <None Include="stm32.xml" />
   </ItemGroup>
   <ItemGroup>

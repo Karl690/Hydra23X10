@@ -75,31 +75,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HydraX10VG-Debug.vgdbsettings">
+    <None Include="Hydra23X10-Debug.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Release.vgdbsettings">
+    <None Include="Hydra23X10-Release.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Debug_EngineSR_30M.vgdbsettings">
+    <None Include="Hydra23X10-Debug_EngineSR_30M.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Debug_EngineHR_Hydra.vgdbsettings">
+    <None Include="Hydra23X10-Debug_EngineHR_Hydra.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Debug_HYDRA_DIAGS.vgdbsettings">
+    <None Include="Hydra23X10-Debug_HYDRA_DIAGS.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Release_HYDRA_DIAGS.vgdbsettings">
+    <None Include="Hydra23X10-Release_HYDRA_DIAGS.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Release_EngineSR_30M.vgdbsettings">
+    <None Include="Hydra23X10-Release_EngineSR_30M.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <None Include="HydraX10VG-Release_EngineHR_Hydra.vgdbsettings">
+    <None Include="Hydra23X10-Release_EngineHR_Hydra.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
     <None Include="stm32.props">

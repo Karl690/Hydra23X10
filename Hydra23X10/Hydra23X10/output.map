@@ -8042,7 +8042,7 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
                 0x20010e58                pulStack
                 0x20012e58                        . = ALIGN (0x4)
                 0x20012e58                        _end = .
-OUTPUT(../VisualGDB/Debug_EngineHR_Hydra/HydraX10VG elf32-littlearm)
+OUTPUT(../VisualGDB/Debug_EngineHR_Hydra/Hydra23X10 elf32-littlearm)
 LOAD linker stubs
 
 .ARM.attributes

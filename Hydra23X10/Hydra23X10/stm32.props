@@ -15,12 +15,12 @@
 	</ItemDefinitionGroup>
 	<ItemDefinitionGroup>
 		<Link>
-			<LinkerScript Condition="'%(Link.LinkerScript)' == ''">F:/HYREL/WORK/HydraX10VG/HydraX10VG/link.ld</LinkerScript>
+			<LinkerScript Condition="'%(Link.LinkerScript)' == ''">F:/HYREL/WORK/Hydra23X10/Hydra23X10/link.ld</LinkerScript>
 			<AdditionalOptions>--specs=nano.specs --specs=nosys.specs -Wl,-Map=output.map -u _printf_float %(Link.AdditionalOptions)</AdditionalOptions>
 		</Link>
 	</ItemDefinitionGroup>
 	<PropertyGroup>
-		<DefaultLinkerScript>F:/HYREL/WORK/HydraX10VG/HydraX10VG/link.ld</DefaultLinkerScript>
+		<DefaultLinkerScript>F:/HYREL/WORK/Hydra23X10/Hydra23X10/link.ld</DefaultLinkerScript>
 	</PropertyGroup>
 
 	<ItemDefinitionGroup>
