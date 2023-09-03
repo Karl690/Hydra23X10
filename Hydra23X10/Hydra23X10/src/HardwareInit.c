@@ -368,6 +368,40 @@ void InitTimer3ForDelays(void)
 	TIM_Cmd(TIM3, ENABLE);
 }
 
+///
+void ConfigureTimer4PwmOutputsFor0_10V(void)
+{
+		initClkAndResetAPB1(RCC_APB1Periph_TIM4);
+
+		TIM_ITConfig(TIM4, TIM_FLAG_Update, DISABLE); //NO Interrupts!
+
+		MyTIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+		MyTIM_TimeBaseInitStruct.TIM_Prescaler = 300;
+		MyTIM_TimeBaseInitStruct.TIM_Period = 128;
+		MyTIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
+		MyTIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
+		TIM_TimeBaseInit(TIM4, &MyTIM_TimeBaseInitStruct);
+
+		TIM_OCInitTypeDef TIM_OCInitStructure;
+		TIM_OCStructInit(&TIM_OCInitStructure);
+		TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+		TIM_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable;
+		TIM_OCInitStructure.TIM_Pulse = 0; // 0% "off"  sets CCR4
+		TIM_OCInitStructure.TIM_OCPolarity = (_gs._laser.polarity == ACTIVE_LOW) ? TIM_OCPolarity_Low : TIM_OCPolarity_High;
+
+		TIM_OC4Init(TIM4, &TIM_OCInitStructure);
+		TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable); //CCR4
+	
+		TIM_OC3Init(TIM4, &TIM_OCInitStructure);
+		TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable); //CCR4
+		
+		TIM_ARRPreloadConfig(TIM4, ENABLE);
+		TIM_CtrlPWMOutputs(TIM4, ENABLE); //  Enable PWM outputs
+		TIM_Cmd(TIM4, ENABLE);
+	
+
+}
+
 /////////////////////////////////////////////////////////////////////////////////
 
 void InitCO2LaserTimer(void)
@@ -692,7 +726,7 @@ void initializeLaserStruct(void)
 	_gs._laser.piercePowerPct = 0.0f;
 
 #ifdef USE_AB_ENCODER
-	_gs._laser.TimerBase = TIM2;
+	_gs._laser.TimerBase = TIM4;
 #else //!USE_AB_ENCODER
 	_gs._laser.TimerBase = TIM5;
 #endif //!USE_AB_ENCODER

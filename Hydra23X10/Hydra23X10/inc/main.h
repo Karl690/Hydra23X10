@@ -1997,6 +1997,7 @@ typedef struct {
 	int   cooldown;
 	boolean localControl;
 	int   pwmFreq;
+	int PwmTestCounter;
 
 	float vectorPowerPct;
 	float piercePowerPct; //power pct for pierce (during prime)
@@ -2457,6 +2458,7 @@ extern int getSliceCnt(void);
 extern void pingReply (void);
 extern int32_t getCurrentExecutingLineNumber(void);
 extern void ReportXYZLocation(void);
+extern void PWMCntrl(void);
 extern void wait100ns(void);
 extern void SendNext407SoapString(void);
 extern void setPauseGcodeFlag(char);

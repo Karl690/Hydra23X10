@@ -157,7 +157,8 @@
 #define GB_DEBUG_PIN6_SET       GPIOH->BSRRL = GPIO_Pin_11
 #define GB_DEBUG_PIN6_CLEAR     GPIOH->BSRRH = GPIO_Pin_11
 
-
+#define PWM_CO2_laserPower		(PIN_AF_TIM4      | PIN_PORT_B | PIN_NUM_08)  //Tim4-<CCR3
+#define PWM_Spindle_Speed		(PIN_AF_TIM4      | PIN_PORT_B | PIN_NUM_09)  //Tim4->CCR4 
 
 #undef J19_10
 #undef CO2_LASER_PWM

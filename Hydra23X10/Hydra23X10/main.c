@@ -73,7 +73,7 @@ boolean StatusReportLineNum=FALSE;
 
 float _LastReportedCurrentRequestedFeedrateInMmPerSec = -1.0f;
 int _LastReportedExecutingLineNumber = -1;
-
+int PwmTestCounter = 0;
 boolean _printAir=FALSE;
 float _autoReverseAndPrimeMinTime=0.0f;    // single non-E of less than this time between two print moves do not generate unprime/prime pair
 E_control_t _extrusionControl;
@@ -576,7 +576,7 @@ const PFUNC F10HZ[NUM_10HZ] =
 		EdgeTriggerSendResults, // move into simple_work if space needed
 		checkForCompletedAbort,
 		ReportXYZLocation,
-		spare,
+		PWMCntrl,
 		spare,
 		loop_10Hz_simple_work,  // keep as last call in this array
 };
@@ -4110,7 +4110,13 @@ int32_t getCurrentExecutingLineNumber(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
+void PWMCntrl(void)
+{
+	TIM4->CCR3 = PwmTestCounter;
+	TIM4->CCR4 = PwmTestCounter;
+	PwmTestCounter++;
+	if (PwmTestCounter > 128)PwmTestCounter = 0;
+}
 void ReportXYZLocation(void)
 {
 	if (ForceReportXYZLocation == FALSE)
@@ -5977,7 +5983,8 @@ int main(void)
 	__enable_irq();  // now everything is ready, so let interrupts occur
 
 	Init_SPI3();
-
+	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
+	
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 
 

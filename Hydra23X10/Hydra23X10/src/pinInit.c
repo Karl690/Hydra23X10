@@ -91,6 +91,9 @@ void pinInitAll(void)
 	pinInit(PnP_Enable);
 	pinInit(SPi3_Mosi);
 	pinInit(SPi3_Sclk);
+	
+	pinInit(PWM_CO2_laserPower);
+	pinInit(PWM_Spindle_Speed);
 
 }
 #endif  // USE_HYDRA_IO
