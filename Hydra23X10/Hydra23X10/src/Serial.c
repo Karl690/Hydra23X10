@@ -1038,11 +1038,7 @@ void ProcessRawRxChar(char rawChar)
 
 	case SEND_STATUS_CHAR:     //if (rawChar==5)
 		// send live status on health of motion controller
-#ifdef MEASURE_TIME_SLIPPAGE
-		_sendTimeSlippageData = TRUE;
-#else //!MEASURE_TIME_SLIPPAGE
 		M_Code_M775();
-#endif //!MEASURE_TIME_SLIPPAGE
 		break;
 
 	case ASCII_ACK: //if (rawChar==6)
@@ -1068,6 +1064,9 @@ void ProcessRawRxChar(char rawChar)
 #ifdef GB_ABORT_PIN
 		pinSetBit(GB_ABORT_PIN); // signal to logic analyzer
 #endif
+		//SpindleDesiredSpeedPWM = 0;//kill power now stop spindle with motion.
+		SpindleCO2LaserPowerPWM = 0;//kill laser now
+	
 		_requestToAbortAtEndOfMove = TRUE;
 		break;
 

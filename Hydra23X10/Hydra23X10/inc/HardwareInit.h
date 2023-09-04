@@ -43,9 +43,10 @@ extern void CAN_Config(CAN_TypeDef*);
 extern void InitMotorTimer(MotorStructure *, boolean);
 extern void InitTimer1(void);
 extern void InitTimer2usec(void);
-extern void InitTimer2ForTimeSlipMeasurement(void);
-extern void InitTimer3ForDelays(void);
-extern void InitCO2LaserTimer(void);
+extern void InitTim3RpmInput(void);
+extern void ConfigureTimer4PwmOutputsFor0_10V(void);
+
+extern void InitEncoderTimer5(void);
 extern void enableLatheMode(void);
 extern void disableLatheMode(void);
 extern void InitTimer6(void);

@@ -3214,7 +3214,7 @@ void motionQ_executeMove(void)
 
 			if (_gs._laser.localControl)
 			{   // setup raster timing
-				InitCO2LaserTimer();
+				InitEncoderTimer5();
 			}
 		}
 

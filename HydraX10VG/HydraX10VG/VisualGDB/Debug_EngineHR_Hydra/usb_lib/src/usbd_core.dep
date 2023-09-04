@@ -1,0 +1,71 @@
+VisualGDB/Debug_EngineHR_Hydra/usb_lib/src/usbd_core.o: \
+ usb_lib/src/usbd_core.c usb_lib/inc/usbd_core.h usb_lib/inc/usb_dcd.h \
+ usb_lib/inc/usb_core.h usb_lib/inc/usb_conf.h cmsis_boot/stm32f4xx.h \
+ cmsis_boot/stm32f4xx_conf.h cmsis/core_cm4.h \
+ c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\12.2.1\include\stdint.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\stdint.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\_default_types.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\features.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\_newlib_version.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_intsup.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_stdint.h \
+ cmsis/core_cmInstr.h cmsis/core_cmFunc.h cmsis/core_cm4_simd.h \
+ cmsis_boot/system_stm32f4xx.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\stdio.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\_ansi.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\newlib.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\config.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\ieeefp.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\cdefs.h \
+ c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\12.2.1\include\stddef.h \
+ c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\12.2.1\include\stdarg.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\reent.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\_ansi.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_types.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\_types.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\lock.h \
+ c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\stdio.h \
+ usb_lib/inc/usb_regs.h usb_lib/inc/usb_defines.h usb_lib/inc/usbd_def.h \
+ usb_lib/inc/usbd_conf.h usb_lib/inc/usbd_req.h usb_lib/inc/usbd_core.h \
+ usb_lib/inc/usbd_ioreq.h usb_lib/inc/usb_dcd_int.h usb_lib/inc/usb_bsp.h
+usb_lib/inc/usbd_core.h:
+usb_lib/inc/usb_dcd.h:
+usb_lib/inc/usb_core.h:
+usb_lib/inc/usb_conf.h:
+cmsis_boot/stm32f4xx.h:
+cmsis_boot/stm32f4xx_conf.h:
+cmsis/core_cm4.h:
+c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\12.2.1\include\stdint.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\stdint.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\_default_types.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\features.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\_newlib_version.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_intsup.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_stdint.h:
+cmsis/core_cmInstr.h:
+cmsis/core_cmFunc.h:
+cmsis/core_cm4_simd.h:
+cmsis_boot/system_stm32f4xx.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\stdio.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\_ansi.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\newlib.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\config.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\ieeefp.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\cdefs.h:
+c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\12.2.1\include\stddef.h:
+c:\sysgcc\arm-eabi\lib\gcc\arm-none-eabi\12.2.1\include\stdarg.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\reent.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\_ansi.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\_types.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\machine\_types.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\lock.h:
+c:\sysgcc\arm-eabi\arm-none-eabi\include\sys\stdio.h:
+usb_lib/inc/usb_regs.h:
+usb_lib/inc/usb_defines.h:
+usb_lib/inc/usbd_def.h:
+usb_lib/inc/usbd_conf.h:
+usb_lib/inc/usbd_req.h:
+usb_lib/inc/usbd_core.h:
+usb_lib/inc/usbd_ioreq.h:
+usb_lib/inc/usb_dcd_int.h:
+usb_lib/inc/usb_bsp.h:

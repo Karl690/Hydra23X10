@@ -74,6 +74,12 @@ boolean StatusReportLineNum=FALSE;
 float _LastReportedCurrentRequestedFeedrateInMmPerSec = -1.0f;
 int _LastReportedExecutingLineNumber = -1;
 int PwmTestCounter = 0;
+int	SpindleDesiredSpeedPWM = 0;
+int	SpindleCO2LaserPowerPWM = 0;
+int RPMCounter = 0;
+//607 is dcodedrainstate[0]...
+int McodeDrainState[9] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+int Update595Index = 0;
 boolean _printAir=FALSE;
 float _autoReverseAndPrimeMinTime=0.0f;    // single non-E of less than this time between two print moves do not generate unprime/prime pair
 E_control_t _extrusionControl;
@@ -195,10 +201,7 @@ int _highVoltageIsNotStableCoundownMs = BOOTUP_HIGH_VOLTAGE_SETTLING_TIME_MS;
 #ifdef COLLECT_METRICS
 metricsStruct _metrics;
 #endif
-#ifdef MEASURE_TIME_SLIPPAGE
-int _timeSlipTimer2Passes = 0;
-boolean _sendTimeSlippageData = FALSE;
-#endif //MEASURE_TIME_SLIPPAGE
+
 
 boolean _TouchProbeMoveActive = FALSE;
 byte _TouchProbeCanDevice=0;
@@ -609,7 +612,7 @@ void getNextRasterValue(void)
 			_gs._laser.rasterLineComplete = TRUE;
 			if (_gs._laser.localControl)
 			{   // reset for vector mode
-				InitCO2LaserTimer();
+				InitEncoderTimer5();
 			}
 			_gs._laser.rasterActiveBinaryValue = _gs._laser.rasterOffValue; // force off
 #ifdef GB_RASTER_PIXEL_PIN
@@ -854,35 +857,16 @@ void TIM1_TRG_COM_TIM11_IRQHandler()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifdef MEASURE_ISR_RATE
+
 void TIM2_IRQHandler()
 {
-	if ((TIM2->SR & TIM_FLAG_Update) && TIM2->DIER & TIM_FLAG_Update)  //if (TIM_GetITStatus(TIM2, TIM_FLAG_Update) != RESET)
-	{
-#ifdef GB_TIM2_ISR_PIN
-		if (GB_TIM2_ISR_READ)
-			GB_TIM2_ISR_CLEAR;
-		else
-			GB_TIM2_ISR_SET;
-		GB_TIM2_ISR_TOGGLE
-#endif
-		TIM2->SR = (uint16_t)~TIM_FLAG_Update; //TIM_ClearITPendingBit(TIM2,TIM_FLAG_Update);
-	}
+	TIM2->SR = (uint16_t)~TIM_FLAG_Update; //TIM_ClearITPendingBit(TIM2,TIM_FLAG_Update);
 }
-#endif // MEASURE_ISR_RATE
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifdef MEASURE_TIME_SLIPPAGE
-void TIM2_IRQHandler()
-{
-	if (TIM_GetITStatus(TIM2, TIM_FLAG_Update) != RESET)
-	{
-		_timeSlipTimer2Passes++;
-	}
-	TIM_ClearITPendingBit(TIM2,TIM_FLAG_Update);
-}
-#endif //MEASURE_TIME_SLIPPAGE
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1957,10 +1941,10 @@ void initAllHss(void)
 	initHss(HSS_AUX_PWR7_INDEX, HSS_AUX_PWR7);
 	initHss(HSS_AUX_PWR8_INDEX, HSS_AUX_PWR8);
 	initHss(HSS_AUX_PWR9_INDEX, HSS_AUX_PWR9);
-	initHss(DRAIN1_INDEX,       DRAIN1);
-	initHss(DRAIN2_INDEX,       DRAIN2);
-	initHss(DRAIN3_INDEX,       DRAIN3);
-	initHss(DRAIN4_INDEX,       DRAIN4);
+//	initHss(DRAIN1_INDEX,       DRAIN1);
+//	initHss(DRAIN2_INDEX,       DRAIN2);
+//	initHss(DRAIN3_INDEX,       DRAIN3);
+//	initHss(DRAIN4_INDEX,       DRAIN4);
 
 	// set the default function for ALL possible functions to NO_FUNCTION (no pin)
 	for (i=0; i<NUM_HSS_FUNC; i++)
@@ -3936,11 +3920,14 @@ void processCommand(GMCommandStructure *cmdPtr)
 		case 606: M_Code_M606();  break;//return;// enable HSS out6
 		case 607: M_Code_M607();  break;//return;// enable HSS out7
 		case 608: M_Code_M608();  break;//return;// enable HSS out8
-		case 609: M_Code_M609();  break;//return;// enable HSS out9
-		case 610: M_Code_M610();  break;//return;// enable HSS out10
+		case 609: M_Code_M609();  break;//return;// enable spindle forward/revers
+		case 610: M_Code_M610();  break;//return;// enable Spindel Enable, must set pwm with M3
 		case 611: M_Code_M611();  break;//return;// enable HSS out11
 		case 612: M_Code_M612();  break;//return;// enable HSS out12
 		case 613: M_Code_M613(); break;//return;// enable HSS out12	
+		case 614: M_Code_M614(); break;//return;// enable HSS out12	
+		case 615: M_Code_M615(); break;//return;// setup PNP valves
+			
 		case 619: M_Code_M619();  break;//return;// sets the function and output pwm of the selected HSS (uses F, I, S, P, J, H)
 		case 620: M_Code_M620();  break;//return;// Laser global control (uses T, E, F, C, P)
 		case 621: M_Code_M621();  break;//return;// Laser vector mode control (uses P)
@@ -4112,13 +4099,40 @@ int32_t getCurrentExecutingLineNumber(void)
 ////////////////////////////////////////////////////////////////////////////////
 void PWMCntrl(void)
 {
-	TIM4->CCR3 = PwmTestCounter;
-	TIM4->CCR4 = PwmTestCounter;
-	PwmTestCounter++;
-	if (PwmTestCounter > 128)PwmTestCounter = 0;
+	
+	pinSet(TPIC_6595_CLR);//make sure the pin is set
+	pinClear(TPIC_6595_RCLK);//release the Rclock
+	if(Update595Index>15)
+		{
+			pinSet(TPIC_6595_RCLK);
+			Update595Index = 0;
+		}
+	if((Update595Index & 0x01)>0)
+		{
+			pinSet(TPIC_6595_SCLK);//raise the clock
+		}
+		else
+		{
+			pinClear(TPIC_6595_SCLK); //drop the clock
+			//set the data output and let it settle
+			if (McodeDrainState[Update595Index >> 1]>0)
+			{	
+				pinSet(TPIC_6595_D);		
+			}
+			else
+			{	
+				pinClear(TPIC_6595_D);		
+			}
+		}
+	Update595Index++;
+	
+	TIM4->CCR3 = SpindleDesiredSpeedPWM;
+	TIM4->CCR4 = SpindleCO2LaserPowerPWM;
 }
 void ReportXYZLocation(void)
 {
+	RPMCounter = TIM3->CNT;
+	TIM3->CNT = 0;
 	if (ForceReportXYZLocation == FALSE)
 	{   // not forcing an immediate update, so continue with prescaler
 		if (_MailBoxes._positionReportingPeriodMs == 0)  return;             // no status data requested, so return
@@ -4141,13 +4155,6 @@ void ReportXYZLocation(void)
 					if ((M->POSITION != M->LastReportedPosition) || ForceReportXYZLocation)
 					{
 						M->LastReportedPosition = M->POSITION;
-#ifdef USE_HYDRA_IO
-						if (M->FaultSense.Enabled && (M->FaultSense.State == SENSOR_TRIPPED))
-						{   // active fault
-							sprintf(_tmpStr, ":%c%4.3f", M->AxisLabel,-99.999f);
-						}
-						else
-#endif
 						{
 							sprintf(_tmpStr, ":%c%4.3f", M->AxisLabel, M->POSITION * M->UnitsPerPulse);
 						}
@@ -4170,7 +4177,9 @@ void ReportXYZLocation(void)
 				strcat(_rptStr, _tmpStr);
 			}
 		}
-
+		sprintf(_tmpStr, ":%c%d", 'S', RPMCounter); // last "ARG_N" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		 
 		if (strlen(_rptStr) > 3)
 		{   // there was info to send
 			sendstringCr(_rptStr);
@@ -4325,6 +4334,7 @@ void loop_1000Hz_simple_work(void)
 	{   // request abort from repetrel to stop at the end of the current move if possible
 		_requestToAbortAtEndOfMove = FALSE;
 		_abortCameFromRx = 1;   // tag that we were requested to abort
+		SpindleDesiredSpeedPWM = 0; //kill power now
 		motionQ_abortMotionWhenSafe(FLUSH_THEN_ABORT);  // once motion is stopped, ResetProcess() will be called
 	}
 
@@ -5230,6 +5240,7 @@ void checkMotorLimit2Sensor(void)
 
 void readInputs(void)
 {
+
 	checkStartButton();
 	checkEMO();
 #ifdef USE_AB_ENCODER
@@ -5958,7 +5969,6 @@ int main(void)
 	initMailbox();
 	initKey(FALSE, _sysInfoPtr->lastKeyUsed, &GCodeArgComment[1]);     // must be after initMailbox; 	// tell the key checker where to put and find data
 	InitTimer7();
-	InitTimer3ForDelays();  // for delayMsec; delayuSec; delaySec   delayMs(
 
 	__disable_irq();            //prevent any interrupts until everything is initialized
 
@@ -5980,11 +5990,12 @@ int main(void)
 
 	_heartbeatRateControl = HEARTBEAT_MODE_NORMAL;
 	SysTick_Config(SystemCoreClock / SYSTICKS_PER_SECOND);//slice timer has lowest interrupt priority
+	InitTim3RpmInput(); //set up the rpm counter
 	__enable_irq();  // now everything is ready, so let interrupts occur
 
 	Init_SPI3();
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
-	
+	pinSet(TPIC_6595_CLR); //clear the output of the tpic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 
 

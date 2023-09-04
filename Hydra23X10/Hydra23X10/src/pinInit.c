@@ -47,10 +47,10 @@ void pinInitAll(void)
 		pinInit(CAN2_TX);
 
 		pinInit(DAC2_OUT);
-		pinInit(DRAIN1);
-		pinInit(DRAIN2);
-		pinInit(DRAIN3);
-		pinInit(DRAIN4);
+//		pinInit(DRAIN1);
+//		pinInit(DRAIN2);
+//		pinInit(DRAIN3);
+//		pinInit(DRAIN4);
 		pinInit(CAN_TX_LED);
 		HEARTBEAT_PIN = HEARTBEAT;
 		pinInit(HEARTBEAT_PIN);
@@ -94,6 +94,11 @@ void pinInitAll(void)
 	
 	pinInit(PWM_CO2_laserPower);
 	pinInit(PWM_Spindle_Speed);
+	
+	pinInit(TPIC_6595_D);
+	pinInit(TPIC_6595_CLR);
+	pinInit(TPIC_6595_SCLK);
+	pinInit(TPIC_6595_RCLK); 
 
 }
 #endif  // USE_HYDRA_IO

@@ -337,36 +337,46 @@ void InitTimer2usec(void)
 
 /////////////////////////////////////////////////////////////////////////////////
 
-void InitTimer2ForTimeSlipMeasurement(void)
+void InitTim3RpmInput(void)
 {   // Timer2 will be used as the interval timer for measuring time slip relative to systick timer
 
-	InitTimer2usec();
-	TIM2->ARR = 3600000000 - 1; // will wrap every hour
+//    // Enable the clock for TIM2
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+	TIM_ITConfig(TIM3, TIM_FLAG_Update, DISABLE); //NO Interrupts!
+	
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 
-	TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);   // Clear update interrupt bit
-	TIM_ITConfig(TIM2, TIM_FLAG_Update, ENABLE);    // Enable update interrupt
+	// Configure the Timer2 base structure
+	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
+	TIM_TimeBaseStructure.TIM_Prescaler = 0;              // No prescaling
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseStructure.TIM_Period = 0xFFFF;        // Maximum period
+	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
+	
 
-	interruptSetupAndEnable(TIM2_IRQn, NVIC_PREMPTION_PRIORITY_SYSTICK_MEASURE);
+	// Configure PA0 as an input pin
+	GPIO_InitTypeDef GPIO_InitStruct;
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_2;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+	// Connect PD2 to TIM3 (AF1)
+	GPIO_PinAFConfig(GPIOD, GPIO_PinSource2, GPIO_AF_TIM3);
+
+	// Configure TIM2 to use PA0 as ETR input
+	TIM_ETRClockMode1Config(TIM3, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
+
+	TIM_Cmd(TIM3, ENABLE);
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////
 
-void InitTimer3ForDelays(void)
-{   // Timer3 will be used as the interval timer for creating uSec delays
-
-	initClkAndResetAPB1(RCC_APB1Periph_TIM3);
-
-	//NUKE interruptSetupAndDisable(TIM3_IRQn, NVIC_PREMPTION_PRIORITY_DELAY);
-
-	MyTIM_TimeBaseInitStruct.TIM_Prescaler = 83;     // drop down to a 1 usec clock to the 16-counter
-	MyTIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	MyTIM_TimeBaseInitStruct.TIM_Period = 0xffff; // full run of the 16-bit counter
-	MyTIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-	MyTIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM3,&MyTIM_TimeBaseInitStruct);
-	//NUKE TIM_UpdateRequestConfig(TIM3, TIM_UpdateSource_Regular);    // limit interrupt to over/underflow  and DMA only
-	TIM_Cmd(TIM3, ENABLE);
-}
 
 ///
 void ConfigureTimer4PwmOutputsFor0_10V(void)
@@ -376,8 +386,8 @@ void ConfigureTimer4PwmOutputsFor0_10V(void)
 		TIM_ITConfig(TIM4, TIM_FLAG_Update, DISABLE); //NO Interrupts!
 
 		MyTIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-		MyTIM_TimeBaseInitStruct.TIM_Prescaler = 300;
-		MyTIM_TimeBaseInitStruct.TIM_Period = 128;
+		MyTIM_TimeBaseInitStruct.TIM_Prescaler = 30;
+		MyTIM_TimeBaseInitStruct.TIM_Period = 101;
 		MyTIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
 		MyTIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
 		TIM_TimeBaseInit(TIM4, &MyTIM_TimeBaseInitStruct);
@@ -387,7 +397,7 @@ void ConfigureTimer4PwmOutputsFor0_10V(void)
 		TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
 		TIM_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable;
 		TIM_OCInitStructure.TIM_Pulse = 0; // 0% "off"  sets CCR4
-		TIM_OCInitStructure.TIM_OCPolarity = (_gs._laser.polarity == ACTIVE_LOW) ? TIM_OCPolarity_Low : TIM_OCPolarity_High;
+		TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
 
 		TIM_OC4Init(TIM4, &TIM_OCInitStructure);
 		TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable); //CCR4
@@ -404,88 +414,39 @@ void ConfigureTimer4PwmOutputsFor0_10V(void)
 
 /////////////////////////////////////////////////////////////////////////////////
 
-void InitCO2LaserTimer(void)
-{   // Old PCB -- Timer5 CCR2 on PA1 will be used as pwm control for the CO2 laser power supply
-	// New PCB -- Timer2 CCR4 on PA3 will be used as pwm control for the CO2 laser power supply
-#ifdef USE_AB_ENCODER
+void InitEncoderTimer5(void)
+{   //encoder wheel works on input A0 and A1 Timer5
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
 
-	if (_gs._laser.enabled == FALSE)
-	{	// DISABLE TIMER
-		deinitClkAndResetAPB1(RCC_APB1Periph_TIM2);
-	}
-	else
-	{
-		initClkAndResetAPB1(RCC_APB1Periph_TIM2);
+	// Configure the pins for encoder mode (assuming PA0 and PA1 for Channels A and B)
+	GPIO_InitTypeDef GPIO_InitStruct;
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-		TIM_ITConfig(TIM2, TIM_FLAG_Update, DISABLE); //NO Interrupts!
+	// Connect the pins to TIM5 (AF2)
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM5);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource1, GPIO_AF_TIM5);
 
-		uint32_t quotient = (84000000.0f / (float)_gs._laser.pwmFreq)  + 1; // +1 to cover any possible roundoff
-		uint32_t psc = quotient >> 16;    // upper 16-bits; value of 0 means divide by 1) (add 0.999999 to do ceiling func to ensure ARR fits)
-		uint32_t arr = (quotient / (psc + 1)) - 1;  // PSC+1 because TimerPSC value of 0 means divide by 1;
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+	// Configure the Timer5 base structure
+	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
+	TIM_TimeBaseStructure.TIM_Prescaler = 0; // No prescaling
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseStructure.TIM_Period = 0xFFFFFFFF; // Maximum period
+	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+	TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure);
 
-		MyTIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-		MyTIM_TimeBaseInitStruct.TIM_Prescaler = psc;
-		MyTIM_TimeBaseInitStruct.TIM_Period = arr;
-		MyTIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-		MyTIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
-		TIM_TimeBaseInit(TIM2,&MyTIM_TimeBaseInitStruct);
+	// Configure TIM5 in encoder mode
+	TIM_EncoderInterfaceConfig(TIM5, TIM_EncoderMode_TI1, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);
 
-		TIM_OCInitTypeDef TIM_OCInitStructure;
-		TIM_OCStructInit(&TIM_OCInitStructure);
-		TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-		//TIM_OCInitStructure.TIM_OutputNState  = TIM_OutputNState_Enable ;
-		TIM_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable ;
-		TIM_OCInitStructure.TIM_Pulse = 0;  // 0% "off"  sets CCR4
-		//TIM_OCInitStructure.TIM_OCNPolarity = (_gs._laser.polarity == ACTIVE_LOW) ? TIM_OCNPolarity_Low : TIM_OCNPolarity_High;
-		TIM_OCInitStructure.TIM_OCPolarity = (_gs._laser.polarity == ACTIVE_LOW) ? TIM_OCPolarity_Low : TIM_OCPolarity_High;
-		//TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
-		TIM_OC4Init(TIM2, &TIM_OCInitStructure);
-		TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);   //CCR4
+	// Enable TIM5
+	TIM_Cmd(TIM5, ENABLE);
 
-		TIM_ARRPreloadConfig(TIM2, ENABLE);
-		TIM_CtrlPWMOutputs(TIM2, ENABLE);  //  Enable PWM outputs
-		TIM_Cmd(TIM2, ENABLE);
-	}
-#else //!USE_AB_ENCODER
-	if (_gs._laser.enabled == FALSE)
-	{	// DISABLE TIMER
-		deinitClkAndResetAPB1(RCC_APB1Periph_TIM5);
-	}
-	else
-	{
-		initClkAndResetAPB1(RCC_APB1Periph_TIM5);
-
-		// in case a timer is re-init, make sure it's ISR is disabled to avoid spurious interrupts
-		TIM_ITConfig(TIM5, TIM_FLAG_Update, DISABLE);
-
-		uint32_t quotient = (84000000.0f / (float)_gs._laser.pwmFreq)  + 1; // +1 to cover any possible roundoff
-		uint32_t psc = quotient >> 16;    // upper 16-bits; value of 0 means divide by 1) (add 0.999999 to do ceiling func to ensure ARR fits)
-		uint32_t arr = (quotient / (psc + 1)) - 1;  // PSC+1 because TimerPSC value of 0 means divide by 1;
-
-		MyTIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-		MyTIM_TimeBaseInitStruct.TIM_Prescaler = psc;
-		MyTIM_TimeBaseInitStruct.TIM_Period = arr;
-		MyTIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-		MyTIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
-		TIM_TimeBaseInit(TIM5,&MyTIM_TimeBaseInitStruct);
-
-		TIM_OCInitTypeDef TIM_OCInitStructure;
-		TIM_OCStructInit(&TIM_OCInitStructure);
-		TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-		//TIM_OCInitStructure.TIM_OutputNState  = TIM_OutputNState_Enable ;
-		TIM_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable ;
-		TIM_OCInitStructure.TIM_Pulse = 0;  // 0% "off"  sets CCR2
-		//TIM_OCInitStructure.TIM_OCNPolarity = (_gs._laser.polarity == ACTIVE_LOW) ? TIM_OCNPolarity_Low : TIM_OCNPolarity_High;
-		TIM_OCInitStructure.TIM_OCPolarity = (_gs._laser.polarity == ACTIVE_LOW) ? TIM_OCPolarity_Low : TIM_OCPolarity_High;
-		//TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
-		TIM_OC2Init(TIM5, &TIM_OCInitStructure);
-		TIM_OC2PreloadConfig(TIM5, TIM_OCPreload_Enable);   //CCR2
-
-		TIM_ARRPreloadConfig(TIM5, ENABLE);
-		TIM_CtrlPWMOutputs(TIM5, ENABLE);  //  Enable PWM outputs
-		TIM_Cmd(TIM5, ENABLE);
-	}
-#endif //!USE_AB_ENCODER
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -647,7 +608,7 @@ void DeInitLaser(void)
 
 		if (_gs._laser.localControl)
 		{   // reset timers and IO to non laser use
-			InitCO2LaserTimer();
+			InitEncoderTimer5();
 		}
 		_g4DwellTimer = 100; // let laser power supply have time to settle (off)
 	}
@@ -679,7 +640,7 @@ void InitLaser(void)
 
 		if (_gs._laser.localControl)
 		{
-			InitCO2LaserTimer();
+			InitEncoderTimer5();
 			pinInit(CO2_LASER_PWM);
 		}
 		else

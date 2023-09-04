@@ -639,6 +639,14 @@ void M_Code_M3(void)  // spindle on CW (uses T, S, F)
 	// MCODE
 	// MCODE    turn on the spindle in a clockwise direction
 
+	if (ARG_S_PRESENT)
+	{//generic M3 Sxxx command, just set the PWM for it and on signal
+		SpindleDesiredSpeedPWM = ARG_S;
+		McodeDrainState[M613_State_Ofset] = 1; //enable Spindle power
+		McodeDrainState[M614_State_Ofset] = 0; //forward
+		return;
+	}
+	
 	if (ARG_X_PRESENT || ARG_Y_PRESENT || ARG_Z_PRESENT || ARG_A_PRESENT || ARG_B_PRESENT || ARG_C_PRESENT)
 	{
 		sendError("Legacy use of M3 to control lathe mode.  Please migrate to M253");
@@ -662,7 +670,15 @@ void M_Code_M4(void)  // spindle on CCW (uses T, S, F)
 	// MCODE       set pulses_per_unit to pulses pre REVOLUTION in order to work in RPM
 	// MCODE
 	// MCODE    turn on the spindle in a counter-clockwise direction
-
+	if (ARG_S_PRESENT)
+	{
+		//generic M3 Sxxx command, just set the PWM for it and on signal
+		SpindleDesiredSpeedPWM = ARG_S;
+		McodeDrainState[M613_State_Ofset] = 1; //enable Spindle power
+		McodeDrainState[M614_State_Ofset] = 1; //forward
+		return;
+	}
+	
 	if (ARG_X_PRESENT || ARG_Y_PRESENT || ARG_Z_PRESENT || ARG_A_PRESENT || ARG_B_PRESENT || ARG_C_PRESENT)
 	{
 		sendError("Legacy use of M4 to control lathe mode.  Please migrate to M254");
@@ -678,6 +694,14 @@ void M_Code_M5(void)  // spindle/lathe OFF
 	// MCODE
 	// MCODE    turn off the spindle motor and lathe motor
 
+
+		//generic M3 Sxxx command, just set the PWM for it and on signal
+		SpindleDesiredSpeedPWM = 0;
+		McodeDrainState[M613_State_Ofset] = 0; //enable Spindle power
+		McodeDrainState[M614_State_Ofset] = 0; //forward
+		//return;
+
+	
 	if (ARG_X_PRESENT || ARG_Y_PRESENT || ARG_Z_PRESENT || ARG_A_PRESENT || ARG_B_PRESENT || ARG_C_PRESENT)
 	{
 		sendError("Legacy use of M5 to control lathe mode.  Please migrate to M255");
@@ -3749,13 +3773,17 @@ void M_Code_M603(void) { if (3 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[3])
 void M_Code_M604(void) { if (4 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[4]); } // MCODE enable HSS out4
 void M_Code_M605(void) { if (5 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[5]); } // MCODE enable HSS out5
 void M_Code_M606(void) { if (6 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[6]); } // MCODE enable HSS out6
-void M_Code_M607(void) { if (7 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[7]); } // MCODE enable HSS out7
-void M_Code_M608(void) { if (8 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[8]); } // MCODE enable HSS out8
-void M_Code_M609(void) { if (9 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[9]); } // MCODE enable HSS out9
-void M_Code_M610(void) { if (10 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[10]); } // MCODE enable HSS out10
-void M_Code_M611(void) { if (11 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[11]); } // MCODE enable HSS out11
-void M_Code_M612(void) { if (12 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[12]); } // MCODE enable HSS out12
-void M_Code_M613(void)
+
+void M_Code_M607(void) { if (ARG_S_PRESENT)McodeDrainState[M607_State_Ofset] = (int) ARG_S; } // MCODE enable Drain 595
+void M_Code_M608(void) { if (ARG_S_PRESENT)McodeDrainState[M608_State_Ofset] = (int) ARG_S; }// MCODE enable Drain
+void M_Code_M609(void) { if (ARG_S_PRESENT)McodeDrainState[M609_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out9
+void M_Code_M610(void) { if (ARG_S_PRESENT)McodeDrainState[M610_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out10
+void M_Code_M611(void) { if (ARG_S_PRESENT)McodeDrainState[M611_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out11
+void M_Code_M612(void) { if (ARG_S_PRESENT)McodeDrainState[M612_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out12
+void M_Code_M613(void) { if (ARG_S_PRESENT)McodeDrainState[M613_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out12
+void M_Code_M614(void) { if (ARG_S_PRESENT)McodeDrainState[M614_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out12
+	
+void M_Code_M615(void)
 {//setup pnp valve timer
 	if (ARG_V_PRESENT)
 	{
@@ -3766,8 +3794,6 @@ void M_Code_M613(void)
 		PnPResetTimer = (uint16_t)ARG_D;
 	}
 } // MCODE reserved
-void M_Code_M614(void) {;} // MCODE reserved
-void M_Code_M615(void) {;} // MCODE reserved
 void M_Code_M616(void) {;} // MCODE reserved
 void M_Code_M617(void) {;} // MCODE reserved
 void M_Code_M618(void) {;} // MCODE reserved
@@ -3983,13 +4009,6 @@ void M_Code_M620(void)  // Laser global control (uses T, E, D, F, A)
 				sprintf(_errorStr, "Trying to enable CO2 laser without the laser lens installed");
 				sendError(_errorStr);
 			}
-#if defined (USE_AB_ENCODER) && defined(MEASURE_ISR_RATE) || defined(MEASURE_TIME_SLIPPAGE)
-			if (_gs._laser.localControl && _gs._laser.enabled)
-			{   // USE_AB_ENCODER moves CO2 local control from TIM5 to TIM2 -- measuring uses TIM2
-				ReportMcodeError("Local control CO2 Laser unavailable - code was compiled for DEBUG (time measurements with TIM2)");
-				_gs._laser.enabled = FALSE;
-			}
-#endif //defined (USE_AB_ENCODER) && defined(MEASURE_ISR_RATE) || defined(MEASURE_TIME_SLIPPAGE)
 		}
 
 		if (_gs._laser.enabled)
@@ -7001,46 +7020,6 @@ void M_Code_M779(void)  // dump slice time measurements
 	// MCODE
 	// MCODE    dump slice time measurements
 
-#ifdef SLICE_TIMING_MEASUREMENT
-	printReportHeader("M779 - slice time measurements");
-	sprintf(_tmpStr, "Slice Time = %2.1f usec", 1.0f / (float)SYSTICKS_PER_SECOND * 1000000.0f);  sendInfo(_tmpStr);
-	sprintf(_tmpStr, "Slice Timing Granlarity = %2.1f usec", _sliceTiming.counterPeriod * 1000000.0f);  sendInfo(_tmpStr);
-	sendInfo("");
-
-	sliceStruct *p;
-	int i;
-	for (i=0; i<NUM_SLICE_TIME_ENTRIES; i++)
-	{
-		p=&_sliceTiming.slices[i];
-		if (strcmp(p->name, "UNDEFINED__NAME"))
-		{
-			if (p->minTime != MAXINT)
-				sprintf(_tmpStr, "    %s():  %4d to %4d usec  (%d)", p->name,
-						(int)(imax(0, (float)p->minTime-1) * _sliceTiming.counterPeriod * 1000000.0f),
-						(int)((float)(p->maxTime+1) * _sliceTiming.counterPeriod * 1000000.0f),
-						p->motionTimerCalls);
-			else
-				sprintf(_tmpStr, "    %s():  Did not execute", p->name);
-			sendInfo(_tmpStr);
-		}
-	}
-	printReportTrailer("M779");
-#endif
-#ifdef MEASURE_TIME_SLIPPAGE
-	printReportHeader("M779 - time slippage");
-	uint32_t irq_disabled = interruptsOff();
-	uint32_t TIM2CNT = TIM2->CNT;
-	unsigned long totalRealTimeUsec = (unsigned long)TIM2CNT + (((unsigned long)_timeSlipTimer2Passes) * 0x100000000ul);
-	double totalRealTimeSec = (double)totalRealTimeUsec / (double)1000000.0;
-	double systickTimeSec0 = (double)_gs._seconds + (double)_gs._sliceCnt / (double)SYSTICKS_PER_SECOND;
-	double systickTimeSec1 = (double)_gs._milliseconds / (double)1000.0;
-	interruptsOn(irq_disabled);
-	sendInfo("");
-	sprintf(_tmpStr, "TIM2U (usec):   %7.6lf  (%d - %ld)", totalRealTimeSec, _timeSlipTimer2Passes, TIM2CNT);  sendInfo(_tmpStr);
-	sprintf(_tmpStr, "SLICE_CNT:      %7.6lf", systickTimeSec0);   sendInfo(_tmpStr);
-	sprintf(_tmpStr, "1000MZ (ms):    %7.6lf", systickTimeSec1);   sendInfo(_tmpStr);
-	printReportTrailer("M779");
-#endif //MEASURE_TIME_SLIPPAGE
 }
 
 ///////////////////////////////////////////////////////////////////////////////
