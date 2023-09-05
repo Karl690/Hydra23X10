@@ -5995,7 +5995,7 @@ int main(void)
 
 	Init_SPI3();
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
-	pinSet(TPIC_6595_CLR); //clear the output of the tpic595, after power on and also abort char
+	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 
 

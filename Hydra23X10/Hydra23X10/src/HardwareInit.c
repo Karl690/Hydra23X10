@@ -369,6 +369,7 @@ void InitTim3RpmInput(void)
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource2, GPIO_AF_TIM3);
 
 	// Configure TIM2 to use PA0 as ETR input
+	// breaks TIM_ETRConfig(TIM3, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
 	TIM_ETRClockMode1Config(TIM3, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);
 
 	TIM_Cmd(TIM3, ENABLE);
