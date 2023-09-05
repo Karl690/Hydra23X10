@@ -3,7 +3,13 @@
 
 
 #ifdef USE_HYDRA_IO
+#define ADC_CHANNEL_NUM 6
 extern boolean isSpecialBuildMachine(void);
+ADC_InitTypeDef hadc2;
+DMA_TypeDef hdma_adc2;
+
+uint16_t   RawADCDataBuffer[ADC_CHANNEL_NUM] = { 0 };
+
 void pinInitAll(void)
 {
 	//	pinInit(CO2_LASER_PWM);
@@ -102,6 +108,15 @@ void pinInitAll(void)
 	pinInit(TPIC_6595_CLR);
 	pinInit(TPIC_6595_SCLK);
 	pinInit(TPIC_6595_RCLK); 
+	
+	//adc pins
+	pinInit(ADC2_03_PA3);//
+	pinInit(ADC2_04_PA4);
+	pinInit(ADC2_05_PA5);
+	pinInit(ADC2_06_PA6); //feedrate override
+	pinInit(ADC2_09_PB1);
+	pinInit(ADC2_15_PC5);
+	
 
 }
 #endif  // USE_HYDRA_IO
@@ -135,18 +150,5 @@ void pinInitAll(void)
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifdef MEGASONIC_HYREL
-void pinInitAll(void)
-{
-	HEARTBEAT_PIN = HEARTBEAT;
-	pinInit(HEARTBEAT_PIN);
-	pinInit(CAN_RX_LED);
-	pinInit(CAN_TX_LED);
 
-	pinInit(CAN1_RX);
-	pinInit(CAN1_TX);
 
-//  pinInit(OTG_FS_DM);
-//  pinInit(OTG_FS_DP);
-}
-#endif //MEGASONIC_HYREL

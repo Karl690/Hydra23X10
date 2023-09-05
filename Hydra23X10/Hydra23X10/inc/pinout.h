@@ -133,33 +133,14 @@
 #define RX6             (PIN_AF_USART6     | PIN_PORT_C | PIN_NUM_07)
 #define TX6             (PIN_AF_USART6     | PIN_PORT_C | PIN_NUM_06)
 
+//adc pins for automatic feedback
+#define ADC2_03_PA3        (PIN_PORT_A | PIN_NUM_03 | PIN_INIT_NONE | ANALOG_FLOATING) //
+#define ADC2_04_PA4        (PIN_PORT_A | PIN_NUM_04 | PIN_INIT_NONE | ANALOG_FLOATING)
+#define ADC2_05_PA5        (PIN_PORT_A | PIN_NUM_05 | PIN_INIT_NONE | ANALOG_FLOATING)
+#define ADC2_06_PA6         (PIN_PORT_A | PIN_NUM_06 | PIN_INIT_NONE | ANALOG_FLOATING) //feedrate override
+#define ADC2_09_PB1         (PIN_PORT_B | PIN_NUM_01 | PIN_INIT_NONE | ANALOG_FLOATING)
+#define ADC2_15_PC5         (PIN_PORT_C | PIN_NUM_05 | PIN_INIT_NONE | ANALOG_FLOATING)
 
-
-#define GB_DEBUG_PIN1           (OUTPUT_PP_50MHZ      | PIN_PORT_F | PIN_NUM_07 | PIN_INIT_LOW)  // sel0
-#define GB_DEBUG_PIN1_SET       (GPIOF->BSRRL = GPIO_Pin_7)
-#define GB_DEBUG_PIN1_CLEAR     (GPIOF->BSRRH = GPIO_Pin_7)
-#define GB_DEBUG_PIN1_READ      (GPIOF->IDR & GPIO_Pin_7)
-#define GB_DEBUG_PIN1_TOGGLE    {if (GB_DEBUG_PIN1_READ) {GB_DEBUG_PIN1_CLEAR;} else {GB_DEBUG_PIN1_SET;}}
-
-#define GB_DEBUG_PIN2           (OUTPUT_PP_50MHZ      | PIN_PORT_F | PIN_NUM_08 | PIN_INIT_LOW)
-#define GB_DEBUG_PIN2_SET       GPIOF->BSRRL = GPIO_Pin_8
-#define GB_DEBUG_PIN2_CLEAR     GPIOF->BSRRH = GPIO_Pin_8
-
-#define GB_DEBUG_PIN3           (OUTPUT_PP_50MHZ      | PIN_PORT_H | PIN_NUM_08 | PIN_INIT_LOW)
-#define GB_DEBUG_PIN3_SET       GPIOH->BSRRL = GPIO_Pin_8
-#define GB_DEBUG_PIN3_CLEAR     GPIOH->BSRRH = GPIO_Pin_8
-
-#define GB_DEBUG_PIN4           (OUTPUT_PP_50MHZ      | PIN_PORT_H | PIN_NUM_10 | PIN_INIT_LOW)
-#define GB_DEBUG_PIN4_SET       GPIOH->BSRRL = GPIO_Pin_10
-#define GB_DEBUG_PIN4_CLEAR     GPIOH->BSRRH = GPIO_Pin_10
-
-#define GB_DEBUG_PIN5           (OUTPUT_PP_50MHZ      | PIN_PORT_H | PIN_NUM_09 | PIN_INIT_LOW)
-#define GB_DEBUG_PIN5_SET       GPIOH->BSRRL = GPIO_Pin_9
-#define GB_DEBUG_PIN5_CLEAR     GPIOH->BSRRH = GPIO_Pin_9
-
-#define GB_DEBUG_PIN6           (OUTPUT_PP_50MHZ      | PIN_PORT_H | PIN_NUM_11 | PIN_INIT_LOW) // sel5
-#define GB_DEBUG_PIN6_SET       GPIOH->BSRRL = GPIO_Pin_11
-#define GB_DEBUG_PIN6_CLEAR     GPIOH->BSRRH = GPIO_Pin_11
 
 #define PWM_CO2_laserPower		(PIN_AF_TIM4      | PIN_PORT_B | PIN_NUM_08)  //Tim4-<CCR3
 #define PWM_Spindle_Speed		(PIN_AF_TIM4      | PIN_PORT_B | PIN_NUM_09)  //Tim4->CCR4 

@@ -536,69 +536,7 @@ char _bootupAlertHostChar;
 boolean _sendBootupAlertHostChar;
 pinType HEARTBEAT_PIN;  // all remapping of pin for special buiilds
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
-// WARNING:  IF THE ORDER OF ANY OF THESE CHANGE, PLEASE UPDATE initSliceTiming()
-const PFUNC F1000HZ[NUM_1000HZ] =
-{
-		ohNoMrBill,             // can't use slice 0 and this is time slot to execute the next slower slice
-		serialProcessor,
-		CommandProcessor,       // can't move to foreground due to collision on global "ExecutionPtr"
-		SequenceEngine,         // controls a lot of ms increment timers -- MUST STAY IN 1000Hz loop
-		canProcessRxQueueNoReturn,
-		canProcessTxQueueNoReturn,
-		motionQ_update,
-#ifdef HYDRA_DIAGS
-		ProcessDiags,
-#else
-		loop_1000Hz_simple_work,    // keep as last call in this array
-#endif
-};
-
-const PFUNC F100HZ[NUM_100HZ] =
-{
-		ohNoMrBill,             // can't use slice 0 and this is time slot to execute the next slower slice
-		initFromSoapstring,
-		readInputs,
-		checkMotorFaultSensor,
-		checkMotorLimit1Sensor,
-		checkMotorLimit2Sensor,
-		latheSpeedControl,
-		PnP_SetValves,
-		LatchPnPData,
-		loop_100Hz_simple_work, // keep as last call in this array
-};
-
-const PFUNC F10HZ[NUM_10HZ] =
-{
-		ohNoMrBill,             // can't use slice 0 and this is time slot to execute the next slower slice
-		soapstringController,
-		sendUpdateToHost,
-		checkBlockingWaits,
-		EdgeTriggerSendResults, // move into simple_work if space needed
-		checkForCompletedAbort,
-		ReportXYZLocation,
-		spare,
-		spare,
-		loop_10Hz_simple_work,  // keep as last call in this array
-};
-
-const PFUNC F1HZ[NUM_1HZ] =
-{
-		checkForMia,
-		spare,
-		spare,
-		spare,
-		spare,
-		LaserSendRequestStringToPowerSupply,
-		spare,
-		spare,
-		spare,
-		loop_1Hz_simple_work,   // keep as last call in this array
-};
-
-////////////////////////////////////////////////////////////////////////////////
 
 void getNextRasterValue(void)
 {
@@ -4154,10 +4092,26 @@ void ReportXYZLocation(void)
 		sprintf(_tmpStr, ":%c%d", 'S', RPMCounter); // last "ARG_N" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 		 
+		sprintf(_tmpStr, ":%c%d", 'I', laser_PsOutputCurrent); // last "ARG_N" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		
+		sprintf(_tmpStr, ":%c%d", 'V', laser_PsOutputVoltage); // last "ARG_N" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		
+		sprintf(_tmpStr, ":%c%d", 'C', laser_PsControlVoltage); // last "ARG_N" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		
+		sprintf(_tmpStr, ":%c%d", 'W', laser_PsWaterProt); // last "ARG_N" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		
 		if (strlen(_rptStr) > 3)
 		{   // there was info to send
 			sendstringCr(_rptStr);
 		}
+		laser_PsOutputCurrent	= 0;
+		laser_PsOutputVoltage	= 0;
+		laser_PsControlVoltage	=0;
+		laser_PsWaterProt		=0;
 	}
 }
 
@@ -5217,9 +5171,10 @@ void readInputs(void)
 
 	checkStartButton();
 	checkEMO();
-#ifdef USE_AB_ENCODER
-	checkABEncoderSelectButton();
-#endif //USE_AB_ENCODER
+
+	//checkABEncoderSelectButton(); //USE_AB_ENCODER
+
+	PWMCntrl();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5927,6 +5882,68 @@ void executeAnySpecialDebugStartCode(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// WARNING:  IF THE ORDER OF ANY OF THESE CHANGE, PLEASE UPDATE initSliceTiming()
+const PFUNC F1000HZ[NUM_1000HZ] =
+{
+	ohNoMrBill, // can't use slice 0 and this is time slot to execute the next slower slice
+	serialProcessor,
+	CommandProcessor, // can't move to foreground due to collision on global "ExecutionPtr"
+	SequenceEngine, // controls a lot of ms increment timers -- MUST STAY IN 1000Hz loop
+	canProcessRxQueueNoReturn,
+	canProcessTxQueueNoReturn,
+	motionQ_update,
+	loop_1000Hz_simple_work, // keep as last call in this array
+};
+
+const PFUNC F100HZ[NUM_100HZ] =
+{
+	ohNoMrBill,
+	// can't use slice 0 and this is time slot to execute the next slower slice
+	initFromSoapstring,
+	readInputs,
+	checkMotorFaultSensor,
+	checkMotorLimit1Sensor,
+	checkMotorLimit2Sensor,
+	latheSpeedControl,
+	PnP_SetValves,
+	LatchPnPData,
+	loop_100Hz_simple_work,
+	// keep as last call in this array
+};
+
+const PFUNC F10HZ[NUM_10HZ] =
+{
+	ohNoMrBill, // can't use slice 0 and this is time slot to execute the next slower slice
+	soapstringController,
+	sendUpdateToHost,
+	checkBlockingWaits,
+	EdgeTriggerSendResults,
+	// move into simple_work if space needed
+	checkForCompletedAbort,
+	ReportXYZLocation,
+	spare,
+	spare,
+	loop_10Hz_simple_work, // keep as last call in this array
+};
+
+const PFUNC F1HZ[NUM_1HZ] =
+{
+	checkForMia,
+	spare,
+	spare,
+	spare,
+	spare,
+	LaserSendRequestStringToPowerSupply,
+	spare,
+	spare,
+	spare,
+	loop_1Hz_simple_work, // keep as last call in this array
+};
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 int main(void)
 {
@@ -5966,7 +5983,7 @@ int main(void)
 	SysTick_Config(SystemCoreClock / SYSTICKS_PER_SECOND);//slice timer has lowest interrupt priority
 	InitTim3RpmInput(); //set up the rpm counter
 	__enable_irq();  // now everything is ready, so let interrupts occur
-
+	Init_ADC();
 	Init_SPI3();
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char

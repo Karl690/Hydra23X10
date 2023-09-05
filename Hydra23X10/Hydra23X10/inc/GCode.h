@@ -249,6 +249,8 @@ extern void M_Code_M610(void);  // enable HSS out10
 extern void M_Code_M611(void);  // enable HSS out11
 extern void M_Code_M612(void);  // enable HSS out12
 extern void M_Code_M613(void);
+extern void M_Code_M614(void);
+extern void M_Code_M615(void);
 extern void M_Code_M619(void);  // sets the function and output pwm of the selected HSS (uses F, I, S, P, J, H)
 extern void M_Code_M620(void);  // Laser global control (uses T, E, F, C, P)
 extern void M_Code_M621(void);  // Laser vector mode control (uses P)

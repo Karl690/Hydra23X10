@@ -556,7 +556,8 @@ void InitDAC(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-#ifdef HYDRA_DIAGS
+//B1 co2 laser water temp
+//A5 HOtbed temp
 void adcInit(ADC_TypeDef *ADCx)
 {
 	ADC_InitTypeDef ADC_InitStructure;
@@ -586,7 +587,7 @@ void adcInit(ADC_TypeDef *ADCx)
 
 	ADC_Cmd(ADCx, ENABLE);
 }
-#endif
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -907,6 +908,79 @@ void timerInitEncoderAB(boolean reverseDirection)
 	TIM_EncoderInterfaceConfig(TIM5, TIM_EncoderMode_TI2, (reverseDirection ? TIM_ICPolarity_Rising : TIM_ICPolarity_Falling), TIM_ICPolarity_Rising); // TIM_EncoderMode_TI2 == TI1-edge, TI2-level
 	TIM_Cmd(TIM5, ENABLE);
 }
+
+void Init_ADC(void)
+{
+	ADC_Common_TypeDef  *tmpADC_Common = ADC_BASE;
+	
+	/* Set the ADC clock prescaler */
+	tmpADC_Common->CCR &= ~(ADC_CCR_ADCPRE);
+	tmpADC_Common->CCR |=  ADC_Prescaler_Div2;
+	
+	/* Set ADC scan mode */
+	ADC2->CR1 &= ~(ADC_CR1_SCAN);
+	ADC2->CR1 |=  (ADC_CR1_SCAN) << 8U;
+	
+	
+	/* Set ADC resolution */
+	ADC2->CR1 &= ~(ADC_CR1_RES);
+	ADC2->CR1 |=  ADC_Resolution_12b;
+  
+	/* Set ADC data alignment */
+	ADC2->CR2 &= ~(ADC_CR2_ALIGN);
+	ADC2->CR2 |= ADC_DataAlign_Right;
+	
+	/* Reset the external trigger */
+	ADC2->CR2 &= ~(ADC_CR2_EXTSEL);
+	ADC2->CR2 &= ~(ADC_CR2_EXTEN);
+	
+	/* Enable or disable ADC continuous conversion mode */
+	ADC2->CR2 &= ~(ADC_CR2_CONT);
+	ADC2->CR2 |= ADC_CR2_CONT << 1U; //not sure about this 
+	
+    /* Disable the selected ADC regular discontinuous mode */
+	ADC2->CR1 &= ~(ADC_CR1_DISCEN); //disable
+	
+	/* Set ADC number of conversion */
+	ADC2->SQR1 &= ~(ADC_SQR1_L);
+	ADC2->SQR1 |=  (((6) - (uint8_t)1U) << 20U);
+  
+	/* Enable or disable ADC DMA continuous request */
+	ADC2->CR2 &= ~(ADC_CR2_DDS);
+	ADC2->CR2 |= (ENABLE << 9U);
+  
+	/* Enable or disable ADC end of conversion selection */
+	ADC2->CR2 &= ~(ADC_CR2_EOCS);
+	ADC2->CR2 |= (0x00000001U << 10U);
+	
+
+	//		{ADC_CHANNEL_3, 1, ADC2_03_PA3, 0, ConvertionTable},
+	//		{ADC_CHANNEL_4, 2, ADC2_04_PA4, 0, ConvertionTable},
+	//		{ADC_CHANNEL_5, 3, ADC2_05_PA5, 0, ConvertionTable},
+	//		{ADC_CHANNEL_6, 4, ADC2_06_PA6, 0, ConvertionTable},
+	//		{ADC_CHANNEL_9, 5, ADC2_09_PB1, 0, ConvertionTable},
+	//		{ADC_CHANNEL_15, 6, ADC2_15_PC5, 0, ConvertionTable},
+	pinInit(ADC2_03_PA3);
+	pinInit(ADC2_04_PA4);
+	pinInit(ADC2_05_PA5);
+	pinInit(ADC2_06_PA6);
+	pinInit(ADC2_09_PB1);
+	pinInit(ADC2_15_PC5);
+	//configure the pins and their order of execution
+	ADC_RegularChannelConfig(ADC2, 3, 1, ADC_SampleTime_480Cycles);
+	ADC_RegularChannelConfig(ADC2, 4, 2, ADC_SampleTime_480Cycles);
+	ADC_RegularChannelConfig(ADC2, 5, 3, ADC_SampleTime_480Cycles);
+	ADC_RegularChannelConfig(ADC2, 6, 4, ADC_SampleTime_480Cycles);
+	ADC_RegularChannelConfig(ADC2, 9, 5, ADC_SampleTime_480Cycles);
+	ADC_RegularChannelConfig(ADC2, 15, 6, ADC_SampleTime_480Cycles);
+	
+}
+void Start_ADC(void)
+{
+	RawADCDataBuffer;
+}
+
+
 #endif //USE_AB_ENCODER
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -2874,6 +2874,7 @@ passFail_t motionQ_addCommand(float motionRate, boolean homing)
 
 void motionQ_update(void)
 {
+	PCHAR();//check to see if we should be sending a charcter out uart3 tothe co2 laser
 	float decelStartSpeed;
 	float accelEndSpeed;
 	motionEntryStruct *curr = motionQ.newest;

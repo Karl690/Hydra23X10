@@ -25,6 +25,7 @@
 #define SYSTEM_BAUD_RATE 38400 // 115200 // 76800 // 57600 //38400 //115200//19200 //
 #endif
 #define LIGHTBURN_BAUD_RATE 38400 //250000
+extern uint16_t RawADCDataBuffer[];
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Global Variables defined in HardwareInit that can be referenced by other modules
@@ -67,5 +68,7 @@ extern void InitGlobals(void);
 extern void timerInitEncoderAB(boolean);
 #endif //USE_AB_ENCODER
 extern void pinInitAll(void);
+extern void Init_ADC(void);
+extern void Start_ADC(void);
 
 #endif // #ifndef HardwareInit_HEADER // prevent double dipping - MUST BE LAST LINE OF FILE

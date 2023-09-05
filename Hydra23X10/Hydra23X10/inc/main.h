@@ -17,14 +17,26 @@
 // File:    main.h
 //
 ////////////////////////////////////////////////////////////////////////////////
+typedef void(*PFUNC)(void);
 
 #define SOFTWARE_MAJOR_REVISION     4   // XXX  update when a major change occurs (ie, protocol)
 #define SOFTWARE_MINOR_REVISION     251 // XXX  update for major and minor changes
 #define SOFTWARE_TWEAK_REVISION    'B'  // XXX  update for small changes ('z' is for experimental ONLY)
 
 #define SOFTWARE_DEBUG_REVISION    'a'  // XXX  char update for debug versions  (applies to 'z' versions only  is for experimental ONLY) (display with M115)
+extern const PFUNC F1000HZ[];
+extern const PFUNC F100HZ[];
+extern const PFUNC F10HZ[];
+extern const PFUNC F1HZ[];
 
 #if (SOFTWARE_TWEAK_REVISION == 'z')
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// WARNING:  IF THE ORDER OF ANY OF THESE CHANGE, PLEASE UPDATE initSliceTiming()
+
+
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // Purpose: Contains main specific defines, global references, and method prototypes
