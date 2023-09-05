@@ -2449,14 +2449,14 @@ extern int RPMCounter;
 extern int	SpindleCO2LaserPowerPWM;
 extern int Update595Index;
 extern int McodeDrainState[];
-#define M607_State_Ofset 0			//open drain aux outputs J27
-#define M608_State_Ofset 1
-#define M609_State_Ofset 4
-#define M610_State_Ofset 5
-#define M611_State_Ofset 6
-#define M612_State_Ofset 7
-#define M613_State_Ofset 2            //Spindle motor direction
-#define M614_State_Ofset 3            //Spindle Motor Enable
+#define M607_State_Ofset 7			//open drain aux outputs J27
+#define M608_State_Ofset 6
+#define M609_State_Ofset 3
+#define M610_State_Ofset 2
+#define M611_State_Ofset 1
+#define M612_State_Ofset 0
+#define M613_State_Ofset 5            //Spindle motor direction
+#define M614_State_Ofset 4            //Spindle Motor Enable
 
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -62,6 +62,7 @@ void LatchPnPData()
 {
 	//GPIOC->BSRRH = PIN_MASK_11;
 	PnP_Rclk_Set;
+	PWMCntrl();
 	//PnP_Enable_Clr;
 }
 void PnP_SetValves()

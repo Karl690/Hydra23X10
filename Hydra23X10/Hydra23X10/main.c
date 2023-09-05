@@ -579,7 +579,7 @@ const PFUNC F10HZ[NUM_10HZ] =
 		EdgeTriggerSendResults, // move into simple_work if space needed
 		checkForCompletedAbort,
 		ReportXYZLocation,
-		PWMCntrl,
+		spare,
 		spare,
 		loop_10Hz_simple_work,  // keep as last call in this array
 };
@@ -591,7 +591,7 @@ const PFUNC F1HZ[NUM_1HZ] =
 		spare,
 		spare,
 		spare,
-		spare,
+		LaserSendRequestStringToPowerSupply,
 		spare,
 		spare,
 		spare,
@@ -1014,48 +1014,22 @@ void TIM7_IRQHandler()
 
 void TIM8_BRK_TIM12_IRQHandler()
 {   // MotorX control
-#ifdef GB_TIMX_ISR_PIN
-		GB_TIMX_ISR_SET;
-#endif //GB_TIMX_ISR_PIN
-
 	if ((TIM12->SR & TIM_FLAG_Update) && TIM12->DIER & TIM_FLAG_Update)  //if (TIM_GetITStatus(TIM12, TIM_FLAG_Update) != RESET)
 	{
 		ProcessMotion(&Motors[M_X]);
-
-#ifndef PROCESS_RASTER_WITH_DOMINANT_AXIS
-		if (_gs._laser.rasterizeCurrentMove)
-		{   // pulling data from the direct buffer to drive the laser in a raster mode
-#ifdef GB_HIDDEN_WARNINGS
-			int moveStepExtruderToTIM7call; // move to a separate ISR call
-#endif //GB_HIDDEN_WARNINGS
-			processRasterStep();
-		}
-#endif //PROCESS_RASTER_WITH_DOMINANT_AXIS
-
 		TIM12->SR = (uint16_t)~TIM_FLAG_Update; //TIM_ClearITPendingBit(TIM12, TIM_FLAG_Update);  // clear interrupt flag
 	}
-
-#ifdef GB_TIMX_ISR_PIN
-		GB_TIMX_ISR_CLEAR;
-#endif //GB_TIMX_ISR_PIN
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 void TIM8_UP_TIM13_IRQHandler()
 {   // MotorY control
-#ifdef GB_TIMY__ISR_PIN
-	GB_TIMY__ISR_SET;
-#endif //GB_TIMY__ISR_PIN
-
 	if ((TIM13->SR & TIM_FLAG_Update) && TIM13->DIER & TIM_FLAG_Update)  //if (TIM_GetITStatus(TIM13, TIM_FLAG_Update) != RESET)
 	{
 		ProcessMotion(&Motors[M_Y]);
 		TIM13->SR = (uint16_t)~TIM_FLAG_Update; //TIM_ClearITPendingBit(TIM13, TIM_FLAG_Update);  // clear interrupt flag
 	}
-
-#ifdef GB_TIMY__ISR_PIN
-		GB_TIMY__ISR_CLEAR;
-#endif //GB_TIMY__ISR_PIN
+	//should check for TIM8 relaod interrupt
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1124,10 +1098,10 @@ void USARTx_IRQHandler(USART_TypeDef *USARTx, masterPort_t UARTx_MASTER)
 }
 ////////////////////////////////////////////////////////////////////////////////
 
-void USART3_IRQHandler(void)
-{
-	USARTx_IRQHandler(USART3, UART3_MASTER);
-}
+//void USART3_IRQHandler(void)
+//{
+//	USARTx_IRQHandler(USART3, UART3_MASTER);
+//}
 
 ////////////////////////////////////////////////////////////////////////////////
 

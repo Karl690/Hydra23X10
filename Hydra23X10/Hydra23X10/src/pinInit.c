@@ -77,7 +77,7 @@ void pinInitAll(void)
 //		pinInit(OTG_FS_DM);
 //		pinInit(OTG_FS_DP);
 //		pinInit(OTG_FS_ID);
-		pinInit(RX6);
+
 
 //		pinInit(SPI3_CS);
 //		pinInit(SPI3_MISO);
@@ -86,7 +86,10 @@ void pinInitAll(void)
 //		pinInit(SPI3_SCK);
 //		pinInit(SPI3_SPARE);
 		pinInit(START);
-		pinInit(TX6);
+	pinInit(RX3);
+	pinInit(TX3);
+	pinInit(RX6);
+	pinInit(TX6);
 	pinInit(PnP_Rclk);
 	pinInit(PnP_Enable);
 	pinInit(SPi3_Mosi);

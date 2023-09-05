@@ -161,7 +161,18 @@ extern uint32_t _sendingGBStringsSubMask;
 extern serialPort_t _echoRawSerialStreamPort;
 extern serialPort_t _echoProcessedSerialStreamPort;
 
+
 extern masterPort_t masterCommPort;
+extern int co2UartTxCharsInBuf;
+extern int co2UartRxCharsInBuf;
+
+extern int ValidCo2UartRxWatchdog;
+extern uint16_t laser_PsOutputCurrent    ;
+extern uint16_t laser_PsOutputVoltage    ;
+extern uint16_t laser_PsControlVoltage   ;
+extern uint16_t laser_PsWaterProt        ;
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Public Methods available in Serial
@@ -211,5 +222,6 @@ extern void transmitEchoChar(void);
 void forceCharToHw(char);
 extern void PrintCheck (void);
 extern void changeMasterCommPort(masterPort_t);
+extern void LaserSendRequestStringToPowerSupply(void);
 
 #endif // #ifndef Serial_HEADER // prevent double dipping - MUST BE LAST LINE OF FILE

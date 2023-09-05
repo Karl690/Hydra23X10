@@ -102,6 +102,23 @@ uint32_t _sendingGBStringsSubMask;
 serialPort_t _echoRawSerialStreamPort;
 serialPort_t _echoProcessedSerialStreamPort;
 
+int ValidCo2UartRxWatchdog = 10;
+uint16_t laser_PsOutputCurrent       =0;
+uint16_t laser_PsOutputVoltage       =0;
+uint16_t laser_PsControlVoltage      =0;
+uint16_t laser_PsWaterProt           =0;
+
+
+int co2UartTxCharsInBuf = 0;
+int  co2UartRxCharsInBuf = 0;
+
+#define CO2_UART_TX_REQUEST_STRING_SIZE 12 // must be exact size of tx string
+#define CO2_UART_RX_RETURN_STRING_SIZE 18 // must be exactly the size of the return string from the CO2 Laser PS + 1 (for NULL_CHAR)
+char co2UartRxBuffer[CO2_UART_RX_RETURN_STRING_SIZE]; // raw data from UARTS
+
+//'U'+'5'+0+0+138+'\r' + 'U'+'5'+1+34+173'\r'; -- NO NULL_CHAR
+static const char co2UartTxBuffer[CO2_UART_TX_REQUEST_STRING_SIZE] = "\x55\x35\x0\x0\x8a\xd\x55\x35\x1\x22\xad\xd";
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Local global definitions (do not expose in Serial.h)
@@ -1388,3 +1405,77 @@ void changeMasterCommPort(masterPort_t newPort)
 	}
 }
 
+void USART3_IRQHandler(void)
+{
+	// RXNEIE --> RX char avail OR char is avail and shift reg is full (second char avail)
+	//         RXNE=1 or ORE=1 (overrun) in _SR reg
+	if (USART_GetFlagStatus(USART3, USART_FLAG_RXNE))
+	{
+		char RcvUART3 = (USART3->DR & (uint16_t)0x1FF);
+		if (co2UartRxCharsInBuf < CO2_UART_RX_RETURN_STRING_SIZE)
+		{
+			// room
+			co2UartRxBuffer[co2UartRxCharsInBuf] = RcvUART3;
+			co2UartRxCharsInBuf++;
+		}
+	}
+	USART3->SR = (uint16_t)~((uint16_t)0x01 << (uint16_t)(USART_IT_ORE_RX >> 0x08));
+}
+
+void ProcessCO2UartReturnString(void)
+{
+	// comm ith co2 power supply is fairly rigid.  the 103 sends a string out to request data
+	// and the power supply returns a fixed length string.   this method is called AFTER the
+	// full return string is expected to arrive and will deal the results if a full packet arrives
+	// or if not a full packet, will full it's buffer and be ready for the next request
+
+	if (co2UartRxCharsInBuf == (CO2_UART_RX_RETURN_STRING_SIZE - 1)) // -1 because buf has room for NULL_CHAR which is not sent by o2 supply
+	{
+		// full power supply data packet, including term char
+		//      example return string
+		ValidCo2UartRxWatchdog = 10;
+		laser_PsOutputCurrent       = (co2UartRxBuffer[3] << 8) | co2UartRxBuffer[4];
+		laser_PsOutputVoltage       = (co2UartRxBuffer[5] << 8) | co2UartRxBuffer[6];
+		laser_PsControlVoltage      = (co2UartRxBuffer[7] << 8) | co2UartRxBuffer[8];
+		laser_PsWaterProt           = (co2UartRxBuffer[13] == 1);
+
+//		if (SEND_DEBUG_STRINGS)
+//		{
+//			// motion controller has a requested a copy of the string to be sent via the canbus
+//			co2UartRxBuffer[CO2_UART_RX_RETURN_STRING_SIZE - 1] = '\0'; //add NULL_CHAR for can
+//			canSendString(_gs._devicePosition, co2UartRxBuffer);
+//		}
+	}
+	// in all exit cases, reset the rx buffer
+	co2UartRxCharsInBuf = 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+void PCHAR(void)
+{
+	if (co2UartTxCharsInBuf)
+	{
+		// ok if you get here then we have characters in the queue waiting to go out
+		// only send to the current comm master port
+		if (USART1->SR & USART_FLAG_TXE)
+		{
+			USART1->DR = co2UartTxBuffer[CO2_UART_TX_REQUEST_STRING_SIZE - co2UartTxCharsInBuf];
+			co2UartTxCharsInBuf--;
+		}
+	}
+}
+
+void LaserSendRequestStringToPowerSupply(void)
+{
+	// need to send a specific string to the UART based power supply to for it to report
+	// 'U' '5' 0 0 138 \r   'U' '5' 1 0x22 173 \r
+	//'U'+'5'+0+0+138+'\r' + 'U'+'5'+1+34+173'\r'; -- NO NULL_CHAR
+
+	ProcessCO2UartReturnString(); // deal with the prior requested string before requesting a new one
+
+	// reset controls to force request to be sent to the power supply.  PCHAR will see
+	// that there are char in the buffer and start sending
+	// contents of the send data are static
+	co2UartTxCharsInBuf = CO2_UART_TX_REQUEST_STRING_SIZE;//send the static message, over and over
+}

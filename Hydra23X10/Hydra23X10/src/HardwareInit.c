@@ -90,9 +90,10 @@ void InitGPIO(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-#ifdef USE_HYREL_IO
+
 void InitUSART3(unsigned int baudrate)
 {	// Configure UART @ SYSTEM_BAUD_RATE w/ 8 bits no parity and 1 stop bit, no flow control
+	//used to talk to the EZ80 laser power supply, 9600 baud
 	initClkAndResetAPB1(RCC_APB1Periph_USART3);
 
 	USART_InitTypeDef USART_InitStructure;
@@ -128,7 +129,6 @@ void InitUART4(unsigned int baudrate)
 	interruptSetupAndEnable(UART4_IRQn, NVIC_PREMPTION_PRIORITY_UARTS);
 	USART_ITConfig(UART4, USART_IT_RXNE, ENABLE);
 }
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -154,19 +154,9 @@ void InitUSART6(unsigned int baudrate)
 
 void InitAllUARTS(unsigned int baudrate)
 {
-#ifdef USE_HYREL_IO
-	InitUSART3(baudrate);               //external ftdi usb com port
-	InitUART4(baudrate);                //DB9 connector
-#endif
 
-#ifdef ALLOW_NATIVE_LIGHTBURN
-	if (_lightburnModeEnabled)
-		InitUSART6(LIGHTBURN_BAUD_RATE);            //internal rx connection to PC
-	else
-		InitUSART6(baudrate);               //internal rx connection to PC
-#else //!ALLOW_NATIVE_LIGHTBURN
-	InitUSART6(baudrate);               //internal rx connection to PC
-#endif //!ALLOW_NATIVE_LIGHTBURN
+	InitUSART3(9600);               //external ftdi usb com port
+	InitUSART6(baudrate);              //external ftdi usb com port
 }
 
 void CAN_Config(CAN_TypeDef* CANx)

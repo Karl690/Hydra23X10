@@ -50,7 +50,7 @@
 #define SPi3_Mosi		  (PIN_PORT_C | PIN_NUM_12  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
 #define SPi3_Sclk		  (PIN_PORT_C | PIN_NUM_10  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
 
-#ifdef USE_AB_ENCODER
+//#ifdef USE_AB_ENCODER
 #define CO2_LASER_PWM   (PIN_AF_TIM2       | PIN_OTYPE_PUSHPULL | PIN_OSPEED_100MHZ | PIN_PORT_A | PIN_NUM_03 | PIN_INIT_HIGH)
 
 
@@ -126,9 +126,11 @@
 #define OTG_FS_DM       (PIN_AF_OTG_FS     | PIN_OSPEED_100MHZ | PIN_PORT_A | PIN_NUM_11)
 #define OTG_FS_DP       (PIN_AF_OTG_FS     | PIN_OSPEED_100MHZ | PIN_PORT_A | PIN_NUM_12)
 #define OTG_FS_ID       (PIN_AF_OTG_FS     | PIN_OSPEED_100MHZ | PIN_PORT_A | PIN_NUM_10)
-#define RX6             (PIN_AF_USART6     | PIN_PORT_C | PIN_NUM_07)
-
 #define START           (INPUT_PULLUP      | PIN_PORT_A | PIN_NUM_00)
+
+#define RX3             (PIN_AF_USART3     | PIN_PORT_D | PIN_NUM_09)
+#define TX3             (PIN_AF_USART3     | PIN_PORT_D | PIN_NUM_08)
+#define RX6             (PIN_AF_USART6     | PIN_PORT_C | PIN_NUM_07)
 #define TX6             (PIN_AF_USART6     | PIN_PORT_C | PIN_NUM_06)
 
 
@@ -212,4 +214,4 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#endif // #ifndef pinout_HEADER // prevent double dipping - MUST BE LAST LINE OF FILE
+//#endif // #ifndef pinout_HEADER // prevent double dipping - MUST BE LAST LINE OF FILE
