@@ -3,12 +3,8 @@
 
 
 #ifdef USE_HYDRA_IO
-#define ADC_CHANNEL_NUM 6
-extern boolean isSpecialBuildMachine(void);
-ADC_InitTypeDef hadc2;
-DMA_TypeDef hdma_adc2;
 
-uint16_t   RawADCDataBuffer[ADC_CHANNEL_NUM] = { 0 };
+extern boolean isSpecialBuildMachine(void);
 
 void pinInitAll(void)
 {
@@ -110,12 +106,12 @@ void pinInitAll(void)
 	pinInit(TPIC_6595_RCLK); 
 	
 	//adc pins
-	pinInit(ADC2_03_PA3);//
-	pinInit(ADC2_04_PA4);
-	pinInit(ADC2_05_PA5);
-	pinInit(ADC2_06_PA6); //feedrate override
-	pinInit(ADC2_09_PB1);
-	pinInit(ADC2_15_PC5);
+//	pinInit(ADC2_03_PA3);//
+//	pinInit(ADC2_04_PA4);
+//	pinInit(ADC2_05_PA5);
+//	pinInit(ADC2_06_PA6); //feedrate override
+//	pinInit(ADC2_09_PB1);
+//	pinInit(ADC2_15_PC5);
 	
 
 }

@@ -220,6 +220,8 @@
     <ClCompile Include="common\src\pins.c" />
     <ClCompile Include="common\src\util.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="src\adc.c" />
+    <ClCompile Include="src\adc_table.c" />
     <ClCompile Include="src\bootloader.c" />
     <ClCompile Include="src\cruftyCode.c" />
     <ClCompile Include="src\diags.c" />
@@ -430,6 +432,8 @@
     <ClInclude Include="common\lcd\hyrel3d_logo_128x128.h" />
     <ClInclude Include="common\lcd\hyrel3d_logo_320x240.h" />
     <ClInclude Include="common\lcd\lcd.h" />
+    <ClInclude Include="inc\adc.h" />
+    <ClInclude Include="inc\adc_table.h" />
     <ClInclude Include="inc\bootloader.h" />
     <ClInclude Include="inc\diags.h" />
     <ClInclude Include="inc\display.h" />

@@ -68,7 +68,7 @@ extern void InitGlobals(void);
 extern void timerInitEncoderAB(boolean);
 #endif //USE_AB_ENCODER
 extern void pinInitAll(void);
-extern void Init_ADC(void);
-extern void Start_ADC(void);
+//extern void Init_ADC(void);
+//extern void Start_ADC(void);
 
 #endif // #ifndef HardwareInit_HEADER // prevent double dipping - MUST BE LAST LINE OF FILE

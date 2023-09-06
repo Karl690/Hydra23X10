@@ -25,7 +25,7 @@
 #include "gui.h"
 #include "display.h"
 #include "pnp.h"
-
+#include "adc.h"
 void(*callback)(void *); //define cast for call back type
 void initKey(boolean a, char *b, char *c)
 {
@@ -5923,7 +5923,7 @@ const PFUNC F10HZ[NUM_10HZ] =
 	// move into simple_work if space needed
 	checkForCompletedAbort,
 	ReportXYZLocation,
-	spare,
+	ProcessRawADC_Data,
 	spare,
 	loop_10Hz_simple_work, // keep as last call in this array
 };
@@ -5960,7 +5960,7 @@ int main(void)
 	initMailbox();
 	initKey(FALSE, _sysInfoPtr->lastKeyUsed, &GCodeArgComment[1]);     // must be after initMailbox; 	// tell the key checker where to put and find data
 	InitTimer7();
-
+	Init_ADC();
 	__disable_irq();            //prevent any interrupts until everything is initialized
 
 	wiggleDebugIO(0);
@@ -5983,12 +5983,12 @@ int main(void)
 	SysTick_Config(SystemCoreClock / SYSTICKS_PER_SECOND);//slice timer has lowest interrupt priority
 	InitTim3RpmInput(); //set up the rpm counter
 	__enable_irq();  // now everything is ready, so let interrupts occur
-	Init_ADC();
+	
 	Init_SPI3();
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
-
+	Start_ADC();
 
 	while (1)
 	{

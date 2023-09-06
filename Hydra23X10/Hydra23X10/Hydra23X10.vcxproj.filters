@@ -686,6 +686,12 @@
     <ClCompile Include="src\pnp.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\adc.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\adc_table.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="usb_lib\inc\usbd_usr.h">
@@ -893,6 +899,12 @@
       <Filter>cmsis</Filter>
     </ClInclude>
     <ClInclude Include="inc\pnp.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\adc.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\adc_table.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
