@@ -4,7 +4,7 @@
 #include "stm32f4xx_dma.h"
 #include "stm32f4xx_adc.h"
 
-uint16_t   RawADCDataBuffer[ADC_CHANNEL_NUM];
+uint16_t   RawADCDataBuffer[ADC_CHANNEL_NUM] = { 0};
 
 float ScaledADCData[ADC_CHANNEL_NUM] = { 0 }; //converted adc buffer values
 uint16_t ADC_Work_Channel_Index = 0; //used to walk thru the channels and update the working variables.
@@ -13,9 +13,9 @@ adcStruct *ADC_Work_Channel;
 
 void Init_ADC(void)
 {
+	RCC->AHB1ENR |= RCC_AHB1ENR_DMA2EN;
+	RCC->APB2ENR |= RCC_APB2ENR_ADC2EN;
 	
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC2, ENABLE); //ADC1 on APB2 peripheral bus
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
@@ -33,9 +33,9 @@ void Init_ADC(void)
 	dma.DMA_Mode = DMA_Mode_Circular;
 	dma.DMA_Priority = DMA_Priority_Low;
 	dma.DMA_FIFOMode = DMA_FIFOMode_Disable;
-	//dma.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
-	//dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
-	//dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+	dma.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
+	dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+	dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
 	DMA_Init(DMA2_Stream2, &dma);
 	DMA_Cmd(DMA2_Stream2, ENABLE); //dMA2_Stream0 enable
 	
@@ -45,6 +45,7 @@ void Init_ADC(void)
 	adcCommon.ADC_Prescaler = ADC_Prescaler_Div2;
 	adcCommon.ADC_DMAAccessMode = ADC_DMAAccessMode_Disabled;
 	adcCommon.ADC_TwoSamplingDelay = ADC_TwoSamplingDelay_5Cycles;
+	
 	ADC_CommonInit(&adcCommon);
 
 	//setup adc1: in1,2,3,8,9,15
@@ -55,6 +56,7 @@ void Init_ADC(void)
 	adc.ADC_Resolution = ADC_Resolution_12b; //12 bit = 4096
 	adc.ADC_ContinuousConvMode = ENABLE; //continuous: constantly converting data - can always read register
 	adc.ADC_ExternalTrigConv = DISABLE; //ADC_ExternalTrigConv_T1_CC1;//external trigger conversion (?)
+	
 	adc.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
 	adc.ADC_NbrOfConversion = ADC_CHANNEL_NUM;
 	adc.ADC_ScanConvMode = ENABLE; //single/multichannel
@@ -62,11 +64,12 @@ void Init_ADC(void)
 	
 	/////////////////////////////////////////
 	for (uint8_t ch = 0; ch < ADC_CHANNEL_NUM; ch++) {
-		ADC_RegularChannelConfig(ADC2, AdcChannelTable[ch].Channel,ch+1, ADC_SampleTime_480Cycles); 
+		ADC_RegularChannelConfig(ADC2, AdcChannelTable[ch].Channel, ch + 1, ADC_SampleTime_480Cycles); 
 		//initialize pin for channel
 		pinInit(AdcChannelTable[ch].Pin);
 	}
-	ADC_DMARequestAfterLastTransferCmd(ADC2, ENABLE); //single adc repeated
+	/* Enable DMA request after last transfer (Single-ADC mode) */
+	ADC_DMARequestAfterLastTransferCmd(ADC2, ENABLE);
 
 	ADC_DMACmd(ADC2, ENABLE);
 	ADC_Cmd(ADC2, ENABLE);
