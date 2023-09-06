@@ -17,4 +17,4 @@ typedef struct {
 
 extern ADC_ChannelDef AdcChannelTable[ADC_CHANNEL_NUM];
 
-int16_t convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t raw);
+float convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t raw);

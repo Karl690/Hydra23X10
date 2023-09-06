@@ -20,12 +20,14 @@ typedef struct {
 	uint16_t    adcRaw; // last raw value read from ADC
 	int16_t     convRaw; // converted value from last rawValue read
 	int16_t     adcAvg; // average of the last 10 read (or converted reads) after tossing high and low
-	int16_t     convAvg; // converted value using the rawAvg
+	float		convAvg; // converted value using the rawAvg
 	int16_t     sampleHistory[ADC_NUM_SAMPLES]; // last N reads from ADC
 	uint8_t     sampleIndex; // index of last valid value in the history
 	uint8_t     inputChannel; // actual adc channel input selection
 	adcConv_t   conversionType;
 } adcStruct;
+
+extern adcStruct ADC_Channel[ADC_CHANNEL_NUM];
 
 void Init_ADC();
 void Start_ADC(void);

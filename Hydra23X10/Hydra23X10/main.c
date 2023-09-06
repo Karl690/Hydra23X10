@@ -4110,15 +4110,13 @@ void ReportXYZLocation(void)
 		laser_PsControlVoltage	=0;
 		laser_PsWaterProt		=0;
 		
-		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[0]); // last "ARG_F" but passed through to end of motionQ
+		sprintf(_tmpStr, ":W%d:C%4.3f", ADC_Channel[0].adcAvg, ADC_Channel[0].convAvg); // last "ARG_F" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
-		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[1]); // last "ARG_F" but passed through to end of motionQ
+		sprintf(_tmpStr, ":W%d:C%4.3f", ADC_Channel[1].adcAvg, ADC_Channel[1].convAvg); // last "ARG_F" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
-		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[2]); // last "ARG_F" but passed through to end of motionQ
+		sprintf(_tmpStr, ":W%d:C%4.3f", ADC_Channel[2].adcAvg, ADC_Channel[3].convAvg); // last "ARG_F" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
-		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[3]); // last "ARG_F" but passed through to end of motionQ
-		strcat(_rptStr, _tmpStr);
-		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[4]); // last "ARG_F" but passed through to end of motionQ
+		sprintf(_tmpStr, ":W%d:C%4.3f", ADC_Channel[3].adcAvg, ADC_Channel[3].convAvg); // last "ARG_F" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 
 		if (strlen(_rptStr) > 3)

@@ -173,7 +173,7 @@ ADC_ChannelDef AdcChannelTable[ADC_CHANNEL_NUM] = {
 };
 
 
-int16_t convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t raw)
+float convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t raw)
 {
 	uint8_t leftIndex = 0, rightIndex = 0;
 	while (adcTable[rightIndex].adcRaw != MAX_ADC12)
@@ -190,5 +190,5 @@ int16_t convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t r
 	
 	float a = (adcTable[rightIndex].value - adcTable[leftIndex].value) / (float)(adcTable[rightIndex].adcRaw - adcTable[leftIndex].adcRaw);
 	float y = a * (raw - adcTable[leftIndex].adcRaw) + adcTable[leftIndex].value;
-	return (int16_t)y;
+	return y;
 }
