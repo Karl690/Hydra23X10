@@ -30,3 +30,4 @@ typedef struct {
 void Init_ADC();
 void Start_ADC(void);
 void ProcessRawADC_Data(void);
+extern float ScaledADCData[]; //converted adc buffer values

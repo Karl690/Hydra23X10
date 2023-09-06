@@ -4104,14 +4104,28 @@ void ReportXYZLocation(void)
 		sprintf(_tmpStr, ":%c%d", 'W', laser_PsWaterProt); // last "ARG_N" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 		
-		if (strlen(_rptStr) > 3)
-		{   // there was info to send
-			sendstringCr(_rptStr);
-		}
+
 		laser_PsOutputCurrent	= 0;
 		laser_PsOutputVoltage	= 0;
 		laser_PsControlVoltage	=0;
 		laser_PsWaterProt		=0;
+		
+		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[0]); // last "ARG_F" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[1]); // last "ARG_F" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[2]); // last "ARG_F" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[3]); // last "ARG_F" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+		sprintf(_tmpStr, ":%c%d", 'W', RawADCDataBuffer[4]); // last "ARG_F" but passed through to end of motionQ
+		strcat(_rptStr, _tmpStr);
+
+		if (strlen(_rptStr) > 3)
+		{
+			// there was info to send
+			sendstringCr(_rptStr);
+		}
 	}
 }
 

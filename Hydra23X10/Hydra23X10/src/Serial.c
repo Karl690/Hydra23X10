@@ -1424,7 +1424,7 @@ void USART3_IRQHandler(void)
 			laser_PsOutputVoltage       = (co2UartRxBuffer[5] << 8) | co2UartRxBuffer[6];
 			laser_PsControlVoltage      = (co2UartRxBuffer[7] << 8) | co2UartRxBuffer[8];
 			laser_PsWaterProt           = (co2UartRxBuffer[13] == 1);
-			co2UartRxCharsInBuf = 0;
+			co2UartRxCharsInBuf = 0;//reset the pointer
 		}
 	}
 	USART3->SR = (uint16_t)~((uint16_t)0x01 << (uint16_t)(USART_IT_ORE_RX >> 0x08));//clear inerrupt
