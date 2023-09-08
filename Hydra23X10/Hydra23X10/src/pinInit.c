@@ -71,7 +71,7 @@ void pinInitAll(void)
 		//pinInit(J19_9);   // undefined
 
 		//pinInit(MOTOR_EN);
-		pinInit(NC_SPARE);   // undefined
+		//pinInit(NC_SPARE);   // undefined
 //		pinInit(OSC_IN);   // undefined
 //		pinInit(OSC_OUT);   // undefined
 //		pinInit(OSC32_IN);

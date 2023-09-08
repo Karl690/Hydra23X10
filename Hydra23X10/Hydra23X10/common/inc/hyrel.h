@@ -402,7 +402,7 @@ typedef union { // basic controls for how the switch behaves
 // HOTHEAD TEMPERATURE RELATED /////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-#define TEMP_FRAC_BITS                  0
+#define TEMP_FRAC_BITS                  5
 #define TEMP_SCALE                      32
 #define TEMP_SCALEF                     32.0f
 #define BOGUS_TEMPERATURE               (temp_t)0x8000  // max negative

@@ -1868,15 +1868,11 @@ void initAllHss(void)
 
 	hssFuncToPinIndex[SPINDLE_COOLANT_HSS] = HSS_AUX_PWR1_INDEX;
 	hssFuncToPinIndex[FLOOD_COOLANT_HSS]   = HSS_AUX_PWR2_INDEX;
-#ifdef NEW_CO2_LASER_CONTROL_MODULE // no 103 board at power supply; co2 laser lens used for soapstring, etc
 	hssFuncToPinIndex[CO2_POWER_SUPPY_HSS] = HSS_AUX_PWR4_INDEX;
-#endif //NEW_CO2_LASER_CONTROL_MODULE
 	hssFuncToPinIndex[DDLIGHT_HSS]         = HSS_AUX_PWR5_INDEX;
 	hssFuncToPinIndex[RESPONSE_HSS]        = HSS_AUX_PWR6_INDEX;
 	hssFuncToPinIndex[CHAMBER_FAN_HSS]     = HSS_AUX_PWR7_INDEX;
 	hssFuncToPinIndex[LASER_XHAIR_HSS]     = HSS_AUX_PWR9_INDEX;
-	hssFuncToPinIndex[VACUUM_HSS]          = DRAIN1_INDEX;
-	hssFuncToPinIndex[AIR_ASSIST_HSS]      = DRAIN2_INDEX;
 	hssFuncToPinIndex[ULTIMUS_HSS]         = HSS_AUX_PWR1_INDEX; // redundant with SPINDLE_COOLANT
 
 
@@ -1891,9 +1887,6 @@ void HssControl(int TicksPerSecond)
 	//    if the counter exceeds the duty cycle based compare value, then turn on the output
 	//    otherwise turn it off
 
-#ifdef HYDRA_DIAGS
-	if (_diagsEnabled) return;
-#endif
 	int i;
 
 	HssPwmStruct *hss;
@@ -1906,15 +1899,6 @@ void HssControl(int TicksPerSecond)
 				assertControlBit(&hss->Output);   // turn on
 			else
 				deassertControlBit(&hss->Output);    // turn off
-#ifdef DDL_STUNT_DOUBLE_PIN
-			if (i == hssFuncToPinIndex[DDLIGHT_HSS])
-			{
-				if (hss->Counter < hss->CompareValue)
-					pinSet(DDL_STUNT_DOUBLE_PIN);    // turn on
-				else
-					pinClear(DDL_STUNT_DOUBLE_PIN);  // turn off
-			}
-#endif
 			hss->Counter++;
 			if (hss->Counter >= hss->TerminalCount)
 			{
@@ -1932,10 +1916,6 @@ void HssControl(int TicksPerSecond)
 
 void DDLightSelection(void)
 {   //determine value and reset hss control based on value
-#ifdef HYDRA_DIAGS
-	if (_diagsEnabled) return;
-#endif
-
 	if (DDLightFunction < 10)
 	{
 		// do nothing.... just an on/off light
@@ -3832,13 +3812,15 @@ void processCommand(GMCommandStructure *cmdPtr)
 		case 606: M_Code_M606();  break;//return;// enable HSS out6
 		case 607: M_Code_M607();  break;//return;// enable HSS out7
 		case 608: M_Code_M608();  break;//return;// enable HSS out8
-		case 609: M_Code_M609();  break;//return;// enable spindle forward/revers
-		case 610: M_Code_M610();  break;//return;// enable Spindel Enable, must set pwm with M3
-		case 611: M_Code_M611();  break;//return;// enable HSS out11
-		case 612: M_Code_M612();  break;//return;// enable HSS out12
-		case 613: M_Code_M613(); break;//return;// enable HSS out12	
-		case 614: M_Code_M614(); break;//return;// enable HSS out12	
-		case 615: M_Code_M615(); break;//return;// setup PNP valves
+
+		case 610: M_Code_M610();  break;//return;// open drain output
+		case 611: M_Code_M611();  break;//return;// open drain output
+		case 612: M_Code_M612();  break;//return;// open drain output
+		case 613: M_Code_M613(); break;//return;// open drain output	
+		case 614: M_Code_M614(); break;//return;// open drain output
+		case 615: M_Code_M615(); break;//return;// open drain output
+		case 616: M_Code_M616(); break;//return;// open drain output
+		case 617: M_Code_M617(); break;//return;// open drain output
 			
 		case 619: M_Code_M619();  break;//return;// sets the function and output pwm of the selected HSS (uses F, I, S, P, J, H)
 		case 620: M_Code_M620();  break;//return;// Laser global control (uses T, E, F, C, P)

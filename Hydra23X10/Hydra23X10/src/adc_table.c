@@ -172,23 +172,60 @@ ADC_ChannelDef AdcChannelTable[ADC_CHANNEL_NUM] = {
 	{ ADC_Channel_15, ADC2_15_PC5, 0, &RtdTable_1K[0]},
 };
 
-
-float convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t raw)
+/*this method will use a lookup table to convert the raw adc value to a useful temperature
+ *it first finds the RAW value range in the table by looking for the first entry that is NOT
+ *greater than the raw value
+ *then it mulitplies the raw value by the coefficient from the table to get the ACTUAL temperature.
+ *this assumes that each table starts with RAW data of 0
+ *and ends with MAX_ADC12 value
+ **/
+float convertRtdDataFromRawADCValue(const AdcTableStruct* adcTable, uint16_t rawData)
 {
-	uint8_t leftIndex = 0, rightIndex = 0;
-	while (adcTable[rightIndex].adcRaw != MAX_ADC12)
+	uint16_t Index = 0; //need a pointer to know where in the table we are working
+	int tablesize = sizeof adcTable;
+	float conversionValue = 0;
+	if (rawData == 0)return conversionValue;//IF raw is 0 then we are at 0
+	//need check for max a2d value also, to prevent bogus information.
+	//now we will walk thru the table to find the index to the first RAW data that is >= rawData
+	for (Index = 0; Index < 32; Index++)  //table size did not work, it gives the 4 bytes of the entry
 	{
-		if (raw <= adcTable[rightIndex].adcRaw) {
-
-			break;
-		}
-		rightIndex++;
+		if (adcTable[Index].adcRaw >= rawData) break;//found our index
 	}
-	if (rightIndex == 0) return adcTable[rightIndex].adcRaw;
-	else if (rightIndex > 0) leftIndex = rightIndex - 1;
-	if (adcTable[rightIndex].adcRaw == MAX_ADC12) return adcTable[leftIndex].value;
+	//check for 3 unique cases
+	//if rawdata and table.rawdata match, then the temperature also matches
+	//if rawdata is 0
+	//if rawdata is == max_adc12 value
+	//if any  of these are true,then we simply return the adctable.value
+	if ((adcTable[Index].adcRaw == rawData) || (rawData==0)||(adcTable[Index].adcRaw >= MAX_ADC12))
+	{//lucky, we hit the value exaclty, so we are actually exaclty the table entry in size
+		conversionValue = (float)adcTable[Index].value;
+		return conversionValue;
+	}
+	//ok at this point were have a index to the first RAW value that is greater than the actual raw
+	//dat a value, we need to make sure our rawdata value falls between the 2 points in the table
+	if (Index > 0) Index--; //if we are already at zero, we will use this pointer, 
+	float DeltaTemperatureValue = adcTable[Index + 1].value - adcTable[Index].value;
+	float DeltaRawData = adcTable[Index + 1].adcRaw - adcTable[Index].adcRaw;
+	float conversionCoeffecient = DeltaTemperatureValue / DeltaRawData;
+	//now we have the coeffecient between the 2 points in the table
+	//next we will get the offset value between the first point and the raw data
+	int rawRemainder = rawData-adcTable[Index].adcRaw;
+	float offsetTemperatureValue = rawRemainder*conversionCoeffecient;
+	conversionValue = offsetTemperatureValue + adcTable[Index].value;
+	conversionValue /= TEMP_SCALEF; //divide by the temp bits to scale to degrees c.
+	return conversionValue;
 	
-	float a = (adcTable[rightIndex].value - adcTable[leftIndex].value) / (float)(adcTable[rightIndex].adcRaw - adcTable[leftIndex].adcRaw);
-	float y = a * (raw - adcTable[leftIndex].adcRaw) + adcTable[leftIndex].value;
-	return y;
+//	uint8_t leftIndex = 0, rightIndex = 0;
+//	while (adcTable[rightIndex].adcRaw != MAX_ADC12)
+//	{
+//		if (raw <= adcTable[rightIndex].adcRaw)	break;//found the index, so lets go convert
+//		rightIndex++;
+//	}
+//	if (rightIndex == 0) return adcTable[rightIndex].adcRaw;
+//	else if (rightIndex > 0) leftIndex = rightIndex - 1;
+//	if (adcTable[rightIndex].adcRaw == MAX_ADC12) return adcTable[leftIndex].value;
+//	
+//	float a = (adcTable[rightIndex].value - adcTable[leftIndex].value) / (float)(adcTable[rightIndex].adcRaw - adcTable[leftIndex].adcRaw);
+//	float y = a * (raw - adcTable[leftIndex].adcRaw) + adcTable[leftIndex].value;
+//	return y;
 }

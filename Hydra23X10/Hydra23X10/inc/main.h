@@ -21,7 +21,7 @@ typedef void(*PFUNC)(void);
 
 #define SOFTWARE_MAJOR_REVISION     4   // XXX  update when a major change occurs (ie, protocol)
 #define SOFTWARE_MINOR_REVISION     251 // XXX  update for major and minor changes
-#define SOFTWARE_TWEAK_REVISION    'B'  // XXX  update for small changes ('z' is for experimental ONLY)
+#define SOFTWARE_TWEAK_REVISION    'C'  // XXX  update for small changes ('z' is for experimental ONLY)
 
 #define SOFTWARE_DEBUG_REVISION    'a'  // XXX  char update for debug versions  (applies to 'z' versions only  is for experimental ONLY) (display with M115)
 extern const PFUNC F1000HZ[];
@@ -1702,10 +1702,6 @@ typedef enum  {
 		HSS_AUX_PWR7_INDEX = 6,
 		HSS_AUX_PWR8_INDEX = 7,
 		HSS_AUX_PWR9_INDEX = 8,
-		DRAIN1_INDEX = 9,
-		DRAIN2_INDEX = 10,
-		DRAIN3_INDEX = 11,
-		DRAIN4_INDEX = 12,
 		NUM_HSS_PINS
 } hssPin_t;
 
@@ -1724,6 +1720,7 @@ typedef enum {
 	AIR_ASSIST_HSS          = 11,
 	ULTIMUS_HSS             = 12,
 	CO2_POWER_SUPPY_HSS     = 13,
+	CO2_Coolant_Pump		= 14,
 	NUM_HSS_FUNC
 } hssFunc_t;
 
@@ -2461,14 +2458,14 @@ extern int RPMCounter;
 extern int	SpindleCO2LaserPowerPWM;
 extern int Update595Index;
 extern int McodeDrainState[];
-#define M607_State_Ofset 7			//open drain aux outputs J27
-#define M608_State_Ofset 6
-#define M609_State_Ofset 3
-#define M610_State_Ofset 2
-#define M611_State_Ofset 1
-#define M612_State_Ofset 0
-#define M613_State_Ofset 5            //Spindle motor direction
-#define M614_State_Ofset 4            //Spindle Motor Enable
+#define M610_State_Ofset 7			//open drain aux outputs J27
+#define M611_State_Ofset 6
+#define M612_State_Ofset 3
+#define M613_State_Ofset 2
+#define M614_State_Ofset 1
+#define M615_State_Ofset 0
+#define M616_State_Ofset 5            //Spindle motor direction
+#define M617_State_Ofset 4            //Spindle Motor Enable
 
 
 ////////////////////////////////////////////////////////////////////////////////

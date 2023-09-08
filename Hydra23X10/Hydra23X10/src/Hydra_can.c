@@ -1071,9 +1071,6 @@ void sendMotorSaveConfigToDevice(byte device)
 
 void printDeviceErrorMessage(canSwStruct *canRx)
 {
-#ifdef GB_HIDDEN_WARNINGS
-int add_new_error_from_new_polyhead_code;
-#endif //GB_HIDDEN_WARNINGS
 	byte errorIndex;
 	payloadUnion *payload;
 	payload = &canRx->payload;

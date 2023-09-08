@@ -34,8 +34,8 @@ const devInitStruct devInit[] = {
 //                                              SW0/AUX/HSS1                                                max       SW1/HTR/HSS2                                                  max                 pwm    allowable    allow-
 //devType (soapDevType_t)       Dev Type Str    devSwitchType_t  slam   polarity    minTemp     maxTemp     DC        devSwitchType_t    slam   polarity    minTemp     maxTemp     DC      devMotor_t  freq   add-on       ablePCB
 //=======================       =============   ===============  ====   =========   =======     =======     ===       ===============    ====   =========   =======     =======     ===     ==========  =====  ===========  =======
-{ SOAP_DEV_TYPE_MK1,            "MK1",          {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        250,    100 }}, MOTOR_10K,      0, ADD_CPROBE,  PCB_MJW },
-{ SOAP_DEV_TYPE_MK2,            "MK2",          {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        250,    100 }}, MOTOR_10K,      0, ADD_CPROBE,  PCB_MJW },
+{ SOAP_DEV_TYPE_MK1,            "MK1",          {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        260,    100 }}, MOTOR_10K,      0, ADD_CPROBE,  PCB_MJW },
+{ SOAP_DEV_TYPE_MK2,            "MK2",          {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        260,    100 }}, MOTOR_10K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_MK450,          "MK450",        {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        450,    100 }}, MOTOR_10K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_VOLCANO_15,     "Volcano_15",   {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        100,    100 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_VOLCANO_25,     "Volcano_25",   {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        100,    100 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
@@ -54,8 +54,8 @@ const devInitStruct devInit[] = {
 { SOAP_DEV_TYPE_SDS_150,        "SDS_150",      {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_NOT_USED,          0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_ALL_HH },
 
 { SOAP_DEV_TYPE_HOTBED_100,     "HotBed_100",   {{ SW_TEMP_HEAT,    1,  ACT_HIGH,   MIN_DEG,         55,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        120,    100 }}, MOTOR_ZMOVE,    0, ADD_AM23XX,  PCB_ALL_HH },
-{ SOAP_DEV_TYPE_HOTBED_120,     "HotBed_120",   {{ SW_TEMP_HEAT,    1,  ACT_HIGH,   MIN_DEG,         55,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        125,    100 }}, MOTOR_ZMOVE,    0, ADD_AM23XX,  PCB_ALL_HH },
-{ SOAP_DEV_TYPE_HOTBED_200,     "HotBed_200",   {{ SW_TEMP_HEAT,    1,  ACT_HIGH,   MIN_DEG,         55,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        230,    100 }}, MOTOR_ZMOVE,    0, ADD_AM23XX,  PCB_ALL_HH },
+{ SOAP_DEV_TYPE_HOTBED_120,     "HotBed_120",   {{ SW_TEMP_HEAT,    1,  ACT_HIGH,   MIN_DEG,         55,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        130,    100 }}, MOTOR_ZMOVE,    0, ADD_AM23XX,  PCB_ALL_HH },
+{ SOAP_DEV_TYPE_HOTBED_200,     "HotBed_200",   {{ SW_TEMP_HEAT,    1,  ACT_HIGH,   MIN_DEG,         55,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        231,    100 }}, MOTOR_ZMOVE,    0, ADD_AM23XX,  PCB_ALL_HH },
 { SOAP_DEV_TYPE_HOTCOLDBED,     "HotColdBed",   {{ SW_ON_OFF,       0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT_COOL,    1,  ACT_HIGH,      -100,        150,    100 }}, MOTOR_ZMOVE,    0, ADD_NONE,    PCB_J   },
 
 { SOAP_DEV_TYPE_UVLIGHT_RAY,    "UvLight_Ray",  {{ SW_ON_OFF,       0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_ON_OFF,            0,  ACT_HIGH,        35,         55,    100 }}, MOTOR_NONE, 30000, ADD_NONE,    PCB_ALL_HH },

@@ -3765,38 +3765,37 @@ void M_Code_M600 (void)  // disable all HSS
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// NUKE all of these M601-M618 (and remove from both switch statements in
-// LEGACY REMOVE Retired
-void M_Code_M601(void) { if (1 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[1]); } // MCODE enable HSS out1
-void M_Code_M602(void) { if (2 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[2]); } // MCODE enable HSS out2
-void M_Code_M603(void) { if (3 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[3]); } // MCODE enable HSS out3
-void M_Code_M604(void) { if (4 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[4]); } // MCODE enable HSS out4
-void M_Code_M605(void) { if (5 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[5]); } // MCODE enable HSS out5
-void M_Code_M606(void) { if (6 < NUM_HSS_PINS) setupHssPwm(&HighSideSwitches[6]); } // MCODE enable HSS out6
+void M_Code_M601(void) {setupHssPwm(&HighSideSwitches[1]); } // MCODE enable HSS out1
+void M_Code_M602(void) {setupHssPwm(&HighSideSwitches[2]); } // MCODE enable HSS out2
+void M_Code_M603(void) {setupHssPwm(&HighSideSwitches[3]); }  // MCODE enable HSS out3
+void M_Code_M604(void) {setupHssPwm(&HighSideSwitches[4]); }  // MCODE enable HSS out4
+void M_Code_M605(void) {setupHssPwm(&HighSideSwitches[5]); }  // MCODE enable HSS out5
+void M_Code_M606(void) {setupHssPwm(&HighSideSwitches[6]); }  // MCODE enable HSS out6
+void M_Code_M607(void) {setupHssPwm(&HighSideSwitches[7]); }  // C02 Laser SSR 
+void M_Code_M608(void) {setupHssPwm(&HighSideSwitches[8]); }  // CO2 Laser Pump
+//now open drain control via 595
 
-void M_Code_M607(void) { if (ARG_S_PRESENT)McodeDrainState[M607_State_Ofset] = (int) ARG_S; } // MCODE enable Drain 595
-void M_Code_M608(void) { if (ARG_S_PRESENT)McodeDrainState[M608_State_Ofset] = (int) ARG_S; }// MCODE enable Drain
-void M_Code_M609(void) { if (ARG_S_PRESENT)McodeDrainState[M609_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out9
 void M_Code_M610(void) { if (ARG_S_PRESENT)McodeDrainState[M610_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out10
 void M_Code_M611(void) { if (ARG_S_PRESENT)McodeDrainState[M611_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out11
 void M_Code_M612(void) { if (ARG_S_PRESENT)McodeDrainState[M612_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out12
 void M_Code_M613(void) { if (ARG_S_PRESENT)McodeDrainState[M613_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out12
 void M_Code_M614(void) { if (ARG_S_PRESENT)McodeDrainState[M614_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out12
-	
-void M_Code_M615(void)
-{//setup pnp valve timer
+void M_Code_M615(void) { if (ARG_S_PRESENT)McodeDrainState[M615_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out9
+void M_Code_M616(void) { if (ARG_S_PRESENT)McodeDrainState[M616_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out9
+void M_Code_M617(void) { if (ARG_S_PRESENT)McodeDrainState[M617_State_Ofset] = (int) ARG_S; } // MCODE enable HSS out9
+
+void M_Code_M618(void)
+{
+	//setup pnp valve timer
 	if (ARG_V_PRESENT)
 	{
-		PNPSPIData = 1 << ((uint16_t) ARG_V-1);
+		PNPSPIData = 1 << ((uint16_t) ARG_V - 1);
 	}
 	if (ARG_D_PRESENT)
 	{
 		PnPResetTimer = (uint16_t)ARG_D;
 	}
 } // MCODE reserved
-void M_Code_M616(void) {;} // MCODE reserved
-void M_Code_M617(void) {;} // MCODE reserved
-void M_Code_M618(void) {;} // MCODE reserved
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -4810,31 +4809,23 @@ void M_Code_M678(void)   //set the laser cross-hair pwm
 void M_Code_M679(void)   //set the vacumm pwm
 {
 	// MCODE M679 <S PWM(%)> <P period(seconds)>      // vacuum
-#ifdef USE_HYDRA_IO
 	setupHssPwm(&HighSideSwitches[hssFuncToPinIndex[VACUUM_HSS]]);
-#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void M_Code_M680(void)  // set new values for the z home sensor offsets (uses S,W,X,Y,Z)
+void M_Code_M680(void)  //enable CO2 power supply ac power the vacumm pwm
 {
-	// MCODE M680 ["X" Zofs_1] ["Y" Zofs_2] ["Z" Zofs_3] ["W" Zofs_4] ["S" Zofs_5]
-	// MCODE
-	// MCODE set new values for the z home sensor offsets (uses S,W,X,Y,Z)
-	// MCODE RETIRED
-	ReportRetiredMcode("");
+	// MCODE M680 <S PWM(%)> <P period(seconds)>      // vacuum
+	setupHssPwm(&HighSideSwitches[hssFuncToPinIndex[CO2_POWER_SUPPY_HSS]]);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void M_Code_M681(void)  // send the selected z axis offsets to the host
+void M_Code_M681(void)  //enable CO2 cooling pump
 {
-	// MCODE M681
-	// MCODE
-	// MCODE send the selected z axis offsets to the host
-	// MCODE RETIRED
-	ReportRetiredMcode("");
+	// MCODE M681 <S PWM(%)> <P period(seconds)>      // vacuum
+	setupHssPwm(&HighSideSwitches[hssFuncToPinIndex[CO2_POWER_SUPPY_HSS]]);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

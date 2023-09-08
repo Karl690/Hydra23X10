@@ -556,9 +556,6 @@ boolean matchesAnAlias(byte device, inboxStruct *inboxPtr)
 
 boolean checkForValidDeviceCombination(devInitStruct *initPtr, inboxStruct *inboxPtr)
 {
-#ifdef GB_HIDDEN_WARNINGS
-	int FINISH_checkForValidDeviceCombination;
-#endif //GB_HIDDEN_WARNINGS
 
 	boolean badCombo = FALSE;
 	if (inboxPtr->canbusFormat == CANBUS_FORMAT_V1)
@@ -814,6 +811,7 @@ void startDeviceRegistration(canSwStruct *canRx)
 			canRx->page = 1; // lie and change page to 1 to match format for dev info (ANNOUNCE uses same format as DEVICE_INFO page 1
 			unpackDeviceInfoPayload(inboxPtr, canRx);   // the ANNOUNCE msg from device contains this info
 			outboxPtr->hardInitPtr = getDeviceInitPtr(inboxPtr->deviceType);
+			//karlchris   possible place to kill the invalid device config crap message I get sometimes
 			outboxPtr->validConfiguration = checkForValidDeviceCombination(outboxPtr->hardInitPtr, inboxPtr);
 			if (!outboxPtr->validConfiguration)
 			{
