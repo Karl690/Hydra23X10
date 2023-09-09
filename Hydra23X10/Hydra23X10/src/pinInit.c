@@ -99,6 +99,7 @@ void pinInitAll(void)
 	
 	pinInit(PWM_CO2_laserPower);
 	pinInit(PWM_Spindle_Speed);
+	pinInit(PWM_direct_CO2_laser);
 	
 	pinInit(TPIC_6595_D);
 	pinInit(TPIC_6595_CLR);

@@ -1082,8 +1082,9 @@ void ProcessRawRxChar(char rawChar)
 		pinSetBit(GB_ABORT_PIN); // signal to logic analyzer
 #endif
 		//SpindleDesiredSpeedPWM = 0;//kill power now stop spindle with motion.
-		SpindleCO2LaserPowerPWM = 0;//kill laser now
-	
+		//CO2LaserAnalogPwrPWM = 0;//kill laser now
+		Co2LaserWatchDogTimer = 0;//extra sure no laser is running
+		TIM8->CCR3 = 0;//turn off co2 laser just in case
 		_requestToAbortAtEndOfMove = TRUE;
 		break;
 

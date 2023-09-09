@@ -4078,8 +4078,24 @@ void M_Code_M623(void)  // Laser pulse (one-shot) mode control (uses P, D)
 	// MCODE    ARG_D = pulse duration in ms (0-1000) {def = 0}
 	// MCODE
 	// MCODE    laser pulse (one-shot) mode
+	// Arg_A sets the ANALOG power PWM
+	// Arg_F sets the frequency of pwm
+	if (ARG_T_PRESENT)
+	{//head is specified, so lets see if it is 41, meaning internal CO2 laser
+		if (ARG_P_MISSING)return;//cant work without power specification
+		if (ARG_D_MISSING)return;//need specific on dwell time in ms
+		if (ARG_T == 41)
+		{//new internal co2 laser control
+			if (ARG_A_PRESENT)CO2LaserAnalogPwrPWM = (int)ARG_A;//set analog range
+			if (ARG_F_PRESENT)SetCO2LaserPwmFrequency((int)ARG_F);
+			Co2LaserWatchDogTimer = (int)ARG_D;
+			TIM8->CCR3 = (int)ARG_P;
+			//if(ARG_F_PRESENT)
+			return;			
+		}	
+	}
 
-	float oneShotPowerPct   = ARG_P_MISSING ? 0.0f : (fFitWithinRange(ARG_P, 0.0f, 100.0f)) / 100.0f; // pct 0 to 1.0
+float oneShotPowerPct   = ARG_P_MISSING ? 0.0f : (fFitWithinRange(ARG_P, 0.0f, 100.0f)) / 100.0f; // pct 0 to 1.0
 	if (deviceIsAUvLightRay(_gs._laser.device))
 		_gs._laser.watchdogMs   = ARG_D_MISSING ? 0 : iFitWithinRange((int)ARG_D, 0, MAX_MANUAL_UV_LIGHTRAY_PULSE_TIME_MS);
 	else

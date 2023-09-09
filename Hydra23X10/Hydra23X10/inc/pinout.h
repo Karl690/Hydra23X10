@@ -141,7 +141,7 @@
 #define ADC2_09_PB1         (PIN_PORT_B | PIN_NUM_01 | PIN_INIT_NONE | ANALOG_FLOATING)
 #define ADC2_15_PC5         (PIN_PORT_C | PIN_NUM_05 | PIN_INIT_NONE | ANALOG_FLOATING)
 
-
+#define PWM_direct_CO2_laser	(PIN_AF_TIM8 | PIN_PORT_B | PIN_NUM_15)
 #define PWM_CO2_laserPower		(PIN_AF_TIM4      | PIN_PORT_B | PIN_NUM_08)  //Tim4-<CCR3
 #define PWM_Spindle_Speed		(PIN_AF_TIM4      | PIN_PORT_B | PIN_NUM_09)  //Tim4->CCR4 
 #define TPIC_6595_D				(OUTPUT_PP_50MHZ  | PIN_PORT_D | PIN_NUM_11 | PIN_INIT_LOW)

@@ -2455,7 +2455,8 @@ extern boolean _sendBootupAlertHostChar;
 extern pinType HEARTBEAT_PIN;
 extern int	SpindleDesiredSpeedPWM;
 extern int RPMCounter;
-extern int	SpindleCO2LaserPowerPWM;
+extern int	CO2LaserAnalogPwrPWM;
+extern int Co2LaserWatchDogTimer;
 extern int Update595Index;
 extern int McodeDrainState[];
 #define M610_State_Ofset 7			//open drain aux outputs J27

@@ -46,7 +46,8 @@ extern void InitTimer1(void);
 extern void InitTimer2usec(void);
 extern void InitTim3RpmInput(void);
 extern void ConfigureTimer4PwmOutputsFor0_10V(void);
-
+extern void InitTimer8(void);
+extern void SetCO2LaserPwmFrequency(int);
 extern void InitEncoderTimer5(void);
 extern void enableLatheMode(void);
 extern void disableLatheMode(void);

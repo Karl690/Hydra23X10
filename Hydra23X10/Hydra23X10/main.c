@@ -75,7 +75,8 @@ float _LastReportedCurrentRequestedFeedrateInMmPerSec = -1.0f;
 int _LastReportedExecutingLineNumber = -1;
 int PwmTestCounter = 0;
 int	SpindleDesiredSpeedPWM = 0;
-int	SpindleCO2LaserPowerPWM = 0;
+int	CO2LaserAnalogPwrPWM = 0;
+int Co2LaserWatchDogTimer = 0;
 int RPMCounter = 0;
 //607 is dcodedrainstate[0]...
 int McodeDrainState[9] = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -4021,7 +4022,7 @@ void PWMCntrl(void)
 	Update595Index++;
 	
 	TIM4->CCR3 = SpindleDesiredSpeedPWM;
-	TIM4->CCR4 = SpindleCO2LaserPowerPWM;
+	TIM4->CCR4 = CO2LaserAnalogPwrPWM;
 }
 void ReportXYZLocation(void)
 {
@@ -4080,7 +4081,7 @@ void ReportXYZLocation(void)
 		sprintf(_tmpStr, ":%c%d", 'V', laser_PsOutputVoltage); // last "ARG_N" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 		
-		sprintf(_tmpStr, ":%c%d", 'C', laser_PsControlVoltage); // last "ARG_N" but passed through to end of motionQ
+		sprintf(_tmpStr, ":%c%d", 'Q', laser_PsControlVoltage); // last "ARG_N" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 		
 		sprintf(_tmpStr, ":%c%d", 'W', laser_PsWaterProt); // last "ARG_N" but passed through to end of motionQ
@@ -4092,9 +4093,7 @@ void ReportXYZLocation(void)
 		laser_PsControlVoltage	=0;
 		laser_PsWaterProt		=0;
 		
-		sprintf(_tmpStr, ":W%d:C%4.3f", ADC_Channel[2].adcAvg, ADC_Channel[2].convAvg); // last "ARG_F" but passed through to end of motionQ
-		strcat(_rptStr, _tmpStr);
-		sprintf(_tmpStr, ":W%d:C%4.3f", ADC_Channel[4].adcAvg, ADC_Channel[4].convAvg); // last "ARG_F" but passed through to end of motionQ
+		sprintf(_tmpStr, ":%c%d", 'T', (int)ADC_Channel[4].convAvg); // last "ARG_F" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 
 		if (strlen(_rptStr) > 3)
@@ -4238,7 +4237,15 @@ void loop_1000Hz_simple_work(void)
 			;
 		}
 	}
-
+	if (Co2LaserWatchDogTimer)
+	{
+		Co2LaserWatchDogTimer--;
+		if (Co2LaserWatchDogTimer == 0)
+		{
+			//CO2LaserAnalogPwrPWM = 0; //turn of 0-5v power
+			TIM8->CCR3 = 0; //turn off direct input PWM
+		}
+	}
 	HssControl(TICKS_PER_SEC_1000HZ_LOOP);
 	DwellTimer();
 
@@ -5976,6 +5983,7 @@ int main(void)
 	
 	Init_SPI3();
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
+	InitTimer8();
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 	Start_ADC();

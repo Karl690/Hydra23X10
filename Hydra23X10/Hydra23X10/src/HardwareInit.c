@@ -390,17 +390,20 @@ void ConfigureTimer4PwmOutputsFor0_10V(void)
 		TIM_OCInitStructure.TIM_Pulse = 0; // 0% "off"  sets CCR4
 		TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
 
+
+	
+
+		TIM_OC3Init(TIM4, &TIM_OCInitStructure);
+		TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable); //CCR3
+	
+		TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 		TIM_OC4Init(TIM4, &TIM_OCInitStructure);
 		TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable); //CCR4
 	
-		TIM_OC3Init(TIM4, &TIM_OCInitStructure);
-		TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable); //CCR4
 		
 		TIM_ARRPreloadConfig(TIM4, ENABLE);
 		TIM_CtrlPWMOutputs(TIM4, ENABLE); //  Enable PWM outputs
 		TIM_Cmd(TIM4, ENABLE);
-	
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -547,7 +550,46 @@ void InitTimer7(void)
 	TIM_ITConfig(TIM7, TIM_FLAG_Update, ENABLE);    // Enable update interrupt
 	TIM_Cmd(TIM7, ENABLE);
 }
+void SetCO2LaserPwmFrequency(int desiredFreqInKhz)
+{
+	float invertedF = (float)1000.0f / desiredFreqInKhz;
+	invertedF *= 1600;
+	if (invertedF < 30)invertedF = 30;
+	if (invertedF > 10000)invertedF = 10000;
+	TIM8->PSC = (int16_t)invertedF;
+}
 
+void InitTimer8(void)
+{
+	// Timer8 is used for CO2 laser PWM direct drive to TH pin on power supply
+	//Timer4 pwm>>analog 0-10v goes to the analog control input on the laser powersupply
+
+	initClkAndResetAPB2(RCC_APB2Periph_TIM8);
+
+	TIM_ITConfig(TIM8, TIM_FLAG_Update, DISABLE); //NO Interrupts!
+
+	MyTIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+	MyTIM_TimeBaseInitStruct.TIM_Prescaler = 160;//set to 10khz to begin with
+	MyTIM_TimeBaseInitStruct.TIM_Period = 101;
+	MyTIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV2;
+	MyTIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM8, &MyTIM_TimeBaseInitStruct);
+
+	TIM_OCInitTypeDef TIM_OCInitStructure;
+	TIM_OCStructInit(&TIM_OCInitStructure);//TIM_OutputNState
+	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;	
+	TIM_OCInitStructure.TIM_OutputNState  = TIM_OutputNState_Enable;
+	TIM_OCInitStructure.TIM_Pulse = 0; // 0% "off"  sets CCR4
+	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
+	
+	TIM_OC3Init(TIM8, &TIM_OCInitStructure);
+	TIM_OC3PreloadConfig(TIM8, TIM_OCPreload_Enable); //CCR4
+		
+	TIM_ARRPreloadConfig(TIM8, ENABLE);
+	TIM_CtrlPWMOutputs(TIM8, ENABLE); //  Enable PWM outputs
+	TIM_Cmd(TIM8, ENABLE);
+	TIM8->CCR3 = 0;
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 void InitDAC(void)
