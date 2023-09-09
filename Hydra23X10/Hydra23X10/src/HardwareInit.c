@@ -553,7 +553,7 @@ void InitTimer7(void)
 void SetCO2LaserPwmFrequency(int desiredFreqInKhz)
 {
 	float invertedF = (float)1000.0f / desiredFreqInKhz;
-	invertedF *= 1600;
+	invertedF *= 1633;
 	if (invertedF < 30)invertedF = 30;
 	if (invertedF > 10000)invertedF = 10000;
 	TIM8->PSC = (int16_t)invertedF;
