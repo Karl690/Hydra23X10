@@ -642,8 +642,8 @@ void M_Code_M3(void)  // spindle on CW (uses T, S, F)
 	if (ARG_S_PRESENT)
 	{//generic M3 Sxxx command, just set the PWM for it and on signal
 		SpindleDesiredSpeedPWM = ARG_S;
-		McodeDrainState[M613_State_Ofset] = 1; //enable Spindle power
-		McodeDrainState[M614_State_Ofset] = 0; //forward
+		McodeDrainState[M617_State_Ofset] = 1; //enable Spindle power
+		McodeDrainState[M616_State_Ofset] = 0; //forward
 		return;
 	}
 	
@@ -674,8 +674,8 @@ void M_Code_M4(void)  // spindle on CCW (uses T, S, F)
 	{
 		//generic M3 Sxxx command, just set the PWM for it and on signal
 		SpindleDesiredSpeedPWM = ARG_S;
-		McodeDrainState[M613_State_Ofset] = 1; //enable Spindle power
-		McodeDrainState[M614_State_Ofset] = 1; //forward
+		McodeDrainState[M617_State_Ofset] = 1; //enable Spindle power
+		McodeDrainState[M616_State_Ofset] = 1; //forward
 		return;
 	}
 	
@@ -697,8 +697,8 @@ void M_Code_M5(void)  // spindle/lathe OFF
 
 		//generic M3 Sxxx command, just set the PWM for it and on signal
 		SpindleDesiredSpeedPWM = 0;
-		McodeDrainState[M613_State_Ofset] = 0; //enable Spindle power
-		McodeDrainState[M614_State_Ofset] = 0; //forward
+		McodeDrainState[M616_State_Ofset] = 0; //enable Spindle power
+		McodeDrainState[M617_State_Ofset] = 0; //forward
 		//return;
 
 	

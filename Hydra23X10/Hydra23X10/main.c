@@ -2554,10 +2554,15 @@ void CommandProcessor()
 		case 607: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out7
 		case 608: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out8
 		case 609: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out9
-		case 610: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out10
-		case 611: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out11
-		case 612: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out12
-		case 613: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable HSS out12
+		case 610: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable OD1
+		case 611: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable OD2
+		case 612: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable OD3
+		case 613: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable OD4
+		case 614: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable OD5
+		case 615: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable OD6
+		case 616: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable OD7
+		case 617: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable OD8
+		case 618: AddCommandToQue(SYNCS_WITH_MOTION); break;//return;// enable spi3 relays
 		case 619: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// sets the function and output pwm of the selected HSS (uses F, I, S, P, J, H)
 		case 620: AddCommandToQue(SINGLE_STEP);break;//return;// Laser global control (uses T, E, F, C, P)
 		case 621: AddCommandToQue(SYNCS_WITH_MOTION);break;//return;// Laser vector mode control (uses P)
