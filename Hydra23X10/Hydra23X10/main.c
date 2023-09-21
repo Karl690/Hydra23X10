@@ -78,6 +78,19 @@ int	SpindleDesiredSpeedPWM = 0;
 int	CO2LaserAnalogPwrPWM = 0;
 int Co2LaserWatchDogTimer = 0;
 int RPMCounter = 0;
+//osseo variables
+int ParticleCounter = 666;
+float EnclosureTemperature = 26.3;
+int EnclosureHumidity = 99;
+int EnclosurePressureDifference = -1;
+int EnclosureUvLedPwm = 0;
+int EnclosureFanPwm =0;
+int EnclosureDoorLock = 0;
+int EnclosureDoorSense = 1;
+int EnclosureCartridgeSense = 1;
+int EnclosurePrintBedSense = 1;
+
+
 //607 is dcodedrainstate[0]...
 int McodeDrainState[9] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 int Update595Index = 0;
@@ -469,6 +482,7 @@ void systicker(void);
 void checkForMia(void);
 void reportCalibrationTemperature(void);
 void ReportXYZLocation(void);
+void ReportOsseoVariables(void);
 void FastLigthControl(int);
 void CleanUpPointers(void);
 void FillArgumentBuffer(char *, char);
@@ -2543,7 +2557,12 @@ void CommandProcessor()
 		case 254: AddCommandToQue(SINGLE_STEP);  break; // turn on lathe motor for continuous CCW motion (uses S)
 		case 255: AddCommandToQue(SINGLE_STEP);  break; // turn off lathe motor (uses S)
 		case 260: AddCommandToQue(SYNCS_WITH_MOTION);  break; // control display attached to a head (uses S,P,X,Y,I,J,R))
+		case 261: AddCommandToQue(SYNCS_WITH_MOTION); break; // control display attached to a head (uses S,P,X,Y,I,J,R))
+		case 262: AddCommandToQue(SYNCS_WITH_MOTION); break; // control display attached to a head (uses S,P,X,Y,I,J,R))
+		case 263: AddCommandToQue(SYNCS_WITH_MOTION); break; // control display attached to a head (uses S,P,X,Y,I,J,R))
 
+			
+			
 		case 600: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// disable all HSS outputs
 		case 601: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out1
 		case 602: AddCommandToQue(SYNCS_WITH_MOTION);  break;//return;// enable HSS out2
@@ -3808,7 +3827,10 @@ void processCommand(GMCommandStructure *cmdPtr)
 		case 254: M_Code_M254();  break; // turn on lathe motor for continuous CCW motion (uses S)
 		case 255: M_Code_M255();  break; // turn off lathe motor (uses S)
 		case 260: M_Code_M260();  break; // control display attached to a head (uses S,P,X,Y,I,J,R)
-
+		case 261: M_Code_M261();  break; //osseo Set Recirc Fan Speed
+		case 262: M_Code_M262(); break; //osseo Set Uv Led Duty
+		case 263: M_Code_M263(); break; //osseo Set door lock PWM
+			
 		case 600: M_Code_M600();  break;//return;// disable all HSS outputs
 		case 601: M_Code_M601();  break;//return;// enable HSS out1
 		case 602: M_Code_M602();  break;//return;// enable HSS out2
@@ -4031,6 +4053,7 @@ void PWMCntrl(void)
 }
 void ReportXYZLocation(void)
 {
+	return;//osseo karlchris
 	RPMCounter = TIM3->CNT;
 	TIM3->CNT = 0;
 	if (ForceReportXYZLocation == FALSE)
@@ -4092,13 +4115,12 @@ void ReportXYZLocation(void)
 		sprintf(_tmpStr, ":%c%d", 'W', laser_PsWaterProt); // last "ARG_N" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 		
-
 		laser_PsOutputCurrent	= 0;
 		laser_PsOutputVoltage	= 0;
 		laser_PsControlVoltage	=0;
 		laser_PsWaterProt		=0;
 		
-		sprintf(_tmpStr, ":%c%d", 'T', (int)ADC_Channel[4].convAvg); // last "ARG_F" but passed through to end of motionQ
+//		sprintf(_tmpStr, ":%c%d", 'T', (int)ADC_Channel[4].convAvg); // last "ARG_F" but passed through to end of motionQ
 		strcat(_rptStr, _tmpStr);
 
 		if (strlen(_rptStr) > 3)
@@ -4108,6 +4130,87 @@ void ReportXYZLocation(void)
 		}
 	}
 }
+void ReportOsseoVariables(void)
+{		
+//	ParticleCounter +=123;
+//	if (ParticleCounter > 6000)ParticleCounter = 0;
+//	EnclosureTemperature += 1;
+//	if (EnclosureTemperature > 65)EnclosureTemperature = 0;
+//	EnclosureHumidity += 1;
+//	if (EnclosureHumidity > 65)EnclosureHumidity = 0;
+//	EnclosurePressureDifference += 1;
+//	if (EnclosurePressureDifference > 65)EnclosurePressureDifference = 0;
+//	EnclosureUvLedPwm += 1;
+//	if (EnclosureUvLedPwm > 65)EnclosureUvLedPwm = 0;
+//	EnclosureFanPwm += 1;
+//	if (EnclosureFanPwm > 99)EnclosureFanPwm = 0;
+//	EnclosureDoorLock += 1;
+//	if (EnclosureDoorLock >1)EnclosureDoorLock = 0;
+//	EnclosureDoorSense += 1;
+//	if (EnclosureDoorSense > 1)EnclosureDoorSense = 0;
+//	EnclosureCartridgeSense += 1;
+//	if (EnclosureCartridgeSense > 1)EnclosureCartridgeSense = 0;
+//	EnclosurePrintBedSense += 1;
+//	if (EnclosurePrintBedSense > 1)EnclosurePrintBedSense = 0;
+	int Doorsense=HighSideSwitches[3].DutyCycle;
+	if (Doorsense > 0)Doorsense = 1;
+	
+	sprintf(_rptStr, ">ES");
+	//osseo variables to report
+	//Monitored Parameter	Prefix Readout interpretation 
+
+	//Particle Counter		: PC	Integer 0 - 100000
+	//Temperature			: ET	Celsius with one decimal point
+	//Humidity				: HD	Integer 0 - 100 is a relative humidity in percents
+	//Pressure Difference	: PD	0 - 100 interpreted in Torrs(1 Torr = 1mmHg barometric)
+	//LED Status			: UV	1 – ON, 0 - OFF
+	//Light Level			: LL	Integer 0 - 100 interpreted as percentage of full power
+	//Fan Status			: FS	1 Running, 0 - disabled
+	//Fan Level				: FL	Integer 0 - 100 interpreted as percentage of full power
+	//Door Latch			: DL	1 – Engaged, 0 - Disabled
+	//Door Open / Close		: DS	0 - Open, 1 - Closed
+	//Printing Cartridge	: CR	0 - Absent, 1 - Present
+	//Printing Bed			: BD	0 - Absent, 1 - Present
+		
+	sprintf(_tmpStr, ":PC%d", ParticleCounter); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+		 
+	sprintf(_tmpStr, ":ET%2.1f", EnclosureTemperature); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+		
+	sprintf(_tmpStr, ":HD%d", EnclosureHumidity); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+		
+	sprintf(_tmpStr, ":PD%d", EnclosurePressureDifference); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+		
+	sprintf(_tmpStr, ":LL%d", EnclosureUvLedPwm); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+	
+	sprintf(_tmpStr, ":FL%d", EnclosureFanPwm); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+	
+	sprintf(_tmpStr, ":DL%d", Doorsense); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+	
+	sprintf(_tmpStr, ":DS%d", EnclosureDoorSense); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+	
+	sprintf(_tmpStr, ":CR%d", EnclosureCartridgeSense); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+	
+	sprintf(_tmpStr, ":BD%d", EnclosurePrintBedSense); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
+
+		//		sprintf(_tmpStr, ":%c%d", 'T', (int)ADC_Channel[4].convAvg); // last "ARG_F" but passed through to end of motionQ
+		//strcat(_rptStr, _tmpStr);
+
+		if (strlen(_rptStr) > 3)
+		{
+			// there was info to send
+			sendstringCr(_rptStr);
+		}
+	}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -5934,7 +6037,7 @@ const PFUNC F1HZ[NUM_1HZ] =
 {
 	checkForMia,
 	spare,
-	spare,
+	ReportOsseoVariables,
 	spare,
 	spare,
 	LaserSendRequestStringToPowerSupply,

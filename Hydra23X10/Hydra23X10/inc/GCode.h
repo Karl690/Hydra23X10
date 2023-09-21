@@ -234,7 +234,10 @@ extern void M_Code_M253(void);  // turn on lathe motor for continuous CW motion 
 extern void M_Code_M254(void);  // turn on lathe motor for continuous CCW motion (uses S)
 extern void M_Code_M255(void);  // turn off lathe motor (uses S)
 extern void M_Code_M260(void);  // control display attached to a head (uses S,P,X,Y,I,J,R)
-
+extern void setupHssPwm(HssPwmStruct *hss);
+extern void M_Code_M261(void);  //osseo control
+extern void M_Code_M262(void); //osseo control
+extern void M_Code_M263(void); //osseo control
 extern void M_Code_M600(void);  // disable all HSS outputs
 extern void M_Code_M601(void);  // enable HSS out1
 extern void M_Code_M602(void);  // enable HSS out2

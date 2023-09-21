@@ -2453,6 +2453,18 @@ extern char _bootupAlertHostChar;
 extern boolean _sendBootupAlertHostChar;
 
 extern pinType HEARTBEAT_PIN;
+//osseo variables
+extern int ParticleCounter;
+extern float EnclosureTemperature;
+extern int EnclosureHumidity;
+extern int EnclosurePressureDifference;
+extern int EnclosureUvLedPwm;
+extern int EnclosureFanPwm;
+extern int EnclosureDoorLock;
+extern int EnclosureDoorSense;
+extern int EnclosureCartridgeSense;
+extern int EnclosurePrintBedSense;
+
 extern int	SpindleDesiredSpeedPWM;
 extern int RPMCounter;
 extern int	CO2LaserAnalogPwrPWM;
@@ -2483,6 +2495,7 @@ extern int getSliceCnt(void);
 extern void pingReply (void);
 extern int32_t getCurrentExecutingLineNumber(void);
 extern void ReportXYZLocation(void);
+extern void ReportOsseoVariables(void);
 extern void PWMCntrl(void);
 extern void wait100ns(void);
 extern void SendNext407SoapString(void);

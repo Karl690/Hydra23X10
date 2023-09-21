@@ -3361,364 +3361,40 @@ void M_Code_M256(void)  // Servo mode control (uses T, S, A)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifdef ADD_ON_SPI_DISPLAY
-
-void dropEndingQuoteFromGcodeArgString(void)
-{
-	char *quoteLoc = strchr(&_GcodeArgStringParam[1], '\"');	//remove ending double-quote from string
-	if (quoteLoc != NULL)
-		*quoteLoc = NULL_CHAR;	// terminate string at second double quote (first quote was skipped)
-}
-
-void M_Code_M260(void)  // control display attached to a head (uses S,P,X,Y,I,J,R,L)
-{
-	// MCODE M260 [T tool] [S cmd] [P param(invert/rot/panel/font/page/ms/lineWidth/color)] [X x] [Y y] [I x1/width/char] [J y1/height/justification] [R radius]
-	// MCODE
-	// MCODE    if argT missing, then commands used to control display on the motion controller
-	// MCODE
-	// MCODE        GUI_CMD_DISPLAY_OFF             S0
-	// MCODE        GUI_CMD_DISPLAY_ON              S1
-	// MCODE        GUI_CMD_DISPLAY_INVERT          S2  P*                {[*=0 to 1] ==> normal, invert}
-	// MCODE        GUI_CMD_DISPLAY_CLEAR           S3  P*                {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]}
-	// MCODE        GUI_CMD_DISPLAY_ROTATION        S4  P*                {[*=0 to 7] ==> 0, 90, 180, 270, 0M, 90M, 180M, 270M}
-	// MCODE        GUI_CMD_SELECT_PANEL            S5  P*                {[*=0 to 2] ==> 2.8", 1.80", 1.44"}
-	// MCODE        GUI_CMD_SELECT_FONT             S6  P*                {[*=0 to 4] ==> 5x8, 7x12, 11x16, 14x20, 16x22}
-	// MCODE        GUI_CMD_SET_PAGE                S7  P*                {[*=page]   ==> 0=splash screen}
-	// MCODE        GUI_CMD_SET_REFRESH_INTERVAL    S8  P*                {[*=milliseconds] ==> max 65 seconds}
-	// MCODE        GUI_CMD_SELECT_THEME            S9  P*                {[*=theme]} ===> 0-def(2), 1-BLK/BLUonWHI; 2=WHI/YELonBLK
-	// MCODE        GUI_CMD_FORCE_REDRAW            S10
-	// MCODE        GUI_CMD_DISPLAY_BRIGHTNESS      S11 P*                {[*=pct]    ==> brightness scaling 0 to 100
-	// MCODE        GUI_CMD_FAKE_LEDS_ENABLE        S12 P*                {[*=0 to 1] ==> 0=disable; 1=enable
-	// MCODE
-	// MCODE        GUI_CMD_SET_BORDER_WIDTH        S20 P*                {[P=width]  ==> numPixels wide for borders, V and H lines}
-	// MCODE        GUI_CMD_SET_COLOR_BORDER        S21 P*                {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]}
-	// MCODE        GUI_CMD_SET_COLOR_FILL          S22 P*                {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]}
-	// MCODE        GUI_CMD_SET_COLOR_FONT          S23 P* I*             {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} (P=BG, I=FG)
-	// MCODE        GUI_CMD_SET_COLOR_THEME_LABEL   S24 P* I*             {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} (P=BG, I=FG)
-	// MCODE        GUI_CMD_SET_COLOR_THEME_VALUE   S25 P* I*             {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} (P=BG, I=FG)
-	// MCODE        GUI_CMD_SET_COLOR_THEME_BG      S26 P*                {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} (P=BG)
-	// MCODE        GUI_CMD_SET_CHROMA_KEY          S27 P*                {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} (P32 is default transparency)
-	// MCODE
-	// MCODE        GUI_CMD_DRAW_PIXEL              S40 X* Y*             {[X=x0] {Y=y0]}
-	// MCODE        GUI_CMD_DRAW_PIXEL_W_COLOR      S41 X* Y* P*          {[X=x0] {Y=y0] [P=color]}
-	// MCODE        GUI_CMD_DRAW_HORIZ_LINE         S42 X* Y* I* J*       {[X=x0] {Y=y0] [I=width] [J=length]}
-	// MCODE        GUI_CMD_DRAW_VERT_LINE          S43 X* Y* I* J*       {[X=x0] {Y=y0] [I=width] [J=length]}
-	// MCODE        GUI_CMD_DRAW_LINE               S44 X* Y* I* J*       {[X=x0] {Y=y0] [I=x1] [J=y1]}
-	// MCODE        GUI_CMD_DRAW_RECT               S45 X* Y* I* J*       {[X=x0] {Y=y0] [I=width] [J=height]}
-	// MCODE        GUI_CMD_FILL_RECT               S46 X* Y* I* J*       {[X=x0] {Y=y0] [I=width] [J=height]}
-	// MCODE        GUI_CMD_DRAW_FILL_RECT          S47 X* Y* I* J*       {[X=x0] {Y=y0] [I=width] [J=height]}
-	// MCODE        GUI_CMD_DRAW_CIRC               S48 X* Y* R*          {[X=x0] {Y=y0] [R=radius]}
-	// MCODE        GUI_CMD_FILL_CIRC               S49 X* Y* R*          {[X=x0] {Y=y0] [R=radius]}
-	// MCODE        GUI_CMD_DRAW_FILL_CIRC          S50 X* Y* R*          {[X=x0] {Y=y0] [R=radius]}
-	// MCODE        GUI_CMD_DRAW_CHAR               S51 X* Y* [J*] C*     {[X=x0] {Y=y0] [J=justification} [C=char]
-	// MCODE        GUI_CMD_DRAW_STRING             S52 X* Y* [J*] "STR"  {[X=x0] {Y=y0] [J=justification] "String"}
-	// MCODE        GUI_CMD_DRAW_INDEXED_VARIABLE	S53 X* Y* J* V* W* F* {[X=x0] {Y=y0] [J=just] [V=valueIndex] [W=width(-1=native width)] [F=fltSigDig]}
-	// MCODE
-	// MCODE		GUI_CMD_START_NEW_SCREEN        S60 P* [H* L*]        {[P=page] [H=header (def=1)} [L=LEDs] (def=1)}
-	// MCODE		GUI_CMD_ADD_SCREEN_ENTRY        S61 L* X* Y* V* [W* F*]  "STR"  {[L=line] [X=Lofs] [Y=Vofs] [V=valueIndex] [W=width(-1=native width)] [F=fltSigDig] "Label"
-	// MCODE
-	// MCODE        GUI_CMD_IMAGE_REGION            S70 X* Y* I* J*     {[X=x0] {Y=y0] [I=width] [J=height]}
-	// MCODE        GUI_CMD_IMAGE_COLOR_16_BIT      S71 A* B* C* D*     {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} pix0:pix1:pix2:pix3 = A:B:C:D
-	// MCODE        GUI_CMD_IMAGE_STR_COLOR_16_BIT  S72 "STR"           "STR" is ascii hex, 16-bit color per pixel (4 ASCII chars per RGB565 color) [max 256 pixels]
-	// MCODE        GUI_CMD_IMAGE_STR_COLOR_8_BIT   S73 "STR"           "STR" is ascii hex, 8-bit color per pixel (2 ASCII chars per RGB332 color)  [max 512 pixels]
-	// MCODE        GUI_CMD_IMAGE_STR_COLOR_4_BIT   S74 "STR"           "STR" is ascii hex, 4-bit color per pixel (1 ASCII chars per RGB121 color)  [
-	// MCODE        GUI_CMD_IMAGE_STR_INDEX_8_BIT   S75 "STR"           "STR" is ascii hex, 8-bit index per pixel (2 ASCII chars per Indexed color)
-	// MCODE        GUI_CMD_IMAGE_STR_INDEX_4_BIT   S76 "STR"           "STR" is ascii hex, 4-bit index per pixel (1 ASCII chars per Indexed color)
-	// MCODE        GUI_CMD_IMAGE_STR_INDEX_1_BIT   S77 "STR"           "STR" is ascii hex, 4-bit index per pixel (4 ndexed color per ASCII char)
-	// MCODE
-	// MCODE        GUI_CMD_SET_PANEL_OFS_XY        S99 X* Y*           {[X=ofsX] {Y=ofsY]} ****debug use only
-	// MCODE
-	// MCODE        Color Format is 16-bit RGB565 ==>  R[4:0]-G[5:0]-B[4:0]
-	// MCODE            (special case R=0/G=1/B=0 = 0x0020 = 32 decimal for transparent background on text)
-	// MCODE
-	// MCODE        Justification:  0-left; 1=center; 2=right; 3=top; 4-bottom
-	// MCODE
-	// MCODE    control a display on and attached to a head and limited local display support
-
-	if (ARG_S_MISSING) { ReportMissingMcodeSArg(); return; }
-
-	GUI_canCommand_t cmd = (uint16_t)ARG_S;
-	boolean usesString = FALSE;
-
-	payloadUnion payload;
-	memZero((byte *)&payload, sizeof(payloadUnion));
-
-	switch (cmd)
-	{
-	case GUI_CMD_DISPLAY_OFF:
-	case GUI_CMD_DISPLAY_ON:
-		// no other args needed
-		break;
-	case GUI_CMD_DISPLAY_INVERT:
-	case GUI_CMD_DISPLAY_CLEAR:
-	case GUI_CMD_DISPLAY_ROTATION:
-	case GUI_CMD_SELECT_PANEL:
-	case GUI_CMD_SELECT_FONT:
-	case GUI_CMD_SET_PAGE:
-	case GUI_CMD_SET_REFRESH_INTERVAL:
-	case GUI_CMD_SELECT_THEME:
-	case GUI_CMD_FORCE_REDRAW:
-	case GUI_CMD_SET_BORDER_WIDTH:
-	case GUI_CMD_SET_COLOR_BORDER:
-	case GUI_CMD_SET_COLOR_FILL:
-	case GUI_CMD_SET_COLOR_THEME_BG:
-	case GUI_CMD_SET_CHROMA_KEY:
-	case GUI_CMD_FAKE_LEDS_ENABLE:
-		// uses arg P
-		if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
-		payload.u16[0] = (uint16_t)ARG_P;
-		break;
-	case GUI_CMD_DISPLAY_BRIGHTNESS:
-		// uses arg P
-		if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
-		payload.u16[0] = (uint16_t)convertFloatPowerPctToUnsignedint(ConvertArg0to100ToPct0To1("P", ARG_P), HH_U16_POWER_PCT_FRAC_BITS);
-		break;
-	case GUI_CMD_SET_COLOR_FONT:
-	case GUI_CMD_SET_COLOR_THEME_LABEL:
-	case GUI_CMD_SET_COLOR_THEME_VALUE:
-		// uses args P and I
-		if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
-		if (ARG_I_MISSING) { ReportMissingMcodeIArg(); return; }
-		payload.u16[0] = (uint16_t)ARG_P;
-		payload.u16[1] = (uint16_t)ARG_I;
-		break;
-	case GUI_CMD_DRAW_PIXEL:
-	case GUI_CMD_SET_PANEL_OFS_XY:
-		// uses args X, Y
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		break;
-	case GUI_CMD_DRAW_PIXEL_W_COLOR:
-		// uses args X, Y, P
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u16[2] = (uint16_t)ARG_P;
-		break;
-	case GUI_CMD_DRAW_LINE:
-		// uses args X, Y, I, J
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_I_MISSING) { ReportMissingMcodeIArg(); return; }
-		if (ARG_J_MISSING) { ReportMissingMcodeJArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.i16[2] = (int16_t)ARG_I;
-		payload.i16[3] = (int16_t)ARG_J;
-		break;
-	case GUI_CMD_DRAW_HORIZ_LINE:
-	case GUI_CMD_DRAW_VERT_LINE:
-	case GUI_CMD_FILL_RECT:
-	case GUI_CMD_DRAW_FILL_RECT:
-		// uses args X, Y, I, J
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_I_MISSING) { ReportMissingMcodeIArg(); return; }
-		if (ARG_J_MISSING) { ReportMissingMcodeJArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u16[2] = (uint16_t)ARG_I;
-		payload.u16[3] = (uint16_t)ARG_J;
-		break;
-	case GUI_CMD_DRAW_CIRC:
-	case GUI_CMD_FILL_CIRC:
-	case GUI_CMD_DRAW_FILL_CIRC:
-		// uses args X, Y, R
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_R_MISSING) { ReportMissingMcodeRArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u16[2] = (uint16_t)ARG_R;
-		break;
-	case GUI_CMD_DRAW_CHAR:
-		// uses args X, Y, C and J(optional)
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_C_MISSING) { ReportMissingMcodeCArg(); return; }
-		//if (ARG_J_MISSING) { ReportMissingMcodeJArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u8[4] = (byte)ARG_C;
-		payload.u8[5] = (ARG_J_PRESENT) ? (byte)ARG_J : GUI_JUSTIFICATION_LEFT;
-		break;
-	case GUI_CMD_DRAW_STRING:
-		// uses args X, Y, J(optional), GCODE_STRING
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		//if (ARG_J_MISSING) { ReportMissingMcodeJArg(); return; }
-		usesString = TRUE;
-		dropEndingQuoteFromGcodeArgString();
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u8[5] = ARG_J_PRESENT ? (byte)ARG_J : GUI_JUSTIFICATION_LEFT;
-		break;
-	case GUI_CMD_DRAW_INDEXED_VARIABLE:
-		// uses args X, Y, J(optional), V, W(optional), F(optional)
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		//if (ARG_J_MISSING) { ReportMissingMcodeJArg(); return; }
-		//if (ARG_F_MISSING) { ReportMissingMcodeFArg(); return; }
-		//if (ARG_W_MISSING) { ReportMissingMcodeWArg(); return; }
-		if (ARG_V_MISSING) { ReportMissingMcodeVArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u8[4]  = (uint8_t)ARG_V;	// valIndex
-		payload.u8[5]  = ARG_J_PRESENT ? (byte)ARG_J : GUI_JUSTIFICATION_RIGHT;	// just
-		payload.i8[6]  = ARG_W_PRESENT ? (int8_t)ARG_W : -1;		// width (-1 == native width)
-		payload.u8[7]  = ARG_F_PRESENT ? (uint8_t)ARG_F : 0;	// sig digits
-		break;
-	case GUI_CMD_START_NEW_SCREEN:
-		// uses args P, H(optional), L(optional)
-		if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
-		//if (ARG_H_MISSING) { ReportMissingMcodeHArg(); return; }
-		//if (ARG_L_MISSING) { ReportMissingMcodeLArg(); return; }
-		payload.u16[0] = (uint16_t)ARG_P;						//page
-		payload.u8[2]  = ARG_H_PRESENT ? (uint8_t)ARG_H : 1;	//use header
-		payload.u8[3]  = ARG_L_PRESENT ? (uint8_t)ARG_L : 1;	//use fake LEDs
-		break;
-	case GUI_CMD_ADD_SCREEN_ENTRY:
-		// uses args X, Y, L,  V, W(optional), F(optional), GCODE_STRING
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_L_MISSING) { ReportMissingMcodeLArg(); return; }
-		if (ARG_F_MISSING) { ReportMissingMcodeFArg(); return; }
-		//if (ARG_W_MISSING) { ReportMissingMcodeWArg(); return; }
-		if (ARG_V_MISSING) { ReportMissingMcodeVArg(); return; }
-		usesString = TRUE;
-		dropEndingQuoteFromGcodeArgString();
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u8[4]  = (uint8_t)ARG_V;	// valIndex
-		payload.u8[5]  = (uint8_t)ARG_L;	// line
-		payload.i8[6]  = ARG_W_PRESENT ? (int8_t)ARG_W : -1;	// width (-1 == native width)
-		payload.u8[7]  = ARG_F_PRESENT ? (uint8_t)ARG_F : 0;	// sig digits
-		break;
-		//////////////////////// IMAGE TRANSFER ////////////////////////////////////
-#ifdef GB_HIDDEN_WARNINGS
-#warning "FINISH remaining IMAGE commands -- code is half-baked at best!!!!"
-#endif //GB_HIDDEN_WARNINGS
-#if 0
-	case GUI_CMD_IMAGE_REGION:
-		// uses args X, Y, I, J
-		if (ARG_X_MISSING) { ReportMissingMcodeXArg(); return; }
-		if (ARG_Y_MISSING) { ReportMissingMcodeYArg(); return; }
-		if (ARG_I_MISSING) { ReportMissingMcodeIArg(); return; }
-		if (ARG_J_MISSING) { ReportMissingMcodeJArg(); return; }
-		payload.i16[0] = (int16_t)ARG_X;
-		payload.i16[1] = (int16_t)ARG_Y;
-		payload.u16[2] = (uint16_t)ARG_I;
-		payload.u16[3] = (uint16_t)ARG_J;
-		break;
-	case GUI_CMD_IMAGE_COLOR_16_BIT:
-		// sending 4 pixels at a time ...
-		if (ARG_A_MISSING) { ReportMissingMcodePArg(); return; }
-		if (ARG_B_MISSING) { ReportMissingMcodeIArg(); return; }
-		if (ARG_C_MISSING) { ReportMissingMcodeJArg(); return; }
-		if (ARG_D_MISSING) { ReportMissingMcodeKArg(); return; }
-		payload.u16[0] = (uint16_t)ARG_A;
-		payload.u16[1] = (uint16_t)ARG_B;
-		payload.u16[2] = (uint16_t)ARG_C;
-		payload.u16[3] = (uint16_t)ARG_D;
-		break;
-
-		// MCODE        GUI_CMD_IMAGE_REGION            S70 X* Y* I* J*     {[X=x0] {Y=y0] [I=width] [J=height]}
-		// MCODE        GUI_CMD_IMAGE_COLOR_16_BIT      S71 A* B* C* D*     {[*=16-bit color] ==>  R[4:0]-G[5:0]-B[4:0]} pix0:pix1:pix2:pix3 = A:B:C:D
-		// MCODE        GUI_CMD_IMAGE_STR_COLOR_16_BIT  S72 "STR"           "String" is ascii hex, 16-bit color per pixel (4 ASCII chars per RGB565 color) max
-		// MCODE        GUI_CMD_IMAGE_STR_COLOR_8_BIT   S73 "STR"           "String" is ascii hex, 8-bit color per pixel (2 ASCII chars per RGB332 color)
-		// MCODE        GUI_CMD_IMAGE_STR_COLOR_4_BIT   S74 "STR"           "String" is ascii hex, 4-bit color per pixel (1 ASCII chars per RGB121 color)
-		// MCODE        GUI_CMD_IMAGE_STR_INDEX_8_BIT   S75 "STR"           "String" is ascii hex, 8-bit index per pixel (2 ASCII chars per Indexed color)
-		// MCODE        GUI_CMD_IMAGE_STR_INDEX_4_BIT   S76 "STR"           "String" is ascii hex, 4-bit index per pixel (1 ASCII chars per Indexed color)
-		// MCODE        GUI_CMD_IMAGE_STR_INDEX_1_BIT   S77 "STR"           "String" is ascii hex, 4-bit index per pixel (4 ndexed color per ASCII char)
-
-		// - MC has a gcode string arg lnegth limit of 1K chars (excluding delimters and NULL_CHAR)
-		// - heads limited to a 1K buffer for storage of EXPANDED TO WIDTH (16-bit) color data before they will need to write
-		//   to thei display, so the MC need to break up string OR limit length by the user
-		// - for fastest dispaly updates, data should be pre-clipped to the display size OR guarantee only data from a single line is in each string
-		//
-		// FOR NOW, KEEP IT SIMPLE:  MAX 256 PIXELS OF DATA PER STRING
-	case GUI_CMD_IMAGE_STR_COLOR_16_BIT:	// 1K head buffer = 512 max pixels ==> 4 str chars / pixel = 4 * 512 = max 2048 chars in string *** limtied to 1024 chars by MC (256 pix)
-	case GUI_CMD_IMAGE_STR_COLOR_8_BIT:		// 1K head buffer = 512 max pixels ==> 2 str chars / pixel = 2 * 512 = max 1024 chars in string (perfect match)
-	case GUI_CMD_IMAGE_STR_COLOR_4_BIT:		// 1K head buffer = 512 max pixels ==> 1 str chars / pixel = 1 * 512 = max 512 chars in string
-	case GUI_CMD_IMAGE_STR_INDEX_8_BIT:		// 1K head buffer = 512 max pixels ==> 2 str chars / pixel = 2 * 512 = max 1024 chars in string (perfect match)
-	case GUI_CMD_IMAGE_STR_INDEX_4_BIT:		// 1K head buffer = 512 max pixels ==> 1 str chars / pixel = 1 * 512 = max 512 chars in string
-	case GUI_CMD_IMAGE_STR_INDEX_1_BIT:		// 1K head buffer = 512 max pixels ==> 8 pixels / str char = 512 / 8 = max 128 chars in string
-	{
-		char *quoteLoc = strchr(&_GcodeArgStringParam[1], '\"');	//remove ending double-quote from string
-		if (quoteLoc != NULL)
-			*quoteLoc = NULL_CHAR;	// terminate string at second double quote (first quote was skipped)
-		float charsPerPix;
-		int maxChars;
-		int maxPixels;
-		switch(cmd)
-		{
-		// head side is a 1K byte buffer, 2 bytes per pix (once expanded) = 512 pixels MAX
-		case GUI_CMD_IMAGE_STR_COLOR_16_BIT:	// 4 str chars / pixel = 4 * 512 = max 2048 chars in string *** limited to 1024 chars by MC (256 pix)
-			charsPerPix = 4.0f;		maxChars = 1024;	maxPixels = 256;	break;
-		case GUI_CMD_IMAGE_STR_COLOR_8_BIT:		// 2 str chars / pixel = 2 * 512 = max 1024 chars in string (perfect match)
-			charsPerPix = 2.0f;		maxChars = 1024;	maxPixels = 512;	break;
-		case GUI_CMD_IMAGE_STR_COLOR_4_BIT:		// 1 str chars / pixel = 1 * 512 = max 512 chars in string
-			charsPerPix = 1.0f;		maxChars =  512;	maxPixels = 512;	break;
-		case GUI_CMD_IMAGE_STR_INDEX_8_BIT:		// 2 str chars / pixel = 2 * 512 = max 1024 chars in string (perfect match)
-			charsPerPix = 2.0f;		maxChars = 1024;	maxPixels = 512;	break;
-		case GUI_CMD_IMAGE_STR_INDEX_4_BIT:		// 1 str chars / pixel = 1 * 512 = max 512 chars in string
-			charsPerPix = 1.0f;		maxChars =  512;	maxPixels = 512;	break;
-		case GUI_CMD_IMAGE_STR_INDEX_1_BIT:		// 8 pixels / str char = 512 / 8 = max 128 chars in string
-			charsPerPix = 0.25f;	maxChars =  128;	maxPixels = 512;	break;
-		default: break;
-		}
-		///USER SIMPLICITY OVERRIDE:
-		maxPixels = 256;
-		maxChars = maxPixels * charsPerPix;
-		if (strlen(&_GcodeArgStringParam[1]) > maxChars)
-		{
-			ReportMcodeError("Image data string too long. truncating");
-			_GcodeArgStringParam[maxChars+1] = NULL_CHAR;
-		}
-		length = canSendAsciiHexStringAsBinaryToWorkingBufferOnDevice(localOutboxPtr->device, &_GcodeArgStringParam[1]); //start at [1] to drop leading STRING_DELIM
-		canPackIntoTxQueue1x16(CAN_WRITE, localOutboxPtr->device, CAN_MSG_DISPLAY_CONTROL, (byte)cmd, BUFFERED_MSG,
-				(uint16_t)length);
-	}
-	break;
-#endif //FINISH IMAGE
-	default: break;
-	}
-
-	if (ARG_T_MISSING)
-	{	// local display control
-#ifdef ADD_ON_SPI_DISPLAY
-		if (usesString)
-		{
-			strcpy((char *)WORKING_BUFFER_BYTE_START_ADDRESS, &_GcodeArgStringParam[1]);
-		}
-		GUI_AddCommandToQueue(cmd, &payload);
-		_waitingForGuiCommand = TRUE;
-
-#endif //ADD_ON_SPI_DISPLAY
-	}
-	else
-	{   // control a display attached to a device on the canbus
-		outboxStruct *localOutboxPtr = ConvertArgTtoHotheadOutboxPtr();
-		if (usesString)
-		{
-			canSendStringToWorkingBufferOnDevice(localOutboxPtr->device,  &_GcodeArgStringParam[1]);
-		}
-		canPackIntoTxQueue8x8(CAN_WRITE, localOutboxPtr->device, CAN_MSG_DISPLAY_CONTROL, (byte)cmd, BUFFERED_MSG, (byte *)&payload);
-		_MailBoxes._waitingFor.flags.bit.canGuiAck = TRUE;	// automatic "loopback"  by head (in placing of the ACK
-		_MailBoxes._waitingFor.timerCanGuiAck = GUI_WAIT_FOR_CMD_TO_COMPLETE_TIME; // countdown timer load (for watchdog)
-	}
-}
-
-#else //!ADD_ON_SPI_DISPLAY
 void M_Code_M260(void)
 {
-	;
+	return ;
 }
-#endif ////!ADD_ON_SPI_DISPLAY
+
+//Parameter Name   Command  Control Type   Air Handler Fan
+//M261 S###			1 - 100 – ON to preset percentage, 0 - OFF UV LED
+//M262 S###			1 - 100 – ON to preset percentage, 0 - Off 
+//M263 S###			1 – Engage, 0 – Disable  
+	
+
+void M_Code_M261(void)  // set UvLed Duty cycle
+{
+	if (ARG_S_MISSING)return;//do nothing with out valid data
+	EnclosureFanPwm =(int) ARG_S;
+	setupHssPwm(&HighSideSwitches[2]); 
+	sendNotice(); //echo back the command
+}
+void M_Code_M262(void)  // disable all HSS
+{
+
+	if (ARG_S_MISSING)return;//do nothing with out valid data
+	EnclosureUvLedPwm = (int) ARG_S;
+	setupHssPwm(&HighSideSwitches[4]); 
+	sendNotice(); //echo back the command
+}
+void M_Code_M263(void)  // door lock
+{
+	if (ARG_S_MISSING)return;//do nothing with out valid data
+	EnclosureDoorLock = (int) ARG_S;
+	if (ARG_S > 0)ARG_S = 100.0f;
+	setupHssPwm(&HighSideSwitches[3]); 
+	sendNotice(); //echo back the command
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
