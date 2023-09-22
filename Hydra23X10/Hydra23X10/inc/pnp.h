@@ -8,6 +8,7 @@ extern uint16_t PNPSPIData;//spi3 valve control data word;
 void LatchPnPData();
 void PnP_SetValves();
 void PnP_TurnOffAllValves();
-void SendPNPSPIDataToSpi3(uint16_t DataToSend);
+void SendPNPSPIDataToSpi2(uint16_t DataToSend);
+void Init_SPI2(void);
 void Init_SPI3(void);
 

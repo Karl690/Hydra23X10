@@ -115,9 +115,9 @@ typedef enum {
 #define PIN_SET(a,b)   (if (a) a->BSRR = b;)
 #elif defined(STM32F4XX_HYREL)
 //pinExtractPortPtr(pin)->BSRRH = pinExtractPinMask(pin);
-#define PIN_CLEAR(a,b) ({if (a) {a->BSRRH = b;}})
+#define PIN_CLEAR(a,b) ({if (a) {a->BSRR = b << 16;}})
 //pinExtractPortPtr(pin)->BSRRL = pinExtractPinMask(pin);
-#define PIN_SET(a,b)   ({if (a) {a->BSRRL = b;}})
+#define PIN_SET(a,b)   ({if (a) {a->BSRR = b;}})
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

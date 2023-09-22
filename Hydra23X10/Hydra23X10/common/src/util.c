@@ -295,12 +295,13 @@ double dFitWithinRange(double value, double low, double high)
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifdef DELAY_TIMER
-
+uint64_t tickCount = 0;
 void delayUsec(uint32_t us)
 {	// timer MUST already be set up and free running .... every 1 tick is 1 us
-	DELAY_TIMER->EGR |= TIM_EGR_UG;	//reset CNT/PS_CNT
-	DELAY_TIMER->CNT = 0;	// kill a smidge of time to let UG take place; otherwise check may be screwed up!
-	while (DELAY_TIMER->CNT < us);
+//	DELAY_TIMER->EGR |= TIM_EGR_UG;	//reset CNT/PS_CNT
+//	DELAY_TIMER->CNT = 0;	// kill a smidge of time to let UG take place; otherwise check may be screwed up!
+//	while (DELAY_TIMER->CNT < us);
+	for (int i = 0; i < us; i++) ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

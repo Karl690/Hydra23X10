@@ -73,40 +73,6 @@ GPIO_TypeDef *pinExtractPortPtr(pinType pin)
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-#ifdef STM32F10X_HYREL
-void pinInit(pinType pin)
-{
-	if (pin != PIN_UNDEFINED)
-	{   // skip if not a valid pin
-		GPIO_TypeDef *port = pinExtractPortPtr(pin);
-
-		// there are 2 configuration control registers, low and high
-		// each one has 8 groups of 4 bits that control the configuration of the
-		// pin, input output pull up  pull down, etc
-		int modeShift;
-		if (pinExtractPinNum(pin) < 8)
-		{   // Lower reg pins[7:0]
-			modeShift = pinExtractPinNum(pin) << 2;
-			port->CRL &= ~(0xf << modeShift);           // clear the 4 mode control bits for this pin
-			port->CRL |= (pinExtractMode(pin) << modeShift);        // OR in the new mode control bits
-		}
-		else
-		{   // Upper reg pins[15:8]
-			modeShift = (pinExtractPinNum(pin) - 8) << 2;
-			port->CRH &= ~(0xf << modeShift);       // clear the 4 mode control bits for this pin
-			port->CRH |= (pinExtractMode(pin) << modeShift);    // OR in the new mode control bits
-		}
-
-		if (pinExtractInitEn(pin))
-		{   // initialize pin
-			pinWrite(pin, pinExtractInitVal(pin) & 0x1);
-		}
-	}
-}
-#endif //STM32F10X_HYREL
-
 #ifdef STM32F4XX_HYREL
 void pinInit(pinType pin)
 {   // init the pin using the ST provided routine (can be put inline and sped up
@@ -156,11 +122,7 @@ void pinClear(pinType pin)
 
 	if (pin != PIN_UNDEFINED)
 	{
-#ifdef STM32F10X_HYREL
-		pinExtractPortPtr(pin)->BRR = pinExtractPinMask(pin);
-#elif defined(STM32F4XX_HYREL)
-		pinExtractPortPtr(pin)->BSRRH = pinExtractPinMask(pin);
-#endif
+		pinExtractPortPtr(pin)->BSRR = pinExtractPinMask(pin) << 16;
 	}
 }
 
@@ -172,11 +134,7 @@ void pinSet(pinType pin)
 
 	if (pin != PIN_UNDEFINED)
 	{
-#ifdef STM32F10X_HYREL
 		pinExtractPortPtr(pin)->BSRR = pinExtractPinMask(pin);
-#elif defined(STM32F4XX_HYREL)
-		pinExtractPortPtr(pin)->BSRRL = pinExtractPinMask(pin);
-#endif
 	}
 }
 

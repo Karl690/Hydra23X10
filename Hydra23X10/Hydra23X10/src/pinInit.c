@@ -13,12 +13,12 @@ void pinInitAll(void)
 //		pinInit(PANEL_ENC_B);
 //		pinInit(PANEL_ENC_SEL);;
 
-		pinInit(AIN5);
-		pinInit(AIN6);
-		pinInit(J17_13);   // undefined
-		pinInit(J17_14);   // undefined
-		pinInit(J17_15);   // undefined
-		pinInit(J17_16);   // undefined
+	pinInit(AIN5);
+	pinInit(AIN6);
+	pinInit(J17_13);   // undefined
+	pinInit(J17_14);   // undefined
+	pinInit(J17_15);   // undefined
+	pinInit(J17_16);   // undefined
 
 
 
@@ -31,39 +31,39 @@ void pinInitAll(void)
 	pinInit(Z_DIR);
 	pinInit(Z_HOME);
 	pinInit(Z_STEP);
-		pinInit(A_DIR);
-		pinInit(A_HOME);
-		pinInit(A_STEP);
-		pinInit(AIN7);
-		pinInit(AIN8);
-		pinInit(B_DIR);
-		pinInit(B_HOME);
-		pinInit(B_STEP);
-		pinInit(BOOT1);   // undefined
-		pinInit(C_DIR);
-		pinInit(C_HOME);
-		pinInit(C_STEP);
-		pinInit(CAN1_RX);
-		pinInit(CAN1_TX);
-		pinInit(CAN2_RX);
-		pinInit(CAN2_TX);
+	pinInit(A_DIR);
+	pinInit(A_HOME);
+	pinInit(A_STEP);
+	pinInit(AIN7);
+	pinInit(AIN8);
+	pinInit(B_DIR);
+	pinInit(B_HOME);
+	pinInit(B_STEP);
+	pinInit(BOOT1);   // undefined
+	pinInit(C_DIR);
+	pinInit(C_HOME);
+	pinInit(C_STEP);
+	pinInit(CAN1_RX);
+	pinInit(CAN1_TX);
+	pinInit(CAN2_RX);
+	pinInit(CAN2_TX);
 
-		pinInit(DAC2_OUT);
+	pinInit(DAC2_OUT);
 //		pinInit(DRAIN1);
 //		pinInit(DRAIN2);
 //		pinInit(DRAIN3);
 //		pinInit(DRAIN4);
-		pinInit(CAN_TX_LED);
-		HEARTBEAT_PIN = HEARTBEAT;
-		pinInit(HEARTBEAT_PIN);
-		pinInit(HSS_AUX_PWR1);
-		pinInit(HSS_AUX_PWR2);
-		pinInit(HSS_AUX_PWR4);
-		pinInit(HSS_AUX_PWR5);
-		pinInit(HSS_AUX_PWR6);
-		pinInit(HSS_AUX_PWR7);
-		pinInit(HSS_AUX_PWR8);
-		pinInit(HSS_AUX_PWR9);
+	pinInit(CAN_TX_LED);
+	HEARTBEAT_PIN = HEARTBEAT;
+	pinInit(HEARTBEAT_PIN);
+	pinInit(HSS_AUX_PWR1);
+	pinInit(HSS_AUX_PWR2);
+	pinInit(HSS_AUX_PWR4);
+	pinInit(HSS_AUX_PWR5);
+	pinInit(HSS_AUX_PWR6);
+	pinInit(HSS_AUX_PWR7);
+	pinInit(HSS_AUX_PWR8);
+	pinInit(HSS_AUX_PWR9);
 
 		//pinInit(J18_13);   // undefined
 		//pinInit(J18_14);   // undefined
@@ -94,8 +94,8 @@ void pinInitAll(void)
 	pinInit(TX6);
 	pinInit(PnP_Rclk);
 	pinInit(PnP_Enable);
-	pinInit(SPi3_Mosi);
-	pinInit(SPi3_Sclk);
+	pinInit(SPi2_Mosi);
+	pinInit(SPi2_Sclk);
 	
 	pinInit(PWM_CO2_laserPower);
 	pinInit(PWM_Spindle_Speed);

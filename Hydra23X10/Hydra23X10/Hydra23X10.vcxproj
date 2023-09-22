@@ -67,43 +67,43 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_HYDRA_DIAGS|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_EngineHR_Hydra|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_EngineSR_30M|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineSR_30M|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_HYDRA_DIAGS|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -117,11 +117,15 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>DEBUG=1;FK_407;USE_FULL_LL_DRIVER;RCC_DCKCFGR_TIMPRE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <LinkerScript>link.ld</LinkerScript>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
     </Link>
     <ToolchainSettingsContainer>
       <ARMCPU>cortex-m4</ARMCPU>
@@ -219,6 +223,12 @@
     <ClCompile Include="common\src\hyrel_can.c" />
     <ClCompile Include="common\src\pins.c" />
     <ClCompile Include="common\src\util.c" />
+    <ClCompile Include="display\colortables.c" />
+    <ClCompile Include="display\display.c" />
+    <ClCompile Include="display\DisplayList.c" />
+    <ClCompile Include="display\gui.c" />
+    <ClCompile Include="display\lcdspi_4xx.c" />
+    <ClCompile Include="display\st7789.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="src\adc.c" />
     <ClCompile Include="src\adc_table.c" />
@@ -432,6 +442,14 @@
     <ClInclude Include="common\lcd\hyrel3d_logo_128x128.h" />
     <ClInclude Include="common\lcd\hyrel3d_logo_320x240.h" />
     <ClInclude Include="common\lcd\lcd.h" />
+    <ClInclude Include="display\colortables.h" />
+    <ClInclude Include="display\display.h" />
+    <ClInclude Include="display\DisplayList.h" />
+    <ClInclude Include="display\font.h" />
+    <ClInclude Include="display\gui.h" />
+    <ClInclude Include="display\LcdDefinitions.h" />
+    <ClInclude Include="display\lcdspi_4xx.h" />
+    <ClInclude Include="display\st7789.h" />
     <ClInclude Include="inc\adc.h" />
     <ClInclude Include="inc\adc_table.h" />
     <ClInclude Include="inc\bootloader.h" />

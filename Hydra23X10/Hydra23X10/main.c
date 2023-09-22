@@ -26,6 +26,9 @@
 #include "display.h"
 #include "pnp.h"
 #include "adc.h"
+#include "display/lcdspi_4xx.h"
+#include "display/display.h"
+#include "util.h"
 void(*callback)(void *); //define cast for call back type
 void initKey(boolean a, char *b, char *c)
 {
@@ -61,7 +64,7 @@ char crash_source[32]="";
 
 globalStruct _gs;                     // control index, canbus ques and other stuff
 MotorStructure Motors[MAX_NUMBER_OF_MOTORS];
-
+uint32_t HeartBeat = 0;
 boolean ForceReportXYZLocation=FALSE;
 boolean AutoReportXYZLocation=FALSE;
 boolean AutoReportFeedRate=FALSE;
@@ -71,6 +74,7 @@ boolean StatusReportVelocity=FALSE;
 boolean StatusReportFlowRate=FALSE;
 boolean StatusReportLineNum=FALSE;
 
+SPI_LCD_HandleTypeDef LCDSpi1;
 float _LastReportedCurrentRequestedFeedrateInMmPerSec = -1.0f;
 int _LastReportedExecutingLineNumber = -1;
 int PwmTestCounter = 0;
@@ -1516,6 +1520,7 @@ void processEverySlice(void)
 		pinSet(_sliceTiming.pin);
 #else
 	_gs._sliceCnt++;
+	tickCount++;
 #endif
 #ifdef GB_CMDQUE_EMPTY_PIN
 	pinWrite(GB_CMDQUE_EMPTY_PIN, (CommandsInQue == 0) ? 1 : 0);
@@ -4227,11 +4232,24 @@ void ohNoMrBill(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
+//uint16_t a = 0x3f00;
+//uint16_t p = 0;
+//static uint16_t * const DR3_Word = (uint16_t * const)&SPI3->DR;
 void heartbeat(void)
 {
 	_gs._led.heartbeatState ^= 1;
 	pinWrite(HEARTBEAT_PIN, _gs._led.heartbeatState);
+	HeartBeat++;
+//	
+//	LCD_CS_CLR;
+//	LCD_RS_CLR;
+//	SPI3->CR1 |= SPI_CR1_SPE;
+//	SPI3->CR1 |= 1 << 9; //SPI_CR1_CSTART;
+//	*DR3_Word = a;
+//	LCD_CS_SET;
+//	p = *DR3_Word;
+//	if (a + 1 == 0xff) a = 0;
+//	else a++;
 #ifdef GB_HEARTBEAT_PIN
 	pinWrite(GB_HEARTBEAT_PIN, _gs._led.heartbeatState);
 #endif
@@ -4424,17 +4442,9 @@ void loop_100Hz_simple_work(void)
 	if (_gs._flasher.lightSel == FLASHER_LIGHT_SEL_NONE)
 	{   // normal operation
 		DDLightSelection();
-#ifdef MEGASONIC // YELLOW BOARD IS INVERTED LOGIC
-		pinWrite(CAN_RX_LED, (_gs._led.canRxLedCnt > 0) ? 0 : 1);
-		_gs._led.canRxLedCnt = imax(0, _gs._led.canRxLedCnt - 1);
-		pinWrite(CAN_TX_LED, (_gs._led.canTxLedCnt > 0) ? 0 : 1);
-		_gs._led.canTxLedCnt = imax(0, _gs._led.canTxLedCnt - 1);
-#else
-		//pinWrite(CAN_RX_LED, (_gs._led.canTxLedCnt > 0) ? 1 : 0);
 		_gs._led.canRxLedCnt = imax(0, _gs._led.canRxLedCnt - 1);
 		pinWrite(CAN_TX_LED, (_gs._led.canTxLedCnt > 0) ? 1 : 0);
 		_gs._led.canTxLedCnt = imax(0, _gs._led.canTxLedCnt - 1);
-#endif
 	}
 	else
 	{
@@ -4563,7 +4573,8 @@ void loop_1Hz_simple_work(void)
 	pinToggleOutput(GB_SECONDS_PIN);
 #endif //GB_SECONDS_PIN
 	_gs._seconds++;
-
+//	if (_gs._seconds % 2 == 0) LCD_CS_CLR; //pinWrite(SPI3_LCD_CS, 0);// 
+//	else LCD_CS_SET;  //pinWrite(SPI3_LCD_CS, 1);
 	IWDG_ReloadCounter();  // reset the independent watchdog hardware
 
 	if ((masterCommPort == BOOTUP) && (_gs._seconds > 2) && ((_gs._seconds % 3) == 0))
@@ -6089,18 +6100,33 @@ int main(void)
 	InitTim3RpmInput(); //set up the rpm counter
 	__enable_irq();  // now everything is ready, so let interrupts occur
 	
-	Init_SPI3();
+	Init_SPI2();//used for pnp valve control on J21
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
 	InitTimer8();
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 	Start_ADC();
+	
+	Init_Display(&LCDSpi1, LCD_SPI_PORT, COLOR_MODE_NORMAL);
 
 	while (1)
 	{
-//just spin for now
+//		//just spin for now
+		switch (DisplayIndex)
+		{
+			//case 0:UpdateScreen(&LCDSpi1, SecsVarsTable); break;
+			//case 0:UpdateScreen(&LCDSpi1, SecsStringTable); break;
+		case 0:UpdateScreen(&LCDSpi1, LcdVarsTable); break;
+		case 1:UpdateScreen(&LCDSpi1, UsbGcodeArguments); break;
+		case 2:UpdateScreen(&LCDSpi1, CMDQueValues); break;
+		case 3:UpdateScreen(&LCDSpi1, TaskTimeTable1); break;
+		case 4:UpdateScreen(&LCDSpi1, ADCValueTable); break;
+		case 5:UpdateScreen(&LCDSpi1, BarValueTable); break;
+		case 6:UpdateScreen(&LCDSpi1, FaultValueTable); break;
+		case 7:UpdateScreen(&LCDSpi1, CanRxBufferTable); break;
+		case 8:UpdateScreen(&LCDSpi1, CanTxBufferTable); break;
+		}
 	}
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////

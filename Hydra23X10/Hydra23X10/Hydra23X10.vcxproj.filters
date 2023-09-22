@@ -73,6 +73,9 @@
     <Filter Include="Header files\Device-specific files">
       <UniqueIdentifier>{5463b60f-a971-4c18-a507-4dce3c9199af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="display">
+      <UniqueIdentifier>{72f0e073-14ef-42b7-81b4-860c8fa6a426}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Hydra23X10-Debug.vgdbsettings">
@@ -692,6 +695,24 @@
     <ClCompile Include="src\adc_table.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="display\colortables.c">
+      <Filter>display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\display.c">
+      <Filter>display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\DisplayList.c">
+      <Filter>display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\gui.c">
+      <Filter>display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\lcdspi_4xx.c">
+      <Filter>display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\st7789.c">
+      <Filter>display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="usb_lib\inc\usbd_usr.h">
@@ -906,6 +927,30 @@
     </ClInclude>
     <ClInclude Include="inc\adc_table.h">
       <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="display\colortables.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\display.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\DisplayList.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\font.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\gui.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\LcdDefinitions.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\lcdspi_4xx.h">
+      <Filter>display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\st7789.h">
+      <Filter>display</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

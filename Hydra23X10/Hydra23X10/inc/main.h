@@ -2568,7 +2568,7 @@ extern void EdgeTriggerSendResults(void);
 extern boolean SetupEXTI(int, probeType_t, EXTITrigger_TypeDef, int);
 extern void DisableEXTI(void);
 
-extern void SendPNPSPIDataToSpi3(uint16_t);
+extern void SendPNPSPIDataToSpi2(uint16_t);
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3530,3 +3530,16 @@ extern void SendPNPSPIDataToSpi3(uint16_t);
 #endif //USE_HYDRA_IO
 #endif //GB_DEBUGGING
 
+//to change target just uncomment ONLY ONE of the following defines
+#define FK_407   //102207 board, rev X series, works with stm32F407VBT6 100 pin lqfp parts.
+//#define FK_750   //102207 board, rev X series, works with STM32H750VBT6 100 pin lqfp parts.
+//#define CORE_407I     //waveshare CORE407I on legacy 102207 boards, for EHR, and Hydras
+
+/* Display Compiling Option */
+#define LCD_SPI_PORT 3
+// #define SECS_USART6
+
+
+//#define ST7735
+#define ST7789
+//#define ILI9341

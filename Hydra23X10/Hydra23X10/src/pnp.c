@@ -8,7 +8,44 @@ uint16_t PNPSPIData = 0; //spi3 valve control data word;
 
 //this sets up a pointer to allow us to simply write to the DR_WORD variable to  update the
 //spi data register.
-static uint16_t * const DR_Word = (uint16_t * const)&SPI3->DR;
+static uint16_t * const DR_Word = (uint16_t * const)&SPI2->DR;
+
+
+//PB10 SCK
+//PC2 RCK
+//PC03 MOSI
+//PC0  RST
+void Init_SPI2()
+{
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN; //PORTC clock enable
+	RCC->APB1ENR |= RCC_APB1ENR_SPI2EN; //SPI3 clock enable RCC_APB1RSTR RCC_APB1ENR_SPI3EN
+	// SCK GPIOB pin 10 = alternate function mode 3
+	GPIOB->MODER &= ~((GPIO_MODER_MODER10_0));
+	GPIOB->MODER |= ((GPIO_MODER_MODER10_1));
+	GPIOB->AFR[1] |= 6 << 8 | 6 << 16;	// alternate mux
+	// MOSI GPIOC pin 03 = alternate function mode 3
+	GPIOC->MODER &= ~((GPIO_MODER_MODER3_0));
+	GPIOC->MODER |= ((GPIO_MODER_MODER3_1));
+	GPIOC->AFR[0] |= 6 << 12; // alternate mux
+
+	// CR1
+	SPI2->CR1 |= SPI_CR1_CPHA; // clock phase with respect to data
+	SPI2->CR1 |= SPI_CR1_CPOL; // clock polarity when Idle, High, clocks on falling edge
+	SPI2->CR1 |= SPI_CR1_MSTR; //master mode, we are driving the peripheral , tpic595
+	SPI2->CR1 |= (SPI_CR1_BR_0 | SPI_CR1_BR_1 | SPI_CR1_BR_2); //div by 256 for slowest possible buad
+	SPI2->CR1 &= ~SPI_CR1_LSBFIRST; //most significant bit first, like shifting LEFT logical
+	SPI2->CR1 |= SPI_CR1_SSI; //if controlling CS using the Nss pin, this defines cs state, high or low
+	SPI2->CR1 |= SPI_CR1_SSM; //must be set to 1 for spi controller to drive cs, if zero, software drives CS.
+	SPI2->CR1 &= ~SPI_CR1_RXONLY; //bi directional so we can send data
+	SPI2->CR1 |= SPI_CR1_DFF; //0=8 bits transfer, 1=a6bit transfer
+	SPI2->CR1 &= ~SPI_CR1_CRCNEXT; //next byte is from the data register, always , no crc
+	SPI2->CR1 &= ~SPI_CR1_CRCEN; //disable crc hardware
+	SPI2->CR1 |= SPI_CR1_BIDIOE; //output mode only
+
+	SPI2->CR2 = 0; // no interrupts and no dma enabled
+	
+	SPI2->CR1 |= SPI_CR1_SPE; //spiEnable bit
+}
 
 //PC10 SCK
 //PC11 RCK
@@ -42,12 +79,12 @@ void Init_SPI3()
 	
 	SPI3->CR1 |= SPI_CR1_SPE; //spiEnable bit
 }
-void SendPNPSPIDataToSpi3(uint16_t DataToSend)
+void SendPNPSPIDataToSpi2(uint16_t DataToSend)
 {
 	PnP_Enable_Set;
 	PnP_Rclk_Clr;
-	SPI3->CR1 |= SPI_CR1_SPE;
-	SPI3->CR1 |= 1 << 9; //SPI_CR1_CSTART;
+	SPI2->CR1 |= SPI_CR1_SPE;
+	SPI2->CR1 |= 1 << 9; //SPI_CR1_CSTART;
 
 
 	//*(volatile uint8_t*)&_handle->dd->DR = val; 		// Push 1 byte
@@ -72,7 +109,7 @@ void PnP_SetValves()
 		//if(	PNPSPIData==0)return;
 	if (PnPResetTimer > 0)
 	{
-		SendPNPSPIDataToSpi3(PNPSPIData); //update the data word;
+		SendPNPSPIDataToSpi2(PNPSPIData); //update the data word;
 		PnPResetTimer--;
 		if (PnPResetTimer == 0)PNPSPIData = 0;
 	}

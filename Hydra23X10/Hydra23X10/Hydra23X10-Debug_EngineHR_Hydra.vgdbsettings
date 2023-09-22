@@ -23,7 +23,10 @@
       </Version>
     </ToolchainID>
     <ProjectFile>Hydra23X10.vcxproj</ProjectFile>
-    <ParallelJobCount>0</ParallelJobCount>
+    <RemoteBuildEnvironment>
+      <Records />
+    </RemoteBuildEnvironment>
+    <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
     <BuildAsRoot>false</BuildAsRoot>
   </Build>
@@ -99,7 +102,7 @@
     <DebugMethod>
       <ID>com.sysprogs.arm.openocd</ID>
       <InterfaceID>stlink-v2</InterfaceID>
-      <InterfaceSerialNumber>7&amp;F2D9D63&amp;0&amp;3</InterfaceSerialNumber>
+      <InterfaceSerialNumber>E</InterfaceSerialNumber>
       <Configuration xsi:type="com.visualgdb.edp.openocd.settings">
         <CommandLine>-f interface/stlink-v2.cfg -f target/stm32f4x.cfg -c init -c "reset init"</CommandLine>
         <ExtraParameters>

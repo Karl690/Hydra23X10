@@ -38,17 +38,30 @@
 //  pinout specific global defines and macros needed by other modules
 ////////////////////////////////////////////////////////////////////////////////
 //#include "main.h"
-//Pnp Spi for feeders
-#define PnP_Enable		   (PIN_PORT_A | PIN_NUM_09  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
-#define PnP_Enable_Set     GPIOA->BSRRL = PIN_MASK_09                 //index to the set bit register
-#define PnP_Enable_Clr     GPIOA->BSRRH = PIN_MASK_09 //index to the Clear bit register
+//J29 Pnp Spi3 for feeders
+//#define PnP_Enable		   (PIN_PORT_A | PIN_NUM_09  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+//#define PnP_Enable_Set     GPIOA->BSRRL = PIN_MASK_09                 //index to the set bit register
+//#define PnP_Enable_Clr     GPIOA->BSRRH = PIN_MASK_09 //index to the Clear bit register
+//
+//#define PnP_Rclk		   (PIN_PORT_C | PIN_NUM_11  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+//#define PnP_Rclk_Set	   GPIOC->BSRRL = PIN_MASK_11                  //index to the set bit register
+//#define PnP_Rclk_Clr       GPIOC->BSRRH = PIN_MASK_11  //index to the Clear bit register
+//
+//#define SPi3_Mosi		  (PIN_PORT_C | PIN_NUM_12  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+//#define SPi3_Sclk		  (PIN_PORT_C | PIN_NUM_10  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
 
-#define PnP_Rclk		   (PIN_PORT_C | PIN_NUM_11  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
-#define PnP_Rclk_Set	   GPIOC->BSRRL = PIN_MASK_11                  //index to the set bit register
-#define PnP_Rclk_Clr       GPIOC->BSRRH = PIN_MASK_11  //index to the Clear bit register
+//J21 Pnp Spi2 for feeders. NOTE need +12 from different connector
+#define PnP_Enable		   (PIN_PORT_C | PIN_NUM_00  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+#define PnP_Enable_Set     GPIOC->BSRR = PIN_MASK_09                 //index to the set bit register
+#define PnP_Enable_Clr     GPIOC->BSRR = PIN_MASK_09 >> 16//index to the Clear bit register
 
-#define SPi3_Mosi		  (PIN_PORT_C | PIN_NUM_12  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
-#define SPi3_Sclk		  (PIN_PORT_C | PIN_NUM_10  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+#define PnP_Rclk		   (PIN_PORT_C | PIN_NUM_02  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+#define PnP_Rclk_Set	   GPIOC->BSRR = PIN_MASK_02                  //index to the set bit register
+#define PnP_Rclk_Clr       GPIOC->BSRR = PIN_MASK_02 << 16 //index to the Clear bit register
+
+#define SPi2_Mosi		  (PIN_PORT_C | PIN_NUM_03  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+#define SPi2_Sclk		  (PIN_PORT_B | PIN_NUM_10  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
+
 
 //#ifdef USE_AB_ENCODER
 #define CO2_LASER_PWM   (PIN_AF_TIM2       | PIN_OTYPE_PUSHPULL | PIN_OSPEED_100MHZ | PIN_PORT_A | PIN_NUM_03 | PIN_INIT_HIGH)
@@ -150,6 +163,14 @@
 #define TPIC_6595_RCLK			(OUTPUT_PP_50MHZ  | PIN_PORT_B | PIN_NUM_14 | PIN_INIT_LOW)//change on rev 11
 
 
+
+#define SPI3_LCD_RS				(PIN_PORT_C | PIN_NUM_11 | PIN_INIT_HIGH | OUTPUT_PP_50MHZ)
+#define SPI3_LCD_MOSI			(PIN_PORT_C | PIN_NUM_12 | PIN_AF_SPI3)
+#define SPI3_LCD_SCK			(PIN_PORT_C | PIN_NUM_10 | PIN_AF_SPI3)
+
+#define  SPI3_LCD_RST			(PIN_PORT_A | PIN_NUM_09 | PIN_INIT_HIGH | OUTPUT_PP_50MHZ)
+//#define SPI3_LCD_CS				(PIN_PORT_A | PIN_NUM_04 | PIN_INIT_HIGH | OUTPUT_PP_50MHZ)//102207 x10 spi display J29
+#define SPI3_LCD_CS				(PIN_PORT_E | PIN_NUM_02 | PIN_INIT_HIGH | OUTPUT_PP_50MHZ) //302223 embedded display
 
 
 

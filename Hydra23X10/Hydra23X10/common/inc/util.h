@@ -6,7 +6,7 @@
 //#define MIN(a,b) (((a)<(b))?(a):(b))
 //#define MAX(a,b) (((a)>(b))?(a):(b))
 //#define ABS(a) (((a)>(0))?(a):(-(a)))
-
+extern uint64_t tickCount;
 typedef struct {
 	byte		size8;
 	uint16_t	size16;
