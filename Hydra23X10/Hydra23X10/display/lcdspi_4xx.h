@@ -51,7 +51,7 @@ extern SPI_LCD_HandleTypeDef* LCDHandler;
 #define LCD_RST_CLR    	LCDHandler->RST_Port->BSRR = (uint32_t)LCDHandler->RST_Pin << 16
 #define LCD_RST_SET    	LCDHandler->RST_Port->BSRR = LCDHandler->RST_Pin
 
-#define LCD_BLK_CLR    	LCDHandler->BKLT_Port->BSRR = (uint32_t)LCDHandler->BKLT_Pin << GPIO_NUMBER
+#define LCD_BLK_CLR    	LCDHandler->BKLT_Port->BSRR = (uint32_t)LCDHandler->BKLT_Pin << 16
 #define LCD_BLK_SET    	LCDHandler->BKLT_Port->BSRR = LCDHandler->BKLT_Pin
 #define SPI_Drv 		(LCDHandler->SpiHandle)
 

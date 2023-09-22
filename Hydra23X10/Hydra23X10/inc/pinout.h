@@ -52,16 +52,15 @@
 
 //J21 Pnp Spi2 for feeders. NOTE need +12 from different connector
 #define PnP_Enable		   (PIN_PORT_C | PIN_NUM_00  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
-#define PnP_Enable_Set     GPIOC->BSRR = PIN_MASK_09                 //index to the set bit register
-#define PnP_Enable_Clr     GPIOC->BSRR = PIN_MASK_09 >> 16//index to the Clear bit register
+#define PnP_Enable_Set     GPIOC->BSRR = SET_BIT_09                 //index to the set bit register
+#define PnP_Enable_Clr     GPIOC->BSRR = CLR_BIT_09//index to the Clear bit register
 
 #define PnP_Rclk		   (PIN_PORT_C | PIN_NUM_02  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
-#define PnP_Rclk_Set	   GPIOC->BSRR = PIN_MASK_02                  //index to the set bit register
-#define PnP_Rclk_Clr       GPIOC->BSRR = PIN_MASK_02 << 16 //index to the Clear bit register
+#define PnP_Rclk_Set	   GPIOC->BSRR = SET_BIT_02                  //index to the set bit register
+#define PnP_Rclk_Clr       GPIOC->BSRR = CLR_BIT_02 //index to the Clear bit register
 
 #define SPi2_Mosi		  (PIN_PORT_C | PIN_NUM_03  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
 #define SPi2_Sclk		  (PIN_PORT_B | PIN_NUM_10  | PIN_INIT_LOW  | OUTPUT_PP_50MHZ)
-
 
 //#ifdef USE_AB_ENCODER
 #define CO2_LASER_PWM   (PIN_AF_TIM2       | PIN_OTYPE_PUSHPULL | PIN_OSPEED_100MHZ | PIN_PORT_A | PIN_NUM_03 | PIN_INIT_HIGH)

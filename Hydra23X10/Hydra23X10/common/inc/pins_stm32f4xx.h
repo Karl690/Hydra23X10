@@ -138,6 +138,39 @@ typedef union {
 #define PIN_MASK_13  0x2000
 #define PIN_MASK_14  0x4000
 #define PIN_MASK_15  0x8000
+
+#define SET_BIT_00                       ((uint32_t)0x00000001)
+#define SET_BIT_01                       ((uint32_t)0x00000002)
+#define SET_BIT_02                       ((uint32_t)0x00000004)
+#define SET_BIT_03                       ((uint32_t)0x00000008)
+#define SET_BIT_04                       ((uint32_t)0x00000010)
+#define SET_BIT_05                       ((uint32_t)0x00000020)
+#define SET_BIT_06                       ((uint32_t)0x00000040)
+#define SET_BIT_07                       ((uint32_t)0x00000080)
+#define SET_BIT_08                       ((uint32_t)0x00000100)
+#define SET_BIT_09                       ((uint32_t)0x00000200)
+#define SET_BIT_10                      ((uint32_t)0x00000400)
+#define SET_BIT_11                      ((uint32_t)0x00000800)
+#define SET_BIT_12                      ((uint32_t)0x00001000)
+#define SET_BIT_13                      ((uint32_t)0x00002000)
+#define SET_BIT_14                      ((uint32_t)0x00004000)
+#define SET_BIT_15                      ((uint32_t)0x00008000)
+#define CLR_BIT_00                       ((uint32_t)0x00010000)
+#define CLR_BIT_01                       ((uint32_t)0x00020000)
+#define CLR_BIT_02                       ((uint32_t)0x00040000)
+#define CLR_BIT_03                       ((uint32_t)0x00080000)
+#define CLR_BIT_04                       ((uint32_t)0x00100000)
+#define CLR_BIT_05                       ((uint32_t)0x00200000)
+#define CLR_BIT_06                       ((uint32_t)0x00400000)
+#define CLR_BIT_07                       ((uint32_t)0x00800000)
+#define CLR_BIT_08                       ((uint32_t)0x01000000)
+#define CLR_BIT_09                       ((uint32_t)0x02000000)
+#define CLR_BIT_10                      ((uint32_t)0x04000000)
+#define CLR_BIT_11                      ((uint32_t)0x08000000)
+#define CLR_BIT_12                      ((uint32_t)0x10000000)
+#define CLR_BIT_13                      ((uint32_t)0x20000000)
+#define CLR_BIT_14                      ((uint32_t)0x40000000)
+#define CLR_BIT_15                      ((uint32_t)0x80000000)
 ////////////////////////////////////////////////////////////////////////////////
 //
 // these define the values for the various fields (and most just match the spec defined register values
