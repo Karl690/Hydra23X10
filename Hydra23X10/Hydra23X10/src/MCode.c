@@ -3368,8 +3368,8 @@ void M_Code_M260(void)
 
 //Parameter Name   Command  Control Type   Air Handler Fan
 //M261 S###			1 - 100 – ON to preset percentage, 0 - OFF UV LED
-//M262 S###			1 - 100 – ON to preset percentage, 0 - Off 
-//M263 S###			1 – Engage, 0 – Disable  
+//M262 S###			1 - 100 – ON to preset percentage, 0 - Off FAN
+//M263 S###			1 – Engage, 0 – Disable  Door Lock
 	
 
 void M_Code_M261(void)  // set UvLed Duty cycle
