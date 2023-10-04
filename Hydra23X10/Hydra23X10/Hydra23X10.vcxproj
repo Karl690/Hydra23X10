@@ -119,13 +119,15 @@
     <ClCompile>
       <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>DEBUG=1;FK_407;USE_FULL_LL_DRIVER;RCC_DCKCFGR_TIMPRE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <LinkerScript>link.ld</LinkerScript>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <CustomPostLinkTool>bin2dfu.exe</CustomPostLinkTool>
+      <CustomPostLinkArguments> --i $(OutDir)$(TargetName)$(TargetExt) --o $(ProjectDir)$(TargetFileName).dfu</CustomPostLinkArguments>
     </Link>
     <ToolchainSettingsContainer>
       <ARMCPU>cortex-m4</ARMCPU>
@@ -138,6 +140,8 @@
     </ClCompile>
     <Link>
       <LinkerScript>link.ld</LinkerScript>
+      <CustomPostLinkTool>bin2dfu.exe</CustomPostLinkTool>
+      <CustomPostLinkArguments> --i $(OutDir)$(TargetName)$(TargetExt) --o $(ProjectDir)$(TargetFileName).dfu</CustomPostLinkArguments>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_HYDRA_DIAGS|VisualGDB'">

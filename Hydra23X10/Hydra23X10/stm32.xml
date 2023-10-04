@@ -23,9 +23,8 @@
         <string>ARM_MATH_CM4</string>
         <string>flash_layout</string>
         <string>STM32F407VG</string>
-        <string>USE_USB_FS</string>
         <string>STM32F407xx</string>
-        <string>USE_HAL_DRIVER</string>
+        <string>USE_HYDRA_IO</string>
         <string />
       </PreprocessorMacros>
       <IncludeDirectories>
