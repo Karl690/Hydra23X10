@@ -33,6 +33,10 @@
       <Configuration>Release</Configuration>
       <Platform>VisualGDB</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="X10|VisualGDB">
+      <Configuration>X10</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -47,6 +51,7 @@
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'" Label="Configuration" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='X10|VisualGDB'" Label="Configuration" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_HYDRA_DIAGS|VisualGDB'" Label="Configuration" />
@@ -71,6 +76,12 @@
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='X10|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
     <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
@@ -116,6 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LinkerScript>link.ld</LinkerScript>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <CustomPostLinkTool>bin2dfu.exe</CustomPostLinkTool>
+      <CustomPostLinkArguments> --i $(OutDir)$(TargetName)$(TargetExt) --o $(ProjectDir)$(TargetFileName).dfu</CustomPostLinkArguments>
+    </Link>
+    <ToolchainSettingsContainer>
+      <ARMCPU>cortex-m4</ARMCPU>
+    </ToolchainSettingsContainer>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='X10|VisualGDB'">
     <ClCompile>
       <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
