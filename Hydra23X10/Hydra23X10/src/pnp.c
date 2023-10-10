@@ -22,7 +22,7 @@ void Init_SPI2()
 	// SCK GPIOB pin 10 = alternate function mode 3
 	GPIOB->MODER &= ~((GPIO_MODER_MODER10_0));
 	GPIOB->MODER |= ((GPIO_MODER_MODER10_1));
-	GPIOB->AFR[1] |= 6 << 8 | 6 << 16;	// alternate mux
+	GPIOB->AFR[1] |= 6 << 8;// | 6 << 16;	// alternate mux
 	// MOSI GPIOC pin 03 = alternate function mode 3
 	GPIOC->MODER &= ~((GPIO_MODER_MODER3_0));
 	GPIOC->MODER |= ((GPIO_MODER_MODER3_1));

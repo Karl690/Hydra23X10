@@ -83,6 +83,7 @@ int	CO2LaserAnalogPwrPWM = 0;
 int Co2LaserWatchDogTimer = 0;
 int RPMCounter = 0;
 //osseo variables
+int EnableOsseoVariablesReporting = 0;
 int ParticleCounter = 666;
 float EnclosureTemperature = 26.3;
 int EnclosureHumidity = 99;
@@ -4058,7 +4059,7 @@ void PWMCntrl(void)
 }
 void ReportXYZLocation(void)
 {
-	return;//osseo karlchris
+	if(EnableOsseoVariablesReporting)return;//osseo karlchris
 	RPMCounter = TIM3->CNT;
 	TIM3->CNT = 0;
 	if (ForceReportXYZLocation == FALSE)
@@ -4137,6 +4138,8 @@ void ReportXYZLocation(void)
 }
 void ReportOsseoVariables(void)
 {		
+	if (EnableOsseoVariablesReporting == 0)return;
+	
 //	ParticleCounter +=123;
 //	if (ParticleCounter > 6000)ParticleCounter = 0;
 //	EnclosureTemperature += 1;
@@ -6081,7 +6084,7 @@ int main(void)
 
 	wiggleDebugIO(0);
 	InitAllUARTS(SYSTEM_BAUD_RATE);
-	USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
+//	USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
 	CAN_Config(CAN1);
 	CAN_Config(CAN2);
 
@@ -6106,7 +6109,7 @@ int main(void)
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 	Start_ADC();
-	
+	USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
 	Init_Display(&LCDSpi1, LCD_SPI_PORT, COLOR_MODE_NORMAL);
 
 	while (1)

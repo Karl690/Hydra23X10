@@ -20,8 +20,8 @@
 typedef void(*PFUNC)(void);
 
 #define SOFTWARE_MAJOR_REVISION     4   // XXX  update when a major change occurs (ie, protocol)
-#define SOFTWARE_MINOR_REVISION     251 // XXX  update for major and minor changes
-#define SOFTWARE_TWEAK_REVISION    'E'  // XXX  update for small changes ('z' is for experimental ONLY)
+#define SOFTWARE_MINOR_REVISION     252 // XXX  update for major and minor changes
+#define SOFTWARE_TWEAK_REVISION    'A'  // XXX  update for small changes ('z' is for experimental ONLY)
 
 #define SOFTWARE_DEBUG_REVISION    'a'  // XXX  char update for debug versions  (applies to 'z' versions only  is for experimental ONLY) (display with M115)
 extern const PFUNC F1000HZ[];
@@ -911,36 +911,13 @@ extern const PFUNC F1HZ[];
 #define COMPILE_FOR_SYSTEM
 #endif
 
-#if (SOFTWARE_TWEAK_REVISION == 'z')
-#if defined(USE_HYREL_IO)
-#define PLATFORM_STRING       "DEBUG_EngineSR_30M"
-#elif defined(USE_HYDRA_IO)
-#define PLATFORM_STRING       "DEBUG_EngineHR_Hydra"
-#else
-#define PLATFORM_STRING       "DEBUG_UNKNOWN_TARGET"
-#endif
-#else //!(SOFTWARE_TWEAK_REVISION == 'z')
-#if defined(USE_HYREL_IO)
-#define PLATFORM_STRING       "EngineSR_30M"
-#elif defined(USE_HYDRA_IO)
-#define PLATFORM_STRING       "EngineHR_Hydra"
-#else
-#define PLATFORM_STRING       "UNKNOWN_TARGET"
-#endif
-#endif //!(SOFTWARE_TWEAK_REVISION == 'z')
-
+#define PLATFORM_STRING       "Hydra_X10"
 #define USE_CAN2    // enable use of second canbus controller, CAN2
-#ifdef USE_HYREL_IO
-#undef USE_CAN2     // HYREL build does not USE CAN2
-#endif //USE_HYREL_IO
 
-#ifdef HYDRA_DIAGS
-//#define GB_DIAGS_NEED_SWD_PINS_FOR_DEBUG
-#endif
 
-#ifdef USE_HYDRA_IO
-#define USE_AB_ENCODER      // affects IO definitions
-#endif //USE_HYDRA_IO
+//#ifdef USE_HYDRA_IO
+//#define USE_AB_ENCODER      // affects IO definitions
+//#endif //USE_HYDRA_IO
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -2454,6 +2431,7 @@ extern boolean _sendBootupAlertHostChar;
 
 extern pinType HEARTBEAT_PIN;
 //osseo variables
+extern int EnableOsseoVariablesReporting;
 extern int ParticleCounter;
 extern float EnclosureTemperature;
 extern int EnclosureHumidity;
