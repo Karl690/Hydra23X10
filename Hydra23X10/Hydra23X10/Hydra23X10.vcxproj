@@ -72,49 +72,49 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='X10|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_HYDRA_DIAGS|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_EngineHR_Hydra|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_EngineSR_30M|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineSR_30M|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_HYDRA_DIAGS|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>12.2.1/12.2/r2</ToolchainVersion>
+    <ToolchainVersion>12.3.1/13.2/r1</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -270,6 +270,7 @@
     <ClCompile Include="src\diags.c" />
     <ClCompile Include="src\display.c" />
     <ClCompile Include="src\GCode.c" />
+    <ClCompile Include="src\GPIO_Init.c" />
     <ClCompile Include="src\HardwareInit.c" />
     <ClCompile Include="src\headSetup.c" />
     <ClCompile Include="src\Hydra_can.c" />
@@ -490,6 +491,7 @@
     <ClInclude Include="inc\display.h" />
     <ClInclude Include="inc\GCode.h" />
     <ClInclude Include="inc\gpio.h" />
+    <ClInclude Include="inc\GPIO_Init.h" />
     <ClInclude Include="inc\HardwareInit.h" />
     <ClInclude Include="inc\headSetup.h" />
     <ClInclude Include="inc\Hydra_can.h" />
@@ -498,6 +500,7 @@
     <ClInclude Include="inc\main.h" />
     <ClInclude Include="inc\MotorDriver.h" />
     <ClInclude Include="inc\pinout.h" />
+    <ClInclude Include="inc\pins.h" />
     <ClInclude Include="inc\pnp.h" />
     <ClInclude Include="inc\Serial.h" />
     <ClInclude Include="usb_lib\inc\usbd_cdc_core.h" />

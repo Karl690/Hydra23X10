@@ -20,7 +20,7 @@
 typedef void(*PFUNC)(void);
 
 #define SOFTWARE_MAJOR_REVISION     4   // XXX  update when a major change occurs (ie, protocol)
-#define SOFTWARE_MINOR_REVISION     252 // XXX  update for major and minor changes
+#define SOFTWARE_MINOR_REVISION     253 // XXX  update for major and minor changes
 #define SOFTWARE_TWEAK_REVISION    'A'  // XXX  update for small changes ('z' is for experimental ONLY)
 
 #define SOFTWARE_DEBUG_REVISION    'a'  // XXX  char update for debug versions  (applies to 'z' versions only  is for experimental ONLY) (display with M115)
@@ -3521,3 +3521,4 @@ extern void SendPNPSPIDataToSpi2(uint16_t);
 //#define ST7735
 #define ST7789
 //#define ILI9341
+#define USE_SERIAL_DMA

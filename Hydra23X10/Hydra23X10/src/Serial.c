@@ -31,6 +31,60 @@ extern void releaseUsbBuffer(void);
 //  Public global definitions (exposed in Serial.h)
 ////////////////////////////////////////////////////////////////////////////////
 
+
+#define  SERIAL_UART_NUM 6
+
+
+COMPORT COMUSB = { 0 }; //normal comport for com to pc
+COMPORT COM3 = { 0 }; //uart based rs232 for equipment com  version
+COMPORT COM6 = { 0 }; //ch340 usb to serial bridge for either equipment or pc, used for AUX command inject from Matlab...
+
+
+//USB SERIAL PORT
+uint8_t Rx_BufferUSB[SERIAL_RX_NORMAL_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+uint8_t Tx_BufferUSB[SERIAL_TX_NORMAL_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+////serial port 3
+uint8_t Rx_Buffer3[SERIAL_RX_NORMAL_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+uint8_t Tx_Buffer3[SERIAL_TX_NORMAL_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+////serial port 6
+uint8_t Rx_Buffer6[SERIAL_RX_NORMAL_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+uint8_t Tx_Buffer6[SERIAL_TX_NORMAL_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+
+// uint8_t RawRxWorkBuff[SERIAL_RX_URGENT_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+// uint8_t RawUrgentRxWorkBuff[SERIAL_RX_URGENT_BUFFER_SIZE] __attribute__((aligned(1024))); //2k boundry
+
+static const Uart_configuration Uart_Configurations[SERIAL_UART_NUM] = { //it include USB VCB table.
+	{ NULL },
+	{ NULL },
+	//USART3  baud  GPIO 	PD8,PD9, DMA1_Channel4_Stream1,Rx_Buffer3
+	{ USART3, 115200, &RCC->APB1ENR, RCC_APB1Periph_USART3, //uart
+			PIN_NUM_08, PIN_NUM_09, PIN_PORT_D, PIN_AF_USART3, &RCC->AHB1ENR, RCC_AHB1Periph_GPIOD, //pins
+			&RCC->AHB1ENR, RCC_AHB1Periph_DMA1, 4, DMA1_Stream1, &COM3 },//dma
+	{ NULL },
+	{ NULL },
+	{ USART6, 115200, &RCC->APB2ENR, RCC_APB2Periph_USART6, 
+			PIN_NUM_06, PIN_NUM_07, PIN_PORT_C, PIN_AF_USART6, &RCC->AHB1ENR, RCC_AHB1Periph_GPIOC, 
+			&RCC->AHB1ENR, RCC_AHB1Periph_DMA2, 5, DMA2_Stream1, &COM6 },
+	
+};
+
+uint32_t NumberOfCharactersReceived = 0; 
+uint32_t NumberOfCharactersSent = 0;
+char WorkCharacter = '-'; //working character variable for getting 
+
+char serial_rx3[256] = { 0 };
+char serial_tx3[256] = { 0 };
+char serial_rx6[256] = { 0 };
+char serial_tx6[256] = { 0 };
+char serial_rxusb[256] = { 0 };
+char serial_txusb[256] = { 0 };
+COMPORT* COMSECS;
+
+COMPORT* MasterCommPort = &COM6;
+
+char WorkRxChar = 0;
+
+
 // there's a 64K separate block of SRAM available called core-coupled memory.
 // attempts to use the linker to place these blocks in this section worked fine
 // EXCEPT CooCox's CoFlash blew up on the resulting dfu files making it unusable
@@ -39,7 +93,7 @@ extern void releaseUsbBuffer(void);
 
 masterPort_t masterCommPort;
 
-char *rawRxBuffer = (char *)SERIAL_RX_RAW_BUFFER_ADDR;
+char *rawRxBuffer = NULL; // (char *)SERIAL_RX_RAW_BUFFER_ADDR;
 int  rawRxIndexIn; 			// index of where to store the next char
 int  rawRxIndexOut; 		// index of where to pull the next char
 int  rawRxCharsInBuf;		// total valid chars in buffer
@@ -48,20 +102,20 @@ int  rawRxCharsInBuf;		// total valid chars in buffer
 int  rawUsbRxIndexOut; 		// index of where to pull the next char
 int  rawUsbRxCharsInBuf;	// total valid chars in buffer
 
-char *urgentRxBuffer = (char *)SERIAL_RX_URGENT_BUFFER_ADDR; 	// "911" commands go here
+char *urgentRxBuffer = NULL; //(char *)SERIAL_RX_URGENT_BUFFER_ADDR; 	// "911" commands go here
 int  urgentRxIndexIn; 		// index of where to store the next char
 int  urgentRxIndexOut; 		// index of where to pull the next char
 int  urgentRxCharsInBuf;	// total valid chars in buffer
 int  urgentCommandWaiting;
 boolean _copyToUrgentRxBuffer;
 
-char *normalRxBuffer = (char *)SERIAL_RX_NORMAL_BUFFER_ADDR;	// non-"911" commands go here
+char *normalRxBuffer = NULL; // (char *)SERIAL_RX_NORMAL_BUFFER_ADDR;	// non-"911" commands go here
 int  normalRxIndexIn; 		// index of where to store the next char
 int  normalRxIndexOut; 		// index of where to pull the next char
 int  normalRxCharsInBuf;	// total valid chars in buffer
 int  normalCommandWaiting;
 
-char *normalTxBuffer = (char *)SERIAL_TX_NORMAL_BUFFER_ADDR;
+char *normalTxBuffer = NULL; // (char *)SERIAL_TX_NORMAL_BUFFER_ADDR;
 int  normalTxIndexIn;		// index of where to store the next char
 int  normalTxIndexOut;		// index of where to pull the next char
 int  normalTxCharsInBuf;	// total valid chars in buffer
@@ -149,6 +203,7 @@ void addCharToEchoBuffer (char ch)
 ////////////////////////////////////////////////////////////////////////////////
 
 /* implementation of putchar (also used by printf function to output data)    */
+
 void sendchar (char ch)
 { // add char to outgoing buffer
 	if ((normalTxCharsInBuf < (SERIAL_TX_NORMAL_BUFFER_SIZE-1)) && (masterCommPort != BOOTUP))
@@ -311,7 +366,7 @@ void sendGBNoCr(char *s)
 	sendstring(">GB: ");
 	sendstring(s);
 }
-
+#ifdef _OLD_SERIAL_
 void sendGB(char *s)
 {
 #ifdef ALLOW_NATIVE_LIGHTBURN
@@ -320,6 +375,7 @@ void sendGB(char *s)
 	sendstring(">GB: ");
 	sendstringCr(s);
 }
+#endif
 
 void sendGBN(char *s)
 {
@@ -1456,4 +1512,219 @@ void LaserSendRequestStringToPowerSupply(void)
 	// that there are char in the buffer and start sending
 	// contents of the send data are static
 	co2UartTxCharsInBuf = CO2_UART_TX_REQUEST_STRING_SIZE;//send the static message, over and over
+}
+
+//  added by lvana 10/11/2023 //////////////
+
+void AddSerialBufferToBuffer(ComBuffer *targetBuffer, uint8_t* buf, uint16_t size)
+{
+	uint16_t index = 0;
+	for (index = 0; index < size; index++)
+	{
+		targetBuffer->buffer[targetBuffer->Head] = buf[index];
+		targetBuffer->Head++;
+		targetBuffer->Head &= targetBuffer->Buffer_Size;
+	}
+}
+void AddSerialStringToBuffer(ComBuffer *targetBuffer, char* SourceString)
+{
+	uint16_t size = strlen(SourceString);
+	AddSerialBufferToBuffer(targetBuffer, (uint8_t*)SourceString, size);
+}
+
+void AddSerialCharToBuffer(ComBuffer *targetBuffer, uint8_t RawChar)
+{
+	targetBuffer->buffer[targetBuffer->Head] = RawChar;
+	targetBuffer->Head++;
+	targetBuffer->Head &= targetBuffer->Buffer_Size;
+}
+
+void sendString(char* stringToSend) {
+	AddSerialStringToBuffer(&MasterCommPort->TxBuffer, stringToSend);
+}
+
+void sendGB(char* stringToSend)
+{
+	AddSerialStringToBuffer(&MasterCommPort->TxBuffer, ">GB: ");
+	AddSerialStringToBuffer(&MasterCommPort->TxBuffer, stringToSend);
+	AddSerialCharToBuffer(&MasterCommPort->TxBuffer, CMD_END_CHAR);
+}
+
+
+void CheckForUart3TxRx()
+{	
+	if (COM3.UartHandler->SR & USART_SR_TXE)//if no room in tx register, skip
+	{
+		if (COM3.AcksWaiting)//acks have priority over all others
+		{
+			COM3.UartHandler->DR = (uint32_t) ASCII_ACK; //signal it is ok to send more commands
+			COM3.AcksWaiting--;
+		}
+		else if(COM3.TxBuffer.Head != COM3.TxBuffer.Tail)
+		{
+			WorkCharacter = COM3.TxBuffer.buffer[COM3.TxBuffer.Tail];
+			COM3.UartHandler->DR = (uint32_t)(WorkCharacter & 0x00ff);
+			COM3.TxBuffer.Tail++;
+			COM3.TxBuffer.Tail &= COM3.TxBuffer.Buffer_Size;
+			NumberOfCharactersSent++;
+		}
+	}
+	//now check for receive
+	//now check for receive
+#ifndef USE_SERIAL_DMA
+	while (Uart_Configurations[SERIAL_UART3].uart->SR & USART_SR_RXNE)
+	{
+		//this is polled mode
+		COM3.RxBuffer.buffer[COM3.TxBuffer.Head] = (char)(uint8_t)(Uart_Configurations[SERIAL_UART3].uart->DR & 0xff); //rad the character
+		COM3.RxBuffer.Head++;
+		COM3.RxBuffer.Head &= COM3.RxBuffer.Buffer_Size;
+	}
+#else
+	//data from the uart triggers DMA transfer
+	uint16_t oldHead = COM3.RxBuffer.Head;
+	COM3.RxBuffer.Head = COM3.RxBuffer.Buffer_Size - Uart_Configurations[SERIAL_UART3].dma_stream->NDTR;
+	uint8_t received = 0;
+	if (COM3.RxBuffer.Head - oldHead > 0)
+	{
+		NumberOfCharactersReceived += COM3.RxBuffer.Head - oldHead;
+		strcpy(serial_rx3, (char*)(COM6.RxBuffer.buffer + oldHead));
+		received = 1;
+	}
+	else if (COM3.RxBuffer.Head - oldHead < 0)
+	{
+		NumberOfCharactersReceived += COM3.RxBuffer.Head + (COM3.RxBuffer.Buffer_Size - oldHead);
+		strcpy(serial_rx3, (char*)(COM6.RxBuffer.buffer + oldHead));
+		received = 1;
+	}
+	// this is for testing between STM407 and SC01
+	if (received)
+	{
+		strcpy(serial_tx6, serial_rx3);
+		AddSerialStringToBuffer(&COM6.TxBuffer, serial_tx6);
+	}
+#endif
+}
+void CheckForUart6TxRx()
+{
+	if (COM6.UartHandler->SR & USART_SR_TXE)//if no room in tx register, skip
+	{
+		if (COM6.AcksWaiting)//acks have priority over all others
+		{
+			COM6.UartHandler->DR = (uint32_t) ASCII_ACK; //signal it is ok to send more commands
+			COM6.AcksWaiting--;
+		}
+		else if(COM6.TxBuffer.Head != COM6.TxBuffer.Tail)
+		{
+			WorkCharacter = COM6.TxBuffer.buffer[COM6.TxBuffer.Tail];
+			COM6.UartHandler->DR = (uint32_t)(WorkCharacter & 0x00ff);
+			COM6.TxBuffer.Tail++;
+			COM6.TxBuffer.Tail &= COM6.TxBuffer.Buffer_Size;
+			NumberOfCharactersSent++;
+		}
+	}
+	//now check for receive
+	//now check for receive
+#ifndef USE_SERIAL_DMA
+	while (Uart_Configurations[SERIAL_UART6].uart->SR & USART_SR_RXNE)
+	{
+		//this is polled mode
+		COM6.RxBuffer.buffer[COM6.RxBuffer.Head] = (char)(uint8_t)(COM6.UartHandler->DR & 0xff);
+		//AddSerialCharToBuffer(&COMUSB.TxBuffer, *COM6.RxBuffer.Head);
+		COM6.RxBuffer.Head++;
+		COM6.RxBuffer.Head &= COM6.RxBuffer.Buffer_Size;
+	}
+#else
+	//data from the uart triggers DMA transfer
+	uint16_t oldHead = COM6.RxBuffer.Head;
+	COM6.RxBuffer.Head = COM6.RxBuffer.Buffer_Size - Uart_Configurations[SERIAL_UART6].dma_stream->NDTR;
+	uint8_t received = 0;
+	if (COM6.RxBuffer.Head - oldHead > 0)
+	{
+		NumberOfCharactersReceived += COM6.RxBuffer.Head - oldHead;
+		strcpy(serial_rx6, (char*)(COM6.RxBuffer.buffer + oldHead));
+		received = 1;
+	}
+	else if (COM6.RxBuffer.Head - oldHead < 0)
+	{
+		NumberOfCharactersReceived += COM6.RxBuffer.Head + (COM6.RxBuffer.Buffer_Size - oldHead);
+		strcpy(serial_rx6, (char*)(COM6.RxBuffer.buffer + oldHead));
+		received = 1;
+	}
+	// this is for testing between STM407 and SC01
+	if (received)
+	{
+		strcpy(serial_tx3, serial_rx6);
+		AddSerialStringToBuffer(&COM3.TxBuffer, serial_tx3);
+	}
+#endif
+	
+	if (COMSECS == NULL) processRxCharacters();
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////   2/24/2023 by lvana            ///////////////////////////////////////////////////////////
+void Init_Uart(uint8_t port)
+{
+	Uart_configuration uartConfig = Uart_Configurations[port];
+	if (uartConfig.uart == NULL) return;
+	//Initialize serial buffers FIRST;
+	uartConfig.ComPort->UartHandler	= uartConfig.uart; //assign the uart handle to the comport structure
+
+
+	//GPIO pins next
+	 //RCC for pin port enable
+	*uartConfig.gpio_aphb |= uartConfig.gpio_rcc;
+	//Initalize GPIO Pins (RX and TX)
+	pinInit(uartConfig.Pin_Rx | uartConfig.Port | uartConfig.Afunction); // |INPUT_PULLDOWN);
+	pinInit(uartConfig.Pin_Tx | uartConfig.Port | uartConfig.Afunction);
+	
+	//configure DMA NEXT
+#ifdef USE_SERIAL_DMA
+	*uartConfig.dma_aphb |= uartConfig.dma_rcc; //RCC for DMA enable	
+	uartConfig.dma_stream->CR &= ~(1 << 0); // Disable DMA
+	switch (port)
+	{
+	case 0: DMA2->LIFCR = (0x3F << 16); break;  // DMA2_Stream2 low  bits:16-21
+	case 1: DMA1->HIFCR = (0xFC << 4); break;  // DMA1_Stream5 high bits: 6-11
+	case 2: DMA1->LIFCR = (0xFC << 4); break;  // DMA1_Stream1 low  bits: 6-11
+	case 3:  DMA1->LIFCR = (0x3F << 16); break;  // DMA1_Stream2 low  bits:16-21
+	case 4:  DMA1->LIFCR = (0x3F << 0); break;  // DMA1_Stream0 low  bits: 0-5
+	case 5: DMA2->LIFCR = (0xFC << 4); break;  // DMA2_Stream1 low  bits: 6-11
+	}
+	//	cfg->uart->CR3 |= 1 << 6; // DMA enable receiver
+
+	uartConfig.dma_stream->PAR = (uint32_t)(&uartConfig.uart->DR); //data from the uart triggers DMA transfer
+	uartConfig.dma_stream->M0AR = (uint32_t)(uartConfig.ComPort->RxBuffer.buffer); //memory address of beginning of buffer
+	uartConfig.dma_stream->NDTR = uartConfig.ComPort->RxBuffer.Buffer_Size; //count of dma transfers remaining
+	/* very important, we use circular dma buffer, so if you subtract the value in this register
+	 * from the LENGHT of the buffer, you get the NEAD position, which we use for checking to see
+	 * if there are any characters waiting to be processed
+	  Rxbuffer.head=RxBuffer.Length-dma_stream->NDTR ;    */
+
+	uartConfig.dma_stream->CR = uartConfig.dma_channel << 25;
+	uartConfig.dma_stream->CR |= 3 << 16; // Priority level: Very high
+	uartConfig.dma_stream->CR |= 0 << 13; // Memory data size: 8
+	uartConfig.dma_stream->CR |= 0 << 11; // Peripheral data size: 8
+	uartConfig.dma_stream->CR |= 1 << 10; // Memory increment mode
+	uartConfig.dma_stream->CR |= 0 << 9; // Peripheral not increment mrrode
+	uartConfig.dma_stream->CR |= 1 << 8; // Circular mode enabled
+	uartConfig.dma_stream->CR |= 0 << 6; // Data transfer direction: Peripheral-to-memory
+	uartConfig.dma_stream->CR |= 1 << 0; // Enable DMA
+	
+	uartConfig.uart->CR3 |= 1 << 6; // DMA enable receiver
+#endif //
+	*uartConfig.uart_aphb |= uartConfig.uart_rcc;
+	//Initialize uart	
+	USART_InitTypeDef USART_InitStructure;
+	USART_InitStructure.USART_BaudRate = uartConfig.DefaultBaudRate;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;	
+	
+	USART_Init(uartConfig.uart, &USART_InitStructure);
+	USART_Cmd(uartConfig.uart, ENABLE);
+	ATOMIC_SET_BIT(uartConfig.uart->CR3, USART_CR3_DMAR); //enable dma flag for automatic transfers
 }
