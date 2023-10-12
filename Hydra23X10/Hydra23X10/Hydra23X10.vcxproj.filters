@@ -575,6 +575,9 @@
     <ClCompile Include="common\src\util.c">
       <Filter>common\src</Filter>
     </ClCompile>
+    <ClCompile Include="common\src\pins.c">
+      <Filter>common\src</Filter>
+    </ClCompile>
     <ClCompile Include="common\src\hyrel_can.c">
       <Filter>common\src</Filter>
     </ClCompile>
@@ -709,12 +712,6 @@
     </ClCompile>
     <ClCompile Include="display\st7789.c">
       <Filter>display</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GPIO_Init.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="common\src\pins.c">
-      <Filter>common\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -954,12 +951,6 @@
     </ClInclude>
     <ClInclude Include="display\st7789.h">
       <Filter>display</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\GPIO_Init.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\pins.h">
-      <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

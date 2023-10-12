@@ -96,7 +96,6 @@ void InitUSART3(unsigned int baudrate)
 	//used to talk to the EZ80 laser power supply, 9600 baud
 	initClkAndResetAPB1(RCC_APB1Periph_USART3);
 
-
 	USART_InitTypeDef USART_InitStructure;
 	USART_InitStructure.USART_BaudRate = baudrate;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;

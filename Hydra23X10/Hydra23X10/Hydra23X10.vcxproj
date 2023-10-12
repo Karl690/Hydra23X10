@@ -270,7 +270,6 @@
     <ClCompile Include="src\diags.c" />
     <ClCompile Include="src\display.c" />
     <ClCompile Include="src\GCode.c" />
-    <ClCompile Include="src\GPIO_Init.c" />
     <ClCompile Include="src\HardwareInit.c" />
     <ClCompile Include="src\headSetup.c" />
     <ClCompile Include="src\Hydra_can.c" />
@@ -491,7 +490,6 @@
     <ClInclude Include="inc\display.h" />
     <ClInclude Include="inc\GCode.h" />
     <ClInclude Include="inc\gpio.h" />
-    <ClInclude Include="inc\GPIO_Init.h" />
     <ClInclude Include="inc\HardwareInit.h" />
     <ClInclude Include="inc\headSetup.h" />
     <ClInclude Include="inc\Hydra_can.h" />
@@ -500,7 +498,6 @@
     <ClInclude Include="inc\main.h" />
     <ClInclude Include="inc\MotorDriver.h" />
     <ClInclude Include="inc\pinout.h" />
-    <ClInclude Include="inc\pins.h" />
     <ClInclude Include="inc\pnp.h" />
     <ClInclude Include="inc\Serial.h" />
     <ClInclude Include="usb_lib\inc\usbd_cdc_core.h" />

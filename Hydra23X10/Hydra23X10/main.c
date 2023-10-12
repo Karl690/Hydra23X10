@@ -6083,10 +6083,7 @@ int main(void)
 	__disable_irq();            //prevent any interrupts until everything is initialized
 
 	wiggleDebugIO(0);
-	//InitAllUARTS(SYSTEM_BAUD_RATE);
-	Init_Uart(SERIAL_UART3);
-	Init_Uart(SERIAL_UART6);
-	
+	InitAllUARTS(SYSTEM_BAUD_RATE);
 //	USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
 	CAN_Config(CAN1);
 	CAN_Config(CAN2);
@@ -6112,7 +6109,7 @@ int main(void)
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 	Start_ADC();
-	//USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
+	// USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
 	Init_Display(&LCDSpi1, LCD_SPI_PORT, COLOR_MODE_NORMAL);
 
 	while (1)
