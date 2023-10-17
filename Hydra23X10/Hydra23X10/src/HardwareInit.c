@@ -345,7 +345,7 @@ void InitTim3RpmInput(void)
 	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
 	
 
-	// Configure PA0 as an input pin
+	// Configure PD2 as an input pin
 	GPIO_InitTypeDef GPIO_InitStruct;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_2;

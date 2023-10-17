@@ -83,7 +83,7 @@ int	CO2LaserAnalogPwrPWM = 0;
 int Co2LaserWatchDogTimer = 0;
 int RPMCounter = 0;
 //osseo variables
-int EnableOsseoVariablesReporting = 0;
+int EnableOsseoVariablesReporting = 1;
 int ParticleCounter = 666;
 float EnclosureTemperature = 26.3;
 int EnclosureHumidity = 99;
@@ -4197,6 +4197,8 @@ void ReportOsseoVariables(void)
 	
 	sprintf(_tmpStr, ":FL%d", EnclosureFanPwm); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
+	sprintf(_tmpStr, ":FS%d", RPMCounter); // last "ARG_N" but passed through to end of motionQ
+	strcat(_rptStr, _tmpStr);
 	
 	sprintf(_tmpStr, ":DL%d", Doorsense); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
@@ -4372,7 +4374,7 @@ void loop_1000Hz_simple_work(void)
 		if (Co2LaserWatchDogTimer == 0)
 		{
 			//CO2LaserAnalogPwrPWM = 0; //turn of 0-5v power
-			TIM8->CCR3 = 0; //turn off direct input PWM
+			//TIM8->CCR3 = 0; //turn off direct input PWM  karlChris add osseo check
 		}
 	}
 	HssControl(TICKS_PER_SEC_1000HZ_LOOP);

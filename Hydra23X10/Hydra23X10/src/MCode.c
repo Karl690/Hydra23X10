@@ -4524,11 +4524,29 @@ void M_Code_M681(void)  //enable CO2 cooling pump
 
 void M_Code_M682(void)  // start Z axis sensor calibration run
 {
-	// MCODE M682
+	// MCODE M682 ["P" pulsePowerPct] ["D" durationMs]
 	// MCODE
-	// MCODE start Z axis sensor calibration run
-	// MCODE RETIRED
-	ReportRetiredMcode("");
+	// MCODE    ARG_P = current laser power percentage (0-100) {def = 0}
+	// MCODE    ARG_D = pulse duration in ms (0-1000) {def = 0}
+	// MCODE
+	// MCODE    laser pulse (one-shot) mode
+	// Arg_A sets the ANALOG power PWM
+	// Arg_F sets the frequency of pwm
+	if (ARG_T_PRESENT)
+	{
+		//head is specified, so lets see if it is 41, meaning internal CO2 laser
+		if (ARG_P_MISSING)return;//cant work without power specification
+		//if (ARG_D_MISSING)return;//need specific on dwell time in ms
+		if (ARG_T == 44)//44 is the chamber Fan
+		{
+			//new internal co2 laser control
+			if (ARG_F_PRESENT)SetCO2LaserPwmFrequency((int)ARG_F);
+			TIM8->CCR2 = 101;
+			TIM8->CCR3 = (int)ARG_P;
+			//if(ARG_F_PRESENT)
+			return;			
+		}	
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////

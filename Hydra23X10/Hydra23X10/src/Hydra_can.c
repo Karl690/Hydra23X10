@@ -305,11 +305,7 @@ void SetLocalLaserPwmPct(float LaserPowerPct)
 	// per spec, pwm output is high when TIM->CNT < TIM->CCR;  TIM-CNT ranges from 0 to TIM->ARR.'
 	// to have fully on (100%, TIM->CCR needs to be set to TIM->ARR+1 (actual arr value), but limited to
 	unsigned int maxVal = imin(((unsigned int)_gs._laser.TimerBase->ARR) + 1, 0xffff);
-#ifdef USE_AB_ENCODER
-	_gs._laser.TimerBase->CCR4 = (LASER_ENABLED) ? fminf(LaserPowerPct * (float)maxVal, maxVal) : 0;
-#else //!USE_AB_ENCODER
 	_gs._laser.TimerBase->CCR2 = (LASER_ENABLED) ? fminf(LaserPowerPct * (float)maxVal, maxVal) : 0;
-#endif //!USE_AB_ENCODER
 
 }
 ////////////////////////////////////////////////////////////////////////////////
