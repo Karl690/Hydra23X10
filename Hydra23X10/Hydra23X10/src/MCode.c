@@ -3389,12 +3389,12 @@ void M_Code_M261(void)  // set FAN Duty cycle and enable
 //	setupHssPwm(&HighSideSwitches[8]); 
 	sendNotice(); //echo back the command
 }
-void M_Code_M262(void)  // disable all HSS
+void M_Code_M262(void)  // set UVLED Duty cycle and enable
 {
-
 	if (ARG_S_MISSING)return;//do nothing with out valid data
+	if (ARG_S > 0)ARG_S = 100.0f;
 	EnclosureUvLedPwm = (int) ARG_S;
-	setupHssPwm(&HighSideSwitches[3]); 
+	changeHssDuty(&HighSideSwitches[1], (int) ARG_S); 
 	sendNotice(); //echo back the command
 }
 void M_Code_M263(void)  // door lock
@@ -3402,7 +3402,8 @@ void M_Code_M263(void)  // door lock
 	if (ARG_S_MISSING)return;//do nothing with out valid data
 	EnclosureDoorLock = (int) ARG_S;
 	if (ARG_S > 0)ARG_S = 100.0f;
-	setupHssPwm(&HighSideSwitches[3]); 
+	changeHssDuty(&HighSideSwitches[3], (int) ARG_S); 
+	changeHssDuty(&HighSideSwitches[6], (int) ARG_S); 
 	sendNotice(); //echo back the command
 }
 
