@@ -466,10 +466,6 @@ void SendCurrentMcodeExecutionNotice(boolean argTIsADevice)
 
 void SendFakeMcodeExecutionNotice(int M, float T, float S, float O)
 {   // sends a fake mcode completion (using in cases where Repetrel gets out of sync with the hardware to force the GUI to be correct
-#ifdef ALLOW_NATIVE_LIGHTBURN
-	if (_lightburnModeEnabled)
-		return;
-#endif //ALLOW_NATIVE_LIGHTBURN
 	sprintf(SendString, ">MC:M%3d: ", M);
 	sendstring(SendString);
 
@@ -3372,11 +3368,25 @@ void M_Code_M260(void)
 //M263 S###			1 – Engage, 0 – Disable  Door Lock
 	
 
-void M_Code_M261(void)  // set UvLed Duty cycle
+void M_Code_M261(void)  // set FAN Duty cycle and enable
 {
 	if (ARG_S_MISSING)return;//do nothing with out valid data
+	
+	if (ARG_F_PRESENT)SetCO2LaserPwmFrequency((int)ARG_F);
+	TIM8->CCR2 = 101;//100 percent maximum duty cycle
+	if (ARG_S > 100)ARG_S = 100;
+	TIM8->CCR3 = (int)ARG_S;
+	
 	EnclosureFanPwm =(int) ARG_S;
-	setupHssPwm(&HighSideSwitches[2]); 
+	if (EnclosureFanPwm == 0)
+	{
+		changeHssDuty(&HighSideSwitches[8], 0);
+	}
+	else
+	{
+		changeHssDuty(&HighSideSwitches[8], 100);
+	}
+//	setupHssPwm(&HighSideSwitches[8]); 
 	sendNotice(); //echo back the command
 }
 void M_Code_M262(void)  // disable all HSS
@@ -3384,7 +3394,7 @@ void M_Code_M262(void)  // disable all HSS
 
 	if (ARG_S_MISSING)return;//do nothing with out valid data
 	EnclosureUvLedPwm = (int) ARG_S;
-	setupHssPwm(&HighSideSwitches[4]); 
+	setupHssPwm(&HighSideSwitches[3]); 
 	sendNotice(); //echo back the command
 }
 void M_Code_M263(void)  // door lock

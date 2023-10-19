@@ -1003,7 +1003,7 @@ void removeAllRegisteredDevice(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
+//check for Missing IN action for a head, meaning it died or was removed.
 void checkForMia(void)
 {
 	int i;
@@ -1459,6 +1459,7 @@ void initFromSoapstring(void)
 			SetAllAxisHomePosition(FALSE);
 		}
 	}
+	SmoothDataUsingOlympicVotingAverage();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

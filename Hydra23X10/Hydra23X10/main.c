@@ -91,9 +91,11 @@ int EnclosurePressureDifference = -1;
 int EnclosureUvLedPwm = 0;
 int EnclosureFanPwm =0;
 int EnclosureDoorLock = 0;
-int EnclosureDoorSense = 1;
-int EnclosureCartridgeSense = 1;
-int EnclosurePrintBedSense = 1;
+uint8_t EnclosureDoorSense = 1;
+int doorSenseState = 0;
+uint8_t previous_EnclosureDoorSense = 1;
+int EnclosureCartridgeSense = 0;
+int EnclosurePrintBedSense = 0;
 
 
 //607 is dcodedrainstate[0]...
@@ -4059,9 +4061,9 @@ void PWMCntrl(void)
 }
 void ReportXYZLocation(void)
 {
-	if(EnableOsseoVariablesReporting)return;//osseo karlchris
-	RPMCounter = TIM3->CNT;
-	TIM3->CNT = 0;
+//	RPMCounter = TIM3->CNT;
+//	TIM3->CNT = 0;
+	if (EnableOsseoVariablesReporting)return;//osseo karlchris
 	if (ForceReportXYZLocation == FALSE)
 	{   // not forcing an immediate update, so continue with prescaler
 		if (_MailBoxes._positionReportingPeriodMs == 0)  return;             // no status data requested, so return
@@ -4138,8 +4140,10 @@ void ReportXYZLocation(void)
 }
 void ReportOsseoVariables(void)
 {		
+	RPMCounter =(int)30*  TIM3->CNT;
+	TIM3->CNT = 0;
 	if (EnableOsseoVariablesReporting == 0)return;
-	
+	//float pressure difference = AdcChannelTable[ch].Channel.RawADCDataBuffer;
 //	ParticleCounter +=123;
 //	if (ParticleCounter > 6000)ParticleCounter = 0;
 //	EnclosureTemperature += 1;
@@ -4161,8 +4165,26 @@ void ReportOsseoVariables(void)
 //	EnclosurePrintBedSense += 1;
 //	if (EnclosurePrintBedSense > 1)EnclosurePrintBedSense = 0;
 	int Doorsense=HighSideSwitches[3].DutyCycle;
-	if (Doorsense > 0)Doorsense = 1;
 	
+	if (Doorsense > 0)Doorsense = 1;
+	//EnclosureDoorSense = READ_BIT(PIN_PORT_E, PIN_NUM_11); 
+	EnclosureDoorSense = GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_11);
+	
+	if (EnclosureDoorSense == 0)
+	{
+		doorSenseState = 1;
+		if (previous_EnclosureDoorSense)
+		{
+			previous_EnclosureDoorSense = 0;	
+			//SendFakeMcodeExecutionNotice(1, INVALID_ARG_VALUE, 1, INVALID_ARG_VALUE); // send fake notice for an M1 (S1=active)
+		}
+	}
+	else
+	{//reset logic so next time we can trigger a door lock enable
+		doorSenseState = 0;
+		previous_EnclosureDoorSense = 1;
+	}
+
 	sprintf(_rptStr, ">ES");
 	//osseo variables to report
 	//Monitored Parameter	Prefix Readout interpretation 
@@ -4188,7 +4210,8 @@ void ReportOsseoVariables(void)
 		
 	sprintf(_tmpStr, ":HD%d", EnclosureHumidity); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
-		
+
+	EnclosurePressureDifference = ADC_Channel[4].adcAvg -512 ;
 	sprintf(_tmpStr, ":PD%d", EnclosurePressureDifference); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
 		
@@ -4197,13 +4220,13 @@ void ReportOsseoVariables(void)
 	
 	sprintf(_tmpStr, ":FL%d", EnclosureFanPwm); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
-	sprintf(_tmpStr, ":FS%d", RPMCounter); // last "ARG_N" but passed through to end of motionQ
+	sprintf(_tmpStr, ":FS%d", (RPMCounter)); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
 	
 	sprintf(_tmpStr, ":DL%d", Doorsense); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
 	
-	sprintf(_tmpStr, ":DS%d", EnclosureDoorSense); // last "ARG_N" but passed through to end of motionQ
+	sprintf(_tmpStr, ":DS%d", doorSenseState); // last "ARG_N" but passed through to end of motionQ
 	strcat(_rptStr, _tmpStr);
 	
 	sprintf(_tmpStr, ":CR%d", EnclosureCartridgeSense); // last "ARG_N" but passed through to end of motionQ
@@ -4976,14 +4999,6 @@ void setSensorPolarityAndEnable(sensorStruct *sensorPtr, polarity_t polarity, bo
 
 void checkStartButton(void)
 {
-#ifdef HYDRA_DIAGS
-	if (_diagsEnabled) return;
-#endif
-
-#ifdef ALLOW_NATIVE_LIGHTBURN
-	if (_lightburnModeEnabled) return;
-#endif //ALLOW_NATIVE_LIGHTBURN
-
 	if (_highVoltageIsNotStableCoundownMs)
 	{
 		setSensorStateToUnknown(&startButton);
@@ -4996,16 +5011,6 @@ void checkStartButton(void)
 		if (_sendingGBStringsMask & GB_STRING_DUMP_ON_START)  // use M797 S<mask> to enable
 		{
 			sendCrashDataFromRAMtoFlash(); // save a copy of key variables to flash
-#ifdef COLLECT_METRICS
-			if (_sendingGBStringsMask & GB_STRING_COMM_ACK_CHECK)  // use M797 S<mask> to enable
-			{
-				M_Code_M773();
-				M_Code_M774();
-				M_Code_M775();
-				M_Code_M776();
-				M_Code_M779();
-			}
-#endif  // COLLECT_METRICS
 		}
 	}
 }
@@ -6112,7 +6117,7 @@ int main(void)
 	//timerInitEncoderAB(FALSE);  		// setup for GUI use
 	Start_ADC();
 	// USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
-	Init_Display(&LCDSpi1, LCD_SPI_PORT, COLOR_MODE_NORMAL);
+	Init_Display(&LCDSpi1, LCD_SPI_PORT, COLOR_MODE_INVERT);
 
 	while (1)
 	{

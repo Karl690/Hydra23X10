@@ -2439,7 +2439,9 @@ extern int EnclosurePressureDifference;
 extern int EnclosureUvLedPwm;
 extern int EnclosureFanPwm;
 extern int EnclosureDoorLock;
-extern int EnclosureDoorSense;
+extern uint8_t EnclosureDoorSense;
+extern int doorSenseState;
+extern uint8_t previous_EnclosureDoorSense;
 extern int EnclosureCartridgeSense;
 extern int EnclosurePrintBedSense;
 
