@@ -83,7 +83,7 @@ int	CO2LaserAnalogPwrPWM = 0;
 int Co2LaserWatchDogTimer = 0;
 int RPMCounter = 0;
 //osseo variables
-int EnableOsseoVariablesReporting = 1;
+int EnableOsseoVariablesReporting = 0;
 int ParticleCounter = 666;
 float EnclosureTemperature = 26.3;
 int EnclosureHumidity = 99;
@@ -4396,8 +4396,8 @@ void loop_1000Hz_simple_work(void)
 		Co2LaserWatchDogTimer--;
 		if (Co2LaserWatchDogTimer == 0)
 		{
-			//CO2LaserAnalogPwrPWM = 0; //turn of 0-5v power
-			//TIM8->CCR3 = 0; //turn off direct input PWM  karlChris add osseo check
+			CO2LaserAnalogPwrPWM = 0; //turn of 0-5v power
+			TIM8->CCR3 = 0; //turn off direct input PWM  karlChris add osseo check
 		}
 	}
 	HssControl(TICKS_PER_SEC_1000HZ_LOOP);
