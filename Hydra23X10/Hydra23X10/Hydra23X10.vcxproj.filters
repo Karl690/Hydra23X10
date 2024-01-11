@@ -952,5 +952,8 @@
     <ClInclude Include="display\st7789.h">
       <Filter>display</Filter>
     </ClInclude>
+    <ClInclude Include="RevisionHistory.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
