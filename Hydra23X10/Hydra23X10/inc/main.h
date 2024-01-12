@@ -19,10 +19,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 typedef void(*PFUNC)(void);
 
+//old revision string, no longer used, please look in revisionHistory.h for current revision
 #define SOFTWARE_MAJOR_REVISION     4   // XXX  update when a major change occurs (ie, protocol)
 #define SOFTWARE_MINOR_REVISION     253 // XXX  update for major and minor changes
 #define SOFTWARE_TWEAK_REVISION    'A'  // XXX  update for small changes ('z' is for experimental ONLY)
-
 #define SOFTWARE_DEBUG_REVISION    'a'  // XXX  char update for debug versions  (applies to 'z' versions only  is for experimental ONLY) (display with M115)
 extern const PFUNC F1000HZ[];
 extern const PFUNC F100HZ[];
