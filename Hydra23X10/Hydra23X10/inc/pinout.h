@@ -81,32 +81,68 @@
 #define J17_15          (PIN_UNDEFINED     | PIN_PORT_H | PIN_NUM_09)  // undefined
 #define J17_16          (PIN_UNDEFINED     | PIN_PORT_H | PIN_NUM_11)  // undefined
 
+//#define SWAP_XYZ_ABC_PINS
+#ifdef SWAP_XYZ_ABC_PINS
+/*allows using abc instead of abc, for when there is input pin spiked and no longer working*/
+//X_Motor
+#define A_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_05)//X10
+#define A_HOME          (INPUT_FLOATING    | PIN_PORT_E | PIN_NUM_01)//X10
+#define A_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_04)//X10
+//Y_Motor
+#define B_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_06)//X10
+#define B_HOME          (INPUT_FLOATING    | PIN_PORT_E | PIN_NUM_03)//X10
+#define B_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_08)//X10
+//Z_Motor
+#define C_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_14)//x10
+#define C_HOME          (INPUT_FLOATING    | PIN_PORT_E | PIN_NUM_00)
+#define C_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_B | PIN_NUM_05)
+//A_Motor
+#define X_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_06)
+#define X_HOME          (INPUT_PULLUP      | PIN_PORT_B | PIN_NUM_03)
+#define X_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_04)
+//B_motor
+#define Y_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_B | PIN_NUM_00  | PIN_INIT_LOW)
+#define Y_HOME          (INPUT_PULLUP      | PIN_PORT_E | PIN_NUM_07)
+#define Y_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_15 | PIN_INIT_LOW)
+//C_Motor
+#define Z_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_10)
+#define Z_HOME          (INPUT_PULLUP      | PIN_PORT_A | PIN_NUM_06)
+#define Z_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_02 | PIN_INIT_LOW)
 
+#else
+//X_Motor
 #define X_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_05)//X10
 #define X_HOME          (INPUT_FLOATING    | PIN_PORT_E | PIN_NUM_01)//X10
 #define X_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_04)//X10
-//#define X_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_08)//X10
-#define Y_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_06)//10
-#define Y_HOME          (INPUT_FLOATING      | PIN_PORT_E | PIN_NUM_03)
+//Y_Motor
+#define Y_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_06)//X10
+#define Y_HOME          (INPUT_FLOATING    | PIN_PORT_E | PIN_NUM_03)//X10
 #define Y_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_08)//X10
-//#define Y_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_E | PIN_NUM_04)//X10
+//Z_Motor
 #define Z_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_14)//x10
 #define Z_HOME          (INPUT_FLOATING    | PIN_PORT_E | PIN_NUM_00)
 #define Z_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_B | PIN_NUM_05)
+//A_Motor
 #define A_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_06)
 #define A_HOME          (INPUT_PULLUP      | PIN_PORT_B | PIN_NUM_03)
 #define A_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_04)
-#define AIN7            (ANALOG_FLOATING   | PIN_PORT_F | PIN_NUM_09)
-#define AIN8            (ANALOG_FLOATING   | PIN_PORT_F | PIN_NUM_10)
+//B_motor
 #define B_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_B | PIN_NUM_00  | PIN_INIT_LOW)
 #define B_HOME          (INPUT_PULLUP      | PIN_PORT_E | PIN_NUM_07)
 #define B_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_D | PIN_NUM_15 | PIN_INIT_LOW)
-#define LATHE_STEP      (PIN_AF_TIM9       | PIN_OTYPE_PUSHPULL | PIN_OSPEED_100MHZ | PIN_PORT_E | PIN_NUM_06 | PIN_INIT_HIGH)
-#define BOOT1           (PIN_UNDEFINED     | PIN_PORT_B | PIN_NUM_02)  // undefined
+//C_Motor
 #define C_DIR           (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_10)
 #define C_HOME          (INPUT_PULLUP      | PIN_PORT_A | PIN_NUM_06)
-#define C_L1            (INPUT_PULLUP      | PIN_PORT_C | PIN_NUM_05)  //emo detect
 #define C_STEP          (OUTPUT_PP_50MHZ   | PIN_PORT_A | PIN_NUM_02 | PIN_INIT_LOW)
+#endif /* */
+//standard pins
+
+
+#define AIN7            (ANALOG_FLOATING   | PIN_PORT_F | PIN_NUM_09)
+#define AIN8            (ANALOG_FLOATING   | PIN_PORT_F | PIN_NUM_10)
+#define LATHE_STEP      (PIN_AF_TIM9       | PIN_OTYPE_PUSHPULL | PIN_OSPEED_100MHZ | PIN_PORT_E | PIN_NUM_06 | PIN_INIT_HIGH)
+#define BOOT1           (PIN_UNDEFINED     | PIN_PORT_B | PIN_NUM_02)  // undefined
+#define C_L1            (INPUT_PULLUP      | PIN_PORT_C | PIN_NUM_05)  //emo detect
 
 #define CAN1_RX         (PIN_AF_CAN1       | PIN_PORT_D | PIN_NUM_00 | PIN_PUPPD_PULLUP)//PB0
 #define CAN1_TX         (PIN_AF_CAN1       | PIN_PORT_D | PIN_NUM_01)                   //PB1

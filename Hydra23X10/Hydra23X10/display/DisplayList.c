@@ -5,6 +5,7 @@
 #include "displaylist.h"
 #include "display.h"
 #include "LcdDefinitions.h"
+#include "RevisionHistory.h"
 //#include "taskmanager.h"
 //#include "Communication/parser.h"
 //#include "SETTINGS/settings.h"
@@ -16,9 +17,10 @@ char* AtofVariable="CmdQue[3] Variables";
 char* displayTestString2="12345";
 //	{(uint32_t)&_gs.CanRxCount1,         "CnRx Cnt", FUNC_INT, 		BLUE,	MAGENTA, 	0},
 char TestString[] ="test String 12345";
+
 LcdVariableInfo LcdVarsTable[] = {
 	{ (uint32_t)1, "GLOBAL1", FUNC_TITLE, COLOR_RED, COLOR_MAGENTA, 0 },
-	{(uint32_t)&HeartBeat,               	"HB       ", FUNC_INT32,		COLOR_WHITE,	COLOR_MAGENTA, 	0},
+	{(uint32_t)&HeartBeat,					HB_STRING, FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
 	{(uint32_t)&ParticleCounter,			"Prtcl_Cnt", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
 	{(uint32_t)&EnclosureTemperature,		"Temp degC", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
 	{(uint32_t)&EnclosureHumidity,			"Humidity%", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
