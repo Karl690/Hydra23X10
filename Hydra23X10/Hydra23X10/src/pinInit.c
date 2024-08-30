@@ -95,7 +95,7 @@ void pinInitAll(void)
 	pinInit(PnP_Rclk);
 	pinInit(PnP_Enable);
 	pinInit(SPi2_Mosi);
-	pinInit(SPi2_Sclk);
+	//pinInit(SPi2_Sclk);
 	pinInit(DOOROPEN_SENSE_INPUT);
 	//pinInit(RPMINPUT); initialized with counter input to timer3
 	

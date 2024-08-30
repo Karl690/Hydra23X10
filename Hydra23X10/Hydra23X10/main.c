@@ -4057,13 +4057,13 @@ void PWMCntrl(void)
 	Update595Index++;
 	
 	TIM4->CCR3 = SpindleDesiredSpeedPWM;
-	TIM4->CCR4 = CO2LaserAnalogPwrPWM;
+	TIM4->CCR4 = CO2LaserAnalogPwrPWM/2;
 }
 void ReportXYZLocation(void)
 {
 //	RPMCounter = TIM3->CNT;
 //	TIM3->CNT = 0;
-	if (EnableOsseoVariablesReporting)return;//osseo karlchris
+	//if (EnableOsseoVariablesReporting)return;//osseo karlchris
 	if (ForceReportXYZLocation == FALSE)
 	{   // not forcing an immediate update, so continue with prescaler
 		if (_MailBoxes._positionReportingPeriodMs == 0)  return;             // no status data requested, so return
@@ -4396,7 +4396,7 @@ void loop_1000Hz_simple_work(void)
 		Co2LaserWatchDogTimer--;
 		if (Co2LaserWatchDogTimer == 0)
 		{
-			CO2LaserAnalogPwrPWM = 0; //turn of 0-5v power
+			//CO2LaserAnalogPwrPWM = 0; //turn of 0-5v power
 			TIM8->CCR3 = 0; //turn off direct input PWM  karlChris add osseo check
 		}
 	}
@@ -6109,8 +6109,8 @@ int main(void)
 	SysTick_Config(SystemCoreClock / SYSTICKS_PER_SECOND);//slice timer has lowest interrupt priority
 	InitTim3RpmInput(); //set up the rpm counter
 	__enable_irq();  // now everything is ready, so let interrupts occur
-	
-	Init_SPI2();//used for pnp valve control on J21
+
+	//Init_SPI2();//used for pnp valve control on J21
 	ConfigureTimer4PwmOutputsFor0_10V();//setup power control for laser and speed for spindle  TIM4-CCR3 and TIM4-CCR4
 	InitTimer8();
 	pinSet(TPIC_6595_CLR); //clear the output of the tpsic595, after power on and also abort char

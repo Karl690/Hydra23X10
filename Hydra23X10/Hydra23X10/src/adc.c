@@ -10,6 +10,7 @@ float ScaledADCData[ADC_CHANNEL_NUM] = { 0 }; //converted adc buffer values
 uint16_t ADC_Work_Channel_Index = 0; //used to walk thru the channels and update the working variables.
 adcStruct ADC_Channel[ADC_CHANNEL_NUM];
 adcStruct *ADC_Work_Channel;
+float laserTemperature = 0;
 
 void Init_ADC(void)
 {
@@ -120,6 +121,7 @@ void SmoothDataUsingOlympicVotingAverage(void)
 		ADC_Work_Channel->convAvg = convertRtdDataFromRawADCValue(AdcChannelTable[ADC_Work_Channel_Index].ConvertionTable, ADC_Work_Channel->adcAvg);
 	}
 	// setup next conversion so data will be ready for the next call in ~10ms
+	if (ADC_Work_Channel_Index == 4)laserTemperature = ADC_Work_Channel->convAvg;
 	ADC_Work_Channel_Index++;
 	if (ADC_Work_Channel_Index >= ADC_CHANNEL_NUM) ADC_Work_Channel_Index = 0; //keep in range
 

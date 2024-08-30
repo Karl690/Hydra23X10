@@ -76,6 +76,7 @@ byte PersistantUltimusControlHeadAddress=HH_POSITION_UNPLUGGED;
 
 byte PersistantHotheadAddress=DEFAULT_HOT_HEAD;
 byte PersistantHotbedAddress=DEFAULT_HOT_BED;
+uint16_t DesiredCo2LaserPower = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Forward declarations - any local modules needing an early template
@@ -964,6 +965,8 @@ void M_Code_M30(void)  // marks end of program
 		_metrics.autoDumpOnM30 = 0;
 	}
 #endif
+	CO2LaserAnalogPwrPWM = 0;
+	TIM8->CCR3 = 0;//make sure the lasers are disabled
 	resetVariableOnJobEnd(TRUE);
 	SendCurrentMcodeExecutionNotice(FALSE);
 }
@@ -1019,7 +1022,7 @@ void M_Code_M45(void)  // spindle Motor Coolant OFF
 	// MCODE    turn spindle Motor Coolant OFF
 
 #ifdef USE_HYREL_IO
-	pinClear(SPINDLECOOLANT);
+	//pinClear(SPINDLECOOLANT);
 #endif  //USE_HYREL_IO
 	SendCurrentMcodeExecutionNotice(FALSE);
 }
@@ -3776,8 +3779,9 @@ void M_Code_M623(void)  // Laser pulse (one-shot) mode control (uses P, D)
 			if (ARG_A_PRESENT)CO2LaserAnalogPwrPWM = (int)ARG_A;//set analog range
 			if (ARG_F_PRESENT)SetCO2LaserPwmFrequency((int)ARG_F);
 			Co2LaserWatchDogTimer = (int)ARG_D;
-			TIM8->CCR3 = (int)ARG_P;
-			//if(ARG_F_PRESENT)
+			TIM8->CCR3 = DesiredCo2LaserPower=(int)ARG_P;
+			_gs._laser.enabled = 1;
+			_gs._laser.localControl = 1;
 			return;			
 		}	
 	}

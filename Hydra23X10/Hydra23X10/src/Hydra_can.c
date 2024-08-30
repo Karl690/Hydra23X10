@@ -305,8 +305,9 @@ void SetLocalLaserPwmPct(float LaserPowerPct)
 	// per spec, pwm output is high when TIM->CNT < TIM->CCR;  TIM-CNT ranges from 0 to TIM->ARR.'
 	// to have fully on (100%, TIM->CCR needs to be set to TIM->ARR+1 (actual arr value), but limited to
 	unsigned int maxVal = imin(((unsigned int)_gs._laser.TimerBase->ARR) + 1, 0xffff);
-	_gs._laser.TimerBase->CCR2 = (LASER_ENABLED) ? fminf(LaserPowerPct * (float)maxVal, maxVal) : 0;
-
+	//_gs._laser.TimerBase->CCR2 = (LASER_ENABLED) ? fminf(LaserPowerPct * (float)maxVal, maxVal) : 0;
+	TIM8->CCR3 = LaserPowerPct; //tun on pwm for laser
+	
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -508,6 +509,7 @@ void UnPrime(outboxStruct *outboxPtr)
 	if (LASER_LOCAL_PWM_CONTROL)
 	{   // special case of directly controlling co2 laser from the motherboard's timer
 		SetLocalLaserPwmPct(0);
+		TIM8->CCR3 = 0; //tun on pwm for laser
 	}
 
 	if (PersistantUltimusControlHeadAddress == outboxPtr->device)
@@ -558,6 +560,7 @@ void PrimeThenRun(outboxStruct *outboxPtr)
 	if (LASER_LOCAL_PWM_CONTROL)    // special case
 	{
 		SetLocalLaserPwmPct(_gs._laser.piercePowerPct);
+		//TIM8->CCR3 = DesiredCo2LaserPower; //tun on pwm for laser
 	}
 
 	if (PersistantUltimusControlHeadAddress == outboxPtr->device)

@@ -8,6 +8,7 @@
 #define ADC_NUM_SAMPLES                 10  // 10 values saved; toss high and low to get average
 #define ADC_SHIFT_FOR_AVG               3
 extern uint16_t RawADCDataBuffer[];
+extern float laserTemperature;
 
 typedef enum {
 	CONV_UNDEFINED = 0,

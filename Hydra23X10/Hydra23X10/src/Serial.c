@@ -1085,6 +1085,7 @@ void ProcessRawRxChar(char rawChar)
 		//CO2LaserAnalogPwrPWM = 0;//kill laser now
 		Co2LaserWatchDogTimer = 0;//extra sure no laser is running
 		TIM8->CCR3 = 0;//turn off co2 laser just in case
+		CO2LaserAnalogPwrPWM = 0;
 		_requestToAbortAtEndOfMove = TRUE;
 		break;
 

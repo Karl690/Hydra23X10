@@ -18,37 +18,50 @@ char* displayTestString2="12345";
 //	{(uint32_t)&_gs.CanRxCount1,         "CnRx Cnt", FUNC_INT, 		BLUE,	MAGENTA, 	0},
 char TestString[] ="test String 12345";
 
+//osseo display
+//LcdVariableInfo LcdVarsTable[] = {
+//	{ (uint32_t)1, "GLOBAL1", FUNC_TITLE, COLOR_RED, COLOR_MAGENTA, 0 },
+//	{(uint32_t)&HeartBeat,					HB_STRING, FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&ParticleCounter,			"Prtcl_Cnt", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosureTemperature,		"Temp degC", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosureHumidity,			"Humidity%", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosurePressureDifference, "Delta P  ",FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosureUvLedPwm,			"UVLED PWM", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosureFanPwm,			"BlowerPWM", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&RPMCounter,					"BlowerRPM", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&doorSenseState,				"DoorSense", FUNC_BAR_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosureCartridgeSense,	"Cartridge", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&EnclosurePrintBedSense,		"Bld Plate", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+////analog conversion data
+//	{(uint32_t)&RawADCDataBuffer[0],		"CH01_PA3", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
+//	{(uint32_t)&RawADCDataBuffer[1],        "CH02_PA4", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
+//	{(uint32_t)&RawADCDataBuffer[2],        "CH03_PA5", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
+//	{(uint32_t)&RawADCDataBuffer[3],        "CH04_PA6", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
+//	{(uint32_t)&RawADCDataBuffer[4],		"CH05_PB1", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
+//	{(uint32_t)&RawADCDataBuffer[5],		"CH05_PC5", FUNC_INT16, COLOR_WHITE, COLOR_RED, 0},
+////end osseo table
+
+
 LcdVariableInfo LcdVarsTable[] = {
 	{ (uint32_t)1, "GLOBAL1", FUNC_TITLE, COLOR_RED, COLOR_MAGENTA, 0 },
 	{(uint32_t)&HeartBeat,					HB_STRING, FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&ParticleCounter,			"Prtcl_Cnt", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosureTemperature,		"Temp degC", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosureHumidity,			"Humidity%", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosurePressureDifference, "Delta P  ",FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosureUvLedPwm,			"UVLED PWM", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosureFanPwm,			"BlowerPWM", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&RPMCounter,					"BlowerRPM", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&doorSenseState,				"DoorSense", FUNC_BAR_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosureCartridgeSense,	"Cartridge", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&EnclosurePrintBedSense,		"Bld Plate", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
 //analog conversion data
-	{(uint32_t)&RawADCDataBuffer[0],		"CH01_PA3", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-	{(uint32_t)&RawADCDataBuffer[1],        "CH02_PA4", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-	{(uint32_t)&RawADCDataBuffer[2],        "CH03_PA5", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-	{(uint32_t)&RawADCDataBuffer[3],        "CH04_PA6", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-	{(uint32_t)&RawADCDataBuffer[4],		"CH05_PB1", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-	{(uint32_t)&RawADCDataBuffer[5],		"CH05_PC5", FUNC_INT16, COLOR_WHITE, COLOR_RED, 0},
-//	{(uint32_t)&TaskTime[28],            	"TSK_TIME", FUNC_INT16, 		COLOR_WHITE,	COLOR_MAGENTA, 	0},
-//	{(uint32_t)&TaskTime[1],             	"ParseTim", FUNC_INT16, 		COLOR_WHITE,	COLOR_MAGENTA, 	0},
-//	{(uint32_t)&TaskTime[2],            	"ATOF Tim", FUNC_INT16, 		COLOR_WHITE,	COLOR_MAGENTA, 	0},
-//	{(uint32_t)&TaskTime[5],            	"Add2Que ", FUNC_INT16, 		COLOR_WHITE,	COLOR_MAGENTA, 	0},
-//	{(uint32_t)&TaskTime[8],            	"Sequencr", FUNC_INT16, 		COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	
-//	{(uint32_t)&MotorX.POSITION,			"MtrX Pos", FUNC_INT32,		COLOR_WHITE,	COLOR_MAGENTA,	0},
-//	{(uint32_t)&MotorX.PULSES_TO_GO,		"X Pls2Go", FUNC_INT32,		COLOR_WHITE,	COLOR_MAGENTA, 0},
-//	{(uint32_t)&MotorY.POSITION,			"MtrY Pos", FUNC_INT32,		COLOR_WHITE, COLOR_MAGENTA, 0},
-//	{(uint32_t)&MotorY.PULSES_TO_GO,		"Y Pls2Go", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
-//	{(uint32_t)&MotorZ.POSITION,			"MtrZ Pos", FUNC_INT32,		COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&RawADCDataBuffer[0], "CH01_PA3", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&RawADCDataBuffer[1], "CH02_PA4", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&RawADCDataBuffer[2], "CH03_PA5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&RawADCDataBuffer[3], "CH04_PA6", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&RawADCDataBuffer[4], "CH05_PB1", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&laserTemperature,    "LASER_TMP", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&RawADCDataBuffer[5], "CH05_PC5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+
+	{(uint32_t)&Motors[M_X].POSITION, "MtrX Pos", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Motors[M_X].PULSES_TO_GO, "X Pls2Go", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Motors[M_Y].POSITION, "MtrY Pos", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Motors[M_Y].PULSES_TO_GO, "Y Pls2Go", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Motors[M_X].HomeSense, "X Home  ", FUNC_BAR_STATUS, COLOR_WHITE, COLOR_LIME, 0},
+	{(uint32_t)&Motors[M_Y].HomeSense,		"Y Home  ", FUNC_BAR_STATUS, COLOR_WHITE, COLOR_LIME, 0},
+
+//{(uint32_t)&MotorZ.POSITION,			"MtrZ Pos", FUNC_INT32,		COLOR_WHITE, COLOR_MAGENTA, 0},
 //	{(uint32_t)&MotorZ.PULSES_TO_GO,		"Z Pls2Go", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
 //	{(uint32_t)&MotorA.POSITION,			"MtrA Pos", FUNC_INT32,		COLOR_WHITE, COLOR_MAGENTA, 0},
 //	{(uint32_t)&MotorA.PULSES_TO_GO,		"A Pls2Go", FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
@@ -75,8 +88,6 @@ LcdVariableInfo LcdVarsTable[] = {
 //	{(uint32_t)&CommandsInQue,           	"CMDInQUE", FUNC_INT32, 		COLOR_WHITE,	COLOR_MAGENTA, 	0},
 //	{(uint32_t)&ParsedLineCounter,       	"Parsed #", FUNC_INT32,	        COLOR_WHITE,	COLOR_MAGENTA,    0},
 //	{(uint32_t)&gcodeLineNumber,       	    "G_Line #", FUNC_INT32,	        COLOR_WHITE,	COLOR_MAGENTA,    0},
-//	{(uint32_t)&Home_X_Status,              "X Home  ", FUNC_BAR_STATUS, 	COLOR_WHITE,	COLOR_LIME, 		0},
-//	{(uint32_t)&Home_Y_Status,              "Y Home  ", FUNC_BAR_STATUS, 	COLOR_WHITE,	COLOR_LIME, 		0},
 	{(uint32_t)0,              			 "--------", FUNC_INT, 		COLOR_YELLOW,	COLOR_MAGENTA, 	0},
 
 };

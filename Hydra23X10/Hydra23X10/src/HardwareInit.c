@@ -589,6 +589,7 @@ void InitTimer8(void)
 	TIM_CtrlPWMOutputs(TIM8, ENABLE); //  Enable PWM outputs
 	TIM_Cmd(TIM8, ENABLE);
 	TIM8->CCR3 = 0;
+	CO2LaserAnalogPwrPWM = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -33,7 +33,7 @@ extern float ConvertValueFromMM;
 extern float ConvertValueToDeg;
 extern float ConvertValueFromDeg;
 extern float CurrentToolDiameter;
-
+extern uint16_t DesiredCo2LaserPower;
 extern arcStruct _arc;
 
 // from MCode.c
