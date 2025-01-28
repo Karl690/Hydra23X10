@@ -19,7 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #define DEFAULT_HOST_TRAFFIC_REPORTING_PERIOD_MS        5000
-#define DEFAULT_HOST_TRAFFIC_REPORTING_PERIOD_DECR_MS   100 // currently in 10Hz loop, so 100ms per tick
+#define DEFAULT_HOST_TRAFFIC_REPORTING_PERIOD_DECR_MS   800//karlchris 100 // currently in 10Hz loop, so 100ms per tick
 #define DEFAULT_HOST_TRAFFIC_REPORTING_MASK             0x000001
 
 #define DEFAULT_POSITION_REPORTING_PERIOD_MS        1000    // try to spread out load between status and position

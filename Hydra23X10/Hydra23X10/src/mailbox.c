@@ -44,6 +44,13 @@ mailboxStruct _MailBoxes;               //current working mailbox
 outboxStruct *currentOutboxPtr=NULL;      //current output mail box pointer
 outboxStruct *_outboxHotbedPtr; //working buffer for the hotbed controller outbox?
 outboxStruct *_outboxCO2LaserPtr; //shortcut to outbox struct for the the co2 laser controller
+outboxStruct *_primaryHeadPtr; //shortcut to outbox struct for the the co2 laser controller
+
+//							(payload->i16[0] / field0scale), 		// temperature or rawadc
+//							payload->i16[1], 						// HSS2 duty cycle
+//							(payload->i16[2] / TEMP_SCALE), 		// ambient temp
+//							payload->i16[3]);						// HSS1 duty cycle
+
 systemInfoStruct _sysInfo;
 systemInfoStruct *_sysInfoPtr;
 
@@ -527,6 +534,7 @@ void initMailbox(void)
 	_MailBoxes._positionReportingPrescaleCnt = _MailBoxes._positionReportingPeriodMs;
 
 	_outboxHotbedPtr = getOutboxPointer(HH_HOTBED_POSITION);
+	_primaryHeadPtr = getOutboxPointer(11);
 	resetStickyErrorFlags();
 }
 

@@ -36,6 +36,10 @@ typedef struct {
 							//for FUNC_MEMDUMPHEX it means offset.
 } LcdVariableInfo;
 
+extern uint32_t Head11_Temperature;
+extern uint32_t Head11_HTRDuty;
+extern uint32_t Head11_FanDuty;
+extern uint32_t Head11_Spare;
 
 extern uint32_t HeartBeat;
 extern LcdVariableInfo SecsVarsTable[];

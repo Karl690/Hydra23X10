@@ -181,6 +181,10 @@ boolean _abortOccurredWhileMoving=FALSE;
 int32_t _needToWiggleDirectionPins=2;
 
 boolean _validFirmwareKey=FALSE; // only for tracking, not for control
+uint32_t Head11_Temperature = 0;
+uint32_t Head11_HTRDuty = 0;
+uint32_t Head11_FanDuty = 0;
+uint32_t Head11_Spare = 0;
 
 char GCodeArgComment[COMMENT_STRING_LENGTH]= ";Comment  ";//buffer mismatch, working buffer is only 1024 long
 char _GcodeArgStringParam[GCODE_STRING_ARG_LENGTH];
@@ -5301,6 +5305,10 @@ void readInputs(void)
 	//checkABEncoderSelectButton(); //USE_AB_ENCODER
 
 	PWMCntrl();
+	Head11_Temperature = _MailBoxes._inbox[0].HBPayload[0].i16[0]>>5;
+	Head11_HTRDuty = _MailBoxes._inbox[0].HBPayload[0].i16[1];
+	Head11_FanDuty = _MailBoxes._inbox[0].HBPayload[0].i16[2];
+	Head11_Spare = _MailBoxes._inbox[0].HBPayload[0].i16[3];
 }
 
 ////////////////////////////////////////////////////////////////////////////////

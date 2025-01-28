@@ -6,6 +6,7 @@
 #include "display.h"
 #include "LcdDefinitions.h"
 #include "RevisionHistory.h"
+#include "mailbox.h"
 //#include "taskmanager.h"
 //#include "Communication/parser.h"
 //#include "SETTINGS/settings.h"
@@ -17,6 +18,7 @@ char* AtofVariable="CmdQue[3] Variables";
 char* displayTestString2="12345";
 //	{(uint32_t)&_gs.CanRxCount1,         "CnRx Cnt", FUNC_INT, 		BLUE,	MAGENTA, 	0},
 char TestString[] ="test String 12345";
+
 
 //osseo display
 //LcdVariableInfo LcdVarsTable[] = {
@@ -46,10 +48,16 @@ LcdVariableInfo LcdVarsTable[] = {
 	{ (uint32_t)1, "GLOBAL1", FUNC_TITLE, COLOR_RED, COLOR_MAGENTA, 0 },
 	{(uint32_t)&HeartBeat,					HB_STRING, FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0},
 //analog conversion data
-	{(uint32_t)&RawADCDataBuffer[0], "CH01_PA3", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&RawADCDataBuffer[1], "CH02_PA4", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&RawADCDataBuffer[2], "CH03_PA5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
-	{(uint32_t)&RawADCDataBuffer[3], "CH04_PA6", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	//_primaryHeadPtr
+	{(uint32_t)&Head11_Temperature, "Head Temp", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Head11_HTRDuty,		"Head Duty", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Head11_FanDuty,		"Head Duty", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+	{(uint32_t)&Head11_Spare,		"Head Duty", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+
+//	{(uint32_t)&RawADCDataBuffer[0], "CH01_PA3", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&RawADCDataBuffer[1], "CH02_PA4", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&RawADCDataBuffer[2], "CH03_PA5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
+//	{(uint32_t)&RawADCDataBuffer[3], "CH04_PA6", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
 	{(uint32_t)&RawADCDataBuffer[4], "CH05_PB1", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},
 	{(uint32_t)&laserTemperature,    "LASER_TMP", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0},
 	{(uint32_t)&RawADCDataBuffer[5], "CH05_PC5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0},

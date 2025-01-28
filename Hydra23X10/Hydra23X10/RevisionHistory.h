@@ -1,8 +1,8 @@
 #pragma once
 
 #define RevisionHeader "HYDRA23X10"
-#define MajorStep "4.255L"
-#define RevisionDate "8/30/2024"
+#define MajorStep "4.256k"
+#define RevisionDate "1/28/2025"
 #define InstallPath "c:/repetrel/bin/firmware/"
 
 // How to initialize string in C?
