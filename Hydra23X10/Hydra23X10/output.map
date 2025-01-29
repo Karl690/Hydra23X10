@@ -2977,7 +2977,7 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
 LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtn.o
                 0x20020000                        _eram = 0x20020000
 
-.text           0x08000000    0x4d818
+.text           0x08000000    0x4d7f8
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x188 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
                 0x08000000                g_pfnVectors
@@ -5691,1503 +5691,1504 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
                 0x08029ca0       0x14 VisualGDB/X10/src/MCode.o
                 0x08029ca0                M_Code_M724
  .text.setupKarlFactors
-                0x08029cb4      0x1b0 VisualGDB/X10/src/MCode.o
+                0x08029cb4      0x194 VisualGDB/X10/src/MCode.o
                 0x08029cb4                setupKarlFactors
  .text.M_Code_M725
-                0x08029e64        0xe VisualGDB/X10/src/MCode.o
-                0x08029e64                M_Code_M725
+                0x08029e48        0xe VisualGDB/X10/src/MCode.o
+                0x08029e48                M_Code_M725
  .text.M_Code_M726
-                0x08029e72        0xe VisualGDB/X10/src/MCode.o
-                0x08029e72                M_Code_M726
+                0x08029e56        0xe VisualGDB/X10/src/MCode.o
+                0x08029e56                M_Code_M726
  .text.M_Code_M727
-                0x08029e80       0x14 VisualGDB/X10/src/MCode.o
-                0x08029e80                M_Code_M727
+                0x08029e64       0x14 VisualGDB/X10/src/MCode.o
+                0x08029e64                M_Code_M727
  .text.M_Code_M728
-                0x08029e94       0x54 VisualGDB/X10/src/MCode.o
-                0x08029e94                M_Code_M728
+                0x08029e78       0x54 VisualGDB/X10/src/MCode.o
+                0x08029e78                M_Code_M728
  .text.M_Code_M729
-                0x08029ee8       0xa0 VisualGDB/X10/src/MCode.o
-                0x08029ee8                M_Code_M729
+                0x08029ecc       0xa0 VisualGDB/X10/src/MCode.o
+                0x08029ecc                M_Code_M729
  .text.M_Code_M730
-                0x08029f88       0x14 VisualGDB/X10/src/MCode.o
-                0x08029f88                M_Code_M730
+                0x08029f6c       0x14 VisualGDB/X10/src/MCode.o
+                0x08029f6c                M_Code_M730
  .text.M_Code_M731
-                0x08029f9c       0x14 VisualGDB/X10/src/MCode.o
-                0x08029f9c                M_Code_M731
+                0x08029f80       0x14 VisualGDB/X10/src/MCode.o
+                0x08029f80                M_Code_M731
  .text.M_Code_M732
-                0x08029fb0       0x54 VisualGDB/X10/src/MCode.o
-                0x08029fb0                M_Code_M732
+                0x08029f94       0x54 VisualGDB/X10/src/MCode.o
+                0x08029f94                M_Code_M732
  .text.M_Code_M733
-                0x0802a004       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a004                M_Code_M733
+                0x08029fe8       0x14 VisualGDB/X10/src/MCode.o
+                0x08029fe8                M_Code_M733
  .text.M_Code_M734
-                0x0802a018       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a018                M_Code_M734
+                0x08029ffc       0x14 VisualGDB/X10/src/MCode.o
+                0x08029ffc                M_Code_M734
  .text.M_Code_M735
-                0x0802a02c       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a02c                M_Code_M735
+                0x0802a010       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a010                M_Code_M735
  .text.M_Code_M736
-                0x0802a040       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a040                M_Code_M736
+                0x0802a024       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a024                M_Code_M736
  .text.M_Code_M737
-                0x0802a054       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a054                M_Code_M737
+                0x0802a038       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a038                M_Code_M737
  .text.M_Code_M738
-                0x0802a068       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a068                M_Code_M738
+                0x0802a04c       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a04c                M_Code_M738
  .text.M_Code_M739
-                0x0802a07c       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a07c                M_Code_M739
+                0x0802a060       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a060                M_Code_M739
  .text.M_Code_M740
-                0x0802a090       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a090                M_Code_M740
+                0x0802a074       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a074                M_Code_M740
  .text.M_Code_M741
-                0x0802a0a4      0x168 VisualGDB/X10/src/MCode.o
-                0x0802a0a4                M_Code_M741
+                0x0802a088      0x168 VisualGDB/X10/src/MCode.o
+                0x0802a088                M_Code_M741
  .text.M_Code_M742
-                0x0802a20c      0x138 VisualGDB/X10/src/MCode.o
-                0x0802a20c                M_Code_M742
+                0x0802a1f0      0x138 VisualGDB/X10/src/MCode.o
+                0x0802a1f0                M_Code_M742
  .text.M_Code_M743
-                0x0802a344      0x19c VisualGDB/X10/src/MCode.o
-                0x0802a344                M_Code_M743
+                0x0802a328      0x19c VisualGDB/X10/src/MCode.o
+                0x0802a328                M_Code_M743
  .text.M_Code_M744
-                0x0802a4e0       0x1e VisualGDB/X10/src/MCode.o
-                0x0802a4e0                M_Code_M744
- *fill*         0x0802a4fe        0x2 
+                0x0802a4c4       0x1e VisualGDB/X10/src/MCode.o
+                0x0802a4c4                M_Code_M744
+ *fill*         0x0802a4e2        0x2 
  .text.M_Code_M745
-                0x0802a500       0x8c VisualGDB/X10/src/MCode.o
-                0x0802a500                M_Code_M745
+                0x0802a4e4       0x8c VisualGDB/X10/src/MCode.o
+                0x0802a4e4                M_Code_M745
  .text.M_Code_M746
-                0x0802a58c       0xb0 VisualGDB/X10/src/MCode.o
-                0x0802a58c                M_Code_M746
+                0x0802a570       0xb0 VisualGDB/X10/src/MCode.o
+                0x0802a570                M_Code_M746
  .text.M_Code_M747
-                0x0802a63c       0x84 VisualGDB/X10/src/MCode.o
-                0x0802a63c                M_Code_M747
+                0x0802a620       0x84 VisualGDB/X10/src/MCode.o
+                0x0802a620                M_Code_M747
  .text.M_Code_M748
-                0x0802a6c0       0x94 VisualGDB/X10/src/MCode.o
-                0x0802a6c0                M_Code_M748
+                0x0802a6a4       0x94 VisualGDB/X10/src/MCode.o
+                0x0802a6a4                M_Code_M748
  .text.M_Code_M749
-                0x0802a754       0x5c VisualGDB/X10/src/MCode.o
-                0x0802a754                M_Code_M749
+                0x0802a738       0x5c VisualGDB/X10/src/MCode.o
+                0x0802a738                M_Code_M749
  .text.M_Code_M750
-                0x0802a7b0       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a7b0                M_Code_M750
+                0x0802a794       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a794                M_Code_M750
  .text.M_Code_M751
-                0x0802a7c4       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a7c4                M_Code_M751
+                0x0802a7a8       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a7a8                M_Code_M751
  .text.M_Code_M752
-                0x0802a7d8       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a7d8                M_Code_M752
+                0x0802a7bc       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a7bc                M_Code_M752
  .text.M_Code_M753
-                0x0802a7ec       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a7ec                M_Code_M753
+                0x0802a7d0       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a7d0                M_Code_M753
  .text.M_Code_M754
-                0x0802a800       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a800                M_Code_M754
+                0x0802a7e4       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a7e4                M_Code_M754
  .text.M_Code_M755
-                0x0802a814       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a814                M_Code_M755
+                0x0802a7f8       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a7f8                M_Code_M755
  .text.M_Code_M756
-                0x0802a828       0x60 VisualGDB/X10/src/MCode.o
-                0x0802a828                M_Code_M756
+                0x0802a80c       0x60 VisualGDB/X10/src/MCode.o
+                0x0802a80c                M_Code_M756
  .text.M_Code_M757
-                0x0802a888       0x60 VisualGDB/X10/src/MCode.o
-                0x0802a888                M_Code_M757
+                0x0802a86c       0x60 VisualGDB/X10/src/MCode.o
+                0x0802a86c                M_Code_M757
  .text.M_Code_M758
-                0x0802a8e8       0x60 VisualGDB/X10/src/MCode.o
-                0x0802a8e8                M_Code_M758
+                0x0802a8cc       0x60 VisualGDB/X10/src/MCode.o
+                0x0802a8cc                M_Code_M758
  .text.M_Code_M759
-                0x0802a948       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a948                M_Code_M759
+                0x0802a92c       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a92c                M_Code_M759
  .text.M_Code_M760
-                0x0802a95c       0x14 VisualGDB/X10/src/MCode.o
-                0x0802a95c                M_Code_M760
+                0x0802a940       0x14 VisualGDB/X10/src/MCode.o
+                0x0802a940                M_Code_M760
  .text.M_Code_M761
-                0x0802a970      0x154 VisualGDB/X10/src/MCode.o
-                0x0802a970                M_Code_M761
+                0x0802a954      0x154 VisualGDB/X10/src/MCode.o
+                0x0802a954                M_Code_M761
  .text.invalidateFirmwareKey
-                0x0802aac4        0xe VisualGDB/X10/src/MCode.o
-                0x0802aac4                invalidateFirmwareKey
- *fill*         0x0802aad2        0x2 
+                0x0802aaa8        0xe VisualGDB/X10/src/MCode.o
+                0x0802aaa8                invalidateFirmwareKey
+ *fill*         0x0802aab6        0x2 
  .text.M_Code_M762
-                0x0802aad4      0x1f0 VisualGDB/X10/src/MCode.o
-                0x0802aad4                M_Code_M762
+                0x0802aab8      0x1f0 VisualGDB/X10/src/MCode.o
+                0x0802aab8                M_Code_M762
  .text.M_Code_M763
-                0x0802acc4       0x38 VisualGDB/X10/src/MCode.o
-                0x0802acc4                M_Code_M763
+                0x0802aca8       0x38 VisualGDB/X10/src/MCode.o
+                0x0802aca8                M_Code_M763
  .text.M_Code_M766
-                0x0802acfc      0x180 VisualGDB/X10/src/MCode.o
-                0x0802acfc                M_Code_M766
+                0x0802ace0      0x180 VisualGDB/X10/src/MCode.o
+                0x0802ace0                M_Code_M766
  .text.M_Code_M767
-                0x0802ae7c       0x14 VisualGDB/X10/src/MCode.o
-                0x0802ae7c                M_Code_M767
+                0x0802ae60       0x14 VisualGDB/X10/src/MCode.o
+                0x0802ae60                M_Code_M767
  .text.M_Code_M768
-                0x0802ae90       0x14 VisualGDB/X10/src/MCode.o
-                0x0802ae90                M_Code_M768
+                0x0802ae74       0x14 VisualGDB/X10/src/MCode.o
+                0x0802ae74                M_Code_M768
  .text.M_Code_M769
-                0x0802aea4       0x14 VisualGDB/X10/src/MCode.o
-                0x0802aea4                M_Code_M769
+                0x0802ae88       0x14 VisualGDB/X10/src/MCode.o
+                0x0802ae88                M_Code_M769
  .text.M_Code_M770
-                0x0802aeb8       0x14 VisualGDB/X10/src/MCode.o
-                0x0802aeb8                M_Code_M770
+                0x0802ae9c       0x14 VisualGDB/X10/src/MCode.o
+                0x0802ae9c                M_Code_M770
  .text.M_Code_M771
-                0x0802aecc       0x14 VisualGDB/X10/src/MCode.o
-                0x0802aecc                M_Code_M771
+                0x0802aeb0       0x14 VisualGDB/X10/src/MCode.o
+                0x0802aeb0                M_Code_M771
  .text.M_Code_M772
-                0x0802aee0       0x5c VisualGDB/X10/src/MCode.o
-                0x0802aee0                M_Code_M772
+                0x0802aec4       0x5c VisualGDB/X10/src/MCode.o
+                0x0802aec4                M_Code_M772
  .text.printReportBlankLine
-                0x0802af3c       0x14 VisualGDB/X10/src/MCode.o
-                0x0802af3c                printReportBlankLine
+                0x0802af20       0x14 VisualGDB/X10/src/MCode.o
+                0x0802af20                printReportBlankLine
  .text.printReportHorizontalLine
-                0x0802af50       0x18 VisualGDB/X10/src/MCode.o
-                0x0802af50                printReportHorizontalLine
+                0x0802af34       0x18 VisualGDB/X10/src/MCode.o
+                0x0802af34                printReportHorizontalLine
  .text.printReportHeader
-                0x0802af68       0x40 VisualGDB/X10/src/MCode.o
-                0x0802af68                printReportHeader
+                0x0802af4c       0x40 VisualGDB/X10/src/MCode.o
+                0x0802af4c                printReportHeader
  .text.printReportTrailer
-                0x0802afa8       0x40 VisualGDB/X10/src/MCode.o
-                0x0802afa8                printReportTrailer
+                0x0802af8c       0x40 VisualGDB/X10/src/MCode.o
+                0x0802af8c                printReportTrailer
  .text.printReportGetLocationString
-                0x0802afe8      0x310 VisualGDB/X10/src/MCode.o
-                0x0802afe8                printReportGetLocationString
+                0x0802afcc      0x310 VisualGDB/X10/src/MCode.o
+                0x0802afcc                printReportGetLocationString
  .text.M_Code_M773
-                0x0802b2f8      0x498 VisualGDB/X10/src/MCode.o
-                0x0802b2f8                M_Code_M773
+                0x0802b2dc      0x498 VisualGDB/X10/src/MCode.o
+                0x0802b2dc                M_Code_M773
  .text.M_Code_M774
-                0x0802b790      0x1b8 VisualGDB/X10/src/MCode.o
-                0x0802b790                M_Code_M774
+                0x0802b774      0x1b8 VisualGDB/X10/src/MCode.o
+                0x0802b774                M_Code_M774
  .text.M_Code_M775
-                0x0802b948       0x24 VisualGDB/X10/src/MCode.o
-                0x0802b948                M_Code_M775
+                0x0802b92c       0x24 VisualGDB/X10/src/MCode.o
+                0x0802b92c                M_Code_M775
  .text.M_Code_M776
-                0x0802b96c      0x134 VisualGDB/X10/src/MCode.o
-                0x0802b96c                M_Code_M776
+                0x0802b950      0x134 VisualGDB/X10/src/MCode.o
+                0x0802b950                M_Code_M776
  .text.M_Code_M777
-                0x0802baa0       0xc0 VisualGDB/X10/src/MCode.o
-                0x0802baa0                M_Code_M777
+                0x0802ba84       0xc0 VisualGDB/X10/src/MCode.o
+                0x0802ba84                M_Code_M777
  .text.M_Code_M778
-                0x0802bb60        0xe VisualGDB/X10/src/MCode.o
-                0x0802bb60                M_Code_M778
+                0x0802bb44        0xe VisualGDB/X10/src/MCode.o
+                0x0802bb44                M_Code_M778
  .text.M_Code_M779
-                0x0802bb6e        0xe VisualGDB/X10/src/MCode.o
-                0x0802bb6e                M_Code_M779
+                0x0802bb52        0xe VisualGDB/X10/src/MCode.o
+                0x0802bb52                M_Code_M779
  .text.M_Code_M780
-                0x0802bb7c      0x4e0 VisualGDB/X10/src/MCode.o
-                0x0802bb7c                M_Code_M780
+                0x0802bb60      0x4e0 VisualGDB/X10/src/MCode.o
+                0x0802bb60                M_Code_M780
  .text.M_Code_M781
-                0x0802c05c       0x14 VisualGDB/X10/src/MCode.o
-                0x0802c05c                M_Code_M781
+                0x0802c040       0x14 VisualGDB/X10/src/MCode.o
+                0x0802c040                M_Code_M781
  .text.M_Code_M782
-                0x0802c070       0x50 VisualGDB/X10/src/MCode.o
-                0x0802c070                M_Code_M782
+                0x0802c054       0x50 VisualGDB/X10/src/MCode.o
+                0x0802c054                M_Code_M782
  .text.M_Code_M783
-                0x0802c0c0       0x64 VisualGDB/X10/src/MCode.o
-                0x0802c0c0                M_Code_M783
+                0x0802c0a4       0x64 VisualGDB/X10/src/MCode.o
+                0x0802c0a4                M_Code_M783
  .text.M_Code_M784
-                0x0802c124      0x3e8 VisualGDB/X10/src/MCode.o
-                0x0802c124                M_Code_M784
+                0x0802c108      0x3e8 VisualGDB/X10/src/MCode.o
+                0x0802c108                M_Code_M784
  .text.M_Code_M785
-                0x0802c50c      0x45c VisualGDB/X10/src/MCode.o
-                0x0802c50c                M_Code_M785
+                0x0802c4f0      0x45c VisualGDB/X10/src/MCode.o
+                0x0802c4f0                M_Code_M785
  .text.M_Code_M786
-                0x0802c968      0x248 VisualGDB/X10/src/MCode.o
-                0x0802c968                M_Code_M786
+                0x0802c94c      0x248 VisualGDB/X10/src/MCode.o
+                0x0802c94c                M_Code_M786
  .text.M_Code_M787
-                0x0802cbb0      0x10c VisualGDB/X10/src/MCode.o
-                0x0802cbb0                M_Code_M787
+                0x0802cb94      0x10c VisualGDB/X10/src/MCode.o
+                0x0802cb94                M_Code_M787
  .text.M_Code_M788
-                0x0802ccbc      0x130 VisualGDB/X10/src/MCode.o
-                0x0802ccbc                M_Code_M788
+                0x0802cca0      0x130 VisualGDB/X10/src/MCode.o
+                0x0802cca0                M_Code_M788
  .text.M_Code_M789
-                0x0802cdec      0x20c VisualGDB/X10/src/MCode.o
-                0x0802cdec                M_Code_M789
+                0x0802cdd0      0x20c VisualGDB/X10/src/MCode.o
+                0x0802cdd0                M_Code_M789
  .text.M_Code_M790
-                0x0802cff8       0x48 VisualGDB/X10/src/MCode.o
-                0x0802cff8                M_Code_M790
+                0x0802cfdc       0x48 VisualGDB/X10/src/MCode.o
+                0x0802cfdc                M_Code_M790
  .text.M_Code_M791
-                0x0802d040        0xe VisualGDB/X10/src/MCode.o
-                0x0802d040                M_Code_M791
- *fill*         0x0802d04e        0x2 
+                0x0802d024        0xe VisualGDB/X10/src/MCode.o
+                0x0802d024                M_Code_M791
+ *fill*         0x0802d032        0x2 
  .text.M_Code_M795
-                0x0802d050       0x88 VisualGDB/X10/src/MCode.o
-                0x0802d050                M_Code_M795
+                0x0802d034       0x88 VisualGDB/X10/src/MCode.o
+                0x0802d034                M_Code_M795
  .text.M_Code_M796
-                0x0802d0d8       0x78 VisualGDB/X10/src/MCode.o
-                0x0802d0d8                M_Code_M796
+                0x0802d0bc       0x78 VisualGDB/X10/src/MCode.o
+                0x0802d0bc                M_Code_M796
  .text.M_Code_M797
-                0x0802d150      0x634 VisualGDB/X10/src/MCode.o
-                0x0802d150                M_Code_M797
+                0x0802d134      0x634 VisualGDB/X10/src/MCode.o
+                0x0802d134                M_Code_M797
  .text.M_Code_M798
-                0x0802d784      0x120 VisualGDB/X10/src/MCode.o
-                0x0802d784                M_Code_M798
+                0x0802d768      0x120 VisualGDB/X10/src/MCode.o
+                0x0802d768                M_Code_M798
  .text.M_Code_M799
-                0x0802d8a4       0x14 VisualGDB/X10/src/MCode.o
-                0x0802d8a4                M_Code_M799
+                0x0802d888       0x14 VisualGDB/X10/src/MCode.o
+                0x0802d888                M_Code_M799
  .text.convertArg100ToUint16Pct
-                0x0802d8b8       0x44 VisualGDB/X10/src/MCode.o
-                0x0802d8b8                convertArg100ToUint16Pct
+                0x0802d89c       0x44 VisualGDB/X10/src/MCode.o
+                0x0802d89c                convertArg100ToUint16Pct
  .text.M_Code_M800
-                0x0802d8fc      0x5a0 VisualGDB/X10/src/MCode.o
-                0x0802d8fc                M_Code_M800
+                0x0802d8e0      0x5a0 VisualGDB/X10/src/MCode.o
+                0x0802d8e0                M_Code_M800
  .text.M_Code_M868
-                0x0802de9c       0x24 VisualGDB/X10/src/MCode.o
-                0x0802de9c                M_Code_M868
+                0x0802de80       0x24 VisualGDB/X10/src/MCode.o
+                0x0802de80                M_Code_M868
  .text.M_Code_M869
-                0x0802dec0       0x20 VisualGDB/X10/src/MCode.o
-                0x0802dec0                M_Code_M869
+                0x0802dea4       0x20 VisualGDB/X10/src/MCode.o
+                0x0802dea4                M_Code_M869
  .text.M_Code_M960
-                0x0802dee0       0x64 VisualGDB/X10/src/MCode.o
-                0x0802dee0                M_Code_M960
+                0x0802dec4       0x64 VisualGDB/X10/src/MCode.o
+                0x0802dec4                M_Code_M960
  .text.M_Code_M7734
-                0x0802df44       0x14 VisualGDB/X10/src/MCode.o
-                0x0802df44                M_Code_M7734
+                0x0802df28       0x14 VisualGDB/X10/src/MCode.o
+                0x0802df28                M_Code_M7734
  .text.getAxisLabel
-                0x0802df58       0x54 VisualGDB/X10/src/MotorDrivers.o
-                0x0802df58                getAxisLabel
+                0x0802df3c       0x54 VisualGDB/X10/src/MotorDrivers.o
+                0x0802df3c                getAxisLabel
  .text.ClampToAxisLimitsInUPS
-                0x0802dfac       0x36 VisualGDB/X10/src/MotorDrivers.o
-                0x0802dfac                ClampToAxisLimitsInUPS
- *fill*         0x0802dfe2        0x2 
+                0x0802df90       0x36 VisualGDB/X10/src/MotorDrivers.o
+                0x0802df90                ClampToAxisLimitsInUPS
+ *fill*         0x0802dfc6        0x2 
  .text.UpdateAxisLimitAndRates
-                0x0802dfe4      0x118 VisualGDB/X10/src/MotorDrivers.o
-                0x0802dfe4                UpdateAxisLimitAndRates
+                0x0802dfc8      0x118 VisualGDB/X10/src/MotorDrivers.o
+                0x0802dfc8                UpdateAxisLimitAndRates
  .text.UpdateAxisTravelLimits
-                0x0802e0fc       0xe2 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e0fc                UpdateAxisTravelLimits
- *fill*         0x0802e1de        0x2 
+                0x0802e0e0       0xe2 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e0e0                UpdateAxisTravelLimits
+ *fill*         0x0802e1c2        0x2 
  .text.ClampAndWarnToAxisRangeInPulses
-                0x0802e1e0      0x370 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e1e0                ClampAndWarnToAxisRangeInPulses
+                0x0802e1c4      0x370 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e1c4                ClampAndWarnToAxisRangeInPulses
  .text.AllMotionMotorsAreEnabled
-                0x0802e550       0xa8 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e550                AllMotionMotorsAreEnabled
+                0x0802e534       0xa8 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e534                AllMotionMotorsAreEnabled
  .text.EnableAllMotionMotors
-                0x0802e5f8       0x90 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e5f8                EnableAllMotionMotors
+                0x0802e5dc       0x90 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e5dc                EnableAllMotionMotors
  .text.DisableAllMotionMotors
-                0x0802e688       0x90 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e688                DisableAllMotionMotors
+                0x0802e66c       0x90 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e66c                DisableAllMotionMotors
  .text.NoAxisIsMoving
-                0x0802e718       0x44 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e718                NoAxisIsMoving
+                0x0802e6fc       0x44 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e6fc                NoAxisIsMoving
  .text.ClearAllMotorG92Offset
-                0x0802e75c       0x40 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e75c                ClearAllMotorG92Offset
+                0x0802e740       0x40 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e740                ClearAllMotorG92Offset
  .text.ClearMotorFixtureOffsets
-                0x0802e79c       0x38 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e79c                ClearMotorFixtureOffsets
+                0x0802e780       0x38 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e780                ClearMotorFixtureOffsets
  .text.ClearAllMotorFixtureOffsets
-                0x0802e7d4       0x38 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e7d4                ClearAllMotorFixtureOffsets
+                0x0802e7b8       0x38 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e7b8                ClearAllMotorFixtureOffsets
  .text.ClearMotorHeadOffsets
-                0x0802e80c       0x38 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e80c                ClearMotorHeadOffsets
+                0x0802e7f0       0x38 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e7f0                ClearMotorHeadOffsets
  .text.ClearAllMotorHeadOffsets
-                0x0802e844       0x38 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e844                ClearAllMotorHeadOffsets
+                0x0802e828       0x38 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e828                ClearAllMotorHeadOffsets
  .text.SumOfAllMotorOffsets
-                0x0802e87c       0xa0 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e87c                SumOfAllMotorOffsets
+                0x0802e860       0xa0 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e860                SumOfAllMotorOffsets
  .text.ResetAllMotionOffsetIndices
-                0x0802e91c       0x2c VisualGDB/X10/src/MotorDrivers.o
-                0x0802e91c                ResetAllMotionOffsetIndices
+                0x0802e900       0x2c VisualGDB/X10/src/MotorDrivers.o
+                0x0802e900                ResetAllMotionOffsetIndices
  .text.ClearAllMotorFlags
-                0x0802e948       0x5c VisualGDB/X10/src/MotorDrivers.o
-                0x0802e948                ClearAllMotorFlags
+                0x0802e92c       0x5c VisualGDB/X10/src/MotorDrivers.o
+                0x0802e92c                ClearAllMotorFlags
  .text.DisableMotionTimer
-                0x0802e9a4       0x24 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e9a4                DisableMotionTimer
+                0x0802e988       0x24 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e988                DisableMotionTimer
  .text.DisableMotionTimers
-                0x0802e9c8       0x70 VisualGDB/X10/src/MotorDrivers.o
-                0x0802e9c8                DisableMotionTimers
+                0x0802e9ac       0x70 VisualGDB/X10/src/MotorDrivers.o
+                0x0802e9ac                DisableMotionTimers
  .text.loadDominantTimer
-                0x0802ea38       0x48 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ea38                loadDominantTimer
+                0x0802ea1c       0x48 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ea1c                loadDominantTimer
  .text.loadMotorTimer
-                0x0802ea80       0x56 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ea80                loadMotorTimer
- *fill*         0x0802ead6        0x2 
+                0x0802ea64       0x56 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ea64                loadMotorTimer
+ *fill*         0x0802eaba        0x2 
  .text.EnableMotionTimers
-                0x0802ead8       0xe8 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ead8                EnableMotionTimers
+                0x0802eabc       0xe8 VisualGDB/X10/src/MotorDrivers.o
+                0x0802eabc                EnableMotionTimers
  .text.PrepareForNextMove
-                0x0802ebc0       0x10 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ebc0                PrepareForNextMove
+                0x0802eba4       0x10 VisualGDB/X10/src/MotorDrivers.o
+                0x0802eba4                PrepareForNextMove
  .text.StartMove
-                0x0802ebd0       0x20 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ebd0                StartMove
+                0x0802ebb4       0x20 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ebb4                StartMove
  .text.setWatchdogBasedOnMoveTime
-                0x0802ebf0       0xf4 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ebf0                setWatchdogBasedOnMoveTime
+                0x0802ebd4       0xf4 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ebd4                setWatchdogBasedOnMoveTime
  .text.getMotionRateInUPS
-                0x0802ece4       0x74 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ece4                getMotionRateInUPS
+                0x0802ecc8       0x74 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ecc8                getMotionRateInUPS
  .text.changeDominantAxisToC
-                0x0802ed58       0xc8 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ed58                changeDominantAxisToC
+                0x0802ed3c       0xc8 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ed3c                changeDominantAxisToC
  .text.CheckForNewFlowRate
-                0x0802ee20      0x630 VisualGDB/X10/src/MotorDrivers.o
-                0x0802ee20                CheckForNewFlowRate
+                0x0802ee04      0x630 VisualGDB/X10/src/MotorDrivers.o
+                0x0802ee04                CheckForNewFlowRate
  .text.CheckForNewFeedrate
-                0x0802f450       0x84 VisualGDB/X10/src/MotorDrivers.o
-                0x0802f450                CheckForNewFeedrate
+                0x0802f434       0x84 VisualGDB/X10/src/MotorDrivers.o
+                0x0802f434                CheckForNewFeedrate
  .text.CalculateTimerControls
-                0x0802f4d4      0x16c VisualGDB/X10/src/MotorDrivers.o
-                0x0802f4d4                CalculateTimerControls
+                0x0802f4b8      0x16c VisualGDB/X10/src/MotorDrivers.o
+                0x0802f4b8                CalculateTimerControls
  .text.loadAndRunLatheTimer
-                0x0802f640      0x12c VisualGDB/X10/src/MotorDrivers.o
-                0x0802f640                loadAndRunLatheTimer
+                0x0802f624      0x12c VisualGDB/X10/src/MotorDrivers.o
+                0x0802f624                loadAndRunLatheTimer
  .text.setupLatheModeToRun
-                0x0802f76c      0x114 VisualGDB/X10/src/MotorDrivers.o
-                0x0802f76c                setupLatheModeToRun
+                0x0802f750      0x114 VisualGDB/X10/src/MotorDrivers.o
+                0x0802f750                setupLatheModeToRun
  .text.ExecuteSingleAxisMove
-                0x0802f880       0x3c VisualGDB/X10/src/MotorDrivers.o
-                0x0802f880                ExecuteSingleAxisMove
+                0x0802f864       0x3c VisualGDB/X10/src/MotorDrivers.o
+                0x0802f864                ExecuteSingleAxisMove
  .text.ExecuteHomingMove
-                0x0802f8bc       0x9c VisualGDB/X10/src/MotorDrivers.o
-                0x0802f8bc                ExecuteHomingMove
+                0x0802f8a0       0x9c VisualGDB/X10/src/MotorDrivers.o
+                0x0802f8a0                ExecuteHomingMove
  .text.JogMotor
-                0x0802f958      0x1c0 VisualGDB/X10/src/MotorDrivers.o
-                0x0802f958                JogMotor
+                0x0802f93c      0x1c0 VisualGDB/X10/src/MotorDrivers.o
+                0x0802f93c                JogMotor
  .text.killMotorJogging
-                0x0802fb18       0x24 VisualGDB/X10/src/MotorDrivers.o
-                0x0802fb18                killMotorJogging
+                0x0802fafc       0x24 VisualGDB/X10/src/MotorDrivers.o
+                0x0802fafc                killMotorJogging
  .text.calcVelocity
-                0x0802fb3c       0x5c VisualGDB/X10/src/MotorDrivers.o
-                0x0802fb3c                calcVelocity
+                0x0802fb20       0x5c VisualGDB/X10/src/MotorDrivers.o
+                0x0802fb20                calcVelocity
  .text.UpdateNextAccelerationFactor
-                0x0802fb98       0xe0 VisualGDB/X10/src/MotorDrivers.o
-                0x0802fb98                UpdateNextAccelerationFactor
+                0x0802fb7c       0xe0 VisualGDB/X10/src/MotorDrivers.o
+                0x0802fb7c                UpdateNextAccelerationFactor
  .text.latheSpeedControl
-                0x0802fc78      0x1f0 VisualGDB/X10/src/MotorDrivers.o
-                0x0802fc78                latheSpeedControl
+                0x0802fc5c      0x1f0 VisualGDB/X10/src/MotorDrivers.o
+                0x0802fc5c                latheSpeedControl
  .text.finishMove
-                0x0802fe68      0x150 VisualGDB/X10/src/MotorDrivers.o
-                0x0802fe68                finishMove
+                0x0802fe4c      0x150 VisualGDB/X10/src/MotorDrivers.o
+                0x0802fe4c                finishMove
  .text.ProcessMotion
-                0x0802ffb8      0x1ec VisualGDB/X10/src/MotorDrivers.o
-                0x0802ffb8                ProcessMotion
+                0x0802ff9c      0x1ec VisualGDB/X10/src/MotorDrivers.o
+                0x0802ff9c                ProcessMotion
  .text.InitializeMotorParameters
-                0x080301a4      0xdd0 VisualGDB/X10/src/MotorDrivers.o
-                0x080301a4                InitializeMotorParameters
+                0x08030188      0xdd0 VisualGDB/X10/src/MotorDrivers.o
+                0x08030188                InitializeMotorParameters
  .text.isAutoPuffNeeded
-                0x08030f74       0x2c VisualGDB/X10/src/MotorDrivers.o
-                0x08030f74                isAutoPuffNeeded
+                0x08030f58       0x2c VisualGDB/X10/src/MotorDrivers.o
+                0x08030f58                isAutoPuffNeeded
  .text.isAutoPrimeoOrUnprimeNeeded
-                0x08030fa0      0x168 VisualGDB/X10/src/MotorDrivers.o
-                0x08030fa0                isAutoPrimeoOrUnprimeNeeded
+                0x08030f84      0x168 VisualGDB/X10/src/MotorDrivers.o
+                0x08030f84                isAutoPrimeoOrUnprimeNeeded
  .text.motionQ_init
-                0x08031108      0x150 VisualGDB/X10/src/MotorDrivers.o
-                0x08031108                motionQ_init
+                0x080310ec      0x150 VisualGDB/X10/src/MotorDrivers.o
+                0x080310ec                motionQ_init
  .text.motionQ_getCountdownDelayToExecuteMove
-                0x08031258       0x18 VisualGDB/X10/src/MotorDrivers.o
-                0x08031258                motionQ_getCountdownDelayToExecuteMove
+                0x0803123c       0x18 VisualGDB/X10/src/MotorDrivers.o
+                0x0803123c                motionQ_getCountdownDelayToExecuteMove
  .text.motionQ_setCountdownDelayToExecuteMove
-                0x08031270       0x24 VisualGDB/X10/src/MotorDrivers.o
-                0x08031270                motionQ_setCountdownDelayToExecuteMove
+                0x08031254       0x24 VisualGDB/X10/src/MotorDrivers.o
+                0x08031254                motionQ_setCountdownDelayToExecuteMove
  .text.motionQ_decrCountdownDelayToExecuteMove
-                0x08031294       0x2c VisualGDB/X10/src/MotorDrivers.o
-                0x08031294                motionQ_decrCountdownDelayToExecuteMove
+                0x08031278       0x2c VisualGDB/X10/src/MotorDrivers.o
+                0x08031278                motionQ_decrCountdownDelayToExecuteMove
  .text.motionQ_hasSpace
-                0x080312c0       0x2c VisualGDB/X10/src/MotorDrivers.o
-                0x080312c0                motionQ_hasSpace
+                0x080312a4       0x2c VisualGDB/X10/src/MotorDrivers.o
+                0x080312a4                motionQ_hasSpace
  .text.motionQ_deleteNewestCommand
-                0x080312ec       0x60 VisualGDB/X10/src/MotorDrivers.o
-                0x080312ec                motionQ_deleteNewestCommand
+                0x080312d0       0x60 VisualGDB/X10/src/MotorDrivers.o
+                0x080312d0                motionQ_deleteNewestCommand
  .text.motionQ_deleteCurrentMove
-                0x0803134c       0x50 VisualGDB/X10/src/MotorDrivers.o
-                0x0803134c                motionQ_deleteCurrentMove
+                0x08031330       0x50 VisualGDB/X10/src/MotorDrivers.o
+                0x08031330                motionQ_deleteCurrentMove
  .text.motionQ_deleteCurrentMoveAndExecuteNextMove
-                0x0803139c       0xf8 VisualGDB/X10/src/MotorDrivers.o
-                0x0803139c                motionQ_deleteCurrentMoveAndExecuteNextMove
+                0x08031380       0xf8 VisualGDB/X10/src/MotorDrivers.o
+                0x08031380                motionQ_deleteCurrentMoveAndExecuteNextMove
  .text.motionQ_nextAvailable
-                0x08031494       0x7c VisualGDB/X10/src/MotorDrivers.o
-                0x08031494                motionQ_nextAvailable
+                0x08031478       0x7c VisualGDB/X10/src/MotorDrivers.o
+                0x08031478                motionQ_nextAvailable
  .text.sendBlockRelativeAxisMove
-                0x08031510       0x5c VisualGDB/X10/src/MotorDrivers.o
-                0x08031510                sendBlockRelativeAxisMove
+                0x080314f4       0x5c VisualGDB/X10/src/MotorDrivers.o
+                0x080314f4                sendBlockRelativeAxisMove
  .text.setupFlowInfo
-                0x0803156c      0x24c VisualGDB/X10/src/MotorDrivers.o
-                0x0803156c                setupFlowInfo
+                0x08031550      0x24c VisualGDB/X10/src/MotorDrivers.o
+                0x08031550                setupFlowInfo
  .text.calculateIsrLimitedSpeed
-                0x080317b8       0xd8 VisualGDB/X10/src/MotorDrivers.o
-                0x080317b8                calculateIsrLimitedSpeed
+                0x0803179c       0xd8 VisualGDB/X10/src/MotorDrivers.o
+                0x0803179c                calculateIsrLimitedSpeed
+ *fill*         0x08031874        0x4 
  .text.motionQ_addCommand
-                0x08031890     0x1c78 VisualGDB/X10/src/MotorDrivers.o
-                0x08031890                motionQ_addCommand
+                0x08031878     0x1c78 VisualGDB/X10/src/MotorDrivers.o
+                0x08031878                motionQ_addCommand
  .text.motionQ_update
-                0x08033508      0x1a4 VisualGDB/X10/src/MotorDrivers.o
-                0x08033508                motionQ_update
+                0x080334f0      0x1a4 VisualGDB/X10/src/MotorDrivers.o
+                0x080334f0                motionQ_update
  .text.motionQ_primeComplete
-                0x080336ac       0x20 VisualGDB/X10/src/MotorDrivers.o
-                0x080336ac                motionQ_primeComplete
+                0x08033694       0x20 VisualGDB/X10/src/MotorDrivers.o
+                0x08033694                motionQ_primeComplete
  .text.motionQ_unprimeComplete
-                0x080336cc       0x3c VisualGDB/X10/src/MotorDrivers.o
-                0x080336cc                motionQ_unprimeComplete
+                0x080336b4       0x3c VisualGDB/X10/src/MotorDrivers.o
+                0x080336b4                motionQ_unprimeComplete
  .text.motionQ_executeMove
-                0x08033708     0x1100 VisualGDB/X10/src/MotorDrivers.o
-                0x08033708                motionQ_executeMove
+                0x080336f0     0x1100 VisualGDB/X10/src/MotorDrivers.o
+                0x080336f0                motionQ_executeMove
  .text.cleanupAfterAbortFinishes
-                0x08034808       0x18 VisualGDB/X10/src/MotorDrivers.o
-                0x08034808                cleanupAfterAbortFinishes
+                0x080347f0       0x18 VisualGDB/X10/src/MotorDrivers.o
+                0x080347f0                cleanupAfterAbortFinishes
  .text.changeMotionQToPauseAtNextMoveBoundary
-                0x08034820      0x32c VisualGDB/X10/src/MotorDrivers.o
-                0x08034820                changeMotionQToPauseAtNextMoveBoundary
+                0x08034808      0x32c VisualGDB/X10/src/MotorDrivers.o
+                0x08034808                changeMotionQToPauseAtNextMoveBoundary
  .text.fixUnprimePrimeForPause
-                0x08034b4c       0xc4 VisualGDB/X10/src/MotorDrivers.o
-                0x08034b4c                fixUnprimePrimeForPause
+                0x08034b34       0xc4 VisualGDB/X10/src/MotorDrivers.o
+                0x08034b34                fixUnprimePrimeForPause
  .text.fixUnprimePrimeForAbort
-                0x08034c10       0x78 VisualGDB/X10/src/MotorDrivers.o
-                0x08034c10                fixUnprimePrimeForAbort
+                0x08034bf8       0x78 VisualGDB/X10/src/MotorDrivers.o
+                0x08034bf8                fixUnprimePrimeForAbort
  .text.stopHomingMove
-                0x08034c88      0x12c VisualGDB/X10/src/MotorDrivers.o
-                0x08034c88                stopHomingMove
+                0x08034c70      0x12c VisualGDB/X10/src/MotorDrivers.o
+                0x08034c70                stopHomingMove
  .text.motionQ_pauseMotionWhenSafe
-                0x08034db4       0x90 VisualGDB/X10/src/MotorDrivers.o
-                0x08034db4                motionQ_pauseMotionWhenSafe
+                0x08034d9c       0x90 VisualGDB/X10/src/MotorDrivers.o
+                0x08034d9c                motionQ_pauseMotionWhenSafe
  .text.changeMotionQToAbortAsSoonAsPossible
-                0x08034e44      0x4b4 VisualGDB/X10/src/MotorDrivers.o
-                0x08034e44                changeMotionQToAbortAsSoonAsPossible
+                0x08034e2c      0x4b4 VisualGDB/X10/src/MotorDrivers.o
+                0x08034e2c                changeMotionQToAbortAsSoonAsPossible
  .text.motionQ_abortMotionWhenSafe
-                0x080352f8      0x1ec VisualGDB/X10/src/MotorDrivers.o
-                0x080352f8                motionQ_abortMotionWhenSafe
+                0x080352e0      0x1ec VisualGDB/X10/src/MotorDrivers.o
+                0x080352e0                motionQ_abortMotionWhenSafe
  .text.joggingDeInit
-                0x080354e4       0x20 VisualGDB/X10/src/MotorDrivers.o
-                0x080354e4                joggingDeInit
+                0x080354cc       0x20 VisualGDB/X10/src/MotorDrivers.o
+                0x080354cc                joggingDeInit
  .text.joggingInit
-                0x08035504      0x1bc VisualGDB/X10/src/MotorDrivers.o
-                0x08035504                joggingInit
+                0x080354ec      0x1bc VisualGDB/X10/src/MotorDrivers.o
+                0x080354ec                joggingInit
  .text.joggingComplete
-                0x080356c0       0x84 VisualGDB/X10/src/MotorDrivers.o
-                0x080356c0                joggingComplete
+                0x080356a8       0x84 VisualGDB/X10/src/MotorDrivers.o
+                0x080356a8                joggingComplete
  .text.joggingSetQPosition
-                0x08035744       0x9c VisualGDB/X10/src/MotorDrivers.o
-                0x08035744                joggingSetQPosition
+                0x0803572c       0x9c VisualGDB/X10/src/MotorDrivers.o
+                0x0803572c                joggingSetQPosition
  .text.joggingAbort
-                0x080357e0      0x160 VisualGDB/X10/src/MotorDrivers.o
-                0x080357e0                joggingAbort
+                0x080357c8      0x160 VisualGDB/X10/src/MotorDrivers.o
+                0x080357c8                joggingAbort
  .text.joggingCalculateTimerControls
-                0x08035940      0x428 VisualGDB/X10/src/MotorDrivers.o
-                0x08035940                joggingCalculateTimerControls
+                0x08035928      0x428 VisualGDB/X10/src/MotorDrivers.o
+                0x08035928                joggingCalculateTimerControls
  .text.joggingOkToProcessUpdate
-                0x08035d68       0x90 VisualGDB/X10/src/MotorDrivers.o
-                0x08035d68                joggingOkToProcessUpdate
+                0x08035d50       0x90 VisualGDB/X10/src/MotorDrivers.o
+                0x08035d50                joggingOkToProcessUpdate
  .text.joggingUpdatePulses
-                0x08035df8      0x234 VisualGDB/X10/src/MotorDrivers.o
-                0x08035df8                joggingUpdatePulses
+                0x08035de0      0x234 VisualGDB/X10/src/MotorDrivers.o
+                0x08035de0                joggingUpdatePulses
  .text.pinInitAll
-                0x0803602c      0x1f8 VisualGDB/X10/src/pinInit.o
-                0x0803602c                pinInitAll
+                0x08036014      0x1f8 VisualGDB/X10/src/pinInit.o
+                0x08036014                pinInitAll
  .text.SendPNPSPIDataToSpi2
-                0x08036224       0x58 VisualGDB/X10/src/pnp.o
-                0x08036224                SendPNPSPIDataToSpi2
+                0x0803620c       0x58 VisualGDB/X10/src/pnp.o
+                0x0803620c                SendPNPSPIDataToSpi2
  .text.LatchPnPData
-                0x0803627c       0x18 VisualGDB/X10/src/pnp.o
-                0x0803627c                LatchPnPData
+                0x08036264       0x18 VisualGDB/X10/src/pnp.o
+                0x08036264                LatchPnPData
  .text.PnP_SetValves
-                0x08036294       0x3c VisualGDB/X10/src/pnp.o
-                0x08036294                PnP_SetValves
+                0x0803627c       0x3c VisualGDB/X10/src/pnp.o
+                0x0803627c                PnP_SetValves
  .text.addCharToEchoBuffer
-                0x080362d0       0x70 VisualGDB/X10/src/Serial.o
-                0x080362d0                addCharToEchoBuffer
+                0x080362b8       0x70 VisualGDB/X10/src/Serial.o
+                0x080362b8                addCharToEchoBuffer
  .text.sendchar
-                0x08036340       0xb4 VisualGDB/X10/src/Serial.o
-                0x08036340                sendchar
- .text.sendCr   0x080363f4        0xe VisualGDB/X10/src/Serial.o
-                0x080363f4                sendCr
+                0x08036328       0xb4 VisualGDB/X10/src/Serial.o
+                0x08036328                sendchar
+ .text.sendCr   0x080363dc        0xe VisualGDB/X10/src/Serial.o
+                0x080363dc                sendCr
  .text.sendstring
-                0x08036402       0x50 VisualGDB/X10/src/Serial.o
-                0x08036402                sendstring
+                0x080363ea       0x50 VisualGDB/X10/src/Serial.o
+                0x080363ea                sendstring
  .text.sendstringCr
-                0x08036452       0x1a VisualGDB/X10/src/Serial.o
-                0x08036452                sendstringCr
+                0x0803643a       0x1a VisualGDB/X10/src/Serial.o
+                0x0803643a                sendstringCr
  .text.sendNchars
-                0x0803646c       0x4c VisualGDB/X10/src/Serial.o
-                0x0803646c                sendNchars
+                0x08036454       0x4c VisualGDB/X10/src/Serial.o
+                0x08036454                sendNchars
  .text.sendMotionInfo
-                0x080364b8       0xa0 VisualGDB/X10/src/Serial.o
-                0x080364b8                sendMotionInfo
+                0x080364a0       0xa0 VisualGDB/X10/src/Serial.o
+                0x080364a0                sendMotionInfo
  .text.sendMotionError
-                0x08036558       0xf0 VisualGDB/X10/src/Serial.o
-                0x08036558                sendMotionError
+                0x08036540       0xf0 VisualGDB/X10/src/Serial.o
+                0x08036540                sendMotionError
  .text.sendSystemErrorHeader
-                0x08036648       0x2c VisualGDB/X10/src/Serial.o
-                0x08036648                sendSystemErrorHeader
+                0x08036630       0x2c VisualGDB/X10/src/Serial.o
+                0x08036630                sendSystemErrorHeader
  .text.sendErrorNoCr
-                0x08036674       0x68 VisualGDB/X10/src/Serial.o
-                0x08036674                sendErrorNoCr
+                0x0803665c       0x68 VisualGDB/X10/src/Serial.o
+                0x0803665c                sendErrorNoCr
  .text.sendError
-                0x080366dc       0x68 VisualGDB/X10/src/Serial.o
-                0x080366dc                sendError
+                0x080366c4       0x68 VisualGDB/X10/src/Serial.o
+                0x080366c4                sendError
  .text.sendInfoNoCr
-                0x08036744       0x20 VisualGDB/X10/src/Serial.o
-                0x08036744                sendInfoNoCr
+                0x0803672c       0x20 VisualGDB/X10/src/Serial.o
+                0x0803672c                sendInfoNoCr
  .text.sendInfo
-                0x08036764       0x20 VisualGDB/X10/src/Serial.o
-                0x08036764                sendInfo
+                0x0803674c       0x20 VisualGDB/X10/src/Serial.o
+                0x0803674c                sendInfo
  .text.sendGBNoCr
-                0x08036784       0x20 VisualGDB/X10/src/Serial.o
-                0x08036784                sendGBNoCr
- .text.sendGB   0x080367a4       0x20 VisualGDB/X10/src/Serial.o
-                0x080367a4                sendGB
- .text.sendST   0x080367c4       0x20 VisualGDB/X10/src/Serial.o
-                0x080367c4                sendST
+                0x0803676c       0x20 VisualGDB/X10/src/Serial.o
+                0x0803676c                sendGBNoCr
+ .text.sendGB   0x0803678c       0x20 VisualGDB/X10/src/Serial.o
+                0x0803678c                sendGB
+ .text.sendST   0x080367ac       0x20 VisualGDB/X10/src/Serial.o
+                0x080367ac                sendST
  .text.pauseToTransmitBufferToEmpty
-                0x080367e4       0x1c VisualGDB/X10/src/Serial.o
-                0x080367e4                pauseToTransmitBufferToEmpty
- .text.barf     0x08036800       0x50 VisualGDB/X10/src/Serial.o
-                0x08036800                barf
+                0x080367cc       0x1c VisualGDB/X10/src/Serial.o
+                0x080367cc                pauseToTransmitBufferToEmpty
+ .text.barf     0x080367e8       0x50 VisualGDB/X10/src/Serial.o
+                0x080367e8                barf
  .text.reportRxUnderRun
-                0x08036850       0x98 VisualGDB/X10/src/Serial.o
-                0x08036850                reportRxUnderRun
- .text.GCHAR    0x080368e8      0x118 VisualGDB/X10/src/Serial.o
-                0x080368e8                GCHAR
+                0x08036838       0x98 VisualGDB/X10/src/Serial.o
+                0x08036838                reportRxUnderRun
+ .text.GCHAR    0x080368d0      0x118 VisualGDB/X10/src/Serial.o
+                0x080368d0                GCHAR
  .text.roomInDirectRxBuffer
-                0x08036a00       0x28 VisualGDB/X10/src/Serial.o
-                0x08036a00                roomInDirectRxBuffer
+                0x080369e8       0x28 VisualGDB/X10/src/Serial.o
+                0x080369e8                roomInDirectRxBuffer
  .text.asciihex2bin
-                0x08036a28       0x54 VisualGDB/X10/src/Serial.o
-                0x08036a28                asciihex2bin
+                0x08036a10       0x54 VisualGDB/X10/src/Serial.o
+                0x08036a10                asciihex2bin
  .text.isARasterPrintingValue
-                0x08036a7c       0x88 VisualGDB/X10/src/Serial.o
-                0x08036a7c                isARasterPrintingValue
+                0x08036a64       0x88 VisualGDB/X10/src/Serial.o
+                0x08036a64                isARasterPrintingValue
  .text.processCurrentScanLine
-                0x08036b04      0x548 VisualGDB/X10/src/Serial.o
-                0x08036b04                processCurrentScanLine
+                0x08036aec      0x548 VisualGDB/X10/src/Serial.o
+                0x08036aec                processCurrentScanLine
  .text.purgeTillCr
-                0x0803704c       0x80 VisualGDB/X10/src/Serial.o
-                0x0803704c                purgeTillCr
+                0x08037034       0x80 VisualGDB/X10/src/Serial.o
+                0x08037034                purgeTillCr
  .text.resetSerialInputBuffer
-                0x080370cc      0x164 VisualGDB/X10/src/Serial.o
-                0x080370cc                resetSerialInputBuffer
+                0x080370b4      0x164 VisualGDB/X10/src/Serial.o
+                0x080370b4                resetSerialInputBuffer
  .text.resetSerialOutputBuffer
-                0x08037230       0x58 VisualGDB/X10/src/Serial.o
-                0x08037230                resetSerialOutputBuffer
+                0x08037218       0x58 VisualGDB/X10/src/Serial.o
+                0x08037218                resetSerialOutputBuffer
  .text.makeAllCharsPrintable
-                0x08037288       0x54 VisualGDB/X10/src/Serial.o
-                0x08037288                makeAllCharsPrintable
+                0x08037270       0x54 VisualGDB/X10/src/Serial.o
+                0x08037270                makeAllCharsPrintable
  .text.roomInNormalRxBuffer
-                0x080372dc       0x2c VisualGDB/X10/src/Serial.o
-                0x080372dc                roomInNormalRxBuffer
+                0x080372c4       0x2c VisualGDB/X10/src/Serial.o
+                0x080372c4                roomInNormalRxBuffer
  .text.PostAcknowledge
-                0x08037308       0x30 VisualGDB/X10/src/Serial.o
-                0x08037308                PostAcknowledge
+                0x080372f0       0x30 VisualGDB/X10/src/Serial.o
+                0x080372f0                PostAcknowledge
  .text.ReceiveCharacter
-                0x08037338       0xf4 VisualGDB/X10/src/Serial.o
-                0x08037338                ReceiveCharacter
+                0x08037320       0xf4 VisualGDB/X10/src/Serial.o
+                0x08037320                ReceiveCharacter
  .text.addCharToNormalBuffer
-                0x0803742c       0xb4 VisualGDB/X10/src/Serial.o
-                0x0803742c                addCharToNormalBuffer
+                0x08037414       0xb4 VisualGDB/X10/src/Serial.o
+                0x08037414                addCharToNormalBuffer
  .text.addCharToUrgentBuffer
-                0x080374e0       0xc0 VisualGDB/X10/src/Serial.o
-                0x080374e0                addCharToUrgentBuffer
+                0x080374c8       0xc0 VisualGDB/X10/src/Serial.o
+                0x080374c8                addCharToUrgentBuffer
  .text.addCharToDirectBuffer
-                0x080375a0       0xfc VisualGDB/X10/src/Serial.o
-                0x080375a0                addCharToDirectBuffer
+                0x08037588       0xfc VisualGDB/X10/src/Serial.o
+                0x08037588                addCharToDirectBuffer
  .text.ProcessRawRxChar
-                0x0803769c      0x36c VisualGDB/X10/src/Serial.o
-                0x0803769c                ProcessRawRxChar
+                0x08037684      0x36c VisualGDB/X10/src/Serial.o
+                0x08037684                ProcessRawRxChar
  .text.ProcessRawRxBuffer
-                0x08037a08      0x220 VisualGDB/X10/src/Serial.o
-                0x08037a08                ProcessRawRxBuffer
+                0x080379f0      0x220 VisualGDB/X10/src/Serial.o
+                0x080379f0                ProcessRawRxBuffer
  .text.transmitEchoChar
-                0x08037c28      0x10c VisualGDB/X10/src/Serial.o
-                0x08037c28                transmitEchoChar
+                0x08037c10      0x10c VisualGDB/X10/src/Serial.o
+                0x08037c10                transmitEchoChar
  .text.forceCharToHw
-                0x08037d34       0x30 VisualGDB/X10/src/Serial.o
-                0x08037d34                forceCharToHw
+                0x08037d1c       0x30 VisualGDB/X10/src/Serial.o
+                0x08037d1c                forceCharToHw
  .text.transmitCharToHw
-                0x08037d64       0xa8 VisualGDB/X10/src/Serial.o
-                0x08037d64                transmitCharToHw
+                0x08037d4c       0xa8 VisualGDB/X10/src/Serial.o
+                0x08037d4c                transmitCharToHw
  .text.PrintCheck
-                0x08037e0c       0xa8 VisualGDB/X10/src/Serial.o
-                0x08037e0c                PrintCheck
+                0x08037df4       0xa8 VisualGDB/X10/src/Serial.o
+                0x08037df4                PrintCheck
  .text.changeMasterCommPort
-                0x08037eb4       0x44 VisualGDB/X10/src/Serial.o
-                0x08037eb4                changeMasterCommPort
+                0x08037e9c       0x44 VisualGDB/X10/src/Serial.o
+                0x08037e9c                changeMasterCommPort
  .text.USART3_IRQHandler
-                0x08037ef8       0xd8 VisualGDB/X10/src/Serial.o
-                0x08037ef8                USART3_IRQHandler
- .text.PCHAR    0x08037fd0       0x4c VisualGDB/X10/src/Serial.o
-                0x08037fd0                PCHAR
+                0x08037ee0       0xd8 VisualGDB/X10/src/Serial.o
+                0x08037ee0                USART3_IRQHandler
+ .text.PCHAR    0x08037fb8       0x4c VisualGDB/X10/src/Serial.o
+                0x08037fb8                PCHAR
  .text.LaserSendRequestStringToPowerSupply
-                0x0803801c       0x18 VisualGDB/X10/src/Serial.o
-                0x0803801c                LaserSendRequestStringToPowerSupply
- .text._sbrk    0x08038034       0x6c VisualGDB/X10/sysmem.o
-                0x08038034                _sbrk
+                0x08038004       0x18 VisualGDB/X10/src/Serial.o
+                0x08038004                LaserSendRequestStringToPowerSupply
+ .text._sbrk    0x0803801c       0x6c VisualGDB/X10/sysmem.o
+                0x0803801c                _sbrk
  .text.releaseUsbBuffer
-                0x080380a0       0x1c VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
-                0x080380a0                releaseUsbBuffer
+                0x08038088       0x1c VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
+                0x08038088                releaseUsbBuffer
  .text.USBD_DeInit
-                0x080380bc       0x16 VisualGDB/X10/usb_lib/src/usbd_core.o
-                0x080380bc                USBD_DeInit
+                0x080380a4       0x16 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x080380a4                USBD_DeInit
  .text.USBD_SetupStage
-                0x080380d2       0x72 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x080380ba       0x72 VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_DataOutStage
-                0x08038144       0xcc VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x0803812c       0xcc VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_DataInStage
-                0x08038210      0x11a VisualGDB/X10/usb_lib/src/usbd_core.o
- *fill*         0x0803832a        0x2 
+                0x080381f8      0x11a VisualGDB/X10/usb_lib/src/usbd_core.o
+ *fill*         0x08038312        0x2 
  .text.USBD_RunTestMode
-                0x0803832c       0x24 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x08038314       0x24 VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_Reset
-                0x08038350       0x42 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x08038338       0x42 VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_Resume
-                0x08038392       0x30 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x0803837a       0x30 VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_Suspend
-                0x080383c2       0x30 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x080383aa       0x30 VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_SOF
-                0x080383f2       0x2a VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x080383da       0x2a VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_SetCfg
-                0x0803841c       0x30 VisualGDB/X10/usb_lib/src/usbd_core.o
-                0x0803841c                USBD_SetCfg
+                0x08038404       0x30 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x08038404                USBD_SetCfg
  .text.USBD_ClrCfg
-                0x0803844c       0x26 VisualGDB/X10/usb_lib/src/usbd_core.o
-                0x0803844c                USBD_ClrCfg
+                0x08038434       0x26 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x08038434                USBD_ClrCfg
  .text.USBD_IsoINIncomplete
-                0x08038472       0x1e VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x0803845a       0x1e VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_IsoOUTIncomplete
-                0x08038490       0x1e VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x08038478       0x1e VisualGDB/X10/usb_lib/src/usbd_core.o
  .text.USBD_CtlSendData
-                0x080384ae       0x40 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
-                0x080384ae                USBD_CtlSendData
+                0x08038496       0x40 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+                0x08038496                USBD_CtlSendData
  .text.USBD_CtlContinueSendData
-                0x080384ee       0x28 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
-                0x080384ee                USBD_CtlContinueSendData
+                0x080384d6       0x28 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+                0x080384d6                USBD_CtlContinueSendData
  .text.USBD_CtlContinueRx
-                0x08038516       0x28 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
-                0x08038516                USBD_CtlContinueRx
+                0x080384fe       0x28 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+                0x080384fe                USBD_CtlContinueRx
  .text.USBD_CtlSendStatus
-                0x0803853e       0x30 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
-                0x0803853e                USBD_CtlSendStatus
+                0x08038526       0x30 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+                0x08038526                USBD_CtlSendStatus
  .text.USBD_CtlReceiveStatus
-                0x0803856e       0x30 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
-                0x0803856e                USBD_CtlReceiveStatus
- *fill*         0x0803859e        0x2 
+                0x08038556       0x30 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+                0x08038556                USBD_CtlReceiveStatus
+ *fill*         0x08038586        0x2 
  .text.USBD_StdDevReq
-                0x080385a0       0xa0 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x080385a0                USBD_StdDevReq
+                0x08038588       0xa0 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038588                USBD_StdDevReq
  .text.USBD_StdItfReq
-                0x08038640       0x66 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x08038640                USBD_StdItfReq
- *fill*         0x080386a6        0x2 
+                0x08038628       0x66 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038628                USBD_StdItfReq
+ *fill*         0x0803868e        0x2 
  .text.USBD_StdEPReq
-                0x080386a8      0x1b8 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x080386a8                USBD_StdEPReq
+                0x08038690      0x1b8 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038690                USBD_StdEPReq
  .text.USBD_GetDescriptor
-                0x08038860      0x1a8 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038848      0x1a8 VisualGDB/X10/usb_lib/src/usbd_req.o
  .text.USBD_SetAddress
-                0x08038a08       0x7e VisualGDB/X10/usb_lib/src/usbd_req.o
- *fill*         0x08038a86        0x2 
+                0x080389f0       0x7e VisualGDB/X10/usb_lib/src/usbd_req.o
+ *fill*         0x08038a6e        0x2 
  .text.USBD_SetConfig
-                0x08038a88       0xf4 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038a70       0xf4 VisualGDB/X10/usb_lib/src/usbd_req.o
  .text.USBD_GetConfig
-                0x08038b7c       0x60 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038b64       0x60 VisualGDB/X10/usb_lib/src/usbd_req.o
  .text.USBD_GetStatus
-                0x08038bdc       0x54 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038bc4       0x54 VisualGDB/X10/usb_lib/src/usbd_req.o
  .text.USBD_SetFeature
-                0x08038c30       0xd8 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038c18       0xd8 VisualGDB/X10/usb_lib/src/usbd_req.o
  .text.USBD_ClrFeature
-                0x08038d08       0x50 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038cf0       0x50 VisualGDB/X10/usb_lib/src/usbd_req.o
  .text.USBD_ParseSetupRequest
-                0x08038d58       0x8c VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x08038d58                USBD_ParseSetupRequest
+                0x08038d40       0x8c VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038d40                USBD_ParseSetupRequest
  .text.USBD_CtlError
-                0x08038de4       0x28 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x08038de4                USBD_CtlError
+                0x08038dcc       0x28 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x08038dcc                USBD_CtlError
  .text.USB_OTG_BSP_uDelay
-                0x08038e0c       0x48 VisualGDB/X10/usb_lib/src/usb_bsp.o
-                0x08038e0c                USB_OTG_BSP_uDelay
+                0x08038df4       0x48 VisualGDB/X10/usb_lib/src/usb_bsp.o
+                0x08038df4                USB_OTG_BSP_uDelay
  .text.OTG_FS_WKUP_IRQHandler
-                0x08038e54       0x10 VisualGDB/X10/usb_lib/src/usb_bsp.o
-                0x08038e54                OTG_FS_WKUP_IRQHandler
+                0x08038e3c       0x10 VisualGDB/X10/usb_lib/src/usb_bsp.o
+                0x08038e3c                OTG_FS_WKUP_IRQHandler
  .text.OTG_FS_IRQHandler
-                0x08038e64       0x14 VisualGDB/X10/usb_lib/src/usb_bsp.o
-                0x08038e64                OTG_FS_IRQHandler
+                0x08038e4c       0x14 VisualGDB/X10/usb_lib/src/usb_bsp.o
+                0x08038e4c                OTG_FS_IRQHandler
  .text.USB_OTG_WritePacket
-                0x08038e78       0x76 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08038e78                USB_OTG_WritePacket
+                0x08038e60       0x76 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08038e60                USB_OTG_WritePacket
  .text.USB_OTG_ReadPacket
-                0x08038eee       0x58 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08038eee                USB_OTG_ReadPacket
- *fill*         0x08038f46        0x2 
+                0x08038ed6       0x58 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08038ed6                USB_OTG_ReadPacket
+ *fill*         0x08038f2e        0x2 
  .text.USB_OTG_FlushTxFifo
-                0x08038f48       0x70 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08038f48                USB_OTG_FlushTxFifo
+                0x08038f30       0x70 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08038f30                USB_OTG_FlushTxFifo
  .text.USB_OTG_GetMode
-                0x08038fb8       0x1e VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08038fb8                USB_OTG_GetMode
+                0x08038fa0       0x1e VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08038fa0                USB_OTG_GetMode
  .text.USB_OTG_IsDeviceMode
-                0x08038fd6       0x22 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08038fd6                USB_OTG_IsDeviceMode
+                0x08038fbe       0x22 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08038fbe                USB_OTG_IsDeviceMode
  .text.USB_OTG_ReadCoreItr
-                0x08038ff8       0x2e VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08038ff8                USB_OTG_ReadCoreItr
+                0x08038fe0       0x2e VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08038fe0                USB_OTG_ReadCoreItr
  .text.USB_OTG_GetDeviceSpeed
-                0x08039026       0x4c VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039026                USB_OTG_GetDeviceSpeed
+                0x0803900e       0x4c VisualGDB/X10/usb_lib/src/usb_core.o
+                0x0803900e                USB_OTG_GetDeviceSpeed
  .text.USB_OTG_EP0Activate
-                0x08039072       0x70 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039072                USB_OTG_EP0Activate
+                0x0803905a       0x70 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x0803905a                USB_OTG_EP0Activate
  .text.USB_OTG_EPActivate
-                0x080390e2       0xd8 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x080390e2                USB_OTG_EPActivate
+                0x080390ca       0xd8 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x080390ca                USB_OTG_EPActivate
  .text.USB_OTG_EPStartXfer
-                0x080391ba      0x282 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x080391ba                USB_OTG_EPStartXfer
+                0x080391a2      0x282 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x080391a2                USB_OTG_EPStartXfer
  .text.USB_OTG_EP0StartXfer
-                0x0803943c      0x1cc VisualGDB/X10/usb_lib/src/usb_core.o
-                0x0803943c                USB_OTG_EP0StartXfer
+                0x08039424      0x1cc VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08039424                USB_OTG_EP0StartXfer
  .text.USB_OTG_EPSetStall
-                0x08039608       0x86 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039608                USB_OTG_EPSetStall
+                0x080395f0       0x86 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x080395f0                USB_OTG_EPSetStall
  .text.USB_OTG_EPClearStall
-                0x0803968e       0x76 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x0803968e                USB_OTG_EPClearStall
+                0x08039676       0x76 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08039676                USB_OTG_EPClearStall
  .text.USB_OTG_ReadDevAllOutEp_itr
-                0x08039704       0x2c VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039704                USB_OTG_ReadDevAllOutEp_itr
+                0x080396ec       0x2c VisualGDB/X10/usb_lib/src/usb_core.o
+                0x080396ec                USB_OTG_ReadDevAllOutEp_itr
  .text.USB_OTG_ReadDevOutEP_itr
-                0x08039730       0x36 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039730                USB_OTG_ReadDevOutEP_itr
+                0x08039718       0x36 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x08039718                USB_OTG_ReadDevOutEP_itr
  .text.USB_OTG_ReadDevAllInEPItr
-                0x08039766       0x2c VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039766                USB_OTG_ReadDevAllInEPItr
+                0x0803974e       0x2c VisualGDB/X10/usb_lib/src/usb_core.o
+                0x0803974e                USB_OTG_ReadDevAllInEPItr
  .text.USB_OTG_EP0_OutStart
-                0x08039792       0x72 VisualGDB/X10/usb_lib/src/usb_core.o
-                0x08039792                USB_OTG_EP0_OutStart
+                0x0803977a       0x72 VisualGDB/X10/usb_lib/src/usb_core.o
+                0x0803977a                USB_OTG_EP0_OutStart
  .text.DCD_EP_Open
-                0x08039804       0xb0 VisualGDB/X10/usb_lib/src/usb_dcd.o
-                0x08039804                DCD_EP_Open
+                0x080397ec       0xb0 VisualGDB/X10/usb_lib/src/usb_dcd.o
+                0x080397ec                DCD_EP_Open
  .text.DCD_EP_PrepareRx
-                0x080398b4       0x84 VisualGDB/X10/usb_lib/src/usb_dcd.o
-                0x080398b4                DCD_EP_PrepareRx
+                0x0803989c       0x84 VisualGDB/X10/usb_lib/src/usb_dcd.o
+                0x0803989c                DCD_EP_PrepareRx
  .text.DCD_EP_Tx
-                0x08039938       0x78 VisualGDB/X10/usb_lib/src/usb_dcd.o
-                0x08039938                DCD_EP_Tx
+                0x08039920       0x78 VisualGDB/X10/usb_lib/src/usb_dcd.o
+                0x08039920                DCD_EP_Tx
  .text.DCD_EP_Stall
-                0x080399b0       0x7a VisualGDB/X10/usb_lib/src/usb_dcd.o
-                0x080399b0                DCD_EP_Stall
+                0x08039998       0x7a VisualGDB/X10/usb_lib/src/usb_dcd.o
+                0x08039998                DCD_EP_Stall
  .text.DCD_EP_ClrStall
-                0x08039a2a       0x7a VisualGDB/X10/usb_lib/src/usb_dcd.o
-                0x08039a2a                DCD_EP_ClrStall
+                0x08039a12       0x7a VisualGDB/X10/usb_lib/src/usb_dcd.o
+                0x08039a12                DCD_EP_ClrStall
  .text.DCD_EP_SetAddress
-                0x08039aa4       0x3c VisualGDB/X10/usb_lib/src/usb_dcd.o
-                0x08039aa4                DCD_EP_SetAddress
+                0x08039a8c       0x3c VisualGDB/X10/usb_lib/src/usb_dcd.o
+                0x08039a8c                DCD_EP_SetAddress
  .text.USBD_OTG_ISR_Handler
-                0x08039ae0      0x15c VisualGDB/X10/usb_lib/src/usb_dcd_int.o
-                0x08039ae0                USBD_OTG_ISR_Handler
+                0x08039ac8      0x15c VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x08039ac8                USBD_OTG_ISR_Handler
  .text.DCD_HandleResume_ISR
-                0x08039c3c       0x80 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x08039c24       0x80 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleUSBSuspend_ISR
-                0x08039cbc       0xbc VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x08039ca4       0xbc VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleInEP_ISR
-                0x08039d78      0x1b8 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x08039d60      0x1b8 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleOutEP_ISR
-                0x08039f30      0x150 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x08039f18      0x150 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleSof_ISR
-                0x0803a080       0x34 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a068       0x34 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleRxStatusQueueLevel_ISR
-                0x0803a0b4      0x104 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a09c      0x104 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_WriteEmptyTxFifo
-                0x0803a1b8       0xe4 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a1a0       0xe4 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleUsbReset_ISR
-                0x0803a29c      0x120 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a284      0x120 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_HandleEnumDone_ISR
-                0x0803a3bc       0x78 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a3a4       0x78 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_IsoINIncomplete_ISR
-                0x0803a434       0x34 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a41c       0x34 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_IsoOUTIncomplete_ISR
-                0x0803a468       0x34 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                0x0803a450       0x34 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
  .text.DCD_ReadDevInEP
-                0x0803a49c       0x50 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
- .text.acos     0x0803a4ec       0x68 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-w_acos.o)
-                0x0803a4ec                acos
- *fill*         0x0803a554        0x4 
- .text.cos      0x0803a558       0x88 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_cos.o)
-                0x0803a558                cos
- .text.fabs     0x0803a5e0       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
-                0x0803a5e0                fabs
- .text.sin      0x0803a5f0       0x90 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_sin.o)
-                0x0803a5f0                sin
- .text.tan      0x0803a680       0x68 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_tan.o)
-                0x0803a680                tan
- .text.acosf    0x0803a6e8       0x58 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
-                0x0803a6e8                acosf
- .text.atan2f   0x0803a740        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
-                0x0803a740                atan2f
- .text.fmodf    0x0803a744       0x48 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
-                0x0803a744                fmodf
- .text.cosf     0x0803a78c       0x70 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
-                0x0803a78c                cosf
- .text.fabsf    0x0803a7fc       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
-                0x0803a7fc                fabsf
- .text.sinf     0x0803a80c       0x74 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
-                0x0803a80c                sinf
- .text.nan      0x0803a880       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_nan.o)
-                0x0803a880                nan
- .text.nanf     0x0803a890        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
-                0x0803a890                nanf
- .text.fmaxf    0x0803a89c       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
-                0x0803a89c                fmaxf
- .text.fminf    0x0803a8d8       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
-                0x0803a8d8                fminf
+                0x0803a484       0x50 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+ .text.acos     0x0803a4d4       0x68 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-w_acos.o)
+                0x0803a4d4                acos
+ *fill*         0x0803a53c        0x4 
+ .text.cos      0x0803a540       0x88 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_cos.o)
+                0x0803a540                cos
+ .text.fabs     0x0803a5c8       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
+                0x0803a5c8                fabs
+ .text.sin      0x0803a5d8       0x90 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_sin.o)
+                0x0803a5d8                sin
+ .text.tan      0x0803a668       0x68 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_tan.o)
+                0x0803a668                tan
+ .text.acosf    0x0803a6d0       0x58 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
+                0x0803a6d0                acosf
+ .text.atan2f   0x0803a728        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
+                0x0803a728                atan2f
+ .text.fmodf    0x0803a72c       0x48 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
+                0x0803a72c                fmodf
+ .text.cosf     0x0803a774       0x70 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+                0x0803a774                cosf
+ .text.fabsf    0x0803a7e4       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
+                0x0803a7e4                fabsf
+ .text.sinf     0x0803a7f4       0x74 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                0x0803a7f4                sinf
+ .text.nan      0x0803a868       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_nan.o)
+                0x0803a868                nan
+ .text.nanf     0x0803a878        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
+                0x0803a878                nanf
+ .text.fmaxf    0x0803a884       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
+                0x0803a884                fmaxf
+ .text.fminf    0x0803a8c0       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
+                0x0803a8c0                fminf
  .text.__fpclassifyf
-                0x0803a914       0x38 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fpclassify.o)
-                0x0803a914                __fpclassifyf
- .text.round    0x0803a94c       0xa0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_round.o)
-                0x0803a94c                round
- .text.roundf   0x0803a9ec       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_round.o)
-                0x0803a9ec                roundf
+                0x0803a8fc       0x38 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fpclassify.o)
+                0x0803a8fc                __fpclassifyf
+ .text.round    0x0803a934       0xa0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_round.o)
+                0x0803a934                round
+ .text.roundf   0x0803a9d4       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_round.o)
+                0x0803a9d4                roundf
  .text.__kernel_cos
-                0x0803aa38      0x264 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
-                0x0803aa38                __kernel_cos
- *fill*         0x0803ac9c        0x4 
+                0x0803aa20      0x264 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
+                0x0803aa20                __kernel_cos
+ *fill*         0x0803ac84        0x4 
  .text.__kernel_sin
-                0x0803aca0      0x17c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
-                0x0803aca0                __kernel_sin
- *fill*         0x0803ae1c        0x4 
+                0x0803ac88      0x17c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
+                0x0803ac88                __kernel_sin
+ *fill*         0x0803ae04        0x4 
  .text.__kernel_tan
-                0x0803ae20      0x428 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_tan.o)
-                0x0803ae20                __kernel_tan
+                0x0803ae08      0x428 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_tan.o)
+                0x0803ae08                __kernel_tan
  .text.__ieee754_acos
-                0x0803b248      0x4d8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_acos.o)
-                0x0803b248                __ieee754_acos
+                0x0803b230      0x4d8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_acos.o)
+                0x0803b230                __ieee754_acos
  .text.__ieee754_rem_pio2
-                0x0803b720      0x444 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
-                0x0803b720                __ieee754_rem_pio2
+                0x0803b708      0x444 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0803b708                __ieee754_rem_pio2
  .text.__kernel_cosf
-                0x0803bb64      0x104 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
-                0x0803bb64                __kernel_cosf
+                0x0803bb4c      0x104 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+                0x0803bb4c                __kernel_cosf
  .text.__kernel_sinf
-                0x0803bc68       0x90 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
-                0x0803bc68                __kernel_sinf
+                0x0803bc50       0x90 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+                0x0803bc50                __kernel_sinf
  .text.__ieee754_acosf
-                0x0803bcf8      0x24c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
-                0x0803bcf8                __ieee754_acosf
+                0x0803bce0      0x24c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
+                0x0803bce0                __ieee754_acosf
  .text.__ieee754_atan2f
-                0x0803bf44      0x150 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
-                0x0803bf44                __ieee754_atan2f
+                0x0803bf2c      0x150 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+                0x0803bf2c                __ieee754_atan2f
  .text.__ieee754_fmodf
-                0x0803c094      0x164 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
-                0x0803c094                __ieee754_fmodf
+                0x0803c07c      0x164 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+                0x0803c07c                __ieee754_fmodf
  .text.__ieee754_rem_pio2f
-                0x0803c1f8      0x260 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
-                0x0803c1f8                __ieee754_rem_pio2f
- .text.atanf    0x0803c458      0x1ac c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
-                0x0803c458                atanf
- .text.scalbnf  0x0803c604       0xe4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
-                0x0803c604                scalbnf
+                0x0803c1e0      0x260 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x0803c1e0                __ieee754_rem_pio2f
+ .text.atanf    0x0803c440      0x1ac c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+                0x0803c440                atanf
+ .text.scalbnf  0x0803c5ec       0xe4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+                0x0803c5ec                scalbnf
  .text.__ieee754_sqrt
-                0x0803c6e8      0x1f4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
-                0x0803c6e8                __ieee754_sqrt
+                0x0803c6d0      0x1f4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
+                0x0803c6d0                __ieee754_sqrt
  .text.__ieee754_sqrtf
-                0x0803c8dc        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
-                0x0803c8dc                __ieee754_sqrtf
- *fill*         0x0803c8e4        0x4 
+                0x0803c8c4        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
+                0x0803c8c4                __ieee754_sqrtf
+ *fill*         0x0803c8cc        0x4 
  .text.__kernel_rem_pio2
-                0x0803c8e8      0x87c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x0803c8e8                __kernel_rem_pio2
+                0x0803c8d0      0x87c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0803c8d0                __kernel_rem_pio2
  .text.__kernel_rem_pio2f
-                0x0803d164      0x66c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
-                0x0803d164                __kernel_rem_pio2f
- .text.scalbn   0x0803d7d0      0x114 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
-                0x0803d7d0                scalbn
- *fill*         0x0803d8e4        0x4 
- .text.floor    0x0803d8e8      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
-                0x0803d8e8                floor
- .text.floorf   0x0803d9f0       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
-                0x0803d9f0                floorf
- .text          0x0803da84      0x378 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
-                0x0803da84                __aeabi_drsub
-                0x0803da8c                __aeabi_dsub
-                0x0803da8c                __subdf3
-                0x0803da90                __aeabi_dadd
-                0x0803da90                __adddf3
-                0x0803dd08                __floatunsidf
-                0x0803dd08                __aeabi_ui2d
-                0x0803dd28                __floatsidf
-                0x0803dd28                __aeabi_i2d
-                0x0803dd4c                __aeabi_f2d
-                0x0803dd4c                __extendsfdf2
-                0x0803dd90                __floatundidf
-                0x0803dd90                __aeabi_ul2d
-                0x0803dda0                __floatdidf
-                0x0803dda0                __aeabi_l2d
- .text          0x0803ddfc      0x424 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
-                0x0803ddfc                __aeabi_dmul
-                0x0803ddfc                __muldf3
-                0x0803e050                __divdf3
-                0x0803e050                __aeabi_ddiv
- .text          0x0803e220      0x110 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
-                0x0803e220                __gtdf2
-                0x0803e220                __gedf2
-                0x0803e228                __ltdf2
-                0x0803e228                __ledf2
-                0x0803e230                __nedf2
-                0x0803e230                __eqdf2
-                0x0803e230                __cmpdf2
-                0x0803e2ac                __aeabi_cdrcmple
-                0x0803e2bc                __aeabi_cdcmpeq
-                0x0803e2bc                __aeabi_cdcmple
-                0x0803e2cc                __aeabi_dcmpeq
-                0x0803e2e0                __aeabi_dcmplt
-                0x0803e2f4                __aeabi_dcmple
-                0x0803e308                __aeabi_dcmpge
-                0x0803e31c                __aeabi_dcmpgt
- .text          0x0803e330       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
-                0x0803e330                __unorddf2
-                0x0803e330                __aeabi_dcmpun
- .text          0x0803e35c       0x50 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
-                0x0803e35c                __aeabi_d2iz
-                0x0803e35c                __fixdfsi
- .text          0x0803e3ac       0xa0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
-                0x0803e3ac                __truncdfsf2
-                0x0803e3ac                __aeabi_d2f
- .text.atof     0x0803e44c        0x6 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-atof.o)
-                0x0803e44c                atof
- .text.sulp     0x0803e452       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- *fill*         0x0803e48e        0x2 
+                0x0803d14c      0x66c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x0803d14c                __kernel_rem_pio2f
+ .text.scalbn   0x0803d7b8      0x114 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
+                0x0803d7b8                scalbn
+ *fill*         0x0803d8cc        0x4 
+ .text.floor    0x0803d8d0      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
+                0x0803d8d0                floor
+ .text.floorf   0x0803d9d8       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+                0x0803d9d8                floorf
+ .text          0x0803da6c      0x378 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x0803da6c                __aeabi_drsub
+                0x0803da74                __aeabi_dsub
+                0x0803da74                __subdf3
+                0x0803da78                __aeabi_dadd
+                0x0803da78                __adddf3
+                0x0803dcf0                __floatunsidf
+                0x0803dcf0                __aeabi_ui2d
+                0x0803dd10                __floatsidf
+                0x0803dd10                __aeabi_i2d
+                0x0803dd34                __aeabi_f2d
+                0x0803dd34                __extendsfdf2
+                0x0803dd78                __floatundidf
+                0x0803dd78                __aeabi_ul2d
+                0x0803dd88                __floatdidf
+                0x0803dd88                __aeabi_l2d
+ .text          0x0803dde4      0x424 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+                0x0803dde4                __aeabi_dmul
+                0x0803dde4                __muldf3
+                0x0803e038                __divdf3
+                0x0803e038                __aeabi_ddiv
+ .text          0x0803e208      0x110 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+                0x0803e208                __gtdf2
+                0x0803e208                __gedf2
+                0x0803e210                __ltdf2
+                0x0803e210                __ledf2
+                0x0803e218                __nedf2
+                0x0803e218                __eqdf2
+                0x0803e218                __cmpdf2
+                0x0803e294                __aeabi_cdrcmple
+                0x0803e2a4                __aeabi_cdcmpeq
+                0x0803e2a4                __aeabi_cdcmple
+                0x0803e2b4                __aeabi_dcmpeq
+                0x0803e2c8                __aeabi_dcmplt
+                0x0803e2dc                __aeabi_dcmple
+                0x0803e2f0                __aeabi_dcmpge
+                0x0803e304                __aeabi_dcmpgt
+ .text          0x0803e318       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
+                0x0803e318                __unorddf2
+                0x0803e318                __aeabi_dcmpun
+ .text          0x0803e344       0x50 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
+                0x0803e344                __aeabi_d2iz
+                0x0803e344                __fixdfsi
+ .text          0x0803e394       0xa0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x0803e394                __truncdfsf2
+                0x0803e394                __aeabi_d2f
+ .text.atof     0x0803e434        0x6 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-atof.o)
+                0x0803e434                atof
+ .text.sulp     0x0803e43a       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ *fill*         0x0803e476        0x2 
  .text._strtod_l
-                0x0803e490      0xc08 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
-                0x0803e490                _strtod_l
- .text.strtod   0x0803f098       0x18 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
-                0x0803f098                strtod
- .text.__cvt    0x0803f0b0       0xd2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
-                0x0803f0b0                __cvt
+                0x0803e478      0xc08 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+                0x0803e478                _strtod_l
+ .text.strtod   0x0803f080       0x18 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+                0x0803f080                strtod
+ .text.__cvt    0x0803f098       0xd2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0803f098                __cvt
  .text.__exponent
-                0x0803f182       0x74 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
-                0x0803f182                __exponent
- *fill*         0x0803f1f6        0x2 
+                0x0803f16a       0x74 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0803f16a                __exponent
+ *fill*         0x0803f1de        0x2 
  .text._printf_float
-                0x0803f1f8      0x464 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
-                0x0803f1f8                _printf_float
+                0x0803f1e0      0x464 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0803f1e0                _printf_float
  .text._printf_common
-                0x0803f65c       0xda c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0803f65c                _printf_common
- *fill*         0x0803f736        0x2 
+                0x0803f644       0xda c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0803f644                _printf_common
+ *fill*         0x0803f71e        0x2 
  .text._printf_i
-                0x0803f738      0x258 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0803f738                _printf_i
- .text.std      0x0803f990       0x6c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803f720      0x258 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0803f720                _printf_i
+ .text.std      0x0803f978       0x6c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.stdio_exit_handler
-                0x0803f9fc       0x18 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803f9e4       0x18 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.cleanup_stdio
-                0x0803fa14       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803f9fc       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.global_stdio_init.part.0
-                0x0803fa54       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803fa3c       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.__sfp_lock_acquire
-                0x0803fa90        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x0803fa90                __sfp_lock_acquire
+                0x0803fa78        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803fa78                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x0803fa9c        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x0803fa9c                __sfp_lock_release
- .text.__sinit  0x0803faa8       0x30 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x0803faa8                __sinit
+                0x0803fa84        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803fa84                __sfp_lock_release
+ .text.__sinit  0x0803fa90       0x30 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0803fa90                __sinit
  .text._fwalk_sglue
-                0x0803fad8       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
-                0x0803fad8                _fwalk_sglue
- .text.sprintf  0x0803fb14       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sprintf.o)
-                0x0803fb14                siprintf
-                0x0803fb14                sprintf
- .text.sscanf   0x0803fb54       0x54 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sscanf.o)
-                0x0803fb54                siscanf
-                0x0803fb54                sscanf
- .text.__sread  0x0803fba8       0x22 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0803fba8                __sread
+                0x0803fac0       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
+                0x0803fac0                _fwalk_sglue
+ .text.sprintf  0x0803fafc       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sprintf.o)
+                0x0803fafc                siprintf
+                0x0803fafc                sprintf
+ .text.sscanf   0x0803fb3c       0x54 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sscanf.o)
+                0x0803fb3c                siscanf
+                0x0803fb3c                sscanf
+ .text.__sread  0x0803fb90       0x22 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0803fb90                __sread
  .text.__seofread
-                0x0803fbca        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0803fbca                __seofread
+                0x0803fbb2        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0803fbb2                __seofread
  .text.__swrite
-                0x0803fbce       0x38 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0803fbce                __swrite
- .text.__sseek  0x0803fc06       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0803fc06                __sseek
+                0x0803fbb6       0x38 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0803fbb6                __swrite
+ .text.__sseek  0x0803fbee       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0803fbee                __sseek
  .text.__sclose
-                0x0803fc2a        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0803fc2a                __sclose
- .text.memset   0x0803fc32       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
-                0x0803fc32                memset
- .text.strcat   0x0803fc42       0x1e c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcat.o)
-                0x0803fc42                strcat
- .text.strchr   0x0803fc60       0x1a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strchr.o)
-                0x0803fc60                strchr
- .text.strncmp  0x0803fc7a       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
-                0x0803fc7a                strncmp
- *fill*         0x0803fc9e        0x2 
+                0x0803fc12        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0803fc12                __sclose
+ .text.memset   0x0803fc1a       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x0803fc1a                memset
+ .text.strcat   0x0803fc2a       0x1e c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcat.o)
+                0x0803fc2a                strcat
+ .text.strchr   0x0803fc48       0x1a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strchr.o)
+                0x0803fc48                strchr
+ .text.strncmp  0x0803fc62       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
+                0x0803fc62                strncmp
+ *fill*         0x0803fc86        0x2 
  .text._localeconv_r
-                0x0803fca0        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
-                0x0803fca0                _localeconv_r
+                0x0803fc88        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
+                0x0803fc88                _localeconv_r
  .text._close_r
-                0x0803fca8       0x20 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
-                0x0803fca8                _close_r
+                0x0803fc90       0x20 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
+                0x0803fc90                _close_r
  .text._lseek_r
-                0x0803fcc8       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
-                0x0803fcc8                _lseek_r
- .text._read_r  0x0803fcec       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
-                0x0803fcec                _read_r
+                0x0803fcb0       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
+                0x0803fcb0                _lseek_r
+ .text._read_r  0x0803fcd4       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
+                0x0803fcd4                _read_r
  .text._write_r
-                0x0803fd10       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
-                0x0803fd10                _write_r
- .text.__errno  0x0803fd34        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
-                0x0803fd34                __errno
+                0x0803fcf8       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
+                0x0803fcf8                _write_r
+ .text.__errno  0x0803fd1c        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
+                0x0803fd1c                __errno
  .text.__retarget_lock_init_recursive
-                0x0803fd40        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x0803fd40                __retarget_lock_init_recursive
+                0x0803fd28        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x0803fd28                __retarget_lock_init_recursive
  .text.__retarget_lock_acquire_recursive
-                0x0803fd42        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x0803fd42                __retarget_lock_acquire_recursive
+                0x0803fd2a        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x0803fd2a                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x0803fd44        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x0803fd44                __retarget_lock_release_recursive
- .text.strcpy   0x0803fd46       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcpy.o)
-                0x0803fd46                strcpy
- *fill*         0x0803fd56        0xa 
- .text          0x0803fd60       0xa0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
-                0x0803fd60                memchr
- .text.memcpy   0x0803fe00       0x1c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
-                0x0803fe00                memcpy
- .text          0x0803fe1c       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
-                0x0803fe1c                strlen
- .text.quorem   0x0803fe2c      0x110 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
- *fill*         0x0803ff3c        0x4 
- .text._dtoa_r  0x0803ff40      0xc58 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
-                0x0803ff40                _dtoa_r
- .text._free_r  0x08040b98       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
-                0x08040b98                _free_r
- .text.rshift   0x08040c2c       0xa2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+                0x0803fd2c        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x0803fd2c                __retarget_lock_release_recursive
+ .text.strcpy   0x0803fd2e       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcpy.o)
+                0x0803fd2e                strcpy
+ *fill*         0x0803fd3e        0x2 
+ .text          0x0803fd40       0xa0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
+                0x0803fd40                memchr
+ .text.memcpy   0x0803fde0       0x1c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+                0x0803fde0                memcpy
+ .text          0x0803fdfc       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
+                0x0803fdfc                strlen
+ .text.quorem   0x0803fe0c      0x110 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+ *fill*         0x0803ff1c        0x4 
+ .text._dtoa_r  0x0803ff20      0xc58 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+                0x0803ff20                _dtoa_r
+ .text._free_r  0x08040b78       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
+                0x08040b78                _free_r
+ .text.rshift   0x08040c0c       0xa2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
  .text.__hexdig_fun
-                0x08040cce       0x2a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
-                0x08040cce                __hexdig_fun
+                0x08040cae       0x2a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+                0x08040cae                __hexdig_fun
  .text.__gethex
-                0x08040cf8      0x420 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
-                0x08040cf8                __gethex
- .text.L_shift  0x08041118       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
- .text.__match  0x0804113c       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
-                0x0804113c                __match
+                0x08040cd8      0x420 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+                0x08040cd8                __gethex
+ .text.L_shift  0x080410f8       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
+ .text.__match  0x0804111c       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
+                0x0804111c                __match
  .text.__hexnan
-                0x08041164      0x136 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
-                0x08041164                __hexnan
- *fill*         0x0804129a        0x2 
- .text.malloc   0x0804129c       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
-                0x0804129c                malloc
+                0x08041144      0x136 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
+                0x08041144                __hexnan
+ *fill*         0x0804127a        0x2 
+ .text.malloc   0x0804127c       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
+                0x0804127c                malloc
  .text.sbrk_aligned
-                0x080412ac       0x44 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x0804128c       0x44 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
  .text._malloc_r
-                0x080412f0      0x100 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
-                0x080412f0                _malloc_r
+                0x080412d0      0x100 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x080412d0                _malloc_r
  .text.__ascii_mbtowc
-                0x080413f0       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mbtowc_r.o)
-                0x080413f0                __ascii_mbtowc
+                0x080413d0       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mbtowc_r.o)
+                0x080413d0                __ascii_mbtowc
  .text.__malloc_lock
-                0x08041414        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
-                0x08041414                __malloc_lock
+                0x080413f4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+                0x080413f4                __malloc_lock
  .text.__malloc_unlock
-                0x08041420        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
-                0x08041420                __malloc_unlock
- .text._Balloc  0x0804142c       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0804142c                _Balloc
- .text._Bfree   0x080414ac       0x44 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080414ac                _Bfree
+                0x08041400        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+                0x08041400                __malloc_unlock
+ .text._Balloc  0x0804140c       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804140c                _Balloc
+ .text._Bfree   0x0804148c       0x44 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804148c                _Bfree
  .text.__multadd
-                0x080414f0       0x8c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080414f0                __multadd
- .text.__s2b    0x0804157c       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0804157c                __s2b
+                0x080414d0       0x8c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x080414d0                __multadd
+ .text.__s2b    0x0804155c       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804155c                __s2b
  .text.__hi0bits
-                0x08041610       0x44 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041610                __hi0bits
+                0x080415f0       0x44 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x080415f0                __hi0bits
  .text.__lo0bits
-                0x08041654       0x5a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041654                __lo0bits
- *fill*         0x080416ae        0x2 
- .text.__i2b    0x080416b0       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080416b0                __i2b
+                0x08041634       0x5a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041634                __lo0bits
+ *fill*         0x0804168e        0x2 
+ .text.__i2b    0x08041690       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041690                __i2b
  .text.__multiply
-                0x080416dc      0x154 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080416dc                __multiply
+                0x080416bc      0x154 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x080416bc                __multiply
  .text.__pow5mult
-                0x08041830       0xb4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041830                __pow5mult
+                0x08041810       0xb4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041810                __pow5mult
  .text.__lshift
-                0x080418e4       0xd8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080418e4                __lshift
- .text.__mcmp   0x080419bc       0x36 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080419bc                __mcmp
- *fill*         0x080419f2        0x2 
- .text.__mdiff  0x080419f4      0x128 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x080419f4                __mdiff
- .text.__ulp    0x08041b1c       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041b1c                __ulp
- .text.__b2d    0x08041b68       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041b68                __b2d
- .text.__d2b    0x08041bfc       0xb0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041bfc                __d2b
- .text.__ratio  0x08041cac       0x64 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041cac                __ratio
+                0x080418c4       0xd8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x080418c4                __lshift
+ .text.__mcmp   0x0804199c       0x36 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804199c                __mcmp
+ *fill*         0x080419d2        0x2 
+ .text.__mdiff  0x080419d4      0x128 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x080419d4                __mdiff
+ .text.__ulp    0x08041afc       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041afc                __ulp
+ .text.__b2d    0x08041b48       0x94 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041b48                __b2d
+ .text.__d2b    0x08041bdc       0xb0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041bdc                __d2b
+ .text.__ratio  0x08041c8c       0x64 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041c8c                __ratio
  .text.__copybits
-                0x08041d10       0x46 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041d10                __copybits
+                0x08041cf0       0x46 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041cf0                __copybits
  .text.__any_on
-                0x08041d56       0x42 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x08041d56                __any_on
+                0x08041d36       0x42 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x08041d36                __any_on
  .text.__ascii_wctomb
-                0x08041d98       0x1a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wctomb_r.o)
-                0x08041d98                __ascii_wctomb
+                0x08041d78       0x1a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wctomb_r.o)
+                0x08041d78                __ascii_wctomb
  .text.__ssputs_r
-                0x08041db2       0xb6 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
-                0x08041db2                __ssputs_r
+                0x08041d92       0xb6 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x08041d92                __ssputs_r
  .text._svfprintf_r
-                0x08041e68      0x1f8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
-                0x08041e68                _svfiprintf_r
-                0x08041e68                _svfprintf_r
+                0x08041e48      0x1f8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x08041e48                _svfiprintf_r
+                0x08041e48                _svfprintf_r
  .text._sungetc_r
-                0x08042060       0x76 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
-                0x08042060                _sungetc_r
+                0x08042040       0x76 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+                0x08042040                _sungetc_r
  .text.__ssrefill_r
-                0x080420d6       0x3a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
-                0x080420d6                __ssrefill_r
+                0x080420b6       0x3a c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+                0x080420b6                __ssrefill_r
  .text.__ssvfscanf_r
-                0x08042110      0x2ec c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
-                0x08042110                __ssvfiscanf_r
-                0x08042110                __ssvfscanf_r
+                0x080420f0      0x2ec c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+                0x080420f0                __ssvfiscanf_r
+                0x080420f0                __ssvfscanf_r
  .text._scanf_chars
-                0x080423fc       0xb4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
-                0x080423fc                _scanf_chars
+                0x080423dc       0xb4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+                0x080423dc                _scanf_chars
  .text._scanf_i
-                0x080424b0      0x200 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
-                0x080424b0                _scanf_i
+                0x08042490      0x200 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+                0x08042490                _scanf_i
  .text.__sflush_r
-                0x080426b0      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
-                0x080426b0                __sflush_r
+                0x08042690      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
+                0x08042690                __sflush_r
  .text._fflush_r
-                0x080427b8       0x50 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
-                0x080427b8                _fflush_r
- .text.__sccl   0x08042808       0x72 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sccl.o)
-                0x08042808                __sccl
+                0x08042798       0x50 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
+                0x08042798                _fflush_r
+ .text.__sccl   0x080427e8       0x72 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sccl.o)
+                0x080427e8                __sccl
  .text.__submore
-                0x0804287a       0x74 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ungetc.o)
-                0x0804287a                __submore
- .text.memmove  0x080428ee       0x34 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memmove.o)
-                0x080428ee                memmove
- *fill*         0x08042922        0x2 
- .text._sbrk_r  0x08042924       0x20 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
-                0x08042924                _sbrk_r
+                0x0804285a       0x74 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ungetc.o)
+                0x0804285a                __submore
+ .text.memmove  0x080428ce       0x34 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memmove.o)
+                0x080428ce                memmove
+ *fill*         0x08042902        0x2 
+ .text._sbrk_r  0x08042904       0x20 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
+                0x08042904                _sbrk_r
  .text.__assert_func
-                0x08042944       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
-                0x08042944                __assert_func
+                0x08042924       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+                0x08042924                __assert_func
  .text._calloc_r
-                0x08042980       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
-                0x08042980                _calloc_r
+                0x08042960       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
+                0x08042960                _calloc_r
  .text._realloc_r
-                0x080429a8       0x5c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reallocr.o)
-                0x080429a8                _realloc_r
+                0x08042988       0x5c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reallocr.o)
+                0x08042988                _realloc_r
  .text._strtol_l.constprop.0
-                0x08042a04       0xfc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
+                0x080429e4       0xfc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
  .text._strtol_r
-                0x08042b00        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
-                0x08042b00                _strtol_r
+                0x08042ae0        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
+                0x08042ae0                _strtol_r
  .text._strtoul_l.constprop.0
-                0x08042b04       0xe4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
+                0x08042ae4       0xe4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
  .text._strtoul_r
-                0x08042be8        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
-                0x08042be8                _strtoul_r
- .text.fprintf  0x08042bec       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
-                0x08042bec                fiprintf
-                0x08042bec                fprintf
- .text.abort    0x08042c10        0xe c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
-                0x08042c10                abort
+                0x08042bc8        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
+                0x08042bc8                _strtoul_r
+ .text.fprintf  0x08042bcc       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
+                0x08042bcc                fiprintf
+                0x08042bcc                fprintf
+ .text.abort    0x08042bf0        0xe c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
+                0x08042bf0                abort
  .text._malloc_usable_size_r
-                0x08042c1e       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-msizer.o)
-                0x08042c1e                _malloc_usable_size_r
+                0x08042bfe       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-msizer.o)
+                0x08042bfe                _malloc_usable_size_r
  .text.__sfputc_r
-                0x08042c2e       0x2e c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x08042c0e       0x2e c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x08042c5c       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
-                0x08042c5c                __sfputs_r
+                0x08042c3c       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x08042c3c                __sfputs_r
  .text._vfprintf_r
-                0x08042c80      0x230 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
-                0x08042c80                _vfprintf_r
-                0x08042c80                _vfiprintf_r
+                0x08042c60      0x230 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x08042c60                _vfprintf_r
+                0x08042c60                _vfiprintf_r
  .text.__swbuf_r
-                0x08042eb0       0x7c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
-                0x08042eb0                __swbuf_r
+                0x08042e90       0x7c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
+                0x08042e90                __swbuf_r
  .text.__swsetup_r
-                0x08042f2c       0xac c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
-                0x08042f2c                __swsetup_r
+                0x08042f0c       0xac c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
+                0x08042f0c                __swsetup_r
  .text._raise_r
-                0x08042fd8       0x50 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
-                0x08042fd8                _raise_r
- .text.raise    0x08043028       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
-                0x08043028                raise
- .text._kill_r  0x08043038       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
-                0x08043038                _kill_r
+                0x08042fb8       0x50 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
+                0x08042fb8                _raise_r
+ .text.raise    0x08043008       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
+                0x08043008                raise
+ .text._kill_r  0x08043018       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
+                0x08043018                _kill_r
  .text._getpid_r
-                0x0804305c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
-                0x0804305c                _getpid_r
+                0x0804303c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
+                0x0804303c                _getpid_r
  .text.__swhatbuf_r
-                0x08043060       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
-                0x08043060                __swhatbuf_r
+                0x08043040       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
+                0x08043040                __swhatbuf_r
  .text.__smakebuf_r
-                0x080430ac       0x78 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
-                0x080430ac                __smakebuf_r
+                0x0804308c       0x78 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
+                0x0804308c                __smakebuf_r
  .text._fstat_r
-                0x08043124       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
-                0x08043124                _fstat_r
+                0x08043104       0x24 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
+                0x08043104                _fstat_r
  .text._isatty_r
-                0x08043148       0x20 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
-                0x08043148                _isatty_r
- .text          0x08043168       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
-                0x08043168                __aeabi_d2uiz
-                0x08043168                __fixunsdfsi
+                0x08043128       0x20 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
+                0x08043128                _isatty_r
+ .text          0x08043148       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
+                0x08043148                __aeabi_d2uiz
+                0x08043148                __fixunsdfsi
  .text.__fixdfdi
-                0x080431a8       0x30 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
-                0x080431a8                __fixdfdi
-                0x080431a8                __aeabi_d2lz
+                0x08043188       0x30 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
+                0x08043188                __fixdfdi
+                0x08043188                __aeabi_d2lz
  .text.__fixunsdfdi
-                0x080431d8       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
-                0x080431d8                __fixunsdfdi
-                0x080431d8                __aeabi_d2ulz
- .text._close   0x08043214       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(close.o)
-                0x08043214                _close
- .text._fstat   0x08043224       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(fstat.o)
-                0x08043224                _fstat
- .text._getpid  0x08043234       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(getpid.o)
-                0x08043234                _getpid
- .text._isatty  0x08043244       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(isatty.o)
-                0x08043244                _isatty
- .text._kill    0x08043254       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(kill.o)
-                0x08043254                _kill
- .text._lseek   0x08043264       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(lseek.o)
-                0x08043264                _lseek
- .text._read    0x08043274       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(read.o)
-                0x08043274                _read
- .text._write   0x08043284       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(write.o)
-                0x08043284                _write
- .text._exit    0x08043294        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
-                0x08043294                _exit
+                0x080431b8       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
+                0x080431b8                __fixunsdfdi
+                0x080431b8                __aeabi_d2ulz
+ .text._close   0x080431f4       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(close.o)
+                0x080431f4                _close
+ .text._fstat   0x08043204       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(fstat.o)
+                0x08043204                _fstat
+ .text._getpid  0x08043214       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(getpid.o)
+                0x08043214                _getpid
+ .text._isatty  0x08043224       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(isatty.o)
+                0x08043224                _isatty
+ .text._kill    0x08043234       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(kill.o)
+                0x08043234                _kill
+ .text._lseek   0x08043244       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(lseek.o)
+                0x08043244                _lseek
+ .text._read    0x08043254       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(read.o)
+                0x08043254                _read
+ .text._write   0x08043264       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(write.o)
+                0x08043264                _write
+ .text._exit    0x08043274        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
+                0x08043274                _exit
  *(.glue_7t)
- .glue_7t       0x08043298        0x0 linker stubs
+ .glue_7t       0x08043278        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x08043298        0x0 linker stubs
+ .glue_7        0x08043278        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x08043298        0x8 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
- .rodata        0x080432a0       0x38 VisualGDB/X10/cmsis_lib/src/stm32f4xx_it.o
- .rodata        0x080432d8      0x10e VisualGDB/X10/common/src/hyrel_can.o
- *fill*         0x080433e6        0x2 
- .rodata        0x080433e8       0x24 VisualGDB/X10/common/src/util.o
- .rodata        0x0804340c       0x77 VisualGDB/X10/display/display.o
- *fill*         0x08043483        0x1 
+ .rodata        0x08043278        0x8 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+ .rodata        0x08043280       0x38 VisualGDB/X10/cmsis_lib/src/stm32f4xx_it.o
+ .rodata        0x080432b8      0x10e VisualGDB/X10/common/src/hyrel_can.o
+ *fill*         0x080433c6        0x2 
+ .rodata        0x080433c8       0x24 VisualGDB/X10/common/src/util.o
+ .rodata        0x080433ec       0x77 VisualGDB/X10/display/display.o
+ *fill*         0x08043463        0x1 
  .rodata.asc2_1608
-                0x08043484      0x5f0 VisualGDB/X10/display/gui.o
-                0x08043484                asc2_1608
+                0x08043464      0x5f0 VisualGDB/X10/display/gui.o
+                0x08043464                asc2_1608
  .rodata._crashLog
-                0x08043a74     0x1220 VisualGDB/X10/main.o
-                0x08043a74                _crashLog
+                0x08043a54     0x1220 VisualGDB/X10/main.o
+                0x08043a54                _crashLog
  .rodata.NUM_CRASHLOG_ENTRIES
-                0x08044c94        0x4 VisualGDB/X10/main.o
-                0x08044c94                NUM_CRASHLOG_ENTRIES
- .rodata        0x08044c98      0x7e3 VisualGDB/X10/main.o
- *fill*         0x0804547b        0x1 
+                0x08044c74        0x4 VisualGDB/X10/main.o
+                0x08044c74                NUM_CRASHLOG_ENTRIES
+ .rodata        0x08044c78      0x7e3 VisualGDB/X10/main.o
+ *fill*         0x0804545b        0x1 
  .rodata.F1000HZ
-                0x0804547c       0x20 VisualGDB/X10/main.o
-                0x0804547c                F1000HZ
+                0x0804545c       0x20 VisualGDB/X10/main.o
+                0x0804545c                F1000HZ
  .rodata.F100HZ
-                0x0804549c       0x28 VisualGDB/X10/main.o
-                0x0804549c                F100HZ
- .rodata.F10HZ  0x080454c4       0x28 VisualGDB/X10/main.o
-                0x080454c4                F10HZ
- .rodata.F1HZ   0x080454ec       0x28 VisualGDB/X10/main.o
-                0x080454ec                F1HZ
+                0x0804547c       0x28 VisualGDB/X10/main.o
+                0x0804547c                F100HZ
+ .rodata.F10HZ  0x080454a4       0x28 VisualGDB/X10/main.o
+                0x080454a4                F10HZ
+ .rodata.F1HZ   0x080454cc       0x28 VisualGDB/X10/main.o
+                0x080454cc                F1HZ
  .rodata.RtdTable_1K
-                0x08045514       0x50 VisualGDB/X10/src/adc_table.o
-                0x08045514                RtdTable_1K
- .rodata        0x08045564      0x3ce VisualGDB/X10/src/bootloader.o
- *fill*         0x08045932        0x2 
- .rodata        0x08045934      0xff1 VisualGDB/X10/src/GCode.o
- *fill*         0x08046925        0x3 
- .rodata        0x08046928        0xc VisualGDB/X10/src/HardwareInit.o
+                0x080454f4       0x50 VisualGDB/X10/src/adc_table.o
+                0x080454f4                RtdTable_1K
+ .rodata        0x08045544      0x3ce VisualGDB/X10/src/bootloader.o
+ *fill*         0x08045912        0x2 
+ .rodata        0x08045914      0xff1 VisualGDB/X10/src/GCode.o
+ *fill*         0x08046905        0x3 
+ .rodata        0x08046908        0xc VisualGDB/X10/src/HardwareInit.o
  .rodata.devInit
-                0x08046934      0x958 VisualGDB/X10/src/headSetup.o
-                0x08046934                devInit
+                0x08046914      0x958 VisualGDB/X10/src/headSetup.o
+                0x08046914                devInit
  .rodata.devFamilies
-                0x0804728c       0x56 VisualGDB/X10/src/headSetup.o
-                0x0804728c                devFamilies
- *fill*         0x080472e2        0x2 
+                0x0804726c       0x56 VisualGDB/X10/src/headSetup.o
+                0x0804726c                devFamilies
+ *fill*         0x080472c2        0x2 
  .rodata.devPcbs
-                0x080472e4       0xfa VisualGDB/X10/src/headSetup.o
-                0x080472e4                devPcbs
- *fill*         0x080473de        0x2 
+                0x080472c4       0xfa VisualGDB/X10/src/headSetup.o
+                0x080472c4                devPcbs
+ *fill*         0x080473be        0x2 
  .rodata.devRtds
-                0x080473e0       0xfa VisualGDB/X10/src/headSetup.o
-                0x080473e0                devRtds
- *fill*         0x080474da        0x2 
+                0x080473c0       0xfa VisualGDB/X10/src/headSetup.o
+                0x080473c0                devRtds
+ *fill*         0x080474ba        0x2 
  .rodata.devCodebases
-                0x080474dc       0x64 VisualGDB/X10/src/headSetup.o
-                0x080474dc                devCodebases
+                0x080474bc       0x64 VisualGDB/X10/src/headSetup.o
+                0x080474bc                devCodebases
  .rodata.devTargets
-                0x08047540       0x82 VisualGDB/X10/src/headSetup.o
-                0x08047540                devTargets
- *fill*         0x080475c2        0x2 
+                0x08047520       0x82 VisualGDB/X10/src/headSetup.o
+                0x08047520                devTargets
+ *fill*         0x080475a2        0x2 
  .rodata.devTargetsOLD
-                0x080475c4       0x4e VisualGDB/X10/src/headSetup.o
-                0x080475c4                devTargetsOLD
- *fill*         0x08047612        0x2 
- .rodata        0x08047614       0xcd VisualGDB/X10/src/headSetup.o
- *fill*         0x080476e1        0x3 
- .rodata        0x080476e4      0x639 VisualGDB/X10/src/Hydra_can.o
- *fill*         0x08047d1d        0x3 
+                0x080475a4       0x4e VisualGDB/X10/src/headSetup.o
+                0x080475a4                devTargetsOLD
+ *fill*         0x080475f2        0x2 
+ .rodata        0x080475f4       0xcd VisualGDB/X10/src/headSetup.o
+ *fill*         0x080476c1        0x3 
+ .rodata        0x080476c4      0x639 VisualGDB/X10/src/Hydra_can.o
+ *fill*         0x08047cfd        0x3 
  .rodata._deviceErrorDescriptionTable
-                0x08047d20     0x1e00 VisualGDB/X10/src/mailbox.o
-                0x08047d20                _deviceErrorDescriptionTable
+                0x08047d00     0x1e00 VisualGDB/X10/src/mailbox.o
+                0x08047d00                _deviceErrorDescriptionTable
  .rodata._deviceReportInfoTable
-                0x08049b20      0x54f VisualGDB/X10/src/mailbox.o
-                0x08049b20                _deviceReportInfoTable
- *fill*         0x0804a06f        0x1 
+                0x08049b00      0x54f VisualGDB/X10/src/mailbox.o
+                0x08049b00                _deviceReportInfoTable
+ *fill*         0x0804a04f        0x1 
  .rodata._deviceReportPageInfoTable
-                0x0804a070       0xb6 VisualGDB/X10/src/mailbox.o
-                0x0804a070                _deviceReportPageInfoTable
- *fill*         0x0804a126        0x2 
+                0x0804a050       0xb6 VisualGDB/X10/src/mailbox.o
+                0x0804a050                _deviceReportPageInfoTable
+ *fill*         0x0804a106        0x2 
  .rodata._systemReportInfoTable
-                0x0804a128      0x2d8 VisualGDB/X10/src/mailbox.o
-                0x0804a128                _systemReportInfoTable
- .rodata        0x0804a400      0x763 VisualGDB/X10/src/mailbox.o
- *fill*         0x0804ab63        0x1 
- .rodata        0x0804ab64     0x13ac VisualGDB/X10/src/MCode.o
- .rodata        0x0804bf10      0xb0d VisualGDB/X10/src/MotorDrivers.o
- *fill*         0x0804ca1d        0x3 
+                0x0804a108      0x2d8 VisualGDB/X10/src/mailbox.o
+                0x0804a108                _systemReportInfoTable
+ .rodata        0x0804a3e0      0x763 VisualGDB/X10/src/mailbox.o
+ *fill*         0x0804ab43        0x1 
+ .rodata        0x0804ab44     0x13ac VisualGDB/X10/src/MCode.o
+ .rodata        0x0804bef0      0xb0d VisualGDB/X10/src/MotorDrivers.o
+ *fill*         0x0804c9fd        0x3 
  .rodata.co2UartTxBuffer
-                0x0804ca20        0xc VisualGDB/X10/src/Serial.o
- .rodata        0x0804ca2c      0x315 VisualGDB/X10/src/Serial.o
- *fill*         0x0804cd41        0x3 
+                0x0804ca00        0xc VisualGDB/X10/src/Serial.o
+ .rodata        0x0804ca0c      0x315 VisualGDB/X10/src/Serial.o
+ *fill*         0x0804cd21        0x3 
  .rodata.rasterFlipBit1
-                0x0804cd44       0x40 VisualGDB/X10/src/Serial.o
-                0x0804cd44                rasterFlipBit1
+                0x0804cd24       0x40 VisualGDB/X10/src/Serial.o
+                0x0804cd24                rasterFlipBit1
  .rodata.rasterFlipBit2
-                0x0804cd84       0x40 VisualGDB/X10/src/Serial.o
-                0x0804cd84                rasterFlipBit2
+                0x0804cd64       0x40 VisualGDB/X10/src/Serial.o
+                0x0804cd64                rasterFlipBit2
  .rodata.acos.str1.4
-                0x0804cdc4        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-w_acos.o)
+                0x0804cda4        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-w_acos.o)
  .rodata.acosf.str1.4
-                0x0804cdc5        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
- *fill*         0x0804cdc5        0x3 
+                0x0804cda5        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
+ *fill*         0x0804cda5        0x3 
  .rodata.npio2_hw
-                0x0804cdc8       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0804cda8       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x0804ce48      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0804ce28      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.CSWTCH.9
-                0x0804cf50        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+                0x0804cf30        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
  .rodata.CSWTCH.8
-                0x0804cf5c        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
- .rodata.Zero   0x0804cf68        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+                0x0804cf3c        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+ .rodata.Zero   0x0804cf48        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
  .rodata.npio2_hw
-                0x0804cf70       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x0804cf50       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .rodata.two_over_pi
-                0x0804cff0      0x318 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x0804cfd0      0x318 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .rodata.atanlo
-                0x0804d308       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+                0x0804d2e8       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
  .rodata.atanhi
-                0x0804d318       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
- .rodata.PIo2   0x0804d328       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0804d2f8       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+ .rodata.PIo2   0x0804d308       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x0804d368       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
- .rodata.PIo2   0x0804d378       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x0804d348       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+ .rodata.PIo2   0x0804d358       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
  .rodata.init_jk
-                0x0804d3a4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x0804d384        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
  .rodata._strtod_l.str1.1
-                0x0804d3b0        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+                0x0804d390        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
                                   0xf (size before relaxing)
- *fill*         0x0804d3b2        0x2 
+ *fill*         0x0804d392        0x2 
  .rodata.fpinan.0
-                0x0804d3b4       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- .rodata.fpi.1  0x0804d3c8       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- *fill*         0x0804d3dc        0x4 
+                0x0804d394       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ .rodata.fpi.1  0x0804d3a8       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ *fill*         0x0804d3bc        0x4 
  .rodata.tinytens
-                0x0804d3e0       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+                0x0804d3c0       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
  .rodata._printf_float.str1.1
-                0x0804d408       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0804d3e8       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
                                  0x12 (size before relaxing)
  .rodata._printf_i.str1.1
-                0x0804d418       0x22 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0804d3f8       0x22 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
  .rodata._setlocale_r.str1.1
-                0x0804d43a        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+                0x0804d41a        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
                                   0x9 (size before relaxing)
  .rodata.str1.1
-                0x0804d442        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+                0x0804d422        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
  .rodata._dtoa_r.str1.1
-                0x0804d442       0x96 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+                0x0804d422       0x96 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
                                  0x98 (size before relaxing)
  .rodata.__gethex.str1.1
-                0x0804d4d8       0x69 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+                0x0804d4b8       0x69 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
                                  0x7c (size before relaxing)
  .rodata._Balloc.str1.1
-                0x0804d541       0x62 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d521       0x62 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
                                  0x79 (size before relaxing)
  .rodata.__multadd.str1.1
-                0x0804d5a3       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
- *fill*         0x0804d5a3        0x1 
- .rodata.p05.0  0x0804d5a4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d583       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+ *fill*         0x0804d583        0x1 
+ .rodata.p05.0  0x0804d584        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
  .rodata.__mprec_bigtens
-                0x0804d5b0       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0804d5b0                __mprec_bigtens
+                0x0804d590       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d590                __mprec_bigtens
  .rodata.__mprec_tens
-                0x0804d5d8       0xc8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0804d5d8                __mprec_tens
+                0x0804d5b8       0xc8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d5b8                __mprec_tens
  .rodata._ctype_
-                0x0804d6a0      0x101 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ctype_.o)
-                0x0804d6a0                _ctype_
+                0x0804d680      0x101 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ctype_.o)
+                0x0804d680                _ctype_
  .rodata._svfprintf_r.str1.1
-                0x0804d7a1       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x0804d781       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
  .rodata.__ssvfscanf_r.str1.1
-                0x0804d7b2        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+                0x0804d792        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
  .rodata._scanf_i.str1.1
-                0x0804d7b2       0x12 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0804d792       0x12 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
  .rodata.str1.1
-                0x0804d7c4        0x9 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
- *fill*         0x0804d7cd        0x3 
- .rodata        0x0804d7d0        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0804d7a4        0x9 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+ *fill*         0x0804d7ad        0x3 
+ .rodata        0x0804d7b0        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
  .rodata.__assert_func.str1.1
-                0x0804d7dc       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+                0x0804d7bc       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
                                  0x3d (size before relaxing)
  .rodata._vfprintf_r.str1.1
-                0x0804d818       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0804d7f8       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
 
-.vfp11_veneer   0x0804d818        0x0
- .vfp11_veneer  0x0804d818        0x0 linker stubs
+.vfp11_veneer   0x0804d7f8        0x0
+ .vfp11_veneer  0x0804d7f8        0x0 linker stubs
 
-.v4_bx          0x0804d818        0x0
- .v4_bx         0x0804d818        0x0 linker stubs
+.v4_bx          0x0804d7f8        0x0
+ .v4_bx         0x0804d7f8        0x0 linker stubs
 
-.init           0x0804d818        0x4
- .init          0x0804d818        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0804d818                _init
+.init           0x0804d7f8        0x4
+ .init          0x0804d7f8        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0804d7f8                _init
 
-.fini           0x0804d81c        0x4
- .fini          0x0804d81c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0804d81c                _fini
+.fini           0x0804d7fc        0x4
+ .fini          0x0804d7fc        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0804d7fc                _fini
 
-.iplt           0x0804d820        0x0
- .iplt          0x0804d820        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+.iplt           0x0804d800        0x0
+ .iplt          0x0804d800        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0804d820                        __exidx_start = .
+                0x0804d800                        __exidx_start = .
 
-.ARM.exidx      0x0804d820        0x8
+.ARM.exidx      0x0804d800        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0804d820        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
- .ARM.exidx     0x0804d828        0x0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
+ .ARM.exidx     0x0804d800        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
+ .ARM.exidx     0x0804d808        0x0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
                                   0x8 (size before relaxing)
-                0x0804d828                        __exidx_end = .
+                0x0804d808                        __exidx_end = .
 
-.rel.dyn        0x0804d828        0x0
- .rel.iplt      0x0804d828        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
-                0x0804d828                        . = ALIGN (0x4)
-                0x0804d828                        _etext = .
-                0x0804d828                        _sidata = .
+.rel.dyn        0x0804d808        0x0
+ .rel.iplt      0x0804d808        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+                0x0804d808                        . = ALIGN (0x4)
+                0x0804d808                        _etext = .
+                0x0804d808                        _sidata = .
 
-.data           0x20000000      0xd68 load address 0x0804d828
+.data           0x20000000      0xd68 load address 0x0804d808
                 0x20000000                        _sdata = .
  *(.data .data.*)
  .data.SystemCoreClock
@@ -7488,10 +7489,10 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
                 0x20000d68                        . = ALIGN (0x4)
                 0x20000d68                        _edata = .
 
-.igot.plt       0x20000d68        0x0 load address 0x0804e590
+.igot.plt       0x20000d68        0x0 load address 0x0804e570
  .igot.plt      0x20000d68        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
 
-.bss            0x20000d68    0x13154 load address 0x0804e590
+.bss            0x20000d68    0x13154 load address 0x0804e570
                 0x20000d68                        _sbss = .
  *(.bss .bss.*)
  .bss.PGIOZ_fake
@@ -8429,7 +8430,7 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
                 0x20013ebc                        . = ALIGN (0x4)
                 0x20013ebc                        _ebss = .
 
-.co_stack       0x20013ebc     0x2004 load address 0x080616e4
+.co_stack       0x20013ebc     0x2004 load address 0x080616c4
                 0x20013ec0                        . = ALIGN (0x8)
  *fill*         0x20013ebc        0x4 
  *(.co_stack .co_stack.*)
@@ -9130,7 +9131,7 @@ LOAD linker stubs
  .debug_rnglists
                 0x00002dd7       0x63 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
 
-.debug_line     0x00000000    0x27269
+.debug_line     0x00000000    0x27255
  .debug_line    0x00000000       0x74 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
  .debug_line    0x00000074      0x2a9 VisualGDB/X10/cmsis_boot/system_stm32f4xx.o
  .debug_line    0x0000031d      0x806 VisualGDB/X10/cmsis_lib/src/stm32f4xx_adc.o
@@ -9165,21 +9166,21 @@ LOAD linker stubs
  .debug_line    0x00013ac5      0x6c7 VisualGDB/X10/src/headSetup.o
  .debug_line    0x0001418c     0x1a64 VisualGDB/X10/src/Hydra_can.o
  .debug_line    0x00015bf0     0x2156 VisualGDB/X10/src/mailbox.o
- .debug_line    0x00017d46     0x73a6 VisualGDB/X10/src/MCode.o
- .debug_line    0x0001f0ec     0x3e47 VisualGDB/X10/src/MotorDrivers.o
- .debug_line    0x00022f33      0x160 VisualGDB/X10/src/pinInit.o
- .debug_line    0x00023093      0x28d VisualGDB/X10/src/pnp.o
- .debug_line    0x00023320     0x121b VisualGDB/X10/src/Serial.o
- .debug_line    0x0002453b      0x136 VisualGDB/X10/sysmem.o
- .debug_line    0x00024671      0x3fa VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
- .debug_line    0x00024a6b      0x46e VisualGDB/X10/usb_lib/src/usbd_core.o
- .debug_line    0x00024ed9      0x1e0 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
- .debug_line    0x000250b9      0x656 VisualGDB/X10/usb_lib/src/usbd_req.o
- .debug_line    0x0002570f      0x1aa VisualGDB/X10/usb_lib/src/usbd_usr.o
- .debug_line    0x000258b9      0x1e9 VisualGDB/X10/usb_lib/src/usb_bsp.o
- .debug_line    0x00025aa2      0xd4a VisualGDB/X10/usb_lib/src/usb_core.o
- .debug_line    0x000267ec      0x435 VisualGDB/X10/usb_lib/src/usb_dcd.o
- .debug_line    0x00026c21      0x648 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+ .debug_line    0x00017d46     0x7392 VisualGDB/X10/src/MCode.o
+ .debug_line    0x0001f0d8     0x3e47 VisualGDB/X10/src/MotorDrivers.o
+ .debug_line    0x00022f1f      0x160 VisualGDB/X10/src/pinInit.o
+ .debug_line    0x0002307f      0x28d VisualGDB/X10/src/pnp.o
+ .debug_line    0x0002330c     0x121b VisualGDB/X10/src/Serial.o
+ .debug_line    0x00024527      0x136 VisualGDB/X10/sysmem.o
+ .debug_line    0x0002465d      0x3fa VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
+ .debug_line    0x00024a57      0x46e VisualGDB/X10/usb_lib/src/usbd_core.o
+ .debug_line    0x00024ec5      0x1e0 VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+ .debug_line    0x000250a5      0x656 VisualGDB/X10/usb_lib/src/usbd_req.o
+ .debug_line    0x000256fb      0x1aa VisualGDB/X10/usb_lib/src/usbd_usr.o
+ .debug_line    0x000258a5      0x1e9 VisualGDB/X10/usb_lib/src/usb_bsp.o
+ .debug_line    0x00025a8e      0xd4a VisualGDB/X10/usb_lib/src/usb_core.o
+ .debug_line    0x000267d8      0x435 VisualGDB/X10/usb_lib/src/usb_dcd.o
+ .debug_line    0x00026c0d      0x648 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
 
 .debug_str      0x00000000    0x14606
  .debug_str     0x00000000      0x146 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o

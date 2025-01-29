@@ -5313,7 +5313,7 @@ void setupKarlFactors(byte switchNum)
 	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
 	if (ARG_E_MISSING) { ReportMissingMcodeEArg(); return; }
 	if (ARG_S_MISSING) { ReportMissingMcodeSArg(); return; }
-	if (ARG_D_MISSING) { ReportMissingMcodeDArg(); return; }
+	//if (ARG_D_MISSING) { ReportMissingMcodeDArg(); return; }
 
 	devInitArea_t devInitArea = getDevInitAreaSwitchNum(switchNum);
 
