@@ -210,7 +210,11 @@
 #define SPI3_LCD_CS				(PIN_PORT_E | PIN_NUM_02 | PIN_INIT_HIGH | OUTPUT_PP_50MHZ) //302223 embedded display
 #define DOOROPEN_SENSE_INPUT    (INPUT_FLOATING  | PIN_PORT_E | PIN_NUM_11 | PIN_PUPPD_PULLUP)//door open sense J22
 
+#define USERKEY1_PIN 		(PIN_PORT_C | PIN_NUM_08  |INPUT_PULLUP )  //
+#define READ_USERKEY1		UserKey1_Status = ((GPIOC->IDR) & (PIN_MASK_09))>>9;
 
+#define USERKEY2_PIN 		(PIN_PORT_C | PIN_NUM_09  |INPUT_PULLUP )  //
+#define READ_USERKEY2		UserKey2_Status= ((GPIOC->IDR) & (PIN_MASK_10))>>10;
 
 
 #undef J19_10

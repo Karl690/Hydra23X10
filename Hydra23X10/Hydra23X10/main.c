@@ -154,7 +154,10 @@ HssPwmStruct *CannedHssPtr=NULL;
 boolean CannedCyclePuffFlag=FALSE;
 
 int _repetrelCommWatchCount = REPETREL_COMM_WATCHDOG_START_VALUE;
-
+uint32_t UserKey1_Status = 1;//user key to toggle the lcd display 
+uint32_t UserKey2_Status = 1;
+uint32_t Key1Debounce = 1;
+uint32_t Key2Debounce = 1;
 boolean _waitingForGuiCommand = FALSE;
 int _abortInProgress = 0;   // flag/watchdog counter in one
 int _abortCameFromRx = 0; // flag to know if abort was user requested or self inflicted
@@ -5301,10 +5304,30 @@ void readInputs(void)
 
 	checkStartButton();
 	checkEMO();
-
+	READ_USERKEY1; //read the status
+	READ_USERKEY2; //read the status
 	//checkABEncoderSelectButton(); //USE_AB_ENCODER
 
 	PWMCntrl();
+	if (!UserKey1_Status)
+	{
+		//switch is pressed and input is low
+		if (Key1Debounce)return;
+		Key1Debounce = 1; //turn on debounce
+		DisplayIndexDecrement();
+		return;
+	}
+	Key1Debounce = 0; //turn off debounce
+
+	if (!UserKey2_Status)
+	{
+		//switch is pressed and input is low
+		if (Key2Debounce)return;
+		Key2Debounce = 1; //turn on debounce
+		DisplayIndexIncrement();
+		return;
+	}
+	Key2Debounce = 0; //turn off debounce
 	Head11_Temperature = _MailBoxes._inbox[0].HBPayload[0].i16[0]>>5;
 	Head11_HTRDuty = _MailBoxes._inbox[0].HBPayload[0].i16[1];
 	Head11_FanDuty = _MailBoxes._inbox[0].HBPayload[0].i16[2];
@@ -6135,7 +6158,8 @@ int main(void)
 			//case 0:UpdateScreen(&LCDSpi1, SecsVarsTable); break;
 			//case 0:UpdateScreen(&LCDSpi1, SecsStringTable); break;
 		case 0:UpdateScreen(&LCDSpi1, LcdVarsTable); break;
-		case 1:UpdateScreen(&LCDSpi1, UsbGcodeArguments); break;
+		case 1:UpdateScreen(&LCDSpi1, SoapStringTable); break;
+		//case 1:UpdateScreen(&LCDSpi1, UsbGcodeArguments); break;
 		case 2:UpdateScreen(&LCDSpi1, CMDQueValues); break;
 		case 3:UpdateScreen(&LCDSpi1, TaskTimeTable1); break;
 		case 4:UpdateScreen(&LCDSpi1, ADCValueTable); break;

@@ -6204,11 +6204,11 @@ void M_Code_M762(void)  // transfer system info in ASCII text from host to main 
 		{
 			writeSystemSoapString(0);
 		}
-		else if ((ARG_R == 1.0f) &&  validFirmwareKey(0) && (strncmp((char *)(_sysInfoPtr->soapBaseAddr + FLASH_SOAP_RESERVE_OFFSET), "*M687", 5) == 0))
-		{ // already verified key AND it's in flash and flash not erased), then no need to write
-			sendError("Flash write request of firmware key ignored -- valid key already exists");
-			return;
-		}
+//		else if ((ARG_R == 1.0f) &&  validFirmwareKey(0) && (strncmp((char *)(_sysInfoPtr->soapBaseAddr + FLASH_SOAP_RESERVE_OFFSET), "*M687", 5) == 0))
+//		{ // already verified key AND it's in flash and flash not erased), then no need to write
+//			sendError("Flash write request of firmware key ignored -- valid key already exists");
+//			return;
+//		}
 		else
 		{   // need to write info to restricted area
 			writeSystemSoapString(1);

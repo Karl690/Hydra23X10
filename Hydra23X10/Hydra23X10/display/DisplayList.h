@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include "hyrel.h"
 
 typedef enum {
 	FUNC_INT,
@@ -23,17 +24,29 @@ typedef enum {
 	FUNC_MEMDUMPHEX,
 	FUNC_MEMDISPASCII,
 	FUNC_MEMDISPASCIIHEX,
-	FUNC_ASCI_SOAP
+	FUNC_ASCI_SOAP,
+	FUNC_MOTOR_STATUS,
+	FUNC_CANPACKET,
+	FUNC_CANHEADER,
 }DISPLAYFUNCTYPE;
 
 typedef struct {
-	uint32_t 		VariablePointer;//points to the variable that holds the data we want to display
-	char 			Label[9];
-	DISPLAYFUNCTYPE FuncType;//function type how we show the data, i.e. hex, int, float
-	uint8_t		Color_1; // this is for Label or background in Bar.
-	uint8_t			Color_2; // this is for Value or progress bar in Bar.
+	uint32_t MotorPosition; //points to the motor actual position  (uint32_t)&Motors[M_X].POSITION
+	pinType GrossMomePin; //used to find the gross positions
+	pinType FineHome; //pin connected to the fine home position	
+}MotorStatusStruct;
+
+typedef struct {
+	void* 		VariablePointer; //points to the variable that holds the data we want to display
+	char* 			Label; //[15];
+	DISPLAYFUNCTYPE FuncType; //function type how we show the data, i.e. hex, int, float
+	uint16_t		Color_1; // this is for Label or background in Bar.
+	uint16_t		Color_2; // this is for Value or progress bar in Bar.
 	uint32_t 		Offset; //for FUNC_MEMDUMPASCII if string is array variable(char a[]), it would be 1 otherwise 0. it is only for memory ascii function
 							//for FUNC_MEMDUMPHEX it means offset.
+	uint32_t		XStart; // position of value
+	uint32_t		YStart; // absolute position of line on Screen
+	uint32_t		Font_Multiplier; // font scaler 1 or 2
 } LcdVariableInfo;
 
 extern uint32_t Head11_Temperature;

@@ -33,4 +33,5 @@ extern adcStruct ADC_Channel[ADC_CHANNEL_NUM];
 void Init_ADC();
 void Start_ADC(void);
 void ProcessRawADC_Data(void);
+void SmoothDataUsingOlympicVotingAverage(void);
 extern float ScaledADCData[]; //converted adc buffer values

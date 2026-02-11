@@ -3,6 +3,8 @@
 #include "DisplayList.h"
 #include "gui.h"
 #include "colortables.h"
+#include "st7789.h"
+#include "mailbox.h"
 //#include "taskmanager.h"
 //#include "Communication/messages.h"
 //#include "Execution/cmdprocessor.h"
@@ -23,64 +25,64 @@ void WriteGuiBuffer(int row)
 void Format_Int32(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "%d ", (int)(*((uint32_t*)varInfo->VariablePointer)));
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2] );
 }
 void Format_Int16(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "%d ", (int)(*((uint16_t*)varInfo->VariablePointer)));
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2] );
 }
 
 void Format_Hex8(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "0x%02x ", (uint8_t)(*((uint8_t*)varInfo->VariablePointer)));
-	DrawString(LCD_WIDTH/2, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2] );
 
 }
 void Format_Hex16(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "0x%04x ", (uint16_t)(*((uint16_t*)varInfo->VariablePointer)));
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2] );
 
 }
 void Format_Hex32(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "0x%08x ", (int)(*((uint32_t*)varInfo->VariablePointer)));
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2] );
 }
 
 void Format_Title(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString( 30, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
-	DrawLine(0, LCD_LINESIZE / 2, 20, LCD_LINESIZE / 2, ColorInvertTable[varInfo->Color_2]);
-	DrawLine(LCD_WIDTH - 20, LCD_LINESIZE / 2, LCD_WIDTH, LCD_LINESIZE / 2, ColorInvertTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );//use color1 for title
+	//DrawLine(0, LCD_LINESIZE / 2, 20, LCD_LINESIZE / 2, ColorInvertTable[varInfo->Color_2]);
+	//DrawLine(LCD_WIDTH - 20, LCD_LINESIZE / 2, LCD_WIDTH, LCD_LINESIZE / 2, ColorInvertTable[varInfo->Color_2]);
 }
 
 void Format_Ascii(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);//label?
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "%s ", (uint8_t*)(uint32_t*)(varInfo->VariablePointer));
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2]);
 }
 
 void Format_Float3_3(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);//label
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "%.3f ", (float)(*((float*)varInfo->VariablePointer)));
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2]);
 }
 void Format_Float_QueVar(uint8_t row, void* info, uint16_t* colorTable)
 {
@@ -95,16 +97,16 @@ void Format_Float_QueVar(uint8_t row, void* info, uint16_t* colorTable)
 //void Format_MemoryDumpAscii(uint8_t row, void* info)
 //{
 //	varInfo = (LcdVariableInfo*)info;
-//	DrawString(LEFT_PADDING, PADDING + (row * LCD_LINESIZE), varInfo->Label, varInfo->Color_1);//label?
+//	DrawString(LEFT_PADDING, PADDING + (row * LCD_LINESIZE), varInfo->Label, colorTable[varInfo->Color_1] );//label?
 //	sprintf(strTempVal, "%s ", varInfo->VariablePointer);
-//	DrawString(VALUE_POS, PADDING + (row * LCD_LINESIZE), strTempVal, varInfo->Color_2);
+//	DrawString(VALUE_POS, PADDING + (row * LCD_LINESIZE), strTempVal, colorTable[varInfo->Color_2] );
 //}
 
 void Format_MemoryDumpAscii(uint8_t row, void* info, uint16_t* colorTable)
 {
 	int index=0;
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	uint8_t* MemoryDumpPointer = 0;
 	if(varInfo->Offset) MemoryDumpPointer = (uint8_t*)((uint32_t**)(varInfo->VariablePointer));
 	else MemoryDumpPointer = (uint8_t*)(*((uint32_t**)(varInfo->VariablePointer)));
@@ -125,7 +127,7 @@ void Format_MemoryDisplayAscii(uint8_t row, void* info, uint16_t* colorTable)
 {
 	int index=0;
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	uint8_t* MemoryDumpPointer = (uint8_t*)varInfo->VariablePointer;
 //	if(varInfo->Offset) MemoryDumpPointer = varInfo->VariablePointer;
 //	else MemoryDumpPointer = *((uint32_t**)(varInfo->VariablePointer));
@@ -189,9 +191,9 @@ void Format_MemoryDumpHex(uint8_t row, void* info, uint16_t* colorTable)
 void Format_Boolean(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	sprintf(strTempVal, "%s ", (*(uint8_t*)varInfo->VariablePointer) == 0?"False":"True");
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2]);
 }
 void Format_Bar_Dutty(uint8_t row, void* info, uint16_t* colorTable)
 {
@@ -204,7 +206,7 @@ void Format_Bar_Dutty(uint8_t row, void* info, uint16_t* colorTable)
 	/*   |=====60%==|==40%==| */
 	/*   X1========X2====X3*/
 
-	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 
 	uint16_t X1 = VALUE_POS;
 	uint16_t X2 = VALUE_POS + percentON * (LCD_WIDTH - VALUE_POS - RIGHT_PADDING); //Screen Width -Left padding - Right Padding
@@ -219,7 +221,7 @@ void Format_Bar_Status(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
 	uint8_t val = *(uint8_t*)varInfo->VariablePointer;
-	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 	uint16_t X1 = VALUE_POS;
 	uint16_t X2 = LCD_WIDTH - RIGHT_PADDING;
 	if(val) {
@@ -244,10 +246,10 @@ void Format_Bar_Float(uint8_t row, void* info, uint16_t* colorTable)
 	uint16_t X2 = VALUE_POS + percentON * (LCD_WIDTH - VALUE_POS - RIGHT_PADDING); //Screen Width -Left padding - Right Padding
 	uint16_t X3 = LCD_WIDTH - RIGHT_PADDING;
 
-	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1] );
 
-	if(X2 > X1)	FillRect(X1, PADDING, X2, LCD_LINESIZE-PADDING, colorTable[varInfo->Color_2]);
-	if(X3 > X2) FillRect(X2, PADDING, X3, LCD_LINESIZE-PADDING, colorTable[COLOR_GRAY]); //BLACK);//
+	if(X2 > X1)	FillRect(X1, PADDING, X2, LCD_LINESIZE-PADDING, colorTable[varInfo->Color_2] );
+	if (X3 > X2) FillRect(X2, PADDING, X3, LCD_LINESIZE - PADDING, colorTable[varInfo->Color_2] ); //BLACK);//
 
 	sprintf(strTempVal, "%.3f", val);
 	DrawString((X1 + X3)/2 - 10, PADDING, strTempVal, COLOR_BLACK);
@@ -256,8 +258,9 @@ void Format_Bar_Float(uint8_t row, void* info, uint16_t* colorTable)
 void Format_SoapStringWithIndex(uint8_t row, void* info, uint16_t* colorTable)
 {
 	varInfo = (LcdVariableInfo*)info;
-	uint8_t* soap = (uint8_t*)varInfo->VariablePointer;
-	uint16_t index = varInfo->Offset;
+	systemInfoStruct *sysInfo = (systemInfoStruct*)varInfo->VariablePointer;
+	uint8_t* soap = (uint8_t*)FLASH_1024_SOAP_ADDR;//sysInfo->soapBaseAddr;
+	uint16_t index = varInfo->Offset;//how many deep to read the soap string
 	uint16_t k = 0, p = 0;
 	uint16_t delimeter_cnt = 0;
 	memset(strTempVal, 0, 40);
@@ -272,11 +275,21 @@ void Format_SoapStringWithIndex(uint8_t row, void* info, uint16_t* colorTable)
 		if(delimeter_cnt > index) break;
 		k ++;
 	}
-	varInfo = (LcdVariableInfo*)info;
 	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);//label?
-	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	DrawString(varInfo->XStart, PADDING, strTempVal, colorTable[varInfo->Color_2]);
 }
 
+void Format_MotorStatus(uint8_t row, void* info, uint16_t* colorTable)
+{
+	varInfo = (LcdVariableInfo*)info;
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]); //label?
+	MotorStatusStruct* motorStatus = (MotorStatusStruct*)varInfo->VariablePointer;
+	uint8_t gross = pinRead(motorStatus->GrossMomePin);	
+	uint8_t fine = pinRead(motorStatus->FineHome);
+	
+	sprintf(strTempVal, "%08d   %s  %s", *(int*)motorStatus->MotorPosition, gross ? "##" : "__", fine ? "##" : "__");
+	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+}
 /////////////////////////////////////////////////////////////////////////////////
 void UpdateScreen(SPI_LCD_HandleTypeDef* LcdHandler, LcdVariableInfo* InfoToDisplay)
 {
@@ -311,6 +324,7 @@ void UpdateScreen(SPI_LCD_HandleTypeDef* LcdHandler, LcdVariableInfo* InfoToDisp
 			case FUNC_MEMDISPASCII: Format_MemoryDisplayAscii(row,&InfoToDisplay[row], colorTable);				break;
 			case FUNC_MEMDISPASCIIHEX: Format_MemoryDisplayAsciiHex(row, &InfoToDisplay[row], colorTable); break;
 			case FUNC_ASCI_SOAP: 	Format_SoapStringWithIndex(row,&InfoToDisplay[row], colorTable);			break;
+			case FUNC_MOTOR_STATUS: Format_MotorStatus(row, &InfoToDisplay[row], colorTable); break;
 
 			}
 		}else {

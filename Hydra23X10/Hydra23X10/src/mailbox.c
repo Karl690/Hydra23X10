@@ -25,6 +25,7 @@
 #include "headSetup.h"
 #include "MotorDriver.h"
 #include "GCode.h"
+#include "adc.h"
 
 // from gcode.h
 extern byte PersistantHotheadAddress;
@@ -411,7 +412,7 @@ void initSystemInfo(void)
 	_sysInfoPtr->soapReadPtr = (byte *)_sysInfoPtr->soapBaseAddr;
 
 	_sysInfoPtr->initFromReservedSoap = FALSE;
-	strcpy(_sysInfoPtr->lastKeyUsed, "NO_KEY_FOUND");
+	strcpy(_sysInfoPtr->lastKeyUsed, "NO_KEY_NEEDED");
 
 	_sysInfoPtr->crashlogReadPtr = (uint32_t *)_sysInfoPtr->crashlogBaseAddr;
 	_sysInfoPtr->crashlogWritePtr = (uint32_t *)_sysInfoPtr->crashlogBaseAddr;

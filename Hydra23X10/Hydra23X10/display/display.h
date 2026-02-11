@@ -1,7 +1,7 @@
 #include "DisplayList.h"
 #include "lcdspi_4xx.h"
 #define NUMBER_OF_DISPLAY_LISTS 9
-
+#define VariableDisplayStart 120     //start of variable first pixel in X default
 extern int DisplayIndex;
 
 extern void Init_Display(SPI_LCD_HandleTypeDef* LcdHandler, uint8_t SpiIndex, color_mode_t colorMode);
@@ -32,8 +32,9 @@ void Format_Boolean(uint8_t row, void* info, uint16_t*);
 void Format_Bar(uint8_t row, void* info, uint16_t*);
 void Format_MemoryDumpAscii(uint8_t row, void* info, uint16_t*);
 void Format_MemoryDisplayAsciiHex(uint8_t row, void* info, uint16_t* colorTable);
+void Format_MotorStatus(uint8_t row, void* info, uint16_t* colorTable);
 
-void WriteGuiBuffer();
+void WriteGuiBuffer(int row);
 void UpdateScreen(SPI_LCD_HandleTypeDef*,LcdVariableInfo*);
 void DisplayIndexIncrement();
 void DisplayIndexDecrement();

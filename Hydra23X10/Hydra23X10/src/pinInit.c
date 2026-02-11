@@ -107,6 +107,8 @@ void pinInitAll(void)
 	pinInit(TPIC_6595_CLR);
 	pinInit(TPIC_6595_SCLK);
 	pinInit(TPIC_6595_RCLK); 
+	pinInit(USERKEY1_PIN);
+	pinInit(USERKEY2_PIN);
 	
 	//adc pins
 //	pinInit(ADC2_03_PA3);//

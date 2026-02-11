@@ -182,7 +182,7 @@ extern void PostAcknowledge(void);
 extern void ReceiveCharacter(char);
 extern void checkForUSBRxData(void);
 extern void ProcessRawRxBuffer(void);
-
+extern void PCHAR(void);
 extern void SendAcknowledge(void);
 extern void sendchar(char);
 extern void sendCr(void);
