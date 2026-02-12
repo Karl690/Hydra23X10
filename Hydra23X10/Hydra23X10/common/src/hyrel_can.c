@@ -22,6 +22,7 @@
 #include "main.h"
 #include "serial.h"
 #include "mailbox.h"
+#include "Hydra_can.h"
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -513,8 +514,11 @@ byte canProcessTxQueue()
 			return(CAN_TX_OK);
 		}
 #endif
-
-
+		lastcanmsgindex++;//store the most recent tx pointer
+		lastcanmsgindex &= 0x0f;
+		memcpy(&CanMsgque[lastcanmsgindex], &_gs._canTxQ.Q[_gs._canTxQ.nextOut].sw, sizeof(canSwStruct));
+		workTxPacket = &CanMsgque[lastcanmsgindex];//point to the last packet we just updated
+		//uint32_t sendrcvbit= workTxPacket->fixed_b0;
 		retValue = canTransmitSwPacket(&_gs._canTxQ.Q[_gs._canTxQ.nextOut].sw);
 
 		if (retValue == CAN_TxStatus_NoMailBox)     // no room in the HW, so exit without changing queue indicies

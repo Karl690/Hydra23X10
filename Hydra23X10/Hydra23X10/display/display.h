@@ -33,6 +33,7 @@ void Format_Bar(uint8_t row, void* info, uint16_t*);
 void Format_MemoryDumpAscii(uint8_t row, void* info, uint16_t*);
 void Format_MemoryDisplayAsciiHex(uint8_t row, void* info, uint16_t* colorTable);
 void Format_MotorStatus(uint8_t row, void* info, uint16_t* colorTable);
+void Format_CanPacket(uint8_t row, void* info, uint16_t* colorTable);
 
 void WriteGuiBuffer(int row);
 void UpdateScreen(SPI_LCD_HandleTypeDef*,LcdVariableInfo*);

@@ -7,6 +7,7 @@
 #include "LcdDefinitions.h"
 #include "RevisionHistory.h"
 #include "mailbox.h"
+#include "Hydra_can.h"
 //#include "taskmanager.h"
 //#include "Communication/parser.h"
 //#include "SETTINGS/settings.h"
@@ -27,9 +28,9 @@ MotorStatusStruct MotorCStatus = { (uint32_t)&Motors[M_C].POSITION, C_HOME, DOOR
 
 
 LcdVariableInfo LcdVarsTable[] = {
-	{ &HeartBeat, HB_STRING, FUNC_INT32, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 1, 1 },
-	{ &RawADCDataBuffer[4], "CH05_PB1", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
-	{ &laserTemperature, "LASER_TMP", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &HeartBeat, HB_STRING,			FUNC_INT32,	COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 1, 1 },
+	{ &RawADCDataBuffer[4], "CH05_PB1",	FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &laserTemperature, "LASER_TMP",	FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &RawADCDataBuffer[5], "CH05_PC5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &HeartBeat, "MOTOR POSITION  Home Limit", FUNC_TITLE,   COLOR_WHITE, COLOR_MAGENTA, 0, 0, 60, 1 },
 	{ &MotorXStatus, "MtrX Pos", FUNC_MOTOR_STATUS, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
@@ -38,13 +39,30 @@ LcdVariableInfo LcdVarsTable[] = {
 	{ &MotorAStatus, "MtrA Pos", FUNC_MOTOR_STATUS, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &MotorBStatus, "MtrB Pos", FUNC_MOTOR_STATUS, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &MotorCStatus, "MtrC Pos", FUNC_MOTOR_STATUS, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &HeartBeat, "Pag MIsg Source target Data0    Data1", FUNC_TITLE, COLOR_WHITE, COLOR_MAGENTA, 0, 0, 1, 1 },
 	{(uint32_t)0,              			 "--------", FUNC_INT, 		COLOR_YELLOW,	COLOR_MAGENTA, 	0},
 
 };
 
 // FLASH_BASE + (gs._soapPage * FLASH_PAGE_SIZE)  (_sysInfoPtr->soapBaseAddr + _sysInfoPtr->soapSize) ->soapBaseAddr
-LcdVariableInfo SoapStringTable[] = { //Offset
-	{&_sysInfoPtr, "", FUNC_ASCI_SOAP, COLOR_RED, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+LcdVariableInfo CANMSGTable[] = { //Offset
+	{&lastcanmsgindex, "Pag Msg Src Data0    Data1    ", FUNC_TITLE, COLOR_WHITE, COLOR_MAGENTA, 0, 0, 1, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{&lastcanmsgindex, "", FUNC_CANPACKET, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ 0, "--------", FUNC_INT16, COLOR_YELLOW, COLOR_MAGENTA, 0 },
 };
 LcdVariableInfo SecsVarsTable[] = {

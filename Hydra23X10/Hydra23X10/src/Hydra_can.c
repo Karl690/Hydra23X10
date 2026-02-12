@@ -48,6 +48,10 @@ extern void ScheduleSoapStringRead(byte); // very few items needed from GCode.h
 ////////////////////////////////////////////////////////////////////////////////
 
 payloadUnion _loopbackPayload;
+canSwStruct CanMsgque[16];//up to 16 messages
+uint32_t lastcanmsgindex=0;
+canSwStruct* workPacket;
+canSwStruct* workTxPacket;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1262,7 +1266,13 @@ byte canProcessRxQueue(void)
 	inboxPtr = getInboxPointer(canRx->device);
 	payload = &canRx->payload;
 	inboxPtr->commTicker = HH_COMM_WATCHDOG_START_VALUE;        //reload the count down watchdog timer
-
+	//lets add to the can log screen
+	lastcanmsgindex++; //store the most recent rx pointer
+	lastcanmsgindex &= 0x0f;
+	memcpy(&CanMsgque[lastcanmsgindex], &canRx, sizeof(canSwStruct));
+	workTxPacket = &CanMsgque[lastcanmsgindex]; //point to the last packet we just updated
+	workTxPacket->fixed_b0 = 1;
+	//uint32_t sendrcvbit = workTxPacket->fixed_b0;	
 	switch (canRx->msgType)
 	{
 	case CAN_WRITE:

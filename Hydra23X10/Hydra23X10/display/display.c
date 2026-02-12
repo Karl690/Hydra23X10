@@ -5,6 +5,7 @@
 #include "colortables.h"
 #include "st7789.h"
 #include "mailbox.h"
+#include "Hydra_can.h"
 //#include "taskmanager.h"
 //#include "Communication/messages.h"
 //#include "Execution/cmdprocessor.h"
@@ -290,6 +291,26 @@ void Format_MotorStatus(uint8_t row, void* info, uint16_t* colorTable)
 	sprintf(strTempVal, "%08d   %s  %s", *(int*)motorStatus->MotorPosition, gross ? "##" : "__", fine ? "##" : "__");
 	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
 }
+/*//we want to display most recent in the top, so we will subtract the row number from the current index to get the right packet to display
+ *  this assumes the display screen starts on the second ROW, the first row is a header 
+ *  (lastcanmsgindex+row-1)&0x0f will yeild the correct index to display from the buffer.
+ **/
+void Format_CanPacket(uint8_t row, void* info, uint16_t* colorTable)
+{
+	varInfo = (LcdVariableInfo*)info;
+	uint32_t packetIndex = (lastcanmsgindex + row-1)&0xf; //get the right packet index to display
+	workPacket = &CanMsgque[packetIndex];//point to the working packet base address
+	//                  "Pag Msg Src trgt Data0      Data1    "
+	sprintf(strTempVal, " %02x %02x %03d %08X %08X",
+		workPacket->page,workPacket->msgId, workPacket->device, workPacket->payload.u32[0],workPacket->payload.u32[1]);
+	if (workPacket->fixed_b0)
+	{	strTempVal[0]='>';
+		DrawString(0, PADDING, strTempVal, colorTable[varInfo->Color_1]);
+		return;
+	}
+	strTempVal[0] = '<';
+	DrawString(0, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+}
 /////////////////////////////////////////////////////////////////////////////////
 void UpdateScreen(SPI_LCD_HandleTypeDef* LcdHandler, LcdVariableInfo* InfoToDisplay)
 {
@@ -322,10 +343,10 @@ void UpdateScreen(SPI_LCD_HandleTypeDef* LcdHandler, LcdVariableInfo* InfoToDisp
 			case FUNC_MEMDUMPASCII: Format_MemoryDumpAscii(row, &InfoToDisplay[row], colorTable);   			break;
 			case FUNC_MEMDUMPHEX:   Format_MemoryDumpHex(row,&InfoToDisplay[row], colorTable);     				break;
 			case FUNC_MEMDISPASCII: Format_MemoryDisplayAscii(row,&InfoToDisplay[row], colorTable);				break;
-			case FUNC_MEMDISPASCIIHEX: Format_MemoryDisplayAsciiHex(row, &InfoToDisplay[row], colorTable); break;
+			case FUNC_MEMDISPASCIIHEX: Format_MemoryDisplayAsciiHex(row, &InfoToDisplay[row], colorTable);		break;
 			case FUNC_ASCI_SOAP: 	Format_SoapStringWithIndex(row,&InfoToDisplay[row], colorTable);			break;
-			case FUNC_MOTOR_STATUS: Format_MotorStatus(row, &InfoToDisplay[row], colorTable); break;
-
+			case FUNC_MOTOR_STATUS: Format_MotorStatus(row, &InfoToDisplay[row], colorTable);					break;
+			case FUNC_CANPACKET:    Format_CanPacket(row, &InfoToDisplay[row], colorTable);						break;
 			}
 		}else {
 			isValid = 0;

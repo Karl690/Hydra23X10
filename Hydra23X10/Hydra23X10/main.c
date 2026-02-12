@@ -6158,7 +6158,7 @@ int main(void)
 			//case 0:UpdateScreen(&LCDSpi1, SecsVarsTable); break;
 			//case 0:UpdateScreen(&LCDSpi1, SecsStringTable); break;
 		case 0:UpdateScreen(&LCDSpi1, LcdVarsTable); break;
-		case 1:UpdateScreen(&LCDSpi1, SoapStringTable); break;
+		case 1:UpdateScreen(&LCDSpi1, CANMSGTable); break;
 		//case 1:UpdateScreen(&LCDSpi1, UsbGcodeArguments); break;
 		case 2:UpdateScreen(&LCDSpi1, CMDQueValues); break;
 		case 3:UpdateScreen(&LCDSpi1, TaskTimeTable1); break;

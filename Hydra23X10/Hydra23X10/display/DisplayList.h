@@ -27,7 +27,6 @@ typedef enum {
 	FUNC_ASCI_SOAP,
 	FUNC_MOTOR_STATUS,
 	FUNC_CANPACKET,
-	FUNC_CANHEADER,
 }DISPLAYFUNCTYPE;
 
 typedef struct {
@@ -61,6 +60,7 @@ extern LcdVariableInfo CanRxBufferTable[];
 extern LcdVariableInfo CanTxBufferTable[];
 extern LcdVariableInfo SecsStringTable[];
 extern LcdVariableInfo LcdVarsTable[];
+extern LcdVariableInfo CANMSGTable[];
 extern LcdVariableInfo TaskTimeTable1[];
 extern LcdVariableInfo TaskTimeTable2[];
 extern LcdVariableInfo SoapString1[];

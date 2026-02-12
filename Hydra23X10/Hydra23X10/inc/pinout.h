@@ -211,17 +211,17 @@
 #define DOOROPEN_SENSE_INPUT    (INPUT_FLOATING  | PIN_PORT_E | PIN_NUM_11 | PIN_PUPPD_PULLUP)//door open sense J22
 
 #define USERKEY1_PIN 		(PIN_PORT_C | PIN_NUM_08  |INPUT_PULLUP )  //
-#define READ_USERKEY1		UserKey1_Status = ((GPIOC->IDR) & (PIN_MASK_09))>>9;
+#define READ_USERKEY1		UserKey1_Status = ((GPIOC->IDR) & (PIN_MASK_08))>>8;
 
 #define USERKEY2_PIN 		(PIN_PORT_C | PIN_NUM_09  |INPUT_PULLUP )  //
-#define READ_USERKEY2		UserKey2_Status= ((GPIOC->IDR) & (PIN_MASK_10))>>10;
+#define READ_USERKEY2		UserKey2_Status= ((GPIOC->IDR) & (PIN_MASK_09))>>9;
 
 
 #undef J19_10
-#undef CO2_LASER_PWM
+//#undef CO2_LASER_PWM
 #undef DAC1_OUT
 #define J19_10          PIN_UNDEFINED
-#define CO2_LASER_PWM   PIN_UNDEFINED
+//#define CO2_LASER_PWM   PIN_UNDEFINED
 #define DAC1_OUT        PIN_UNDEFINED
 
 
