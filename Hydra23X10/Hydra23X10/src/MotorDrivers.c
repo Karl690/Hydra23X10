@@ -624,12 +624,14 @@ void setWatchdogBasedOnMoveTime(float moveTime)
 	totalMarginedMoveTimeMs = imin(totalMarginedMoveTimeMs, MAX_MOTION_WATCHDOG_MS);
 
 	_gs._totalMarginedMoveTimeMs = totalMarginedMoveTimeMs;
-	//if ((currentOutboxPtr->deviceFamily == DEVICE_FAMILY_LASER) && LASER_ENABLED)
-	if ((currentOutboxPtr->device == 41) && LASER_ENABLED)//check for co2 laser address
-	{
-		_gs._laser.watchdogMs = totalMarginedMoveTimeMs;
-		Co2LaserWatchDogTimer = _gs._laser.watchdogMs;
-		TIM8->CCR3 = DesiredCo2LaserPower;//tun on pwm for laser
+	if ((currentOutboxPtr->deviceFamily == DEVICE_FAMILY_LASER) && LASER_ENABLED)
+	{//setup the watchdog time appropriately
+		_gs._laser.watchdogMs = totalMarginedMoveTimeMs;//for diode and co2 laser
+		if (currentOutboxPtr->device == 41)
+		{
+			Co2LaserWatchDogTimer = _gs._laser.watchdogMs;
+			TIM8->CCR3 = DesiredCo2LaserPower; //tun on pwm for laser
+		}
 	}
 	else if (currentOutboxPtr->deviceFamily == DEVICE_FAMILY_INKJET)
 		_gs._laser.watchdogMs = totalMarginedMoveTimeMs;
