@@ -459,7 +459,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0x73 VisualGDB/X10/cmsis_lib/src/stm32f4xx_dac.o
  .debug_line    0x00000000      0x422 VisualGDB/X10/cmsis_lib/src/stm32f4xx_dac.o
- .debug_str     0x00000000      0x45a VisualGDB/X10/cmsis_lib/src/stm32f4xx_dac.o
+ .debug_str     0x00000000      0x470 VisualGDB/X10/cmsis_lib/src/stm32f4xx_dac.o
  .comment       0x00000000       0x56 VisualGDB/X10/cmsis_lib/src/stm32f4xx_dac.o
  .debug_frame   0x00000000      0x2ac VisualGDB/X10/cmsis_lib/src/stm32f4xx_dac.o
  .ARM.attributes
@@ -609,7 +609,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0x86 VisualGDB/X10/cmsis_lib/src/stm32f4xx_fsmc.o
  .debug_line    0x00000000      0x88a VisualGDB/X10/cmsis_lib/src/stm32f4xx_fsmc.o
- .debug_str     0x00000000      0x77a VisualGDB/X10/cmsis_lib/src/stm32f4xx_fsmc.o
+ .debug_str     0x00000000      0x790 VisualGDB/X10/cmsis_lib/src/stm32f4xx_fsmc.o
  .comment       0x00000000       0x56 VisualGDB/X10/cmsis_lib/src/stm32f4xx_fsmc.o
  .debug_frame   0x00000000      0x300 VisualGDB/X10/cmsis_lib/src/stm32f4xx_fsmc.o
  .ARM.attributes
@@ -714,7 +714,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0xd4 VisualGDB/X10/cmsis_lib/src/stm32f4xx_i2c.o
  .debug_line    0x00000000      0x6de VisualGDB/X10/cmsis_lib/src/stm32f4xx_i2c.o
- .debug_str     0x00000000      0x67e VisualGDB/X10/cmsis_lib/src/stm32f4xx_i2c.o
+ .debug_str     0x00000000      0x694 VisualGDB/X10/cmsis_lib/src/stm32f4xx_i2c.o
  .comment       0x00000000       0x56 VisualGDB/X10/cmsis_lib/src/stm32f4xx_i2c.o
  .debug_frame   0x00000000      0x530 VisualGDB/X10/cmsis_lib/src/stm32f4xx_i2c.o
  .ARM.attributes
@@ -776,7 +776,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0x55 VisualGDB/X10/cmsis_lib/src/stm32f4xx_pwr.o
  .debug_line    0x00000000      0x2eb VisualGDB/X10/cmsis_lib/src/stm32f4xx_pwr.o
- .debug_str     0x00000000      0x398 VisualGDB/X10/cmsis_lib/src/stm32f4xx_pwr.o
+ .debug_str     0x00000000      0x3ae VisualGDB/X10/cmsis_lib/src/stm32f4xx_pwr.o
  .comment       0x00000000       0x56 VisualGDB/X10/cmsis_lib/src/stm32f4xx_pwr.o
  .debug_frame   0x00000000      0x1dc VisualGDB/X10/cmsis_lib/src/stm32f4xx_pwr.o
  .ARM.attributes
@@ -982,7 +982,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000      0x16f VisualGDB/X10/cmsis_lib/src/stm32f4xx_rtc.o
  .debug_line    0x00000000     0x104f VisualGDB/X10/cmsis_lib/src/stm32f4xx_rtc.o
- .debug_str     0x00000000      0xb38 VisualGDB/X10/cmsis_lib/src/stm32f4xx_rtc.o
+ .debug_str     0x00000000      0xb4e VisualGDB/X10/cmsis_lib/src/stm32f4xx_rtc.o
  .comment       0x00000000       0x56 VisualGDB/X10/cmsis_lib/src/stm32f4xx_rtc.o
  .debug_frame   0x00000000      0x8b0 VisualGDB/X10/cmsis_lib/src/stm32f4xx_rtc.o
  .ARM.attributes
@@ -1057,7 +1057,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0xc1 VisualGDB/X10/cmsis_lib/src/stm32f4xx_sdio.o
  .debug_line    0x00000000      0x52f VisualGDB/X10/cmsis_lib/src/stm32f4xx_sdio.o
- .debug_str     0x00000000      0x647 VisualGDB/X10/cmsis_lib/src/stm32f4xx_sdio.o
+ .debug_str     0x00000000      0x65d VisualGDB/X10/cmsis_lib/src/stm32f4xx_sdio.o
  .comment       0x00000000       0x56 VisualGDB/X10/cmsis_lib/src/stm32f4xx_sdio.o
  .debug_frame   0x00000000      0x48c VisualGDB/X10/cmsis_lib/src/stm32f4xx_sdio.o
  .ARM.attributes
@@ -1327,7 +1327,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/ili9341.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/ili9341.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/ili9341.o
- .debug_str     0x00000000       0xe0 VisualGDB/X10/common/lcd/controllers/ili9341.o
+ .debug_str     0x00000000       0xf6 VisualGDB/X10/common/lcd/controllers/ili9341.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/controllers/ili9341.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/controllers/ili9341.o
@@ -1335,7 +1335,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/ssd1306.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/ssd1306.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/ssd1306.o
- .debug_str     0x00000000       0xe0 VisualGDB/X10/common/lcd/controllers/ssd1306.o
+ .debug_str     0x00000000       0xf6 VisualGDB/X10/common/lcd/controllers/ssd1306.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/controllers/ssd1306.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/controllers/ssd1306.o
@@ -1343,7 +1343,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/st7735.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/st7735.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/controllers/st7735.o
- .debug_str     0x00000000       0xdf VisualGDB/X10/common/lcd/controllers/st7735.o
+ .debug_str     0x00000000       0xf5 VisualGDB/X10/common/lcd/controllers/st7735.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/controllers/st7735.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/controllers/st7735.o
@@ -1351,7 +1351,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font12.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font12.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font12.o
- .debug_str     0x00000000       0xd9 VisualGDB/X10/common/lcd/fonts/font12.o
+ .debug_str     0x00000000       0xef VisualGDB/X10/common/lcd/fonts/font12.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font12.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font12.o
@@ -1359,7 +1359,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font16.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font16.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font16.o
- .debug_str     0x00000000       0xd9 VisualGDB/X10/common/lcd/fonts/font16.o
+ .debug_str     0x00000000       0xef VisualGDB/X10/common/lcd/fonts/font16.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font16.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font16.o
@@ -1367,7 +1367,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font20.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font20.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font20.o
- .debug_str     0x00000000       0xd9 VisualGDB/X10/common/lcd/fonts/font20.o
+ .debug_str     0x00000000       0xef VisualGDB/X10/common/lcd/fonts/font20.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font20.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font20.o
@@ -1375,7 +1375,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font20_14.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font20_14.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font20_14.o
- .debug_str     0x00000000       0xdc VisualGDB/X10/common/lcd/fonts/font20_14.o
+ .debug_str     0x00000000       0xf2 VisualGDB/X10/common/lcd/fonts/font20_14.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font20_14.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font20_14.o
@@ -1383,7 +1383,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font22.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font22.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font22.o
- .debug_str     0x00000000       0xd9 VisualGDB/X10/common/lcd/fonts/font22.o
+ .debug_str     0x00000000       0xef VisualGDB/X10/common/lcd/fonts/font22.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font22.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font22.o
@@ -1391,7 +1391,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font24.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font24.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font24.o
- .debug_str     0x00000000       0xd9 VisualGDB/X10/common/lcd/fonts/font24.o
+ .debug_str     0x00000000       0xef VisualGDB/X10/common/lcd/fonts/font24.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font24.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font24.o
@@ -1399,7 +1399,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font8.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font8.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/fonts/font8.o
- .debug_str     0x00000000       0xd8 VisualGDB/X10/common/lcd/fonts/font8.o
+ .debug_str     0x00000000       0xee VisualGDB/X10/common/lcd/fonts/font8.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/fonts/font8.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/fonts/font8.o
@@ -1407,7 +1407,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/lcd/lcd.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/lcd/lcd.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/lcd/lcd.o
- .debug_str     0x00000000       0xd0 VisualGDB/X10/common/lcd/lcd.o
+ .debug_str     0x00000000       0xe6 VisualGDB/X10/common/lcd/lcd.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/lcd/lcd.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/lcd/lcd.o
@@ -1415,7 +1415,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/common/src/gui.o
  .bss           0x00000000        0x0 VisualGDB/X10/common/src/gui.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/common/src/gui.o
- .debug_str     0x00000000       0xd0 VisualGDB/X10/common/src/gui.o
+ .debug_str     0x00000000       0xe6 VisualGDB/X10/common/src/gui.o
  .comment       0x00000000       0x56 VisualGDB/X10/common/src/gui.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/common/src/gui.o
@@ -1622,7 +1622,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/src/cruftyCode.o
  .bss           0x00000000        0x0 VisualGDB/X10/src/cruftyCode.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/src/cruftyCode.o
- .debug_str     0x00000000       0xd0 VisualGDB/X10/src/cruftyCode.o
+ .debug_str     0x00000000       0xe6 VisualGDB/X10/src/cruftyCode.o
  .comment       0x00000000       0x56 VisualGDB/X10/src/cruftyCode.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/src/cruftyCode.o
@@ -1634,7 +1634,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x18 VisualGDB/X10/src/diags.o
  .debug_line    0x00000000       0x2c VisualGDB/X10/src/diags.o
- .debug_str     0x00000000      0x16d VisualGDB/X10/src/diags.o
+ .debug_str     0x00000000      0x183 VisualGDB/X10/src/diags.o
  .comment       0x00000000       0x56 VisualGDB/X10/src/diags.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/src/diags.o
@@ -1642,7 +1642,7 @@ Discarded input sections
  .data          0x00000000        0x0 VisualGDB/X10/src/display.o
  .bss           0x00000000        0x0 VisualGDB/X10/src/display.o
  .debug_line    0x00000000        0x0 VisualGDB/X10/src/display.o
- .debug_str     0x00000000       0xcd VisualGDB/X10/src/display.o
+ .debug_str     0x00000000       0xe3 VisualGDB/X10/src/display.o
  .comment       0x00000000       0x56 VisualGDB/X10/src/display.o
  .ARM.attributes
                 0x00000000       0x34 VisualGDB/X10/src/display.o
@@ -2160,7 +2160,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0x2c VisualGDB/X10/usb_lib/src/usbd_cdc_vcp.o
  .debug_line    0x00000000      0x268 VisualGDB/X10/usb_lib/src/usbd_cdc_vcp.o
- .debug_str     0x00000000      0x434 VisualGDB/X10/usb_lib/src/usbd_cdc_vcp.o
+ .debug_str     0x00000000      0x44a VisualGDB/X10/usb_lib/src/usbd_cdc_vcp.o
  .comment       0x00000000       0x56 VisualGDB/X10/usb_lib/src/usbd_cdc_vcp.o
  .debug_frame   0x00000000       0xc4 VisualGDB/X10/usb_lib/src/usbd_cdc_vcp.o
  .ARM.attributes
@@ -2203,7 +2203,7 @@ Discarded input sections
  .debug_rnglists
                 0x00000000       0x37 VisualGDB/X10/usb_lib/src/usbd_desc.o
  .debug_line    0x00000000      0x1ad VisualGDB/X10/usb_lib/src/usbd_desc.o
- .debug_str     0x00000000      0x39a VisualGDB/X10/usb_lib/src/usbd_desc.o
+ .debug_str     0x00000000      0x3b0 VisualGDB/X10/usb_lib/src/usbd_desc.o
  .comment       0x00000000       0x56 VisualGDB/X10/usb_lib/src/usbd_desc.o
  .debug_frame   0x00000000      0x114 VisualGDB/X10/usb_lib/src/usbd_desc.o
  .ARM.attributes
@@ -2978,7 +2978,7 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
 LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtn.o
                 0x20020000                        _eram = 0x20020000
 
-.text           0x08000000    0x4da38
+.text           0x08000000    0x4da48
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x188 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
                 0x08000000                g_pfnVectors
@@ -6987,217 +6987,217 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
  .rodata        0x08043458       0x24 VisualGDB/X10/common/src/util.o
  .rodata        0x0804347c       0xab VisualGDB/X10/display/display.o
  *fill*         0x08043527        0x1 
- .rodata        0x08043528      0x1ca VisualGDB/X10/display/DisplayList.o
- *fill*         0x080436f2        0x2 
+ .rodata        0x08043528      0x1da VisualGDB/X10/display/DisplayList.o
+ *fill*         0x08043702        0x2 
  .rodata.asc2_1608
-                0x080436f4      0x5f0 VisualGDB/X10/display/gui.o
-                0x080436f4                asc2_1608
+                0x08043704      0x5f0 VisualGDB/X10/display/gui.o
+                0x08043704                asc2_1608
  .rodata._crashLog
-                0x08043ce4     0x1220 VisualGDB/X10/main.o
-                0x08043ce4                _crashLog
+                0x08043cf4     0x1220 VisualGDB/X10/main.o
+                0x08043cf4                _crashLog
  .rodata.NUM_CRASHLOG_ENTRIES
-                0x08044f04        0x4 VisualGDB/X10/main.o
-                0x08044f04                NUM_CRASHLOG_ENTRIES
- .rodata        0x08044f08      0x7e3 VisualGDB/X10/main.o
- *fill*         0x080456eb        0x1 
+                0x08044f14        0x4 VisualGDB/X10/main.o
+                0x08044f14                NUM_CRASHLOG_ENTRIES
+ .rodata        0x08044f18      0x7e3 VisualGDB/X10/main.o
+ *fill*         0x080456fb        0x1 
  .rodata.F1000HZ
-                0x080456ec       0x20 VisualGDB/X10/main.o
-                0x080456ec                F1000HZ
+                0x080456fc       0x20 VisualGDB/X10/main.o
+                0x080456fc                F1000HZ
  .rodata.F100HZ
-                0x0804570c       0x28 VisualGDB/X10/main.o
-                0x0804570c                F100HZ
- .rodata.F10HZ  0x08045734       0x28 VisualGDB/X10/main.o
-                0x08045734                F10HZ
- .rodata.F1HZ   0x0804575c       0x28 VisualGDB/X10/main.o
-                0x0804575c                F1HZ
+                0x0804571c       0x28 VisualGDB/X10/main.o
+                0x0804571c                F100HZ
+ .rodata.F10HZ  0x08045744       0x28 VisualGDB/X10/main.o
+                0x08045744                F10HZ
+ .rodata.F1HZ   0x0804576c       0x28 VisualGDB/X10/main.o
+                0x0804576c                F1HZ
  .rodata.RtdTable_1K
-                0x08045784       0x50 VisualGDB/X10/src/adc_table.o
-                0x08045784                RtdTable_1K
- .rodata        0x080457d4      0x3ce VisualGDB/X10/src/bootloader.o
- *fill*         0x08045ba2        0x2 
- .rodata        0x08045ba4      0xff1 VisualGDB/X10/src/GCode.o
- *fill*         0x08046b95        0x3 
- .rodata        0x08046b98        0xc VisualGDB/X10/src/HardwareInit.o
+                0x08045794       0x50 VisualGDB/X10/src/adc_table.o
+                0x08045794                RtdTable_1K
+ .rodata        0x080457e4      0x3ce VisualGDB/X10/src/bootloader.o
+ *fill*         0x08045bb2        0x2 
+ .rodata        0x08045bb4      0xff1 VisualGDB/X10/src/GCode.o
+ *fill*         0x08046ba5        0x3 
+ .rodata        0x08046ba8        0xc VisualGDB/X10/src/HardwareInit.o
  .rodata.devInit
-                0x08046ba4      0x958 VisualGDB/X10/src/headSetup.o
-                0x08046ba4                devInit
+                0x08046bb4      0x958 VisualGDB/X10/src/headSetup.o
+                0x08046bb4                devInit
  .rodata.devFamilies
-                0x080474fc       0x56 VisualGDB/X10/src/headSetup.o
-                0x080474fc                devFamilies
- *fill*         0x08047552        0x2 
+                0x0804750c       0x56 VisualGDB/X10/src/headSetup.o
+                0x0804750c                devFamilies
+ *fill*         0x08047562        0x2 
  .rodata.devPcbs
-                0x08047554       0xfa VisualGDB/X10/src/headSetup.o
-                0x08047554                devPcbs
- *fill*         0x0804764e        0x2 
+                0x08047564       0xfa VisualGDB/X10/src/headSetup.o
+                0x08047564                devPcbs
+ *fill*         0x0804765e        0x2 
  .rodata.devRtds
-                0x08047650       0xfa VisualGDB/X10/src/headSetup.o
-                0x08047650                devRtds
- *fill*         0x0804774a        0x2 
+                0x08047660       0xfa VisualGDB/X10/src/headSetup.o
+                0x08047660                devRtds
+ *fill*         0x0804775a        0x2 
  .rodata.devCodebases
-                0x0804774c       0x64 VisualGDB/X10/src/headSetup.o
-                0x0804774c                devCodebases
+                0x0804775c       0x64 VisualGDB/X10/src/headSetup.o
+                0x0804775c                devCodebases
  .rodata.devTargets
-                0x080477b0       0x82 VisualGDB/X10/src/headSetup.o
-                0x080477b0                devTargets
- *fill*         0x08047832        0x2 
+                0x080477c0       0x82 VisualGDB/X10/src/headSetup.o
+                0x080477c0                devTargets
+ *fill*         0x08047842        0x2 
  .rodata.devTargetsOLD
-                0x08047834       0x4e VisualGDB/X10/src/headSetup.o
-                0x08047834                devTargetsOLD
- *fill*         0x08047882        0x2 
- .rodata        0x08047884       0xcd VisualGDB/X10/src/headSetup.o
- *fill*         0x08047951        0x3 
- .rodata        0x08047954      0x639 VisualGDB/X10/src/Hydra_can.o
- *fill*         0x08047f8d        0x3 
+                0x08047844       0x4e VisualGDB/X10/src/headSetup.o
+                0x08047844                devTargetsOLD
+ *fill*         0x08047892        0x2 
+ .rodata        0x08047894       0xcd VisualGDB/X10/src/headSetup.o
+ *fill*         0x08047961        0x3 
+ .rodata        0x08047964      0x639 VisualGDB/X10/src/Hydra_can.o
+ *fill*         0x08047f9d        0x3 
  .rodata._deviceErrorDescriptionTable
-                0x08047f90     0x1e00 VisualGDB/X10/src/mailbox.o
-                0x08047f90                _deviceErrorDescriptionTable
+                0x08047fa0     0x1e00 VisualGDB/X10/src/mailbox.o
+                0x08047fa0                _deviceErrorDescriptionTable
  .rodata._deviceReportInfoTable
-                0x08049d90      0x54f VisualGDB/X10/src/mailbox.o
-                0x08049d90                _deviceReportInfoTable
- *fill*         0x0804a2df        0x1 
+                0x08049da0      0x54f VisualGDB/X10/src/mailbox.o
+                0x08049da0                _deviceReportInfoTable
+ *fill*         0x0804a2ef        0x1 
  .rodata._deviceReportPageInfoTable
-                0x0804a2e0       0xb6 VisualGDB/X10/src/mailbox.o
-                0x0804a2e0                _deviceReportPageInfoTable
- *fill*         0x0804a396        0x2 
+                0x0804a2f0       0xb6 VisualGDB/X10/src/mailbox.o
+                0x0804a2f0                _deviceReportPageInfoTable
+ *fill*         0x0804a3a6        0x2 
  .rodata._systemReportInfoTable
-                0x0804a398      0x2d8 VisualGDB/X10/src/mailbox.o
-                0x0804a398                _systemReportInfoTable
- .rodata        0x0804a670      0x763 VisualGDB/X10/src/mailbox.o
- *fill*         0x0804add3        0x1 
- .rodata        0x0804add4     0x135c VisualGDB/X10/src/MCode.o
- .rodata        0x0804c130      0xb0d VisualGDB/X10/src/MotorDrivers.o
- *fill*         0x0804cc3d        0x3 
+                0x0804a3a8      0x2d8 VisualGDB/X10/src/mailbox.o
+                0x0804a3a8                _systemReportInfoTable
+ .rodata        0x0804a680      0x763 VisualGDB/X10/src/mailbox.o
+ *fill*         0x0804ade3        0x1 
+ .rodata        0x0804ade4     0x135c VisualGDB/X10/src/MCode.o
+ .rodata        0x0804c140      0xb0d VisualGDB/X10/src/MotorDrivers.o
+ *fill*         0x0804cc4d        0x3 
  .rodata.co2UartTxBuffer
-                0x0804cc40        0xc VisualGDB/X10/src/Serial.o
- .rodata        0x0804cc4c      0x315 VisualGDB/X10/src/Serial.o
- *fill*         0x0804cf61        0x3 
+                0x0804cc50        0xc VisualGDB/X10/src/Serial.o
+ .rodata        0x0804cc5c      0x315 VisualGDB/X10/src/Serial.o
+ *fill*         0x0804cf71        0x3 
  .rodata.rasterFlipBit1
-                0x0804cf64       0x40 VisualGDB/X10/src/Serial.o
-                0x0804cf64                rasterFlipBit1
+                0x0804cf74       0x40 VisualGDB/X10/src/Serial.o
+                0x0804cf74                rasterFlipBit1
  .rodata.rasterFlipBit2
-                0x0804cfa4       0x40 VisualGDB/X10/src/Serial.o
-                0x0804cfa4                rasterFlipBit2
+                0x0804cfb4       0x40 VisualGDB/X10/src/Serial.o
+                0x0804cfb4                rasterFlipBit2
  .rodata.acos.str1.4
-                0x0804cfe4        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-w_acos.o)
+                0x0804cff4        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-w_acos.o)
  .rodata.acosf.str1.4
-                0x0804cfe5        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
- *fill*         0x0804cfe5        0x3 
+                0x0804cff5        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
+ *fill*         0x0804cff5        0x3 
  .rodata.npio2_hw
-                0x0804cfe8       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0804cff8       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x0804d068      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0804d078      0x108 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.CSWTCH.9
-                0x0804d170        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+                0x0804d180        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
  .rodata.CSWTCH.8
-                0x0804d17c        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
- .rodata.Zero   0x0804d188        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+                0x0804d18c        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+ .rodata.Zero   0x0804d198        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
  .rodata.npio2_hw
-                0x0804d190       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x0804d1a0       0x80 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .rodata.two_over_pi
-                0x0804d210      0x318 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                0x0804d220      0x318 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .rodata.atanlo
-                0x0804d528       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
- .rodata.atanhi
                 0x0804d538       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
- .rodata.PIo2   0x0804d548       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+ .rodata.atanhi
+                0x0804d548       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+ .rodata.PIo2   0x0804d558       0x40 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x0804d588       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
- .rodata.PIo2   0x0804d598       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x0804d598       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+ .rodata.PIo2   0x0804d5a8       0x2c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
  .rodata.init_jk
-                0x0804d5c4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                0x0804d5d4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
  .rodata._strtod_l.str1.1
-                0x0804d5d0        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+                0x0804d5e0        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
                                   0xf (size before relaxing)
- *fill*         0x0804d5d2        0x2 
+ *fill*         0x0804d5e2        0x2 
  .rodata.fpinan.0
-                0x0804d5d4       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- .rodata.fpi.1  0x0804d5e8       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- *fill*         0x0804d5fc        0x4 
+                0x0804d5e4       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ .rodata.fpi.1  0x0804d5f8       0x14 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ *fill*         0x0804d60c        0x4 
  .rodata.tinytens
-                0x0804d600       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+                0x0804d610       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
  .rodata._printf_float.str1.1
-                0x0804d628       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0804d638       0x10 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
                                  0x12 (size before relaxing)
  .rodata._printf_i.str1.1
-                0x0804d638       0x22 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0804d648       0x22 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
  .rodata._setlocale_r.str1.1
-                0x0804d65a        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+                0x0804d66a        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
                                   0x9 (size before relaxing)
  .rodata.str1.1
-                0x0804d662        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+                0x0804d672        0x2 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
  .rodata._dtoa_r.str1.1
-                0x0804d662       0x96 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+                0x0804d672       0x96 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
                                  0x98 (size before relaxing)
  .rodata.__gethex.str1.1
-                0x0804d6f8       0x69 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+                0x0804d708       0x69 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
                                  0x7c (size before relaxing)
  .rodata._Balloc.str1.1
-                0x0804d761       0x62 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d771       0x62 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
                                  0x79 (size before relaxing)
  .rodata.__multadd.str1.1
-                0x0804d7c3       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
- *fill*         0x0804d7c3        0x1 
- .rodata.p05.0  0x0804d7c4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d7d3       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+ *fill*         0x0804d7d3        0x1 
+ .rodata.p05.0  0x0804d7d4        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
  .rodata.__mprec_bigtens
-                0x0804d7d0       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0804d7d0                __mprec_bigtens
+                0x0804d7e0       0x28 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d7e0                __mprec_bigtens
  .rodata.__mprec_tens
-                0x0804d7f8       0xc8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0804d7f8                __mprec_tens
+                0x0804d808       0xc8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0804d808                __mprec_tens
  .rodata._ctype_
-                0x0804d8c0      0x101 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ctype_.o)
-                0x0804d8c0                _ctype_
+                0x0804d8d0      0x101 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ctype_.o)
+                0x0804d8d0                _ctype_
  .rodata._svfprintf_r.str1.1
-                0x0804d9c1       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x0804d9d1       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
  .rodata.__ssvfscanf_r.str1.1
-                0x0804d9d2        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+                0x0804d9e2        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
  .rodata._scanf_i.str1.1
-                0x0804d9d2       0x12 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0804d9e2       0x12 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
  .rodata.str1.1
-                0x0804d9e4        0x9 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
- *fill*         0x0804d9ed        0x3 
- .rodata        0x0804d9f0        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0804d9f4        0x9 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+ *fill*         0x0804d9fd        0x3 
+ .rodata        0x0804da00        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
  .rodata.__assert_func.str1.1
-                0x0804d9fc       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+                0x0804da0c       0x3c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
                                  0x3d (size before relaxing)
  .rodata._vfprintf_r.str1.1
-                0x0804da38       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0804da48       0x11 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
 
-.vfp11_veneer   0x0804da38        0x0
- .vfp11_veneer  0x0804da38        0x0 linker stubs
+.vfp11_veneer   0x0804da48        0x0
+ .vfp11_veneer  0x0804da48        0x0 linker stubs
 
-.v4_bx          0x0804da38        0x0
- .v4_bx         0x0804da38        0x0 linker stubs
+.v4_bx          0x0804da48        0x0
+ .v4_bx         0x0804da48        0x0 linker stubs
 
-.init           0x0804da38        0x4
- .init          0x0804da38        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0804da38                _init
+.init           0x0804da48        0x4
+ .init          0x0804da48        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0804da48                _init
 
-.fini           0x0804da3c        0x4
- .fini          0x0804da3c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0804da3c                _fini
+.fini           0x0804da4c        0x4
+ .fini          0x0804da4c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0804da4c                _fini
 
-.iplt           0x0804da40        0x0
- .iplt          0x0804da40        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+.iplt           0x0804da50        0x0
+ .iplt          0x0804da50        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0804da40                        __exidx_start = .
+                0x0804da50                        __exidx_start = .
 
-.ARM.exidx      0x0804da40        0x8
+.ARM.exidx      0x0804da50        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0804da40        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
- .ARM.exidx     0x0804da48        0x0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
+ .ARM.exidx     0x0804da50        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
+ .ARM.exidx     0x0804da58        0x0 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
                                   0x8 (size before relaxing)
-                0x0804da48                        __exidx_end = .
+                0x0804da58                        __exidx_end = .
 
-.rel.dyn        0x0804da48        0x0
- .rel.iplt      0x0804da48        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
-                0x0804da48                        . = ALIGN (0x4)
-                0x0804da48                        _etext = .
-                0x0804da48                        _sidata = .
+.rel.dyn        0x0804da58        0x0
+ .rel.iplt      0x0804da58        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+                0x0804da58                        . = ALIGN (0x4)
+                0x0804da58                        _etext = .
+                0x0804da58                        _sidata = .
 
-.data           0x20000000     0x1120 load address 0x0804da48
+.data           0x20000000     0x1140 load address 0x0804da58
                 0x20000000                        _sdata = .
  *(.data .data.*)
  .data.SystemCoreClock
@@ -7229,1264 +7229,1264 @@ LOAD c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/
                 0x20000094        0xc VisualGDB/X10/display/DisplayList.o
                 0x20000094                MotorCStatus
  .data.LcdVarsTable
-                0x200000a0      0x1a0 VisualGDB/X10/display/DisplayList.o
+                0x200000a0      0x1c0 VisualGDB/X10/display/DisplayList.o
                 0x200000a0                LcdVarsTable
  .data.CANMSGTable
-                0x20000240      0x240 VisualGDB/X10/display/DisplayList.o
-                0x20000240                CANMSGTable
+                0x20000260      0x240 VisualGDB/X10/display/DisplayList.o
+                0x20000260                CANMSGTable
  .data.CanRxBufferTable
-                0x20000480       0x40 VisualGDB/X10/display/DisplayList.o
-                0x20000480                CanRxBufferTable
+                0x200004a0       0x40 VisualGDB/X10/display/DisplayList.o
+                0x200004a0                CanRxBufferTable
  .data.CanTxBufferTable
-                0x200004c0       0x40 VisualGDB/X10/display/DisplayList.o
-                0x200004c0                CanTxBufferTable
+                0x200004e0       0x40 VisualGDB/X10/display/DisplayList.o
+                0x200004e0                CanTxBufferTable
  .data.CMDQueValues
-                0x20000500      0x200 VisualGDB/X10/display/DisplayList.o
-                0x20000500                CMDQueValues
+                0x20000520      0x200 VisualGDB/X10/display/DisplayList.o
+                0x20000520                CMDQueValues
  .data.TaskTimeTable1
-                0x20000700       0x20 VisualGDB/X10/display/DisplayList.o
-                0x20000700                TaskTimeTable1
- .data.ADCValueTable
                 0x20000720       0x20 VisualGDB/X10/display/DisplayList.o
-                0x20000720                ADCValueTable
- .data.FaultValueTable
+                0x20000720                TaskTimeTable1
+ .data.ADCValueTable
                 0x20000740       0x20 VisualGDB/X10/display/DisplayList.o
-                0x20000740                FaultValueTable
+                0x20000740                ADCValueTable
+ .data.FaultValueTable
+                0x20000760       0x20 VisualGDB/X10/display/DisplayList.o
+                0x20000760                FaultValueTable
  .data._LastReportedCurrentRequestedFeedrateInMmPerSec
-                0x20000760        0x4 VisualGDB/X10/main.o
-                0x20000760                _LastReportedCurrentRequestedFeedrateInMmPerSec
- .data._LastReportedExecutingLineNumber
-                0x20000764        0x4 VisualGDB/X10/main.o
-                0x20000764                _LastReportedExecutingLineNumber
- .data.ParticleCounter
-                0x20000768        0x4 VisualGDB/X10/main.o
-                0x20000768                ParticleCounter
- .data.EnclosureTemperature
-                0x2000076c        0x4 VisualGDB/X10/main.o
-                0x2000076c                EnclosureTemperature
- .data.EnclosureHumidity
-                0x20000770        0x4 VisualGDB/X10/main.o
-                0x20000770                EnclosureHumidity
- .data.EnclosurePressureDifference
-                0x20000774        0x4 VisualGDB/X10/main.o
-                0x20000774                EnclosurePressureDifference
- .data.EnclosureDoorSense
-                0x20000778        0x1 VisualGDB/X10/main.o
-                0x20000778                EnclosureDoorSense
- .data.previous_EnclosureDoorSense
-                0x20000779        0x1 VisualGDB/X10/main.o
-                0x20000779                previous_EnclosureDoorSense
- *fill*         0x2000077a        0x2 
- .data.TurboModeDistance
-                0x2000077c        0x4 VisualGDB/X10/main.o
-                0x2000077c                TurboModeDistance
- .data.CannedCycleLastMove
                 0x20000780        0x4 VisualGDB/X10/main.o
-                0x20000780                CannedCycleLastMove
- .data.CannedCycleZFeedRateInMmPerSec
+                0x20000780                _LastReportedCurrentRequestedFeedrateInMmPerSec
+ .data._LastReportedExecutingLineNumber
                 0x20000784        0x4 VisualGDB/X10/main.o
-                0x20000784                CannedCycleZFeedRateInMmPerSec
- .data.CannedZClearInMM
+                0x20000784                _LastReportedExecutingLineNumber
+ .data.ParticleCounter
                 0x20000788        0x4 VisualGDB/X10/main.o
-                0x20000788                CannedZClearInMM
- .data.CannedLinearAxis
+                0x20000788                ParticleCounter
+ .data.EnclosureTemperature
                 0x2000078c        0x4 VisualGDB/X10/main.o
-                0x2000078c                CannedLinearAxis
- .data.CannedRotaryAxis
+                0x2000078c                EnclosureTemperature
+ .data.EnclosureHumidity
                 0x20000790        0x4 VisualGDB/X10/main.o
-                0x20000790                CannedRotaryAxis
- .data.CannedThreadPitch
+                0x20000790                EnclosureHumidity
+ .data.EnclosurePressureDifference
                 0x20000794        0x4 VisualGDB/X10/main.o
-                0x20000794                CannedThreadPitch
- .data._repetrelCommWatchCount
-                0x20000798        0x4 VisualGDB/X10/main.o
-                0x20000798                _repetrelCommWatchCount
- .data.UserKey1_Status
+                0x20000794                EnclosurePressureDifference
+ .data.EnclosureDoorSense
+                0x20000798        0x1 VisualGDB/X10/main.o
+                0x20000798                EnclosureDoorSense
+ .data.previous_EnclosureDoorSense
+                0x20000799        0x1 VisualGDB/X10/main.o
+                0x20000799                previous_EnclosureDoorSense
+ *fill*         0x2000079a        0x2 
+ .data.TurboModeDistance
                 0x2000079c        0x4 VisualGDB/X10/main.o
-                0x2000079c                UserKey1_Status
- .data.UserKey2_Status
+                0x2000079c                TurboModeDistance
+ .data.CannedCycleLastMove
                 0x200007a0        0x4 VisualGDB/X10/main.o
-                0x200007a0                UserKey2_Status
- .data.Key1Debounce
+                0x200007a0                CannedCycleLastMove
+ .data.CannedCycleZFeedRateInMmPerSec
                 0x200007a4        0x4 VisualGDB/X10/main.o
-                0x200007a4                Key1Debounce
- .data.Key2Debounce
+                0x200007a4                CannedCycleZFeedRateInMmPerSec
+ .data.CannedZClearInMM
                 0x200007a8        0x4 VisualGDB/X10/main.o
-                0x200007a8                Key2Debounce
- .data._needToWiggleDirectionPins
+                0x200007a8                CannedZClearInMM
+ .data.CannedLinearAxis
                 0x200007ac        0x4 VisualGDB/X10/main.o
-                0x200007ac                _needToWiggleDirectionPins
+                0x200007ac                CannedLinearAxis
+ .data.CannedRotaryAxis
+                0x200007b0        0x4 VisualGDB/X10/main.o
+                0x200007b0                CannedRotaryAxis
+ .data.CannedThreadPitch
+                0x200007b4        0x4 VisualGDB/X10/main.o
+                0x200007b4                CannedThreadPitch
+ .data._repetrelCommWatchCount
+                0x200007b8        0x4 VisualGDB/X10/main.o
+                0x200007b8                _repetrelCommWatchCount
+ .data.UserKey1_Status
+                0x200007bc        0x4 VisualGDB/X10/main.o
+                0x200007bc                UserKey1_Status
+ .data.UserKey2_Status
+                0x200007c0        0x4 VisualGDB/X10/main.o
+                0x200007c0                UserKey2_Status
+ .data.Key1Debounce
+                0x200007c4        0x4 VisualGDB/X10/main.o
+                0x200007c4                Key1Debounce
+ .data.Key2Debounce
+                0x200007c8        0x4 VisualGDB/X10/main.o
+                0x200007c8                Key2Debounce
+ .data._needToWiggleDirectionPins
+                0x200007cc        0x4 VisualGDB/X10/main.o
+                0x200007cc                _needToWiggleDirectionPins
  .data.GCodeArgComment
-                0x200007b0      0x403 VisualGDB/X10/main.o
-                0x200007b0                GCodeArgComment
- *fill*         0x20000bb3        0x1 
+                0x200007d0      0x403 VisualGDB/X10/main.o
+                0x200007d0                GCodeArgComment
+ *fill*         0x20000bd3        0x1 
  .data.toolNumberMap
-                0x20000bb4       0x3c VisualGDB/X10/main.o
-                0x20000bb4                toolNumberMap
+                0x20000bd4       0x3c VisualGDB/X10/main.o
+                0x20000bd4                toolNumberMap
  .data.MAX_TOOL_NUMBER
-                0x20000bf0        0x4 VisualGDB/X10/main.o
-                0x20000bf0                MAX_TOOL_NUMBER
+                0x20000c10        0x4 VisualGDB/X10/main.o
+                0x20000c10                MAX_TOOL_NUMBER
  .data._highVoltageIsNotStableCoundownMs
-                0x20000bf4        0x4 VisualGDB/X10/main.o
-                0x20000bf4                _highVoltageIsNotStableCoundownMs
+                0x20000c14        0x4 VisualGDB/X10/main.o
+                0x20000c14                _highVoltageIsNotStableCoundownMs
  .data._TouchProbePin
-                0x20000bf8        0x4 VisualGDB/X10/main.o
-                0x20000bf8                _TouchProbePin
+                0x20000c18        0x4 VisualGDB/X10/main.o
+                0x20000c18                _TouchProbePin
  .data._heartbeatRateControl
-                0x20000bfc        0x4 VisualGDB/X10/main.o
-                0x20000bfc                _heartbeatRateControl
+                0x20000c1c        0x4 VisualGDB/X10/main.o
+                0x20000c1c                _heartbeatRateControl
  .data.blankChar
-                0x20000c00        0x1 VisualGDB/X10/main.o
-                0x20000c00                blankChar
- *fill*         0x20000c01        0x3 
+                0x20000c20        0x1 VisualGDB/X10/main.o
+                0x20000c20                blankChar
+ *fill*         0x20000c21        0x3 
  .data.GCodeArgA
-                0x20000c04       0x14 VisualGDB/X10/main.o
-                0x20000c04                GCodeArgA
+                0x20000c24       0x14 VisualGDB/X10/main.o
+                0x20000c24                GCodeArgA
  .data.GCodeArgB
-                0x20000c18       0x14 VisualGDB/X10/main.o
-                0x20000c18                GCodeArgB
+                0x20000c38       0x14 VisualGDB/X10/main.o
+                0x20000c38                GCodeArgB
  .data.GCodeArgC
-                0x20000c2c       0x14 VisualGDB/X10/main.o
-                0x20000c2c                GCodeArgC
+                0x20000c4c       0x14 VisualGDB/X10/main.o
+                0x20000c4c                GCodeArgC
  .data.GCodeArgD
-                0x20000c40       0x14 VisualGDB/X10/main.o
-                0x20000c40                GCodeArgD
+                0x20000c60       0x14 VisualGDB/X10/main.o
+                0x20000c60                GCodeArgD
  .data.GCodeArgE
-                0x20000c54       0x14 VisualGDB/X10/main.o
-                0x20000c54                GCodeArgE
+                0x20000c74       0x14 VisualGDB/X10/main.o
+                0x20000c74                GCodeArgE
  .data.GCodeArgF
-                0x20000c68       0x14 VisualGDB/X10/main.o
-                0x20000c68                GCodeArgF
+                0x20000c88       0x14 VisualGDB/X10/main.o
+                0x20000c88                GCodeArgF
  .data.GCodeArgG
-                0x20000c7c       0x14 VisualGDB/X10/main.o
-                0x20000c7c                GCodeArgG
+                0x20000c9c       0x14 VisualGDB/X10/main.o
+                0x20000c9c                GCodeArgG
  .data.GCodeArgH
-                0x20000c90       0x14 VisualGDB/X10/main.o
-                0x20000c90                GCodeArgH
+                0x20000cb0       0x14 VisualGDB/X10/main.o
+                0x20000cb0                GCodeArgH
  .data.GCodeArgI
-                0x20000ca4       0x14 VisualGDB/X10/main.o
-                0x20000ca4                GCodeArgI
+                0x20000cc4       0x14 VisualGDB/X10/main.o
+                0x20000cc4                GCodeArgI
  .data.GCodeArgJ
-                0x20000cb8       0x14 VisualGDB/X10/main.o
-                0x20000cb8                GCodeArgJ
+                0x20000cd8       0x14 VisualGDB/X10/main.o
+                0x20000cd8                GCodeArgJ
  .data.GCodeArgK
-                0x20000ccc       0x14 VisualGDB/X10/main.o
-                0x20000ccc                GCodeArgK
+                0x20000cec       0x14 VisualGDB/X10/main.o
+                0x20000cec                GCodeArgK
  .data.GCodeArgL
-                0x20000ce0       0x14 VisualGDB/X10/main.o
-                0x20000ce0                GCodeArgL
+                0x20000d00       0x14 VisualGDB/X10/main.o
+                0x20000d00                GCodeArgL
  .data.GCodeArgM
-                0x20000cf4       0x14 VisualGDB/X10/main.o
-                0x20000cf4                GCodeArgM
+                0x20000d14       0x14 VisualGDB/X10/main.o
+                0x20000d14                GCodeArgM
  .data.GCodeArgN
-                0x20000d08       0x14 VisualGDB/X10/main.o
-                0x20000d08                GCodeArgN
+                0x20000d28       0x14 VisualGDB/X10/main.o
+                0x20000d28                GCodeArgN
  .data.GCodeArgO
-                0x20000d1c       0x14 VisualGDB/X10/main.o
-                0x20000d1c                GCodeArgO
+                0x20000d3c       0x14 VisualGDB/X10/main.o
+                0x20000d3c                GCodeArgO
  .data.GCodeArgP
-                0x20000d30       0x14 VisualGDB/X10/main.o
-                0x20000d30                GCodeArgP
+                0x20000d50       0x14 VisualGDB/X10/main.o
+                0x20000d50                GCodeArgP
  .data.GCodeArgQ
-                0x20000d44       0x14 VisualGDB/X10/main.o
-                0x20000d44                GCodeArgQ
+                0x20000d64       0x14 VisualGDB/X10/main.o
+                0x20000d64                GCodeArgQ
  .data.GCodeArgR
-                0x20000d58       0x14 VisualGDB/X10/main.o
-                0x20000d58                GCodeArgR
+                0x20000d78       0x14 VisualGDB/X10/main.o
+                0x20000d78                GCodeArgR
  .data.GCodeArgS
-                0x20000d6c       0x14 VisualGDB/X10/main.o
-                0x20000d6c                GCodeArgS
+                0x20000d8c       0x14 VisualGDB/X10/main.o
+                0x20000d8c                GCodeArgS
  .data.GCodeArgT
-                0x20000d80       0x14 VisualGDB/X10/main.o
-                0x20000d80                GCodeArgT
+                0x20000da0       0x14 VisualGDB/X10/main.o
+                0x20000da0                GCodeArgT
  .data.GCodeArgU
-                0x20000d94       0x14 VisualGDB/X10/main.o
-                0x20000d94                GCodeArgU
+                0x20000db4       0x14 VisualGDB/X10/main.o
+                0x20000db4                GCodeArgU
  .data.GCodeArgV
-                0x20000da8       0x14 VisualGDB/X10/main.o
-                0x20000da8                GCodeArgV
+                0x20000dc8       0x14 VisualGDB/X10/main.o
+                0x20000dc8                GCodeArgV
  .data.GCodeArgW
-                0x20000dbc       0x14 VisualGDB/X10/main.o
-                0x20000dbc                GCodeArgW
+                0x20000ddc       0x14 VisualGDB/X10/main.o
+                0x20000ddc                GCodeArgW
  .data.GCodeArgX
-                0x20000dd0       0x14 VisualGDB/X10/main.o
-                0x20000dd0                GCodeArgX
+                0x20000df0       0x14 VisualGDB/X10/main.o
+                0x20000df0                GCodeArgX
  .data.GCodeArgY
-                0x20000de4       0x14 VisualGDB/X10/main.o
-                0x20000de4                GCodeArgY
+                0x20000e04       0x14 VisualGDB/X10/main.o
+                0x20000e04                GCodeArgY
  .data.GCodeArgZ
-                0x20000df8       0x14 VisualGDB/X10/main.o
-                0x20000df8                GCodeArgZ
+                0x20000e18       0x14 VisualGDB/X10/main.o
+                0x20000e18                GCodeArgZ
  .data.GCodeArgSplat
-                0x20000e0c       0x14 VisualGDB/X10/main.o
-                0x20000e0c                GCodeArgSplat
+                0x20000e2c       0x14 VisualGDB/X10/main.o
+                0x20000e2c                GCodeArgSplat
  .data.AdcChannelTable
-                0x20000e20       0x60 VisualGDB/X10/src/adc_table.o
-                0x20000e20                AdcChannelTable
+                0x20000e40       0x60 VisualGDB/X10/src/adc_table.o
+                0x20000e40                AdcChannelTable
  .data.ConvertValueToMM
-                0x20000e80        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e80                ConvertValueToMM
+                0x20000ea0        0x4 VisualGDB/X10/src/GCode.o
+                0x20000ea0                ConvertValueToMM
  .data.ConvertValueFromMM
-                0x20000e84        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e84                ConvertValueFromMM
+                0x20000ea4        0x4 VisualGDB/X10/src/GCode.o
+                0x20000ea4                ConvertValueFromMM
  .data.ConvertValueToDeg
-                0x20000e88        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e88                ConvertValueToDeg
+                0x20000ea8        0x4 VisualGDB/X10/src/GCode.o
+                0x20000ea8                ConvertValueToDeg
  .data.ConvertValueFromDeg
-                0x20000e8c        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e8c                ConvertValueFromDeg
- .data.Radius   0x20000e90        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e90                Radius
+                0x20000eac        0x4 VisualGDB/X10/src/GCode.o
+                0x20000eac                ConvertValueFromDeg
+ .data.Radius   0x20000eb0        0x4 VisualGDB/X10/src/GCode.o
+                0x20000eb0                Radius
  .data.CW_CCW_Modifier
-                0x20000e94        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e94                CW_CCW_Modifier
- .data.arcArgS  0x20000e98        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e98                arcArgS
+                0x20000eb4        0x4 VisualGDB/X10/src/GCode.o
+                0x20000eb4                CW_CCW_Modifier
+ .data.arcArgS  0x20000eb8        0x4 VisualGDB/X10/src/GCode.o
+                0x20000eb8                arcArgS
  .data.spiralBoreArcSegmentsPerRevolution
-                0x20000e9c        0x4 VisualGDB/X10/src/GCode.o
-                0x20000e9c                spiralBoreArcSegmentsPerRevolution
+                0x20000ebc        0x4 VisualGDB/X10/src/GCode.o
+                0x20000ebc                spiralBoreArcSegmentsPerRevolution
  .data.NUM_DEVICE_REPORT_INFO_TABLE_ENTRIES
-                0x20000ea0        0x1 VisualGDB/X10/src/mailbox.o
-                0x20000ea0                NUM_DEVICE_REPORT_INFO_TABLE_ENTRIES
+                0x20000ec0        0x1 VisualGDB/X10/src/mailbox.o
+                0x20000ec0                NUM_DEVICE_REPORT_INFO_TABLE_ENTRIES
  .data.NUM_DEVICE_REPORT_PAGE_INFO_TABLE_ENTRIES
-                0x20000ea1        0x1 VisualGDB/X10/src/mailbox.o
-                0x20000ea1                NUM_DEVICE_REPORT_PAGE_INFO_TABLE_ENTRIES
+                0x20000ec1        0x1 VisualGDB/X10/src/mailbox.o
+                0x20000ec1                NUM_DEVICE_REPORT_PAGE_INFO_TABLE_ENTRIES
  .data.NUM_SYSTEM_REPORT_INFO_TABLE_ENTRIES
-                0x20000ea2        0x1 VisualGDB/X10/src/mailbox.o
-                0x20000ea2                NUM_SYSTEM_REPORT_INFO_TABLE_ENTRIES
- *fill*         0x20000ea3        0x1 
+                0x20000ec2        0x1 VisualGDB/X10/src/mailbox.o
+                0x20000ec2                NUM_SYSTEM_REPORT_INFO_TABLE_ENTRIES
+ *fill*         0x20000ec3        0x1 
  .data._M106_fanDutyCycleRange
-                0x20000ea4        0x4 VisualGDB/X10/src/MCode.o
-                0x20000ea4                _M106_fanDutyCycleRange
+                0x20000ec4        0x4 VisualGDB/X10/src/MCode.o
+                0x20000ec4                _M106_fanDutyCycleRange
  .data.PersistantUltimusControlHeadAddress
-                0x20000ea8        0x1 VisualGDB/X10/src/MCode.o
-                0x20000ea8                PersistantUltimusControlHeadAddress
+                0x20000ec8        0x1 VisualGDB/X10/src/MCode.o
+                0x20000ec8                PersistantUltimusControlHeadAddress
  .data.PersistantHotheadAddress
-                0x20000ea9        0x1 VisualGDB/X10/src/MCode.o
-                0x20000ea9                PersistantHotheadAddress
+                0x20000ec9        0x1 VisualGDB/X10/src/MCode.o
+                0x20000ec9                PersistantHotheadAddress
  .data.PersistantHotbedAddress
-                0x20000eaa        0x1 VisualGDB/X10/src/MCode.o
-                0x20000eaa                PersistantHotbedAddress
- *fill*         0x20000eab        0x1 
+                0x20000eca        0x1 VisualGDB/X10/src/MCode.o
+                0x20000eca                PersistantHotbedAddress
+ *fill*         0x20000ecb        0x1 
  .data._TargetFeedRateInMmPerSec
-                0x20000eac        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x20000eac                _TargetFeedRateInMmPerSec
+                0x20000ecc        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x20000ecc                _TargetFeedRateInMmPerSec
  .data._CurrentRequestedFeedrateInMmPerSec
-                0x20000eb0        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x20000eb0                _CurrentRequestedFeedrateInMmPerSec
- .data._jogZ    0x20000eb4       0x1c VisualGDB/X10/src/MotorDrivers.o
-                0x20000eb4                _jogZ
+                0x20000ed0        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x20000ed0                _CurrentRequestedFeedrateInMmPerSec
+ .data._jogZ    0x20000ed4       0x1c VisualGDB/X10/src/MotorDrivers.o
+                0x20000ed4                _jogZ
  .data._jogging
-                0x20000ed0       0x28 VisualGDB/X10/src/MotorDrivers.o
-                0x20000ed0                _jogging
+                0x20000ef0       0x28 VisualGDB/X10/src/MotorDrivers.o
+                0x20000ef0                _jogging
  .data._LastExtrusionRate
-                0x20000ef8        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x20000ef8                _LastExtrusionRate
+                0x20000f18        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x20000f18                _LastExtrusionRate
  .data.rawRxBuffer
-                0x20000efc        0x4 VisualGDB/X10/src/Serial.o
-                0x20000efc                rawRxBuffer
+                0x20000f1c        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f1c                rawRxBuffer
  .data.urgentRxBuffer
-                0x20000f00        0x4 VisualGDB/X10/src/Serial.o
-                0x20000f00                urgentRxBuffer
+                0x20000f20        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f20                urgentRxBuffer
  .data.normalRxBuffer
-                0x20000f04        0x4 VisualGDB/X10/src/Serial.o
-                0x20000f04                normalRxBuffer
+                0x20000f24        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f24                normalRxBuffer
  .data.normalTxBuffer
-                0x20000f08        0x4 VisualGDB/X10/src/Serial.o
-                0x20000f08                normalTxBuffer
+                0x20000f28        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f28                normalTxBuffer
  .data.echoTxBuffer
-                0x20000f0c        0x4 VisualGDB/X10/src/Serial.o
-                0x20000f0c                echoTxBuffer
+                0x20000f2c        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f2c                echoTxBuffer
  .data.directRxBuffer
-                0x20000f10        0x4 VisualGDB/X10/src/Serial.o
-                0x20000f10                directRxBuffer
+                0x20000f30        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f30                directRxBuffer
  .data.ValidCo2UartRxWatchdog
-                0x20000f14        0x4 VisualGDB/X10/src/Serial.o
-                0x20000f14                ValidCo2UartRxWatchdog
+                0x20000f34        0x4 VisualGDB/X10/src/Serial.o
+                0x20000f34                ValidCo2UartRxWatchdog
  .data.USBD_DCD_INT_cb
-                0x20000f18       0x2c VisualGDB/X10/usb_lib/src/usbd_core.o
-                0x20000f18                USBD_DCD_INT_cb
+                0x20000f38       0x2c VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x20000f38                USBD_DCD_INT_cb
  .data.USBD_DCD_INT_fops
-                0x20000f44        0x4 VisualGDB/X10/usb_lib/src/usbd_core.o
-                0x20000f44                USBD_DCD_INT_fops
- .data.tiny     0x20000f48        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
- .data.one      0x20000f50        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
- .data.__sglue  0x20000f58        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x20000f58                __sglue
+                0x20000f64        0x4 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x20000f64                USBD_DCD_INT_fops
+ .data.tiny     0x20000f68        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
+ .data.one      0x20000f70        0x8 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
+ .data.__sglue  0x20000f78        0xc c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x20000f78                __sglue
  .data.__global_locale
-                0x20000f64      0x16c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
-                0x20000f64                __global_locale
+                0x20000f84      0x16c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+                0x20000f84                __global_locale
  .data._impure_ptr
-                0x200010d0        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-impure.o)
-                0x200010d0                _impure_ptr
+                0x200010f0        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-impure.o)
+                0x200010f0                _impure_ptr
  .data._impure_data
-                0x200010d4       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-impure.o)
-                0x200010d4                _impure_data
-                0x20001120                        . = ALIGN (0x4)
-                0x20001120                        _edata = .
+                0x200010f4       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-impure.o)
+                0x200010f4                _impure_data
+                0x20001140                        . = ALIGN (0x4)
+                0x20001140                        _edata = .
 
-.igot.plt       0x20001120        0x0 load address 0x0804eb68
- .igot.plt      0x20001120        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+.igot.plt       0x20001140        0x0 load address 0x0804eb98
+ .igot.plt      0x20001140        0x0 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
 
-.bss            0x20001120    0x13264 load address 0x0804eb68
-                0x20001120                        _sbss = .
+.bss            0x20001140    0x13264 load address 0x0804eb98
+                0x20001140                        _sbss = .
  *(.bss .bss.*)
  .bss.PGIOZ_fake
-                0x20001120       0x28 VisualGDB/X10/common/src/pins.o
-                0x20001120                PGIOZ_fake
+                0x20001140       0x28 VisualGDB/X10/common/src/pins.o
+                0x20001140                PGIOZ_fake
  .bss.tickCount
-                0x20001148        0x8 VisualGDB/X10/common/src/util.o
-                0x20001148                tickCount
+                0x20001168        0x8 VisualGDB/X10/common/src/util.o
+                0x20001168                tickCount
  .bss.strTempVal
-                0x20001150       0x50 VisualGDB/X10/display/display.o
-                0x20001150                strTempVal
- .bss.idx       0x200011a0        0x2 VisualGDB/X10/display/display.o
-                0x200011a0                idx
- *fill*         0x200011a2        0x2 
- .bss.varInfo   0x200011a4        0x4 VisualGDB/X10/display/display.o
-                0x200011a4                varInfo
+                0x20001170       0x50 VisualGDB/X10/display/display.o
+                0x20001170                strTempVal
+ .bss.idx       0x200011c0        0x2 VisualGDB/X10/display/display.o
+                0x200011c0                idx
+ *fill*         0x200011c2        0x2 
+ .bss.varInfo   0x200011c4        0x4 VisualGDB/X10/display/display.o
+                0x200011c4                varInfo
  .bss.DisplayIndex
-                0x200011a8        0x4 VisualGDB/X10/display/display.o
-                0x200011a8                DisplayIndex
+                0x200011c8        0x4 VisualGDB/X10/display/display.o
+                0x200011c8                DisplayIndex
  .bss.BarValueTable
-                0x200011ac        0x0 VisualGDB/X10/display/DisplayList.o
-                0x200011ac                BarValueTable
- .bss.GUI_BUF   0x200011ac     0x2d00 VisualGDB/X10/display/gui.o
-                0x200011ac                GUI_BUF
+                0x200011cc        0x0 VisualGDB/X10/display/DisplayList.o
+                0x200011cc                BarValueTable
+ .bss.GUI_BUF   0x200011cc     0x2d00 VisualGDB/X10/display/gui.o
+                0x200011cc                GUI_BUF
  .bss.LCDHandler
-                0x20003eac        0x4 VisualGDB/X10/display/lcdspi_4xx.o
-                0x20003eac                LCDHandler
+                0x20003ecc        0x4 VisualGDB/X10/display/lcdspi_4xx.o
+                0x20003ecc                LCDHandler
  .bss.crash_source
-                0x20003eb0       0x20 VisualGDB/X10/main.o
-                0x20003eb0                crash_source
- .bss._gs       0x20003ed0     0x4698 VisualGDB/X10/main.o
-                0x20003ed0                _gs
- .bss.Motors    0x20008568     0x1440 VisualGDB/X10/main.o
-                0x20008568                Motors
+                0x20003ed0       0x20 VisualGDB/X10/main.o
+                0x20003ed0                crash_source
+ .bss._gs       0x20003ef0     0x4698 VisualGDB/X10/main.o
+                0x20003ef0                _gs
+ .bss.Motors    0x20008588     0x1440 VisualGDB/X10/main.o
+                0x20008588                Motors
  .bss.HeartBeat
-                0x200099a8        0x4 VisualGDB/X10/main.o
-                0x200099a8                HeartBeat
+                0x200099c8        0x4 VisualGDB/X10/main.o
+                0x200099c8                HeartBeat
  .bss.ForceReportXYZLocation
-                0x200099ac        0x1 VisualGDB/X10/main.o
-                0x200099ac                ForceReportXYZLocation
+                0x200099cc        0x1 VisualGDB/X10/main.o
+                0x200099cc                ForceReportXYZLocation
  .bss.AutoReportXYZLocation
-                0x200099ad        0x1 VisualGDB/X10/main.o
-                0x200099ad                AutoReportXYZLocation
+                0x200099cd        0x1 VisualGDB/X10/main.o
+                0x200099cd                AutoReportXYZLocation
  .bss.AutoReportFeedRate
-                0x200099ae        0x1 VisualGDB/X10/main.o
-                0x200099ae                AutoReportFeedRate
+                0x200099ce        0x1 VisualGDB/X10/main.o
+                0x200099ce                AutoReportFeedRate
  .bss.AutoReportLineNum
-                0x200099af        0x1 VisualGDB/X10/main.o
-                0x200099af                AutoReportLineNum
+                0x200099cf        0x1 VisualGDB/X10/main.o
+                0x200099cf                AutoReportLineNum
  .bss.StatusReportXYZLocation
-                0x200099b0        0x1 VisualGDB/X10/main.o
-                0x200099b0                StatusReportXYZLocation
+                0x200099d0        0x1 VisualGDB/X10/main.o
+                0x200099d0                StatusReportXYZLocation
  .bss.StatusReportVelocity
-                0x200099b1        0x1 VisualGDB/X10/main.o
-                0x200099b1                StatusReportVelocity
+                0x200099d1        0x1 VisualGDB/X10/main.o
+                0x200099d1                StatusReportVelocity
  .bss.StatusReportFlowRate
-                0x200099b2        0x1 VisualGDB/X10/main.o
-                0x200099b2                StatusReportFlowRate
+                0x200099d2        0x1 VisualGDB/X10/main.o
+                0x200099d2                StatusReportFlowRate
  .bss.StatusReportLineNum
-                0x200099b3        0x1 VisualGDB/X10/main.o
-                0x200099b3                StatusReportLineNum
- .bss.LCDSpi1   0x200099b4       0x4c VisualGDB/X10/main.o
-                0x200099b4                LCDSpi1
+                0x200099d3        0x1 VisualGDB/X10/main.o
+                0x200099d3                StatusReportLineNum
+ .bss.LCDSpi1   0x200099d4       0x4c VisualGDB/X10/main.o
+                0x200099d4                LCDSpi1
  .bss.SpindleDesiredSpeedPWM
-                0x20009a00        0x4 VisualGDB/X10/main.o
-                0x20009a00                SpindleDesiredSpeedPWM
- .bss.CO2LaserAnalogPwrPWM
-                0x20009a04        0x4 VisualGDB/X10/main.o
-                0x20009a04                CO2LaserAnalogPwrPWM
- .bss.Co2LaserWatchDogTimer
-                0x20009a08        0x4 VisualGDB/X10/main.o
-                0x20009a08                Co2LaserWatchDogTimer
- .bss.RPMCounter
-                0x20009a0c        0x4 VisualGDB/X10/main.o
-                0x20009a0c                RPMCounter
- .bss.EnableOsseoVariablesReporting
-                0x20009a10        0x4 VisualGDB/X10/main.o
-                0x20009a10                EnableOsseoVariablesReporting
- .bss.EnclosureUvLedPwm
-                0x20009a14        0x4 VisualGDB/X10/main.o
-                0x20009a14                EnclosureUvLedPwm
- .bss.EnclosureFanPwm
-                0x20009a18        0x4 VisualGDB/X10/main.o
-                0x20009a18                EnclosureFanPwm
- .bss.EnclosureDoorLock
-                0x20009a1c        0x4 VisualGDB/X10/main.o
-                0x20009a1c                EnclosureDoorLock
- .bss.doorSenseState
                 0x20009a20        0x4 VisualGDB/X10/main.o
-                0x20009a20                doorSenseState
- .bss.EnclosureCartridgeSense
+                0x20009a20                SpindleDesiredSpeedPWM
+ .bss.CO2LaserAnalogPwrPWM
                 0x20009a24        0x4 VisualGDB/X10/main.o
-                0x20009a24                EnclosureCartridgeSense
- .bss.EnclosurePrintBedSense
+                0x20009a24                CO2LaserAnalogPwrPWM
+ .bss.Co2LaserWatchDogTimer
                 0x20009a28        0x4 VisualGDB/X10/main.o
-                0x20009a28                EnclosurePrintBedSense
+                0x20009a28                Co2LaserWatchDogTimer
+ .bss.RPMCounter
+                0x20009a2c        0x4 VisualGDB/X10/main.o
+                0x20009a2c                RPMCounter
+ .bss.EnableOsseoVariablesReporting
+                0x20009a30        0x4 VisualGDB/X10/main.o
+                0x20009a30                EnableOsseoVariablesReporting
+ .bss.EnclosureUvLedPwm
+                0x20009a34        0x4 VisualGDB/X10/main.o
+                0x20009a34                EnclosureUvLedPwm
+ .bss.EnclosureFanPwm
+                0x20009a38        0x4 VisualGDB/X10/main.o
+                0x20009a38                EnclosureFanPwm
+ .bss.EnclosureDoorLock
+                0x20009a3c        0x4 VisualGDB/X10/main.o
+                0x20009a3c                EnclosureDoorLock
+ .bss.doorSenseState
+                0x20009a40        0x4 VisualGDB/X10/main.o
+                0x20009a40                doorSenseState
+ .bss.EnclosureCartridgeSense
+                0x20009a44        0x4 VisualGDB/X10/main.o
+                0x20009a44                EnclosureCartridgeSense
+ .bss.EnclosurePrintBedSense
+                0x20009a48        0x4 VisualGDB/X10/main.o
+                0x20009a48                EnclosurePrintBedSense
  .bss.McodeDrainState
-                0x20009a2c       0x24 VisualGDB/X10/main.o
-                0x20009a2c                McodeDrainState
+                0x20009a4c       0x24 VisualGDB/X10/main.o
+                0x20009a4c                McodeDrainState
  .bss.Update595Index
-                0x20009a50        0x4 VisualGDB/X10/main.o
-                0x20009a50                Update595Index
- .bss._printAir
-                0x20009a54        0x1 VisualGDB/X10/main.o
-                0x20009a54                _printAir
- *fill*         0x20009a55        0x3 
- .bss._autoReverseAndPrimeMinTime
-                0x20009a58        0x4 VisualGDB/X10/main.o
-                0x20009a58                _autoReverseAndPrimeMinTime
- .bss._extrusionControl
-                0x20009a5c        0x1 VisualGDB/X10/main.o
-                0x20009a5c                _extrusionControl
- .bss._saveExtrusionControl
-                0x20009a5d        0x1 VisualGDB/X10/main.o
-                0x20009a5d                _saveExtrusionControl
- .bss._motionForFlowControl
-                0x20009a5e        0x1 VisualGDB/X10/main.o
-                0x20009a5e                _motionForFlowControl
- .bss._unprimePrimeControl
-                0x20009a5f        0x1 VisualGDB/X10/main.o
-                0x20009a5f                _unprimePrimeControl
- .bss._hijackAxisC
-                0x20009a60        0x1 VisualGDB/X10/main.o
-                0x20009a60                _hijackAxisC
- .bss._canbusStepForE
-                0x20009a61        0x1 VisualGDB/X10/main.o
-                0x20009a61                _canbusStepForE
- .bss._directStepForE
-                0x20009a62        0x1 VisualGDB/X10/main.o
-                0x20009a62                _directStepForE
- *fill*         0x20009a63        0x1 
- .bss.E_Q_LastRequestedPositionInUnits
-                0x20009a64        0x4 VisualGDB/X10/main.o
-                0x20009a64                E_Q_LastRequestedPositionInUnits
- .bss.E_Q_POSITION
-                0x20009a68        0x4 VisualGDB/X10/main.o
-                0x20009a68                E_Q_POSITION
- .bss.CurrentLayer
-                0x20009a6c        0x4 VisualGDB/X10/main.o
-                0x20009a6c                CurrentLayer
- .bss._gcodeLineNumber
                 0x20009a70        0x4 VisualGDB/X10/main.o
-                0x20009a70                _gcodeLineNumber
- .bss._gcodeMotionLineNumber
-                0x20009a74        0x4 VisualGDB/X10/main.o
-                0x20009a74                _gcodeMotionLineNumber
- .bss._reverseFrogToe
-                0x20009a78        0x1 VisualGDB/X10/main.o
-                0x20009a78                _reverseFrogToe
- .bss._spiralRoughingPass
-                0x20009a79        0x1 VisualGDB/X10/main.o
-                0x20009a79                _spiralRoughingPass
- *fill*         0x20009a7a        0x2 
- .bss._deltaRForPass
-                0x20009a7c        0x4 VisualGDB/X10/main.o
-                0x20009a7c                _deltaRForPass
- .bss.G2G3Flag  0x20009a80        0x4 VisualGDB/X10/main.o
-                0x20009a80                G2G3Flag
- .bss.G203State
+                0x20009a70                Update595Index
+ .bss._printAir
+                0x20009a74        0x1 VisualGDB/X10/main.o
+                0x20009a74                _printAir
+ *fill*         0x20009a75        0x3 
+ .bss._autoReverseAndPrimeMinTime
+                0x20009a78        0x4 VisualGDB/X10/main.o
+                0x20009a78                _autoReverseAndPrimeMinTime
+ .bss._extrusionControl
+                0x20009a7c        0x1 VisualGDB/X10/main.o
+                0x20009a7c                _extrusionControl
+ .bss._saveExtrusionControl
+                0x20009a7d        0x1 VisualGDB/X10/main.o
+                0x20009a7d                _saveExtrusionControl
+ .bss._motionForFlowControl
+                0x20009a7e        0x1 VisualGDB/X10/main.o
+                0x20009a7e                _motionForFlowControl
+ .bss._unprimePrimeControl
+                0x20009a7f        0x1 VisualGDB/X10/main.o
+                0x20009a7f                _unprimePrimeControl
+ .bss._hijackAxisC
+                0x20009a80        0x1 VisualGDB/X10/main.o
+                0x20009a80                _hijackAxisC
+ .bss._canbusStepForE
+                0x20009a81        0x1 VisualGDB/X10/main.o
+                0x20009a81                _canbusStepForE
+ .bss._directStepForE
+                0x20009a82        0x1 VisualGDB/X10/main.o
+                0x20009a82                _directStepForE
+ *fill*         0x20009a83        0x1 
+ .bss.E_Q_LastRequestedPositionInUnits
                 0x20009a84        0x4 VisualGDB/X10/main.o
-                0x20009a84                G203State
- .bss._motionQ_LookAheadDisabled
-                0x20009a88        0x1 VisualGDB/X10/main.o
-                0x20009a88                _motionQ_LookAheadDisabled
- .bss._motionQ_ForceQtoEmpty
-                0x20009a89        0x1 VisualGDB/X10/main.o
-                0x20009a89                _motionQ_ForceQtoEmpty
- .bss._blockImmediateMoveOnToolChange
-                0x20009a8a        0x1 VisualGDB/X10/main.o
-                0x20009a8a                _blockImmediateMoveOnToolChange
- *fill*         0x20009a8b        0x1 
- .bss.dump407SoapstringFlag
+                0x20009a84                E_Q_LastRequestedPositionInUnits
+ .bss.E_Q_POSITION
+                0x20009a88        0x4 VisualGDB/X10/main.o
+                0x20009a88                E_Q_POSITION
+ .bss.CurrentLayer
                 0x20009a8c        0x4 VisualGDB/X10/main.o
-                0x20009a8c                dump407SoapstringFlag
- .bss.DDLightFunction
+                0x20009a8c                CurrentLayer
+ .bss._gcodeLineNumber
                 0x20009a90        0x4 VisualGDB/X10/main.o
-                0x20009a90                DDLightFunction
- .bss.PrimeTimer
+                0x20009a90                _gcodeLineNumber
+ .bss._gcodeMotionLineNumber
                 0x20009a94        0x4 VisualGDB/X10/main.o
-                0x20009a94                PrimeTimer
- .bss.UnPrimeTimer
-                0x20009a98        0x4 VisualGDB/X10/main.o
-                0x20009a98                UnPrimeTimer
- .bss.HostConnectionWatchDog
+                0x20009a94                _gcodeMotionLineNumber
+ .bss._reverseFrogToe
+                0x20009a98        0x1 VisualGDB/X10/main.o
+                0x20009a98                _reverseFrogToe
+ .bss._spiralRoughingPass
+                0x20009a99        0x1 VisualGDB/X10/main.o
+                0x20009a99                _spiralRoughingPass
+ *fill*         0x20009a9a        0x2 
+ .bss._deltaRForPass
                 0x20009a9c        0x4 VisualGDB/X10/main.o
-                0x20009a9c                HostConnectionWatchDog
- .bss.currentToolIndex
-                0x20009aa0        0x4 VisualGDB/X10/main.o
-                0x20009aa0                currentToolIndex
- .bss.currentFixtureIndex
+                0x20009a9c                _deltaRForPass
+ .bss.G2G3Flag  0x20009aa0        0x4 VisualGDB/X10/main.o
+                0x20009aa0                G2G3Flag
+ .bss.G203State
                 0x20009aa4        0x4 VisualGDB/X10/main.o
-                0x20009aa4                currentFixtureIndex
- .bss.currentHeadIndex
-                0x20009aa8        0x4 VisualGDB/X10/main.o
-                0x20009aa8                currentHeadIndex
- .bss.CannedCyclePtr
+                0x20009aa4                G203State
+ .bss._motionQ_LookAheadDisabled
+                0x20009aa8        0x1 VisualGDB/X10/main.o
+                0x20009aa8                _motionQ_LookAheadDisabled
+ .bss._motionQ_ForceQtoEmpty
+                0x20009aa9        0x1 VisualGDB/X10/main.o
+                0x20009aa9                _motionQ_ForceQtoEmpty
+ .bss._blockImmediateMoveOnToolChange
+                0x20009aaa        0x1 VisualGDB/X10/main.o
+                0x20009aaa                _blockImmediateMoveOnToolChange
+ *fill*         0x20009aab        0x1 
+ .bss.dump407SoapstringFlag
                 0x20009aac        0x4 VisualGDB/X10/main.o
-                0x20009aac                CannedCyclePtr
- .bss.CannedCycleFlag
+                0x20009aac                dump407SoapstringFlag
+ .bss.DDLightFunction
                 0x20009ab0        0x4 VisualGDB/X10/main.o
-                0x20009ab0                CannedCycleFlag
- .bss.CannedCycleStep
+                0x20009ab0                DDLightFunction
+ .bss.PrimeTimer
                 0x20009ab4        0x4 VisualGDB/X10/main.o
-                0x20009ab4                CannedCycleStep
- .bss.CannedZDepthInMM
+                0x20009ab4                PrimeTimer
+ .bss.UnPrimeTimer
                 0x20009ab8        0x4 VisualGDB/X10/main.o
-                0x20009ab8                CannedZDepthInMM
- .bss.CannedZDesiredDepth
+                0x20009ab8                UnPrimeTimer
+ .bss.HostConnectionWatchDog
                 0x20009abc        0x4 VisualGDB/X10/main.o
-                0x20009abc                CannedZDesiredDepth
- .bss.CannedZIncrement
+                0x20009abc                HostConnectionWatchDog
+ .bss.currentToolIndex
                 0x20009ac0        0x4 VisualGDB/X10/main.o
-                0x20009ac0                CannedZIncrement
- .bss.CannedZQIncrement
+                0x20009ac0                currentToolIndex
+ .bss.currentFixtureIndex
                 0x20009ac4        0x4 VisualGDB/X10/main.o
-                0x20009ac4                CannedZQIncrement
- .bss.CannedHssPtr
+                0x20009ac4                currentFixtureIndex
+ .bss.currentHeadIndex
                 0x20009ac8        0x4 VisualGDB/X10/main.o
-                0x20009ac8                CannedHssPtr
- .bss.CannedCyclePuffFlag
-                0x20009acc        0x1 VisualGDB/X10/main.o
-                0x20009acc                CannedCyclePuffFlag
- .bss._waitingForGuiCommand
-                0x20009acd        0x1 VisualGDB/X10/main.o
-                0x20009acd                _waitingForGuiCommand
- *fill*         0x20009ace        0x2 
- .bss._abortInProgress
+                0x20009ac8                currentHeadIndex
+ .bss.CannedCyclePtr
+                0x20009acc        0x4 VisualGDB/X10/main.o
+                0x20009acc                CannedCyclePtr
+ .bss.CannedCycleFlag
                 0x20009ad0        0x4 VisualGDB/X10/main.o
-                0x20009ad0                _abortInProgress
- .bss._abortCameFromRx
+                0x20009ad0                CannedCycleFlag
+ .bss.CannedCycleStep
                 0x20009ad4        0x4 VisualGDB/X10/main.o
-                0x20009ad4                _abortCameFromRx
- .bss._abortFinisedNeedToResetProcessSynchronously
-                0x20009ad8        0x1 VisualGDB/X10/main.o
-                0x20009ad8                _abortFinisedNeedToResetProcessSynchronously
- .bss._blockAllMotion
-                0x20009ad9        0x1 VisualGDB/X10/main.o
-                0x20009ad9                _blockAllMotion
- .bss._blockAbsoluteMotion
-                0x20009ada        0x1 VisualGDB/X10/main.o
-                0x20009ada                _blockAbsoluteMotion
- .bss._blockAllMotionMessageSent
-                0x20009adb        0x1 VisualGDB/X10/main.o
-                0x20009adb                _blockAllMotionMessageSent
- .bss._blockAbsoluteMotionMessageSent
-                0x20009adc        0x1 VisualGDB/X10/main.o
-                0x20009adc                _blockAbsoluteMotionMessageSent
- .bss._blockMotionForJoggingMessageSent
-                0x20009add        0x1 VisualGDB/X10/main.o
-                0x20009add                _blockMotionForJoggingMessageSent
- .bss._blockMotionForHighVoltageMessageSent
-                0x20009ade        0x1 VisualGDB/X10/main.o
-                0x20009ade                _blockMotionForHighVoltageMessageSent
- .bss._blockJoggingForMotionMessageSent
-                0x20009adf        0x1 VisualGDB/X10/main.o
-                0x20009adf                _blockJoggingForMotionMessageSent
- .bss._motionSensorTripped
-                0x20009ae0        0x1 VisualGDB/X10/main.o
-                0x20009ae0                _motionSensorTripped
- .bss._motionSensorTrippedNext
-                0x20009ae1        0x1 VisualGDB/X10/main.o
-                0x20009ae1                _motionSensorTrippedNext
- .bss._gcodePaused
-                0x20009ae2        0x1 VisualGDB/X10/main.o
-                0x20009ae2                _gcodePaused
- *fill*         0x20009ae3        0x1 
- .bss._g4DwellTimer
+                0x20009ad4                CannedCycleStep
+ .bss.CannedZDepthInMM
+                0x20009ad8        0x4 VisualGDB/X10/main.o
+                0x20009ad8                CannedZDepthInMM
+ .bss.CannedZDesiredDepth
+                0x20009adc        0x4 VisualGDB/X10/main.o
+                0x20009adc                CannedZDesiredDepth
+ .bss.CannedZIncrement
+                0x20009ae0        0x4 VisualGDB/X10/main.o
+                0x20009ae0                CannedZIncrement
+ .bss.CannedZQIncrement
                 0x20009ae4        0x4 VisualGDB/X10/main.o
-                0x20009ae4                _g4DwellTimer
- .bss._requestToPauseAtEndOfMove
-                0x20009ae8        0x1 VisualGDB/X10/main.o
-                0x20009ae8                _requestToPauseAtEndOfMove
- .bss._requestToPauseAtEndOfLayer
-                0x20009ae9        0x1 VisualGDB/X10/main.o
-                0x20009ae9                _requestToPauseAtEndOfLayer
- .bss._requestToAbortAtEndOfMove
-                0x20009aea        0x1 VisualGDB/X10/main.o
-                0x20009aea                _requestToAbortAtEndOfMove
- .bss._abortOccurredWhileMoving
-                0x20009aeb        0x1 VisualGDB/X10/main.o
-                0x20009aeb                _abortOccurredWhileMoving
- .bss._validFirmwareKey
+                0x20009ae4                CannedZQIncrement
+ .bss.CannedHssPtr
+                0x20009ae8        0x4 VisualGDB/X10/main.o
+                0x20009ae8                CannedHssPtr
+ .bss.CannedCyclePuffFlag
                 0x20009aec        0x1 VisualGDB/X10/main.o
-                0x20009aec                _validFirmwareKey
- *fill*         0x20009aed        0x3 
- .bss.Head11_Temperature
+                0x20009aec                CannedCyclePuffFlag
+ .bss._waitingForGuiCommand
+                0x20009aed        0x1 VisualGDB/X10/main.o
+                0x20009aed                _waitingForGuiCommand
+ *fill*         0x20009aee        0x2 
+ .bss._abortInProgress
                 0x20009af0        0x4 VisualGDB/X10/main.o
-                0x20009af0                Head11_Temperature
- .bss.Head11_HTRDuty
+                0x20009af0                _abortInProgress
+ .bss._abortCameFromRx
                 0x20009af4        0x4 VisualGDB/X10/main.o
-                0x20009af4                Head11_HTRDuty
+                0x20009af4                _abortCameFromRx
+ .bss._abortFinisedNeedToResetProcessSynchronously
+                0x20009af8        0x1 VisualGDB/X10/main.o
+                0x20009af8                _abortFinisedNeedToResetProcessSynchronously
+ .bss._blockAllMotion
+                0x20009af9        0x1 VisualGDB/X10/main.o
+                0x20009af9                _blockAllMotion
+ .bss._blockAbsoluteMotion
+                0x20009afa        0x1 VisualGDB/X10/main.o
+                0x20009afa                _blockAbsoluteMotion
+ .bss._blockAllMotionMessageSent
+                0x20009afb        0x1 VisualGDB/X10/main.o
+                0x20009afb                _blockAllMotionMessageSent
+ .bss._blockAbsoluteMotionMessageSent
+                0x20009afc        0x1 VisualGDB/X10/main.o
+                0x20009afc                _blockAbsoluteMotionMessageSent
+ .bss._blockMotionForJoggingMessageSent
+                0x20009afd        0x1 VisualGDB/X10/main.o
+                0x20009afd                _blockMotionForJoggingMessageSent
+ .bss._blockMotionForHighVoltageMessageSent
+                0x20009afe        0x1 VisualGDB/X10/main.o
+                0x20009afe                _blockMotionForHighVoltageMessageSent
+ .bss._blockJoggingForMotionMessageSent
+                0x20009aff        0x1 VisualGDB/X10/main.o
+                0x20009aff                _blockJoggingForMotionMessageSent
+ .bss._motionSensorTripped
+                0x20009b00        0x1 VisualGDB/X10/main.o
+                0x20009b00                _motionSensorTripped
+ .bss._motionSensorTrippedNext
+                0x20009b01        0x1 VisualGDB/X10/main.o
+                0x20009b01                _motionSensorTrippedNext
+ .bss._gcodePaused
+                0x20009b02        0x1 VisualGDB/X10/main.o
+                0x20009b02                _gcodePaused
+ *fill*         0x20009b03        0x1 
+ .bss._g4DwellTimer
+                0x20009b04        0x4 VisualGDB/X10/main.o
+                0x20009b04                _g4DwellTimer
+ .bss._requestToPauseAtEndOfMove
+                0x20009b08        0x1 VisualGDB/X10/main.o
+                0x20009b08                _requestToPauseAtEndOfMove
+ .bss._requestToPauseAtEndOfLayer
+                0x20009b09        0x1 VisualGDB/X10/main.o
+                0x20009b09                _requestToPauseAtEndOfLayer
+ .bss._requestToAbortAtEndOfMove
+                0x20009b0a        0x1 VisualGDB/X10/main.o
+                0x20009b0a                _requestToAbortAtEndOfMove
+ .bss._abortOccurredWhileMoving
+                0x20009b0b        0x1 VisualGDB/X10/main.o
+                0x20009b0b                _abortOccurredWhileMoving
+ .bss._validFirmwareKey
+                0x20009b0c        0x1 VisualGDB/X10/main.o
+                0x20009b0c                _validFirmwareKey
+ *fill*         0x20009b0d        0x3 
+ .bss.Head11_Temperature
+                0x20009b10        0x4 VisualGDB/X10/main.o
+                0x20009b10                Head11_Temperature
+ .bss.Head11_HTRDuty
+                0x20009b14        0x4 VisualGDB/X10/main.o
+                0x20009b14                Head11_HTRDuty
  .bss.Head11_FanDuty
-                0x20009af8        0x4 VisualGDB/X10/main.o
-                0x20009af8                Head11_FanDuty
+                0x20009b18        0x4 VisualGDB/X10/main.o
+                0x20009b18                Head11_FanDuty
  .bss.Head11_Spare
-                0x20009afc        0x4 VisualGDB/X10/main.o
-                0x20009afc                Head11_Spare
+                0x20009b1c        0x4 VisualGDB/X10/main.o
+                0x20009b1c                Head11_Spare
  .bss._GcodeArgStringParam
-                0x20009b00      0x403 VisualGDB/X10/main.o
-                0x20009b00                _GcodeArgStringParam
- *fill*         0x20009f03        0x1 
+                0x20009b20      0x403 VisualGDB/X10/main.o
+                0x20009b20                _GcodeArgStringParam
+ *fill*         0x20009f23        0x1 
  .bss.CommandsInQue
-                0x20009f04        0x4 VisualGDB/X10/main.o
-                0x20009f04                CommandsInQue
+                0x20009f24        0x4 VisualGDB/X10/main.o
+                0x20009f24                CommandsInQue
  .bss.ToolOffsets
-                0x20009f08      0x1e0 VisualGDB/X10/main.o
-                0x20009f08                ToolOffsets
+                0x20009f28      0x1e0 VisualGDB/X10/main.o
+                0x20009f28                ToolOffsets
  .bss._useTimer7ToSenseStartPin
-                0x2000a0e8        0x1 VisualGDB/X10/main.o
-                0x2000a0e8                _useTimer7ToSenseStartPin
+                0x2000a108        0x1 VisualGDB/X10/main.o
+                0x2000a108                _useTimer7ToSenseStartPin
  .bss._Tim7StillCalculating
-                0x2000a0e9        0x1 VisualGDB/X10/main.o
-                0x2000a0e9                _Tim7StillCalculating
- *fill*         0x2000a0ea        0x2 
+                0x2000a109        0x1 VisualGDB/X10/main.o
+                0x2000a109                _Tim7StillCalculating
+ *fill*         0x2000a10a        0x2 
  .bss.startButton
-                0x2000a0ec       0x30 VisualGDB/X10/main.o
-                0x2000a0ec                startButton
- .bss.EMO       0x2000a11c       0x30 VisualGDB/X10/main.o
-                0x2000a11c                EMO
- .bss._metrics  0x2000a14c      0x224 VisualGDB/X10/main.o
-                0x2000a14c                _metrics
+                0x2000a10c       0x30 VisualGDB/X10/main.o
+                0x2000a10c                startButton
+ .bss.EMO       0x2000a13c       0x30 VisualGDB/X10/main.o
+                0x2000a13c                EMO
+ .bss._metrics  0x2000a16c      0x224 VisualGDB/X10/main.o
+                0x2000a16c                _metrics
  .bss._TouchProbeMoveActive
-                0x2000a370        0x1 VisualGDB/X10/main.o
-                0x2000a370                _TouchProbeMoveActive
+                0x2000a390        0x1 VisualGDB/X10/main.o
+                0x2000a390                _TouchProbeMoveActive
  .bss._TouchProbeCanDevice
-                0x2000a371        0x1 VisualGDB/X10/main.o
-                0x2000a371                _TouchProbeCanDevice
- *fill*         0x2000a372        0x2 
+                0x2000a391        0x1 VisualGDB/X10/main.o
+                0x2000a391                _TouchProbeCanDevice
+ *fill*         0x2000a392        0x2 
  .bss._TouchProbeEXTI_Line
-                0x2000a374        0x4 VisualGDB/X10/main.o
-                0x2000a374                _TouchProbeEXTI_Line
- .bss._TouchProbeNVIC_IRQChannel
-                0x2000a378        0x1 VisualGDB/X10/main.o
-                0x2000a378                _TouchProbeNVIC_IRQChannel
- .bss._edgeTriggerArmed
-                0x2000a379        0x1 VisualGDB/X10/main.o
-                0x2000a379                _edgeTriggerArmed
- .bss._edgeTriggerDetected
-                0x2000a37a        0x1 VisualGDB/X10/main.o
-                0x2000a37a                _edgeTriggerDetected
- *fill*         0x2000a37b        0x1 
- .bss._edgeTriggerSignalState
-                0x2000a37c        0x4 VisualGDB/X10/main.o
-                0x2000a37c                _edgeTriggerSignalState
- .bss._edgeTriggerDisplayRateCnt
-                0x2000a380        0x4 VisualGDB/X10/main.o
-                0x2000a380                _edgeTriggerDisplayRateCnt
- .bss._edgeTriggerDisplayRateHz
-                0x2000a384        0x4 VisualGDB/X10/main.o
-                0x2000a384                _edgeTriggerDisplayRateHz
- .bss.pendingAcknowledge
-                0x2000a388        0x4 VisualGDB/X10/main.o
-                0x2000a388                pendingAcknowledge
- .bss._gcodeCmdsReceived
-                0x2000a38c        0x4 VisualGDB/X10/main.o
-                0x2000a38c                _gcodeCmdsReceived
- .bss._gcodeAcksSent
-                0x2000a390        0x4 VisualGDB/X10/main.o
-                0x2000a390                _gcodeAcksSent
- .bss._asciiChecksum32
                 0x2000a394        0x4 VisualGDB/X10/main.o
-                0x2000a394                _asciiChecksum32
- .bss._rejected_normalTxChars
-                0x2000a398        0x4 VisualGDB/X10/main.o
-                0x2000a398                _rejected_normalTxChars
- .bss._asciiCharsRcvd
+                0x2000a394                _TouchProbeEXTI_Line
+ .bss._TouchProbeNVIC_IRQChannel
+                0x2000a398        0x1 VisualGDB/X10/main.o
+                0x2000a398                _TouchProbeNVIC_IRQChannel
+ .bss._edgeTriggerArmed
+                0x2000a399        0x1 VisualGDB/X10/main.o
+                0x2000a399                _edgeTriggerArmed
+ .bss._edgeTriggerDetected
+                0x2000a39a        0x1 VisualGDB/X10/main.o
+                0x2000a39a                _edgeTriggerDetected
+ *fill*         0x2000a39b        0x1 
+ .bss._edgeTriggerSignalState
                 0x2000a39c        0x4 VisualGDB/X10/main.o
-                0x2000a39c                _asciiCharsRcvd
- .bss.normalRxBufHeadroom
+                0x2000a39c                _edgeTriggerSignalState
+ .bss._edgeTriggerDisplayRateCnt
                 0x2000a3a0        0x4 VisualGDB/X10/main.o
-                0x2000a3a0                normalRxBufHeadroom
- .bss._FlowRateOverridePct
+                0x2000a3a0                _edgeTriggerDisplayRateCnt
+ .bss._edgeTriggerDisplayRateHz
                 0x2000a3a4        0x4 VisualGDB/X10/main.o
-                0x2000a3a4                _FlowRateOverridePct
- .bss._FeedRateOverridePct
+                0x2000a3a4                _edgeTriggerDisplayRateHz
+ .bss.pendingAcknowledge
                 0x2000a3a8        0x4 VisualGDB/X10/main.o
-                0x2000a3a8                _FeedRateOverridePct
- .bss._MotionRateOverridePct
+                0x2000a3a8                pendingAcknowledge
+ .bss._gcodeCmdsReceived
                 0x2000a3ac        0x4 VisualGDB/X10/main.o
-                0x2000a3ac                _MotionRateOverridePct
- .bss._CompositeFlowOverridePct
+                0x2000a3ac                _gcodeCmdsReceived
+ .bss._gcodeAcksSent
                 0x2000a3b0        0x4 VisualGDB/X10/main.o
-                0x2000a3b0                _CompositeFlowOverridePct
- .bss._CompositeMotionOverridePct
+                0x2000a3b0                _gcodeAcksSent
+ .bss._asciiChecksum32
                 0x2000a3b4        0x4 VisualGDB/X10/main.o
-                0x2000a3b4                _CompositeMotionOverridePct
- .bss._serialPortRxOverrunCnt
+                0x2000a3b4                _asciiChecksum32
+ .bss._rejected_normalTxChars
                 0x2000a3b8        0x4 VisualGDB/X10/main.o
-                0x2000a3b8                _serialPortRxOverrunCnt
+                0x2000a3b8                _rejected_normalTxChars
+ .bss._asciiCharsRcvd
+                0x2000a3bc        0x4 VisualGDB/X10/main.o
+                0x2000a3bc                _asciiCharsRcvd
+ .bss.normalRxBufHeadroom
+                0x2000a3c0        0x4 VisualGDB/X10/main.o
+                0x2000a3c0                normalRxBufHeadroom
+ .bss._FlowRateOverridePct
+                0x2000a3c4        0x4 VisualGDB/X10/main.o
+                0x2000a3c4                _FlowRateOverridePct
+ .bss._FeedRateOverridePct
+                0x2000a3c8        0x4 VisualGDB/X10/main.o
+                0x2000a3c8                _FeedRateOverridePct
+ .bss._MotionRateOverridePct
+                0x2000a3cc        0x4 VisualGDB/X10/main.o
+                0x2000a3cc                _MotionRateOverridePct
+ .bss._CompositeFlowOverridePct
+                0x2000a3d0        0x4 VisualGDB/X10/main.o
+                0x2000a3d0                _CompositeFlowOverridePct
+ .bss._CompositeMotionOverridePct
+                0x2000a3d4        0x4 VisualGDB/X10/main.o
+                0x2000a3d4                _CompositeMotionOverridePct
+ .bss._serialPortRxOverrunCnt
+                0x2000a3d8        0x4 VisualGDB/X10/main.o
+                0x2000a3d8                _serialPortRxOverrunCnt
  .bss.resetSourceStr
-                0x2000a3bc      0x100 VisualGDB/X10/main.o
-                0x2000a3bc                resetSourceStr
- .bss._errors   0x2000a4bc        0x4 VisualGDB/X10/main.o
-                0x2000a4bc                _errors
+                0x2000a3dc      0x100 VisualGDB/X10/main.o
+                0x2000a3dc                resetSourceStr
+ .bss._errors   0x2000a4dc        0x4 VisualGDB/X10/main.o
+                0x2000a4dc                _errors
  .bss.lsiActualFreq
-                0x2000a4c0        0x4 VisualGDB/X10/main.o
-                0x2000a4c0                lsiActualFreq
+                0x2000a4e0        0x4 VisualGDB/X10/main.o
+                0x2000a4e0                lsiActualFreq
  .bss.lsiCC4sampleIndex
-                0x2000a4c4        0x4 VisualGDB/X10/main.o
-                0x2000a4c4                lsiCC4sampleIndex
+                0x2000a4e4        0x4 VisualGDB/X10/main.o
+                0x2000a4e4                lsiCC4sampleIndex
  .bss.lsiCC4samples
-                0x2000a4c8        0x8 VisualGDB/X10/main.o
-                0x2000a4c8                lsiCC4samples
+                0x2000a4e8        0x8 VisualGDB/X10/main.o
+                0x2000a4e8                lsiCC4samples
  .bss.homeSensedAxisCntr
-                0x2000a4d0        0x4 VisualGDB/X10/main.o
-                0x2000a4d0                homeSensedAxisCntr
+                0x2000a4f0        0x4 VisualGDB/X10/main.o
+                0x2000a4f0                homeSensedAxisCntr
  .bss.hssFuncToPinIndex
-                0x2000a4d4       0x3c VisualGDB/X10/main.o
-                0x2000a4d4                hssFuncToPinIndex
+                0x2000a4f4       0x3c VisualGDB/X10/main.o
+                0x2000a4f4                hssFuncToPinIndex
  .bss.HighSideSwitches
-                0x2000a510      0x1b0 VisualGDB/X10/main.o
-                0x2000a510                HighSideSwitches
+                0x2000a530      0x1b0 VisualGDB/X10/main.o
+                0x2000a530                HighSideSwitches
  .bss.CommandReadyToProcessFlag
-                0x2000a6c0        0x4 VisualGDB/X10/main.o
-                0x2000a6c0                CommandReadyToProcessFlag
+                0x2000a6e0        0x4 VisualGDB/X10/main.o
+                0x2000a6e0                CommandReadyToProcessFlag
  .bss._serialPortRxOverrunFlag
-                0x2000a6c4        0x1 VisualGDB/X10/main.o
-                0x2000a6c4                _serialPortRxOverrunFlag
- *fill*         0x2000a6c5        0x3 
- .bss.motionQ   0x2000a6c8     0x1004 VisualGDB/X10/main.o
-                0x2000a6c8                motionQ
- .bss.cmdQue    0x2000b6cc     0x1b30 VisualGDB/X10/main.o
-                0x2000b6cc                cmdQue
+                0x2000a6e4        0x1 VisualGDB/X10/main.o
+                0x2000a6e4                _serialPortRxOverrunFlag
+ *fill*         0x2000a6e5        0x3 
+ .bss.motionQ   0x2000a6e8     0x1004 VisualGDB/X10/main.o
+                0x2000a6e8                motionQ
+ .bss.cmdQue    0x2000b6ec     0x1b30 VisualGDB/X10/main.o
+                0x2000b6ec                cmdQue
  .bss.ExecutionPtr
-                0x2000d1fc        0x4 VisualGDB/X10/main.o
-                0x2000d1fc                ExecutionPtr
+                0x2000d21c        0x4 VisualGDB/X10/main.o
+                0x2000d21c                ExecutionPtr
  .bss.NextExecutionPtr
-                0x2000d200        0x4 VisualGDB/X10/main.o
-                0x2000d200                NextExecutionPtr
+                0x2000d220        0x4 VisualGDB/X10/main.o
+                0x2000d220                NextExecutionPtr
  .bss.NextCommandIndex
-                0x2000d204        0x4 VisualGDB/X10/main.o
-                0x2000d204                NextCommandIndex
+                0x2000d224        0x4 VisualGDB/X10/main.o
+                0x2000d224                NextCommandIndex
  .bss.CurrentCommandIndex
-                0x2000d208        0x4 VisualGDB/X10/main.o
-                0x2000d208                CurrentCommandIndex
+                0x2000d228        0x4 VisualGDB/X10/main.o
+                0x2000d228                CurrentCommandIndex
  .bss.NextCommandInsertionIndex
-                0x2000d20c        0x4 VisualGDB/X10/main.o
-                0x2000d20c                NextCommandInsertionIndex
+                0x2000d22c        0x4 VisualGDB/X10/main.o
+                0x2000d22c                NextCommandInsertionIndex
  .bss.GCodeArgPtr
-                0x2000d210        0x4 VisualGDB/X10/main.o
-                0x2000d210                GCodeArgPtr
+                0x2000d230        0x4 VisualGDB/X10/main.o
+                0x2000d230                GCodeArgPtr
  .bss.deferredCmdQue
-                0x2000d214      0x708 VisualGDB/X10/main.o
-                0x2000d214                deferredCmdQue
+                0x2000d234      0x708 VisualGDB/X10/main.o
+                0x2000d234                deferredCmdQue
  .bss.NextDeferredCommandIndex
-                0x2000d91c        0x4 VisualGDB/X10/main.o
-                0x2000d91c                NextDeferredCommandIndex
- .bss.NextDeferredCommandInsertionIndex
-                0x2000d920        0x4 VisualGDB/X10/main.o
-                0x2000d920                NextDeferredCommandInsertionIndex
- .bss.DeferredCommandsInQue
-                0x2000d924        0x4 VisualGDB/X10/main.o
-                0x2000d924                DeferredCommandsInQue
- .bss.LastCmdQueIndexAddedToMotionQ
-                0x2000d928        0x4 VisualGDB/X10/main.o
-                0x2000d928                LastCmdQueIndexAddedToMotionQ
- .bss._needToProcessDeferredCommands
-                0x2000d92c        0x1 VisualGDB/X10/main.o
-                0x2000d92c                _needToProcessDeferredCommands
- *fill*         0x2000d92d        0x3 
- .bss.ExecuteImmediateFlag
-                0x2000d930        0x4 VisualGDB/X10/main.o
-                0x2000d930                ExecuteImmediateFlag
- .bss.counter_1Hz
-                0x2000d934        0x4 VisualGDB/X10/main.o
-                0x2000d934                counter_1Hz
- .bss.counter_10Hz
-                0x2000d938        0x4 VisualGDB/X10/main.o
-                0x2000d938                counter_10Hz
- .bss.counter_100Hz
                 0x2000d93c        0x4 VisualGDB/X10/main.o
-                0x2000d93c                counter_100Hz
- .bss.counter_1000Hz
+                0x2000d93c                NextDeferredCommandIndex
+ .bss.NextDeferredCommandInsertionIndex
                 0x2000d940        0x4 VisualGDB/X10/main.o
-                0x2000d940                counter_1000Hz
- .bss.currentArgLength
+                0x2000d940                NextDeferredCommandInsertionIndex
+ .bss.DeferredCommandsInQue
                 0x2000d944        0x4 VisualGDB/X10/main.o
-                0x2000d944                currentArgLength
- .bss.ProcessingError
+                0x2000d944                DeferredCommandsInQue
+ .bss.LastCmdQueIndexAddedToMotionQ
                 0x2000d948        0x4 VisualGDB/X10/main.o
-                0x2000d948                ProcessingError
- .bss._lineChecksum
-                0x2000d94c        0x4 VisualGDB/X10/main.o
-                0x2000d94c                _lineChecksum
- .bss._checkLineChecksum
-                0x2000d950        0x1 VisualGDB/X10/main.o
-                0x2000d950                _checkLineChecksum
- *fill*         0x2000d951        0x3 
- .bss.ClocksFailedToInitialize
+                0x2000d948                LastCmdQueIndexAddedToMotionQ
+ .bss._needToProcessDeferredCommands
+                0x2000d94c        0x1 VisualGDB/X10/main.o
+                0x2000d94c                _needToProcessDeferredCommands
+ *fill*         0x2000d94d        0x3 
+ .bss.ExecuteImmediateFlag
+                0x2000d950        0x4 VisualGDB/X10/main.o
+                0x2000d950                ExecuteImmediateFlag
+ .bss.counter_1Hz
                 0x2000d954        0x4 VisualGDB/X10/main.o
-                0x2000d954                ClocksFailedToInitialize
- .bss._bootupAlertHostChar
-                0x2000d958        0x1 VisualGDB/X10/main.o
-                0x2000d958                _bootupAlertHostChar
- .bss._sendBootupAlertHostChar
-                0x2000d959        0x1 VisualGDB/X10/main.o
-                0x2000d959                _sendBootupAlertHostChar
- *fill*         0x2000d95a        0x2 
- .bss.HEARTBEAT_PIN
+                0x2000d954                counter_1Hz
+ .bss.counter_10Hz
+                0x2000d958        0x4 VisualGDB/X10/main.o
+                0x2000d958                counter_10Hz
+ .bss.counter_100Hz
                 0x2000d95c        0x4 VisualGDB/X10/main.o
-                0x2000d95c                HEARTBEAT_PIN
+                0x2000d95c                counter_100Hz
+ .bss.counter_1000Hz
+                0x2000d960        0x4 VisualGDB/X10/main.o
+                0x2000d960                counter_1000Hz
+ .bss.currentArgLength
+                0x2000d964        0x4 VisualGDB/X10/main.o
+                0x2000d964                currentArgLength
+ .bss.ProcessingError
+                0x2000d968        0x4 VisualGDB/X10/main.o
+                0x2000d968                ProcessingError
+ .bss._lineChecksum
+                0x2000d96c        0x4 VisualGDB/X10/main.o
+                0x2000d96c                _lineChecksum
+ .bss._checkLineChecksum
+                0x2000d970        0x1 VisualGDB/X10/main.o
+                0x2000d970                _checkLineChecksum
+ *fill*         0x2000d971        0x3 
+ .bss.ClocksFailedToInitialize
+                0x2000d974        0x4 VisualGDB/X10/main.o
+                0x2000d974                ClocksFailedToInitialize
+ .bss._bootupAlertHostChar
+                0x2000d978        0x1 VisualGDB/X10/main.o
+                0x2000d978                _bootupAlertHostChar
+ .bss._sendBootupAlertHostChar
+                0x2000d979        0x1 VisualGDB/X10/main.o
+                0x2000d979                _sendBootupAlertHostChar
+ *fill*         0x2000d97a        0x2 
+ .bss.HEARTBEAT_PIN
+                0x2000d97c        0x4 VisualGDB/X10/main.o
+                0x2000d97c                HEARTBEAT_PIN
  .bss._fakeTimer
-                0x2000d960       0x54 VisualGDB/X10/main.o
-                0x2000d960                _fakeTimer
+                0x2000d980       0x54 VisualGDB/X10/main.o
+                0x2000d980                _fakeTimer
  .bss._ProcessG28MultipassHomingMoveFailed
-                0x2000d9b4        0x1 VisualGDB/X10/main.o
-                0x2000d9b4                _ProcessG28MultipassHomingMoveFailed
- *fill*         0x2000d9b5        0x3 
+                0x2000d9d4        0x1 VisualGDB/X10/main.o
+                0x2000d9d4                _ProcessG28MultipassHomingMoveFailed
+ *fill*         0x2000d9d5        0x3 
  .bss.RawADCDataBuffer
-                0x2000d9b8        0xc VisualGDB/X10/src/adc.o
-                0x2000d9b8                RawADCDataBuffer
+                0x2000d9d8        0xc VisualGDB/X10/src/adc.o
+                0x2000d9d8                RawADCDataBuffer
  .bss.ADC_Work_Channel_Index
-                0x2000d9c4        0x2 VisualGDB/X10/src/adc.o
-                0x2000d9c4                ADC_Work_Channel_Index
- *fill*         0x2000d9c6        0x2 
+                0x2000d9e4        0x2 VisualGDB/X10/src/adc.o
+                0x2000d9e4                ADC_Work_Channel_Index
+ *fill*         0x2000d9e6        0x2 
  .bss.ADC_Channel
-                0x2000d9c8       0xd8 VisualGDB/X10/src/adc.o
-                0x2000d9c8                ADC_Channel
+                0x2000d9e8       0xd8 VisualGDB/X10/src/adc.o
+                0x2000d9e8                ADC_Channel
  .bss.ADC_Work_Channel
-                0x2000daa0        0x4 VisualGDB/X10/src/adc.o
-                0x2000daa0                ADC_Work_Channel
+                0x2000dac0        0x4 VisualGDB/X10/src/adc.o
+                0x2000dac0                ADC_Work_Channel
  .bss.laserTemperature
-                0x2000daa4        0x4 VisualGDB/X10/src/adc.o
-                0x2000daa4                laserTemperature
- .bss._arc      0x2000daa8      0x110 VisualGDB/X10/src/GCode.o
-                0x2000daa8                _arc
+                0x2000dac4        0x4 VisualGDB/X10/src/adc.o
+                0x2000dac4                laserTemperature
+ .bss._arc      0x2000dac8      0x110 VisualGDB/X10/src/GCode.o
+                0x2000dac8                _arc
  .bss.CurrentToolDiameter
-                0x2000dbb8        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbb8                CurrentToolDiameter
- .bss.SpiralRadiusIncrement
-                0x2000dbbc        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbbc                SpiralRadiusIncrement
- .bss.SpiralPocket
-                0x2000dbc0        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbc0                SpiralPocket
- .bss.SpiralSegments
-                0x2000dbc4        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbc4                SpiralSegments
- .bss.SpiralPasses
-                0x2000dbc8        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbc8                SpiralPasses
- .bss._frogToePasses
-                0x2000dbcc        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbcc                _frogToePasses
- .bss.QuarterRadius
-                0x2000dbd0        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbd0                QuarterRadius
- .bss.WorkingDiameter
-                0x2000dbd4        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbd4                WorkingDiameter
- .bss.LeadInArcCenterX
                 0x2000dbd8        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbd8                LeadInArcCenterX
- .bss.LeadOutArcCenterX
+                0x2000dbd8                CurrentToolDiameter
+ .bss.SpiralRadiusIncrement
                 0x2000dbdc        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbdc                LeadOutArcCenterX
- .bss.ArcCenterX
+                0x2000dbdc                SpiralRadiusIncrement
+ .bss.SpiralPocket
                 0x2000dbe0        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbe0                ArcCenterX
- .bss.ArcCenterY
+                0x2000dbe0                SpiralPocket
+ .bss.SpiralSegments
                 0x2000dbe4        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbe4                ArcCenterY
- .bss.LeadInArcCenterY
+                0x2000dbe4                SpiralSegments
+ .bss.SpiralPasses
                 0x2000dbe8        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbe8                LeadInArcCenterY
- .bss.theta     0x2000dbec        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbec                theta
- .bss.StartAngleInDegrees
+                0x2000dbe8                SpiralPasses
+ .bss._frogToePasses
+                0x2000dbec        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dbec                _frogToePasses
+ .bss.QuarterRadius
                 0x2000dbf0        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbf0                StartAngleInDegrees
- .bss.EndAngleInDegrees
+                0x2000dbf0                QuarterRadius
+ .bss.WorkingDiameter
                 0x2000dbf4        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbf4                EndAngleInDegrees
- .bss.SweepAngle
+                0x2000dbf4                WorkingDiameter
+ .bss.LeadInArcCenterX
                 0x2000dbf8        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbf8                SweepAngle
- .bss.CurrentAngle
+                0x2000dbf8                LeadInArcCenterX
+ .bss.LeadOutArcCenterX
                 0x2000dbfc        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dbfc                CurrentAngle
- .bss.AngleIncrement
+                0x2000dbfc                LeadOutArcCenterX
+ .bss.ArcCenterX
                 0x2000dc00        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc00                AngleIncrement
- .bss.G2DeltaZ  0x2000dc04        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc04                G2DeltaZ
- .bss.EndAngleDeltaX
+                0x2000dc00                ArcCenterX
+ .bss.ArcCenterY
+                0x2000dc04        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc04                ArcCenterY
+ .bss.LeadInArcCenterY
                 0x2000dc08        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc08                EndAngleDeltaX
- .bss.EndAngleDeltaY
-                0x2000dc0c        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc0c                EndAngleDeltaY
- .bss.WorkAngleInRadians
+                0x2000dc08                LeadInArcCenterY
+ .bss.theta     0x2000dc0c        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc0c                theta
+ .bss.StartAngleInDegrees
                 0x2000dc10        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc10                WorkAngleInRadians
- .bss.XRadvalue
+                0x2000dc10                StartAngleInDegrees
+ .bss.EndAngleInDegrees
                 0x2000dc14        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc14                XRadvalue
- .bss.yRADvalue
+                0x2000dc14                EndAngleInDegrees
+ .bss.SweepAngle
                 0x2000dc18        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc18                yRADvalue
- .bss.ArcSubcounter
+                0x2000dc18                SweepAngle
+ .bss.CurrentAngle
                 0x2000dc1c        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc1c                ArcSubcounter
- .bss.NumberOfArcSegments
+                0x2000dc1c                CurrentAngle
+ .bss.AngleIncrement
                 0x2000dc20        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc20                NumberOfArcSegments
- .bss.spiralBoreNumberOfArcSegments
-                0x2000dc24        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc24                spiralBoreNumberOfArcSegments
- .bss.SpiralBoreZIncrement
+                0x2000dc20                AngleIncrement
+ .bss.G2DeltaZ  0x2000dc24        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc24                G2DeltaZ
+ .bss.EndAngleDeltaX
                 0x2000dc28        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc28                SpiralBoreZIncrement
- .bss.spiralBoreZEndPosition
+                0x2000dc28                EndAngleDeltaX
+ .bss.EndAngleDeltaY
                 0x2000dc2c        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc2c                spiralBoreZEndPosition
- .bss.spiralBoreZStartPosition
+                0x2000dc2c                EndAngleDeltaY
+ .bss.WorkAngleInRadians
                 0x2000dc30        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc30                spiralBoreZStartPosition
- .bss.spiralBoreDeltaZ
+                0x2000dc30                WorkAngleInRadians
+ .bss.XRadvalue
                 0x2000dc34        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc34                spiralBoreDeltaZ
- .bss.spiralBorePitch
+                0x2000dc34                XRadvalue
+ .bss.yRADvalue
                 0x2000dc38        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc38                spiralBorePitch
- .bss.spiralBoreNumberOfSpirals
+                0x2000dc38                yRADvalue
+ .bss.ArcSubcounter
                 0x2000dc3c        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc3c                spiralBoreNumberOfSpirals
- .bss.G2G3Ptr   0x2000dc40        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc40                G2G3Ptr
- .bss.LastG2X   0x2000dc44        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc44                LastG2X
- .bss.LastG2Y   0x2000dc48        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc48                LastG2Y
- .bss.LastG2Z   0x2000dc4c        0x4 VisualGDB/X10/src/GCode.o
-                0x2000dc4c                LastG2Z
+                0x2000dc3c                ArcSubcounter
+ .bss.NumberOfArcSegments
+                0x2000dc40        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc40                NumberOfArcSegments
+ .bss.spiralBoreNumberOfArcSegments
+                0x2000dc44        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc44                spiralBoreNumberOfArcSegments
+ .bss.SpiralBoreZIncrement
+                0x2000dc48        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc48                SpiralBoreZIncrement
+ .bss.spiralBoreZEndPosition
+                0x2000dc4c        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc4c                spiralBoreZEndPosition
+ .bss.spiralBoreZStartPosition
+                0x2000dc50        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc50                spiralBoreZStartPosition
+ .bss.spiralBoreDeltaZ
+                0x2000dc54        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc54                spiralBoreDeltaZ
+ .bss.spiralBorePitch
+                0x2000dc58        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc58                spiralBorePitch
+ .bss.spiralBoreNumberOfSpirals
+                0x2000dc5c        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc5c                spiralBoreNumberOfSpirals
+ .bss.G2G3Ptr   0x2000dc60        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc60                G2G3Ptr
+ .bss.LastG2X   0x2000dc64        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc64                LastG2X
+ .bss.LastG2Y   0x2000dc68        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc68                LastG2Y
+ .bss.LastG2Z   0x2000dc6c        0x4 VisualGDB/X10/src/GCode.o
+                0x2000dc6c                LastG2Z
  .bss._save_IncrementalEMove
-                0x2000dc50        0x1 VisualGDB/X10/src/GCode.o
-                0x2000dc50                _save_IncrementalEMove
+                0x2000dc70        0x1 VisualGDB/X10/src/GCode.o
+                0x2000dc70                _save_IncrementalEMove
  .bss._save_IncrementalMove
-                0x2000dc51        0x1 VisualGDB/X10/src/GCode.o
-                0x2000dc51                _save_IncrementalMove
- *fill*         0x2000dc52        0x2 
- .bss._cyl      0x2000dc54       0xc4 VisualGDB/X10/src/GCode.o
-                0x2000dc54                _cyl
+                0x2000dc71        0x1 VisualGDB/X10/src/GCode.o
+                0x2000dc71                _save_IncrementalMove
+ *fill*         0x2000dc72        0x2 
+ .bss._cyl      0x2000dc74       0xc4 VisualGDB/X10/src/GCode.o
+                0x2000dc74                _cyl
  .bss.MyTIM_TimeBaseInitStruct
-                0x2000dd18        0xc VisualGDB/X10/src/HardwareInit.o
-                0x2000dd18                MyTIM_TimeBaseInitStruct
- *fill*         0x2000dd24        0x4 
+                0x2000dd38        0xc VisualGDB/X10/src/HardwareInit.o
+                0x2000dd38                MyTIM_TimeBaseInitStruct
+ *fill*         0x2000dd44        0x4 
  .bss._loopbackPayload
-                0x2000dd28        0x8 VisualGDB/X10/src/Hydra_can.o
-                0x2000dd28                _loopbackPayload
+                0x2000dd48        0x8 VisualGDB/X10/src/Hydra_can.o
+                0x2000dd48                _loopbackPayload
  .bss.CanMsgque
-                0x2000dd30      0x100 VisualGDB/X10/src/Hydra_can.o
-                0x2000dd30                CanMsgque
+                0x2000dd50      0x100 VisualGDB/X10/src/Hydra_can.o
+                0x2000dd50                CanMsgque
  .bss.lastcanmsgindex
-                0x2000de30        0x4 VisualGDB/X10/src/Hydra_can.o
-                0x2000de30                lastcanmsgindex
+                0x2000de50        0x4 VisualGDB/X10/src/Hydra_can.o
+                0x2000de50                lastcanmsgindex
  .bss.workPacket
-                0x2000de34        0x4 VisualGDB/X10/src/Hydra_can.o
-                0x2000de34                workPacket
+                0x2000de54        0x4 VisualGDB/X10/src/Hydra_can.o
+                0x2000de54                workPacket
  .bss.workTxPacket
-                0x2000de38        0x4 VisualGDB/X10/src/Hydra_can.o
-                0x2000de38                workTxPacket
- *fill*         0x2000de3c        0x4 
+                0x2000de58        0x4 VisualGDB/X10/src/Hydra_can.o
+                0x2000de58                workTxPacket
+ *fill*         0x2000de5c        0x4 
  .bss._MailBoxes
-                0x2000de40     0x5698 VisualGDB/X10/src/mailbox.o
-                0x2000de40                _MailBoxes
+                0x2000de60     0x5698 VisualGDB/X10/src/mailbox.o
+                0x2000de60                _MailBoxes
  .bss.currentOutboxPtr
-                0x200134d8        0x4 VisualGDB/X10/src/mailbox.o
-                0x200134d8                currentOutboxPtr
+                0x200134f8        0x4 VisualGDB/X10/src/mailbox.o
+                0x200134f8                currentOutboxPtr
  .bss._outboxHotbedPtr
-                0x200134dc        0x4 VisualGDB/X10/src/mailbox.o
-                0x200134dc                _outboxHotbedPtr
+                0x200134fc        0x4 VisualGDB/X10/src/mailbox.o
+                0x200134fc                _outboxHotbedPtr
  .bss._primaryHeadPtr
-                0x200134e0        0x4 VisualGDB/X10/src/mailbox.o
-                0x200134e0                _primaryHeadPtr
- .bss._sysInfo  0x200134e4       0x80 VisualGDB/X10/src/mailbox.o
-                0x200134e4                _sysInfo
+                0x20013500        0x4 VisualGDB/X10/src/mailbox.o
+                0x20013500                _primaryHeadPtr
+ .bss._sysInfo  0x20013504       0x80 VisualGDB/X10/src/mailbox.o
+                0x20013504                _sysInfo
  .bss._sysInfoPtr
-                0x20013564        0x4 VisualGDB/X10/src/mailbox.o
-                0x20013564                _sysInfoPtr
+                0x20013584        0x4 VisualGDB/X10/src/mailbox.o
+                0x20013584                _sysInfoPtr
  .bss.DeviceSoapstringWatchdogCnt
-                0x20013568        0x4 VisualGDB/X10/src/mailbox.o
-                0x20013568                DeviceSoapstringWatchdogCnt
+                0x20013588        0x4 VisualGDB/X10/src/mailbox.o
+                0x20013588                DeviceSoapstringWatchdogCnt
  .bss.DeviceSoapstringWatchdogWatcher
-                0x2001356c        0x4 VisualGDB/X10/src/mailbox.o
-                0x2001356c                DeviceSoapstringWatchdogWatcher
+                0x2001358c        0x4 VisualGDB/X10/src/mailbox.o
+                0x2001358c                DeviceSoapstringWatchdogWatcher
  .bss.processSoapstringCommands
-                0x20013570        0x1 VisualGDB/X10/src/mailbox.o
-                0x20013570                processSoapstringCommands
- *fill*         0x20013571        0x3 
+                0x20013590        0x1 VisualGDB/X10/src/mailbox.o
+                0x20013590                processSoapstringCommands
+ *fill*         0x20013591        0x3 
  .bss.processSoapstringCommandsTurnOffCounter
-                0x20013574        0x4 VisualGDB/X10/src/mailbox.o
-                0x20013574                processSoapstringCommandsTurnOffCounter
+                0x20013594        0x4 VisualGDB/X10/src/mailbox.o
+                0x20013594                processSoapstringCommandsTurnOffCounter
  .bss.soapstringCommandWaiting
-                0x20013578        0x4 VisualGDB/X10/src/mailbox.o
-                0x20013578                soapstringCommandWaiting
+                0x20013598        0x4 VisualGDB/X10/src/mailbox.o
+                0x20013598                soapstringCommandWaiting
  .bss._KeepHeadsAliveDuringDebug
-                0x2001357c        0x1 VisualGDB/X10/src/mailbox.o
-                0x2001357c                _KeepHeadsAliveDuringDebug
- *fill*         0x2001357d        0x3 
+                0x2001359c        0x1 VisualGDB/X10/src/mailbox.o
+                0x2001359c                _KeepHeadsAliveDuringDebug
+ *fill*         0x2001359d        0x3 
  .bss._LaserDebugReportingRate
-                0x20013580        0x4 VisualGDB/X10/src/mailbox.o
-                0x20013580                _LaserDebugReportingRate
- .bss._M235     0x20013584       0x18 VisualGDB/X10/src/MCode.o
-                0x20013584                _M235
+                0x200135a0        0x4 VisualGDB/X10/src/mailbox.o
+                0x200135a0                _LaserDebugReportingRate
+ .bss._M235     0x200135a4       0x18 VisualGDB/X10/src/MCode.o
+                0x200135a4                _M235
  .bss.DesiredCo2LaserPower
-                0x2001359c        0x2 VisualGDB/X10/src/MCode.o
-                0x2001359c                DesiredCo2LaserPower
+                0x200135bc        0x2 VisualGDB/X10/src/MCode.o
+                0x200135bc                DesiredCo2LaserPower
  .bss._IncrementalMove
-                0x2001359e        0x1 VisualGDB/X10/src/MotorDrivers.o
-                0x2001359e                _IncrementalMove
+                0x200135be        0x1 VisualGDB/X10/src/MotorDrivers.o
+                0x200135be                _IncrementalMove
  .bss._IncrementalEMove
-                0x2001359f        0x1 VisualGDB/X10/src/MotorDrivers.o
-                0x2001359f                _IncrementalEMove
+                0x200135bf        0x1 VisualGDB/X10/src/MotorDrivers.o
+                0x200135bf                _IncrementalEMove
  .bss._ActualVectorRateInMmPerSec
-                0x200135a0        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135a0                _ActualVectorRateInMmPerSec
- .bss._MachineLimits
-                0x200135a4        0x8 VisualGDB/X10/src/MotorDrivers.o
-                0x200135a4                _MachineLimits
- .bss._ABjogging
-                0x200135ac       0x10 VisualGDB/X10/src/MotorDrivers.o
-                0x200135ac                _ABjogging
- .bss.DominantAxisPtr
-                0x200135bc        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135bc                DominantAxisPtr
- .bss.FirstAxisMotor
                 0x200135c0        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135c0                FirstAxisMotor
+                0x200135c0                _ActualVectorRateInMmPerSec
+ .bss._MachineLimits
+                0x200135c4        0x8 VisualGDB/X10/src/MotorDrivers.o
+                0x200135c4                _MachineLimits
+ .bss._ABjogging
+                0x200135cc       0x10 VisualGDB/X10/src/MotorDrivers.o
+                0x200135cc                _ABjogging
+ .bss.DominantAxisPtr
+                0x200135dc        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x200135dc                DominantAxisPtr
+ .bss.FirstAxisMotor
+                0x200135e0        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x200135e0                FirstAxisMotor
  .bss.LastAxisMotor
-                0x200135c4        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135c4                LastAxisMotor
+                0x200135e4        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x200135e4                LastAxisMotor
  .bss.FirstAxisMotorPtr
-                0x200135c8        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135c8                FirstAxisMotorPtr
+                0x200135e8        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x200135e8                FirstAxisMotorPtr
  .bss.LastAxisMotorPtr
-                0x200135cc        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135cc                LastAxisMotorPtr
+                0x200135ec        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x200135ec                LastAxisMotorPtr
  .bss._movingAxesPtrs
-                0x200135d0       0x18 VisualGDB/X10/src/MotorDrivers.o
-                0x200135d0                _movingAxesPtrs
+                0x200135f0       0x18 VisualGDB/X10/src/MotorDrivers.o
+                0x200135f0                _movingAxesPtrs
  .bss._Dominant
-                0x200135e8       0x10 VisualGDB/X10/src/MotorDrivers.o
-                0x200135e8                _Dominant
+                0x20013608       0x10 VisualGDB/X10/src/MotorDrivers.o
+                0x20013608                _Dominant
  .bss._numMovingAxes
-                0x200135f8        0x4 VisualGDB/X10/src/MotorDrivers.o
-                0x200135f8                _numMovingAxes
+                0x20013618        0x4 VisualGDB/X10/src/MotorDrivers.o
+                0x20013618                _numMovingAxes
  .bss.PnPResetTimer
-                0x200135fc        0x2 VisualGDB/X10/src/pnp.o
-                0x200135fc                PnPResetTimer
+                0x2001361c        0x2 VisualGDB/X10/src/pnp.o
+                0x2001361c                PnPResetTimer
  .bss.PNPSPIData
-                0x200135fe        0x2 VisualGDB/X10/src/pnp.o
-                0x200135fe                PNPSPIData
+                0x2001361e        0x2 VisualGDB/X10/src/pnp.o
+                0x2001361e                PNPSPIData
  .bss.masterCommPort
-                0x20013600        0x1 VisualGDB/X10/src/Serial.o
-                0x20013600                masterCommPort
- *fill*         0x20013601        0x3 
+                0x20013620        0x1 VisualGDB/X10/src/Serial.o
+                0x20013620                masterCommPort
+ *fill*         0x20013621        0x3 
  .bss.rawRxIndexIn
-                0x20013604        0x4 VisualGDB/X10/src/Serial.o
-                0x20013604                rawRxIndexIn
- .bss.rawRxIndexOut
-                0x20013608        0x4 VisualGDB/X10/src/Serial.o
-                0x20013608                rawRxIndexOut
- .bss.rawRxCharsInBuf
-                0x2001360c        0x4 VisualGDB/X10/src/Serial.o
-                0x2001360c                rawRxCharsInBuf
- .bss.rawUsbRxIndexOut
-                0x20013610        0x4 VisualGDB/X10/src/Serial.o
-                0x20013610                rawUsbRxIndexOut
- .bss.rawUsbRxCharsInBuf
-                0x20013614        0x4 VisualGDB/X10/src/Serial.o
-                0x20013614                rawUsbRxCharsInBuf
- .bss.urgentRxIndexIn
-                0x20013618        0x4 VisualGDB/X10/src/Serial.o
-                0x20013618                urgentRxIndexIn
- .bss.urgentRxIndexOut
-                0x2001361c        0x4 VisualGDB/X10/src/Serial.o
-                0x2001361c                urgentRxIndexOut
- .bss.urgentRxCharsInBuf
-                0x20013620        0x4 VisualGDB/X10/src/Serial.o
-                0x20013620                urgentRxCharsInBuf
- .bss.urgentCommandWaiting
                 0x20013624        0x4 VisualGDB/X10/src/Serial.o
-                0x20013624                urgentCommandWaiting
- .bss._copyToUrgentRxBuffer
-                0x20013628        0x1 VisualGDB/X10/src/Serial.o
-                0x20013628                _copyToUrgentRxBuffer
- *fill*         0x20013629        0x3 
- .bss.normalRxIndexIn
+                0x20013624                rawRxIndexIn
+ .bss.rawRxIndexOut
+                0x20013628        0x4 VisualGDB/X10/src/Serial.o
+                0x20013628                rawRxIndexOut
+ .bss.rawRxCharsInBuf
                 0x2001362c        0x4 VisualGDB/X10/src/Serial.o
-                0x2001362c                normalRxIndexIn
- .bss.normalRxIndexOut
+                0x2001362c                rawRxCharsInBuf
+ .bss.rawUsbRxIndexOut
                 0x20013630        0x4 VisualGDB/X10/src/Serial.o
-                0x20013630                normalRxIndexOut
- .bss.normalRxCharsInBuf
+                0x20013630                rawUsbRxIndexOut
+ .bss.rawUsbRxCharsInBuf
                 0x20013634        0x4 VisualGDB/X10/src/Serial.o
-                0x20013634                normalRxCharsInBuf
- .bss.normalCommandWaiting
+                0x20013634                rawUsbRxCharsInBuf
+ .bss.urgentRxIndexIn
                 0x20013638        0x4 VisualGDB/X10/src/Serial.o
-                0x20013638                normalCommandWaiting
- .bss.normalTxIndexIn
+                0x20013638                urgentRxIndexIn
+ .bss.urgentRxIndexOut
                 0x2001363c        0x4 VisualGDB/X10/src/Serial.o
-                0x2001363c                normalTxIndexIn
- .bss.normalTxIndexOut
+                0x2001363c                urgentRxIndexOut
+ .bss.urgentRxCharsInBuf
                 0x20013640        0x4 VisualGDB/X10/src/Serial.o
-                0x20013640                normalTxIndexOut
- .bss.normalTxCharsInBuf
+                0x20013640                urgentRxCharsInBuf
+ .bss.urgentCommandWaiting
                 0x20013644        0x4 VisualGDB/X10/src/Serial.o
-                0x20013644                normalTxCharsInBuf
- .bss.echoTxIndexIn
-                0x20013648        0x4 VisualGDB/X10/src/Serial.o
-                0x20013648                echoTxIndexIn
- .bss.echoTxIndexOut
+                0x20013644                urgentCommandWaiting
+ .bss._copyToUrgentRxBuffer
+                0x20013648        0x1 VisualGDB/X10/src/Serial.o
+                0x20013648                _copyToUrgentRxBuffer
+ *fill*         0x20013649        0x3 
+ .bss.normalRxIndexIn
                 0x2001364c        0x4 VisualGDB/X10/src/Serial.o
-                0x2001364c                echoTxIndexOut
- .bss.echoTxCharsInBuf
+                0x2001364c                normalRxIndexIn
+ .bss.normalRxIndexOut
                 0x20013650        0x4 VisualGDB/X10/src/Serial.o
-                0x20013650                echoTxCharsInBuf
- .bss.directRxIndexIn
+                0x20013650                normalRxIndexOut
+ .bss.normalRxCharsInBuf
                 0x20013654        0x4 VisualGDB/X10/src/Serial.o
-                0x20013654                directRxIndexIn
- .bss.directRxIndexOut
+                0x20013654                normalRxCharsInBuf
+ .bss.normalCommandWaiting
                 0x20013658        0x4 VisualGDB/X10/src/Serial.o
-                0x20013658                directRxIndexOut
- .bss.directRxCharsInBuf
+                0x20013658                normalCommandWaiting
+ .bss.normalTxIndexIn
                 0x2001365c        0x4 VisualGDB/X10/src/Serial.o
-                0x2001365c                directRxCharsInBuf
+                0x2001365c                normalTxIndexIn
+ .bss.normalTxIndexOut
+                0x20013660        0x4 VisualGDB/X10/src/Serial.o
+                0x20013660                normalTxIndexOut
+ .bss.normalTxCharsInBuf
+                0x20013664        0x4 VisualGDB/X10/src/Serial.o
+                0x20013664                normalTxCharsInBuf
+ .bss.echoTxIndexIn
+                0x20013668        0x4 VisualGDB/X10/src/Serial.o
+                0x20013668                echoTxIndexIn
+ .bss.echoTxIndexOut
+                0x2001366c        0x4 VisualGDB/X10/src/Serial.o
+                0x2001366c                echoTxIndexOut
+ .bss.echoTxCharsInBuf
+                0x20013670        0x4 VisualGDB/X10/src/Serial.o
+                0x20013670                echoTxCharsInBuf
+ .bss.directRxIndexIn
+                0x20013674        0x4 VisualGDB/X10/src/Serial.o
+                0x20013674                directRxIndexIn
+ .bss.directRxIndexOut
+                0x20013678        0x4 VisualGDB/X10/src/Serial.o
+                0x20013678                directRxIndexOut
+ .bss.directRxCharsInBuf
+                0x2001367c        0x4 VisualGDB/X10/src/Serial.o
+                0x2001367c                directRxCharsInBuf
  .bss.rawDirectRxIgnoreToCmdEnd
-                0x20013660        0x1 VisualGDB/X10/src/Serial.o
-                0x20013660                rawDirectRxIgnoreToCmdEnd
+                0x20013680        0x1 VisualGDB/X10/src/Serial.o
+                0x20013680                rawDirectRxIgnoreToCmdEnd
  .bss._copyToDirectRxBuffer
-                0x20013661        0x1 VisualGDB/X10/src/Serial.o
-                0x20013661                _copyToDirectRxBuffer
+                0x20013681        0x1 VisualGDB/X10/src/Serial.o
+                0x20013681                _copyToDirectRxBuffer
  .bss._processingAComment
-                0x20013662        0x1 VisualGDB/X10/src/Serial.o
-                0x20013662                _processingAComment
+                0x20013682        0x1 VisualGDB/X10/src/Serial.o
+                0x20013682                _processingAComment
  .bss._processingASoapString
-                0x20013663        0x1 VisualGDB/X10/src/Serial.o
-                0x20013663                _processingASoapString
+                0x20013683        0x1 VisualGDB/X10/src/Serial.o
+                0x20013683                _processingASoapString
  .bss.currentCommandString
-                0x20013664      0x100 VisualGDB/X10/src/Serial.o
-                0x20013664                currentCommandString
+                0x20013684      0x100 VisualGDB/X10/src/Serial.o
+                0x20013684                currentCommandString
  .bss.SendString
-                0x20013764      0x100 VisualGDB/X10/src/Serial.o
-                0x20013764                SendString
+                0x20013784      0x100 VisualGDB/X10/src/Serial.o
+                0x20013784                SendString
  .bss._errorStr
-                0x20013864      0x100 VisualGDB/X10/src/Serial.o
-                0x20013864                _errorStr
- .bss._rptStr   0x20013964      0x100 VisualGDB/X10/src/Serial.o
-                0x20013964                _rptStr
- .bss._tmpStr   0x20013a64      0x100 VisualGDB/X10/src/Serial.o
-                0x20013a64                _tmpStr
+                0x20013884      0x100 VisualGDB/X10/src/Serial.o
+                0x20013884                _errorStr
+ .bss._rptStr   0x20013984      0x100 VisualGDB/X10/src/Serial.o
+                0x20013984                _rptStr
+ .bss._tmpStr   0x20013a84      0x100 VisualGDB/X10/src/Serial.o
+                0x20013a84                _tmpStr
  .bss._canString
-                0x20013b64       0x41 VisualGDB/X10/src/Serial.o
-                0x20013b64                _canString
- *fill*         0x20013ba5        0x3 
+                0x20013b84       0x41 VisualGDB/X10/src/Serial.o
+                0x20013b84                _canString
+ *fill*         0x20013bc5        0x3 
  .bss._canStringChars
-                0x20013ba8        0x4 VisualGDB/X10/src/Serial.o
-                0x20013ba8                _canStringChars
- .bss._canStringRate
-                0x20013bac        0x4 VisualGDB/X10/src/Serial.o
-                0x20013bac                _canStringRate
- .bss._sendingGBStringsMask
-                0x20013bb0        0x4 VisualGDB/X10/src/Serial.o
-                0x20013bb0                _sendingGBStringsMask
- .bss._sendingGBStringsSubMask
-                0x20013bb4        0x4 VisualGDB/X10/src/Serial.o
-                0x20013bb4                _sendingGBStringsSubMask
- .bss._echoRawSerialStreamPort
-                0x20013bb8        0x1 VisualGDB/X10/src/Serial.o
-                0x20013bb8                _echoRawSerialStreamPort
- .bss._echoProcessedSerialStreamPort
-                0x20013bb9        0x1 VisualGDB/X10/src/Serial.o
-                0x20013bb9                _echoProcessedSerialStreamPort
- .bss.laser_PsOutputCurrent
-                0x20013bba        0x2 VisualGDB/X10/src/Serial.o
-                0x20013bba                laser_PsOutputCurrent
- .bss.laser_PsOutputVoltage
-                0x20013bbc        0x2 VisualGDB/X10/src/Serial.o
-                0x20013bbc                laser_PsOutputVoltage
- .bss.laser_PsControlVoltage
-                0x20013bbe        0x2 VisualGDB/X10/src/Serial.o
-                0x20013bbe                laser_PsControlVoltage
- .bss.laser_PsWaterProt
-                0x20013bc0        0x2 VisualGDB/X10/src/Serial.o
-                0x20013bc0                laser_PsWaterProt
- *fill*         0x20013bc2        0x2 
- .bss.co2UartTxCharsInBuf
-                0x20013bc4        0x4 VisualGDB/X10/src/Serial.o
-                0x20013bc4                co2UartTxCharsInBuf
- .bss.co2UartRxCharsInBuf
                 0x20013bc8        0x4 VisualGDB/X10/src/Serial.o
-                0x20013bc8                co2UartRxCharsInBuf
+                0x20013bc8                _canStringChars
+ .bss._canStringRate
+                0x20013bcc        0x4 VisualGDB/X10/src/Serial.o
+                0x20013bcc                _canStringRate
+ .bss._sendingGBStringsMask
+                0x20013bd0        0x4 VisualGDB/X10/src/Serial.o
+                0x20013bd0                _sendingGBStringsMask
+ .bss._sendingGBStringsSubMask
+                0x20013bd4        0x4 VisualGDB/X10/src/Serial.o
+                0x20013bd4                _sendingGBStringsSubMask
+ .bss._echoRawSerialStreamPort
+                0x20013bd8        0x1 VisualGDB/X10/src/Serial.o
+                0x20013bd8                _echoRawSerialStreamPort
+ .bss._echoProcessedSerialStreamPort
+                0x20013bd9        0x1 VisualGDB/X10/src/Serial.o
+                0x20013bd9                _echoProcessedSerialStreamPort
+ .bss.laser_PsOutputCurrent
+                0x20013bda        0x2 VisualGDB/X10/src/Serial.o
+                0x20013bda                laser_PsOutputCurrent
+ .bss.laser_PsOutputVoltage
+                0x20013bdc        0x2 VisualGDB/X10/src/Serial.o
+                0x20013bdc                laser_PsOutputVoltage
+ .bss.laser_PsControlVoltage
+                0x20013bde        0x2 VisualGDB/X10/src/Serial.o
+                0x20013bde                laser_PsControlVoltage
+ .bss.laser_PsWaterProt
+                0x20013be0        0x2 VisualGDB/X10/src/Serial.o
+                0x20013be0                laser_PsWaterProt
+ *fill*         0x20013be2        0x2 
+ .bss.co2UartTxCharsInBuf
+                0x20013be4        0x4 VisualGDB/X10/src/Serial.o
+                0x20013be4                co2UartTxCharsInBuf
+ .bss.co2UartRxCharsInBuf
+                0x20013be8        0x4 VisualGDB/X10/src/Serial.o
+                0x20013be8                co2UartRxCharsInBuf
  .bss.co2UartRxBuffer
-                0x20013bcc       0x12 VisualGDB/X10/src/Serial.o
-                0x20013bcc                co2UartRxBuffer
- *fill*         0x20013bde        0x2 
+                0x20013bec       0x12 VisualGDB/X10/src/Serial.o
+                0x20013bec                co2UartRxBuffer
+ *fill*         0x20013bfe        0x2 
  .bss.__sbrk_heap_end
-                0x20013be0        0x4 VisualGDB/X10/sysmem.o
+                0x20013c00        0x4 VisualGDB/X10/sysmem.o
  .bss._estack.2
-                0x20013be4        0x1 VisualGDB/X10/sysmem.o
- *fill*         0x20013be5        0x3 
+                0x20013c04        0x1 VisualGDB/X10/sysmem.o
+ *fill*         0x20013c05        0x3 
  .bss._Min_Stack_Size.1
-                0x20013be8        0x4 VisualGDB/X10/sysmem.o
- .bss._end.0    0x20013bec        0x1 VisualGDB/X10/sysmem.o
- *fill*         0x20013bed        0x3 
+                0x20013c08        0x4 VisualGDB/X10/sysmem.o
+ .bss._end.0    0x20013c0c        0x1 VisualGDB/X10/sysmem.o
+ *fill*         0x20013c0d        0x3 
  .bss.USB_Rx_Buffer
-                0x20013bf0       0x40 VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
-                0x20013bf0                USB_Rx_Buffer
+                0x20013c10       0x40 VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
+                0x20013c10                USB_Rx_Buffer
  .bss.SET_TEST_MODE
-                0x20013c30        0x4 VisualGDB/X10/usb_lib/src/usbd_core.o
-                0x20013c30                SET_TEST_MODE
+                0x20013c50        0x4 VisualGDB/X10/usb_lib/src/usbd_core.o
+                0x20013c50                SET_TEST_MODE
  .bss.USBD_ep_status
-                0x20013c34        0x4 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x20013c34                USBD_ep_status
+                0x20013c54        0x4 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x20013c54                USBD_ep_status
  .bss.USBD_default_cfg
-                0x20013c38        0x4 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x20013c38                USBD_default_cfg
+                0x20013c58        0x4 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x20013c58                USBD_default_cfg
  .bss.USBD_cfg_status
-                0x20013c3c        0x4 VisualGDB/X10/usb_lib/src/usbd_req.o
-                0x20013c3c                USBD_cfg_status
- .bss.cfgidx.0  0x20013c40        0x1 VisualGDB/X10/usb_lib/src/usbd_req.o
- *fill*         0x20013c41        0x3 
+                0x20013c5c        0x4 VisualGDB/X10/usb_lib/src/usbd_req.o
+                0x20013c5c                USBD_cfg_status
+ .bss.cfgidx.0  0x20013c60        0x1 VisualGDB/X10/usb_lib/src/usbd_req.o
+ *fill*         0x20013c61        0x3 
  .bss.USB_OTG_dev
-                0x20013c44      0x5f4 VisualGDB/X10/usb_lib/src/usbd_usr.o
-                0x20013c44                USB_OTG_dev
- .bss.__sf      0x20014238      0x138 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x20014238                __sf
+                0x20013c64      0x5f4 VisualGDB/X10/usb_lib/src/usbd_usr.o
+                0x20013c64                USB_OTG_dev
+ .bss.__sf      0x20014258      0x138 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x20014258                __sf
  .bss.__stdio_exit_handler
-                0x20014370        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x20014370                __stdio_exit_handler
- .bss.errno     0x20014374        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reent.o)
-                0x20014374                errno
+                0x20014390        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x20014390                __stdio_exit_handler
+ .bss.errno     0x20014394        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reent.o)
+                0x20014394                errno
  .bss.__lock___malloc_recursive_mutex
-                0x20014378        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x20014378                __lock___malloc_recursive_mutex
+                0x20014398        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x20014398                __lock___malloc_recursive_mutex
  .bss.__lock___sfp_recursive_mutex
-                0x20014379        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x20014379                __lock___sfp_recursive_mutex
- *fill*         0x2001437a        0x2 
+                0x20014399        0x1 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x20014399                __lock___sfp_recursive_mutex
+ *fill*         0x2001439a        0x2 
  .bss.__malloc_sbrk_start
-                0x2001437c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
-                0x2001437c                __malloc_sbrk_start
+                0x2001439c        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x2001439c                __malloc_sbrk_start
  .bss.__malloc_free_list
-                0x20014380        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
-                0x20014380                __malloc_free_list
+                0x200143a0        0x4 c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x200143a0                __malloc_free_list
  *(COMMON)
-                0x20014384                        . = ALIGN (0x4)
-                0x20014384                        _ebss = .
+                0x200143a4                        . = ALIGN (0x4)
+                0x200143a4                        _ebss = .
 
-.co_stack       0x20014384     0x2004 load address 0x08061dcc
-                0x20014388                        . = ALIGN (0x8)
- *fill*         0x20014384        0x4 
+.co_stack       0x200143a4     0x2004 load address 0x08061dfc
+                0x200143a8                        . = ALIGN (0x8)
+ *fill*         0x200143a4        0x4 
  *(.co_stack .co_stack.*)
- .co_stack      0x20014388     0x2000 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
-                0x20014388                pulStack
-                0x20016388                        . = ALIGN (0x4)
-                0x20016388                        _end = .
+ .co_stack      0x200143a8     0x2000 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+                0x200143a8                pulStack
+                0x200163a8                        . = ALIGN (0x4)
+                0x200163a8                        _end = .
 OUTPUT(../bin/Hydra23X10 elf32-littlearm)
 LOAD linker stubs
 
@@ -8881,7 +8881,7 @@ LOAD linker stubs
  .comment       0x00000055       0x56 VisualGDB/X10/usb_lib/src/usb_dcd.o
  .comment       0x00000055       0x56 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
 
-.debug_info     0x00000000    0x53455
+.debug_info     0x00000000    0x53461
  .debug_info    0x00000000       0xca VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
  .debug_info    0x000000ca      0x5ba VisualGDB/X10/cmsis_boot/system_stm32f4xx.o
  .debug_info    0x00000684      0xbfb VisualGDB/X10/cmsis_lib/src/stm32f4xx_adc.o
@@ -8903,34 +8903,34 @@ LOAD linker stubs
  .debug_info    0x0000c121      0xb62 VisualGDB/X10/common/src/util.o
  .debug_info    0x0000cc83       0xcc VisualGDB/X10/display/colortables.o
  .debug_info    0x0000cd4f     0x15db VisualGDB/X10/display/display.o
- .debug_info    0x0000e32a     0x1457 VisualGDB/X10/display/DisplayList.o
- .debug_info    0x0000f781      0x685 VisualGDB/X10/display/gui.o
- .debug_info    0x0000fe06      0x974 VisualGDB/X10/display/lcdspi_4xx.o
- .debug_info    0x0001077a      0x75d VisualGDB/X10/display/st7789.o
- .debug_info    0x00010ed7     0x97f3 VisualGDB/X10/main.o
- .debug_info    0x0001a6ca      0xac1 VisualGDB/X10/src/adc.o
- .debug_info    0x0001b18b      0x402 VisualGDB/X10/src/adc_table.o
- .debug_info    0x0001b58d     0x2fda VisualGDB/X10/src/bootloader.o
- .debug_info    0x0001e567     0x606b VisualGDB/X10/src/GCode.o
- .debug_info    0x000245d2     0x4710 VisualGDB/X10/src/HardwareInit.o
- .debug_info    0x00028ce2     0x17ea VisualGDB/X10/src/headSetup.o
- .debug_info    0x0002a4cc     0x5859 VisualGDB/X10/src/Hydra_can.o
- .debug_info    0x0002fd25     0x5099 VisualGDB/X10/src/mailbox.o
- .debug_info    0x00034dbe     0x8afd VisualGDB/X10/src/MCode.o
- .debug_info    0x0003d8bb     0x59e6 VisualGDB/X10/src/MotorDrivers.o
- .debug_info    0x000432a1      0x170 VisualGDB/X10/src/pinInit.o
- .debug_info    0x00043411      0x470 VisualGDB/X10/src/pnp.o
- .debug_info    0x00043881     0x4820 VisualGDB/X10/src/Serial.o
- .debug_info    0x000480a1      0x176 VisualGDB/X10/sysmem.o
- .debug_info    0x00048217     0x12cb VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
- .debug_info    0x000494e2     0x11ab VisualGDB/X10/usb_lib/src/usbd_core.o
- .debug_info    0x0004a68d      0xdaf VisualGDB/X10/usb_lib/src/usbd_ioreq.o
- .debug_info    0x0004b43c     0x1118 VisualGDB/X10/usb_lib/src/usbd_req.o
- .debug_info    0x0004c554      0xc50 VisualGDB/X10/usb_lib/src/usbd_usr.o
- .debug_info    0x0004d1a4      0xef8 VisualGDB/X10/usb_lib/src/usb_bsp.o
- .debug_info    0x0004e09c     0x2364 VisualGDB/X10/usb_lib/src/usb_core.o
- .debug_info    0x00050400     0x1250 VisualGDB/X10/usb_lib/src/usb_dcd.o
- .debug_info    0x00051650     0x1e05 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+ .debug_info    0x0000e32a     0x1463 VisualGDB/X10/display/DisplayList.o
+ .debug_info    0x0000f78d      0x685 VisualGDB/X10/display/gui.o
+ .debug_info    0x0000fe12      0x974 VisualGDB/X10/display/lcdspi_4xx.o
+ .debug_info    0x00010786      0x75d VisualGDB/X10/display/st7789.o
+ .debug_info    0x00010ee3     0x97f3 VisualGDB/X10/main.o
+ .debug_info    0x0001a6d6      0xac1 VisualGDB/X10/src/adc.o
+ .debug_info    0x0001b197      0x402 VisualGDB/X10/src/adc_table.o
+ .debug_info    0x0001b599     0x2fda VisualGDB/X10/src/bootloader.o
+ .debug_info    0x0001e573     0x606b VisualGDB/X10/src/GCode.o
+ .debug_info    0x000245de     0x4710 VisualGDB/X10/src/HardwareInit.o
+ .debug_info    0x00028cee     0x17ea VisualGDB/X10/src/headSetup.o
+ .debug_info    0x0002a4d8     0x5859 VisualGDB/X10/src/Hydra_can.o
+ .debug_info    0x0002fd31     0x5099 VisualGDB/X10/src/mailbox.o
+ .debug_info    0x00034dca     0x8afd VisualGDB/X10/src/MCode.o
+ .debug_info    0x0003d8c7     0x59e6 VisualGDB/X10/src/MotorDrivers.o
+ .debug_info    0x000432ad      0x170 VisualGDB/X10/src/pinInit.o
+ .debug_info    0x0004341d      0x470 VisualGDB/X10/src/pnp.o
+ .debug_info    0x0004388d     0x4820 VisualGDB/X10/src/Serial.o
+ .debug_info    0x000480ad      0x176 VisualGDB/X10/sysmem.o
+ .debug_info    0x00048223     0x12cb VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
+ .debug_info    0x000494ee     0x11ab VisualGDB/X10/usb_lib/src/usbd_core.o
+ .debug_info    0x0004a699      0xdaf VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+ .debug_info    0x0004b448     0x1118 VisualGDB/X10/usb_lib/src/usbd_req.o
+ .debug_info    0x0004c560      0xc50 VisualGDB/X10/usb_lib/src/usbd_usr.o
+ .debug_info    0x0004d1b0      0xef8 VisualGDB/X10/usb_lib/src/usb_bsp.o
+ .debug_info    0x0004e0a8     0x2364 VisualGDB/X10/usb_lib/src/usb_core.o
+ .debug_info    0x0005040c     0x1250 VisualGDB/X10/usb_lib/src/usb_dcd.o
+ .debug_info    0x0005165c     0x1e05 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
 
 .debug_abbrev   0x00000000     0x811c
  .debug_abbrev  0x00000000       0xb3 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
@@ -9231,105 +9231,105 @@ LOAD linker stubs
  .debug_line    0x00026a75      0x435 VisualGDB/X10/usb_lib/src/usb_dcd.o
  .debug_line    0x00026eaa      0x648 VisualGDB/X10/usb_lib/src/usb_dcd_int.o
 
-.debug_str      0x00000000    0x1475a
- .debug_str     0x00000000      0x130 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
-                                0x154 (size before relaxing)
- .debug_str     0x00000130      0x28b VisualGDB/X10/cmsis_boot/system_stm32f4xx.o
-                                0x3b6 (size before relaxing)
- .debug_str     0x000003bb      0x655 VisualGDB/X10/cmsis_lib/src/stm32f4xx_adc.o
-                                0x80b (size before relaxing)
- .debug_str     0x00000a10      0x500 VisualGDB/X10/cmsis_lib/src/stm32f4xx_can.o
-                                0x745 (size before relaxing)
- .debug_str     0x00000f10      0x359 VisualGDB/X10/cmsis_lib/src/stm32f4xx_dma.o
+.debug_str      0x00000000    0x14770
+ .debug_str     0x00000000      0x146 VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o
+                                0x16a (size before relaxing)
+ .debug_str     0x00000146      0x28b VisualGDB/X10/cmsis_boot/system_stm32f4xx.o
+                                0x3cc (size before relaxing)
+ .debug_str     0x000003d1      0x655 VisualGDB/X10/cmsis_lib/src/stm32f4xx_adc.o
+                                0x821 (size before relaxing)
+ .debug_str     0x00000a26      0x500 VisualGDB/X10/cmsis_lib/src/stm32f4xx_can.o
+                                0x75b (size before relaxing)
+ .debug_str     0x00000f26      0x359 VisualGDB/X10/cmsis_lib/src/stm32f4xx_dma.o
+                                0x548 (size before relaxing)
+ .debug_str     0x0000127f      0x198 VisualGDB/X10/cmsis_lib/src/stm32f4xx_exti.o
+                                0x35f (size before relaxing)
+ .debug_str     0x00001417      0x384 VisualGDB/X10/cmsis_lib/src/stm32f4xx_flash.o
+                                0x598 (size before relaxing)
+ .debug_str     0x0000179b      0x307 VisualGDB/X10/cmsis_lib/src/stm32f4xx_gpio.o
+                                0x4c9 (size before relaxing)
+ .debug_str     0x00001aa2       0xaf VisualGDB/X10/cmsis_lib/src/stm32f4xx_it.o
+                                0x222 (size before relaxing)
+ .debug_str     0x00001b51       0xbd VisualGDB/X10/cmsis_lib/src/stm32f4xx_iwdg.o
+                                0x272 (size before relaxing)
+ .debug_str     0x00001c0e      0x19a VisualGDB/X10/cmsis_lib/src/stm32f4xx_misc.o
+                                0x3de (size before relaxing)
+ .debug_str     0x00001da8      0x4f3 VisualGDB/X10/cmsis_lib/src/stm32f4xx_rcc.o
+                                0x856 (size before relaxing)
+ .debug_str     0x0000229b      0x382 VisualGDB/X10/cmsis_lib/src/stm32f4xx_spi.o
+                                0x6be (size before relaxing)
+ .debug_str     0x0000261d      0x152 VisualGDB/X10/cmsis_lib/src/stm32f4xx_syscfg.o
+                                0x32b (size before relaxing)
+ .debug_str     0x0000276f      0xb33 VisualGDB/X10/cmsis_lib/src/stm32f4xx_tim.o
+                                0xe04 (size before relaxing)
+ .debug_str     0x000032a2      0x405 VisualGDB/X10/cmsis_lib/src/stm32f4xx_usart.o
+                                0x6d5 (size before relaxing)
+ .debug_str     0x000036a7     0x32db VisualGDB/X10/common/src/hyrel_can.o
+                               0x387d (size before relaxing)
+ .debug_str     0x00006982      0x13e VisualGDB/X10/common/src/pins.o
                                 0x532 (size before relaxing)
- .debug_str     0x00001269      0x198 VisualGDB/X10/cmsis_lib/src/stm32f4xx_exti.o
-                                0x349 (size before relaxing)
- .debug_str     0x00001401      0x384 VisualGDB/X10/cmsis_lib/src/stm32f4xx_flash.o
-                                0x582 (size before relaxing)
- .debug_str     0x00001785      0x307 VisualGDB/X10/cmsis_lib/src/stm32f4xx_gpio.o
-                                0x4b3 (size before relaxing)
- .debug_str     0x00001a8c       0xaf VisualGDB/X10/cmsis_lib/src/stm32f4xx_it.o
-                                0x20c (size before relaxing)
- .debug_str     0x00001b3b       0xbd VisualGDB/X10/cmsis_lib/src/stm32f4xx_iwdg.o
-                                0x25c (size before relaxing)
- .debug_str     0x00001bf8      0x19a VisualGDB/X10/cmsis_lib/src/stm32f4xx_misc.o
-                                0x3c8 (size before relaxing)
- .debug_str     0x00001d92      0x4f3 VisualGDB/X10/cmsis_lib/src/stm32f4xx_rcc.o
-                                0x840 (size before relaxing)
- .debug_str     0x00002285      0x382 VisualGDB/X10/cmsis_lib/src/stm32f4xx_spi.o
-                                0x6a8 (size before relaxing)
- .debug_str     0x00002607      0x152 VisualGDB/X10/cmsis_lib/src/stm32f4xx_syscfg.o
-                                0x315 (size before relaxing)
- .debug_str     0x00002759      0xb33 VisualGDB/X10/cmsis_lib/src/stm32f4xx_tim.o
-                                0xdee (size before relaxing)
- .debug_str     0x0000328c      0x405 VisualGDB/X10/cmsis_lib/src/stm32f4xx_usart.o
-                                0x6bf (size before relaxing)
- .debug_str     0x00003691     0x32db VisualGDB/X10/common/src/hyrel_can.o
-                               0x3867 (size before relaxing)
- .debug_str     0x0000696c      0x13e VisualGDB/X10/common/src/pins.o
-                                0x51c (size before relaxing)
- .debug_str     0x00006aaa      0x2af VisualGDB/X10/common/src/util.o
-                                0x753 (size before relaxing)
- .debug_str     0x00006d59       0x38 VisualGDB/X10/display/colortables.o
-                                0x18f (size before relaxing)
- .debug_str     0x00006d91      0x877 VisualGDB/X10/display/display.o
-                                0xdba (size before relaxing)
- .debug_str     0x00007608      0x239 VisualGDB/X10/display/DisplayList.o
-                               0x12bb (size before relaxing)
- .debug_str     0x00007841       0x93 VisualGDB/X10/display/gui.o
-                                0x378 (size before relaxing)
- .debug_str     0x000078d4       0x66 VisualGDB/X10/display/lcdspi_4xx.o
-                                0x77c (size before relaxing)
- .debug_str     0x0000793a      0x18c VisualGDB/X10/display/st7789.o
-                                0x56b (size before relaxing)
- .debug_str     0x00007ac6     0x4c6f VisualGDB/X10/main.o
-                               0x8ced (size before relaxing)
- .debug_str     0x0000c735       0xd9 VisualGDB/X10/src/adc.o
-                                0x8e1 (size before relaxing)
- .debug_str     0x0000c80e       0xdc VisualGDB/X10/src/adc_table.o
-                                0x47b (size before relaxing)
- .debug_str     0x0000c8ea      0x471 VisualGDB/X10/src/bootloader.o
-                               0x347b (size before relaxing)
- .debug_str     0x0000cd5b     0x169b VisualGDB/X10/src/GCode.o
-                               0x57f8 (size before relaxing)
- .debug_str     0x0000e3f6      0xb37 VisualGDB/X10/src/HardwareInit.o
-                               0x4ca0 (size before relaxing)
- .debug_str     0x0000ef2d      0x468 VisualGDB/X10/src/headSetup.o
-                               0x22bc (size before relaxing)
- .debug_str     0x0000f395     0x11f1 VisualGDB/X10/src/Hydra_can.o
-                               0x5d4d (size before relaxing)
- .debug_str     0x00010586      0x6ec VisualGDB/X10/src/mailbox.o
-                               0x4f5e (size before relaxing)
- .debug_str     0x00010c72     0x1867 VisualGDB/X10/src/MCode.o
-                               0x82e5 (size before relaxing)
- .debug_str     0x000124d9      0x7f2 VisualGDB/X10/src/MotorDrivers.o
-                               0x52fb (size before relaxing)
- .debug_str     0x00012ccb        0xe VisualGDB/X10/src/pinInit.o
-                                0x280 (size before relaxing)
- .debug_str     0x00012cd9       0x5b VisualGDB/X10/src/pnp.o
-                                0x36a (size before relaxing)
- .debug_str     0x00012d34      0x40c VisualGDB/X10/src/Serial.o
-                               0x4470 (size before relaxing)
- .debug_str     0x00013140       0x6c VisualGDB/X10/sysmem.o
-                                0x1f0 (size before relaxing)
- .debug_str     0x000131ac      0x274 VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
-                                0xec4 (size before relaxing)
- .debug_str     0x00013420      0x2dc VisualGDB/X10/usb_lib/src/usbd_core.o
-                                0xc84 (size before relaxing)
- .debug_str     0x000136fc       0x3e VisualGDB/X10/usb_lib/src/usbd_ioreq.o
-                                0xa09 (size before relaxing)
- .debug_str     0x0001373a      0x124 VisualGDB/X10/usb_lib/src/usbd_req.o
-                                0xba9 (size before relaxing)
- .debug_str     0x0001385e       0xcc VisualGDB/X10/usb_lib/src/usbd_usr.o
-                                0xa20 (size before relaxing)
- .debug_str     0x0001392a       0x85 VisualGDB/X10/usb_lib/src/usb_bsp.o
-                                0xf59 (size before relaxing)
- .debug_str     0x000139af      0xad4 VisualGDB/X10/usb_lib/src/usb_core.o
-                               0x16ab (size before relaxing)
- .debug_str     0x00014483       0x7b VisualGDB/X10/usb_lib/src/usb_dcd.o
-                                0xccd (size before relaxing)
- .debug_str     0x000144fe      0x25c VisualGDB/X10/usb_lib/src/usb_dcd_int.o
-                               0x1411 (size before relaxing)
+ .debug_str     0x00006ac0      0x2af VisualGDB/X10/common/src/util.o
+                                0x769 (size before relaxing)
+ .debug_str     0x00006d6f       0x38 VisualGDB/X10/display/colortables.o
+                                0x1a5 (size before relaxing)
+ .debug_str     0x00006da7      0x877 VisualGDB/X10/display/display.o
+                                0xdd0 (size before relaxing)
+ .debug_str     0x0000761e      0x244 VisualGDB/X10/display/DisplayList.o
+                               0x12dc (size before relaxing)
+ .debug_str     0x00007862       0x93 VisualGDB/X10/display/gui.o
+                                0x38e (size before relaxing)
+ .debug_str     0x000078f5       0x66 VisualGDB/X10/display/lcdspi_4xx.o
+                                0x792 (size before relaxing)
+ .debug_str     0x0000795b      0x18c VisualGDB/X10/display/st7789.o
+                                0x581 (size before relaxing)
+ .debug_str     0x00007ae7     0x4c64 VisualGDB/X10/main.o
+                               0x8d03 (size before relaxing)
+ .debug_str     0x0000c74b       0xd9 VisualGDB/X10/src/adc.o
+                                0x8f7 (size before relaxing)
+ .debug_str     0x0000c824       0xdc VisualGDB/X10/src/adc_table.o
+                                0x491 (size before relaxing)
+ .debug_str     0x0000c900      0x471 VisualGDB/X10/src/bootloader.o
+                               0x3491 (size before relaxing)
+ .debug_str     0x0000cd71     0x169b VisualGDB/X10/src/GCode.o
+                               0x580e (size before relaxing)
+ .debug_str     0x0000e40c      0xb37 VisualGDB/X10/src/HardwareInit.o
+                               0x4cb6 (size before relaxing)
+ .debug_str     0x0000ef43      0x468 VisualGDB/X10/src/headSetup.o
+                               0x22d2 (size before relaxing)
+ .debug_str     0x0000f3ab     0x11f1 VisualGDB/X10/src/Hydra_can.o
+                               0x5d63 (size before relaxing)
+ .debug_str     0x0001059c      0x6ec VisualGDB/X10/src/mailbox.o
+                               0x4f74 (size before relaxing)
+ .debug_str     0x00010c88     0x1867 VisualGDB/X10/src/MCode.o
+                               0x82fb (size before relaxing)
+ .debug_str     0x000124ef      0x7f2 VisualGDB/X10/src/MotorDrivers.o
+                               0x5311 (size before relaxing)
+ .debug_str     0x00012ce1        0xe VisualGDB/X10/src/pinInit.o
+                                0x296 (size before relaxing)
+ .debug_str     0x00012cef       0x5b VisualGDB/X10/src/pnp.o
+                                0x380 (size before relaxing)
+ .debug_str     0x00012d4a      0x40c VisualGDB/X10/src/Serial.o
+                               0x4486 (size before relaxing)
+ .debug_str     0x00013156       0x6c VisualGDB/X10/sysmem.o
+                                0x206 (size before relaxing)
+ .debug_str     0x000131c2      0x274 VisualGDB/X10/usb_lib/src/usbd_cdc_core.o
+                                0xeda (size before relaxing)
+ .debug_str     0x00013436      0x2dc VisualGDB/X10/usb_lib/src/usbd_core.o
+                                0xc9a (size before relaxing)
+ .debug_str     0x00013712       0x3e VisualGDB/X10/usb_lib/src/usbd_ioreq.o
+                                0xa1f (size before relaxing)
+ .debug_str     0x00013750      0x124 VisualGDB/X10/usb_lib/src/usbd_req.o
+                                0xbbf (size before relaxing)
+ .debug_str     0x00013874       0xcc VisualGDB/X10/usb_lib/src/usbd_usr.o
+                                0xa36 (size before relaxing)
+ .debug_str     0x00013940       0x85 VisualGDB/X10/usb_lib/src/usb_bsp.o
+                                0xf6f (size before relaxing)
+ .debug_str     0x000139c5      0xad4 VisualGDB/X10/usb_lib/src/usb_core.o
+                               0x16c1 (size before relaxing)
+ .debug_str     0x00014499       0x7b VisualGDB/X10/usb_lib/src/usb_dcd.o
+                                0xce3 (size before relaxing)
+ .debug_str     0x00014514      0x25c VisualGDB/X10/usb_lib/src/usb_dcd_int.o
+                               0x1427 (size before relaxing)
 
 .debug_frame    0x00000000    0x11878
  .debug_frame   0x00000000       0x4c VisualGDB/X10/cmsis_boot/startup/startup_stm32f4xx.o

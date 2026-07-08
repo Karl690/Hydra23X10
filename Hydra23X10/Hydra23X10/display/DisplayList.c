@@ -32,6 +32,7 @@ LcdVariableInfo LcdVarsTable[] = {
 	{ &RawADCDataBuffer[4], "CH05_PB1",	FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &laserTemperature, "LASER_TMP",	FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &RawADCDataBuffer[5], "CH05_PC5", FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &RPMCounter,	"Spindle RPM "	,   FUNC_INT16, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },	
 	{ &HeartBeat, "MOTOR POSITION  Home Limit", FUNC_TITLE,   COLOR_WHITE, COLOR_MAGENTA, 0, 0, 60, 1 },
 	{ &MotorXStatus, "MtrX Pos", FUNC_MOTOR_STATUS, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{ &MotorYStatus, "MtrY Pos", FUNC_MOTOR_STATUS, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },

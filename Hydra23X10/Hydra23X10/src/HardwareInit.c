@@ -388,7 +388,7 @@ void ConfigureTimer4PwmOutputsFor0_10V(void)
 		TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
 		TIM_OCInitStructure.TIM_OutputState  = TIM_OutputState_Enable;
 		TIM_OCInitStructure.TIM_Pulse = 0; // 0% "off"  sets CCR4
-		TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;
+		TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
 
 	
