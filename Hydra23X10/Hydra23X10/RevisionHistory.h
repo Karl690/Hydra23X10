@@ -2,10 +2,10 @@
 
 #define RevisionHeader "HYDRA23X10"
 #define MajorStep "4.256k"
-#define RevisionDate "7/8/2026"
+#define RevisionDate "9/11/2026"
 #define InstallPath "c:/repetrel/bin/firmware/"
 #define SOFTWARE_MAJOR_REVISION     26   // XXX  update when a major change occurs (ie, protocol)
-#define SOFTWARE_MINOR_REVISION     1 // XXX  update for major and minor changes
+#define SOFTWARE_MINOR_REVISION     2 // XXX  update for major and minor changes
 #define SOFTWARE_TWEAK_REVISION    'A'  // XXX  update for small changes ('z' is for experimental ONLY)
 #define SOFTWARE_DEBUG_REVISION    'a'  // XXX  char update for debug versions  (applies to 'z' versions only  is for experimental ONLY) (display with M115)
 

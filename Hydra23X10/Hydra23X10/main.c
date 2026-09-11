@@ -2685,6 +2685,15 @@ void CommandProcessor()
 		case 747: M_Code_M747(); ContinueToNextStep(); break;//return; // prepare device for download (uses P)
 		case 748: M_Code_M748(); ContinueToNextStep(); break;//return; // process next line of intel hex format bootloader data (uses P, comment) <-- can't go in queue because of needing comment
 		case 749: M_Code_M749(); ContinueToNextStep(); break;//return; // exit the device bootloader
+		case 860: M_Code_M860(); ContinueToNextStep(); break; // BOC identify
+		case 861: M_Code_M861(); ContinueToNextStep(); break; // BOC EraseApp
+		case 862: M_Code_M862(); ContinueToNextStep(); break; // BOC write4Words
+		case 863: M_Code_M863(); ContinueToNextStep(); break; // BOC EraseSettings
+		case 864: M_Code_M864(); ContinueToNextStep(); break; // BOC Write2Settings
+		case 865: M_Code_M865(); ContinueToNextStep(); break; // BOC WriteCRC
+		case 866: M_Code_M866(); ContinueToNextStep(); break; // BOC ReadCRC
+		case 859: M_Code_M859(); ContinueToNextStep(); break; // BOC global reset BIOS
+		case 867: M_Code_M867(); ContinueToNextStep(); break; // BOC imageSize + reset
 		case 750: AddCommandToQue(UNDEFINED);   break;//return; //M_Code_M750(); break;//return;    // unlock flash for erase/write access for the selected physical device (uses T)
 		case 751: AddCommandToQue(UNDEFINED);   break;//return; //M_Code_M751(); break;//return;    // lock flash to prevent erase/write access for the selected physical device (uses T)
 		case 752: M_Code_M752(); ContinueToNextStep(); break;//return; // write hardware type to flash (option bytes) using device bootloader (uses S)
@@ -4200,11 +4209,11 @@ void ReportOsseoVariables(void)
 	//Temperature			: ET	Celsius with one decimal point
 	//Humidity				: HD	Integer 0 - 100 is a relative humidity in percents
 	//Pressure Difference	: PD	0 - 100 interpreted in Torrs(1 Torr = 1mmHg barometric)
-	//LED Status			: UV	1 – ON, 0 - OFF
+	//LED Status			: UV	1 ï¿½ ON, 0 - OFF
 	//Light Level			: LL	Integer 0 - 100 interpreted as percentage of full power
 	//Fan Status			: FS	1 Running, 0 - disabled
 	//Fan Level				: FL	Integer 0 - 100 interpreted as percentage of full power
-	//Door Latch			: DL	1 – Engaged, 0 - Disabled
+	//Door Latch			: DL	1 ï¿½ Engaged, 0 - Disabled
 	//Door Open / Close		: DS	0 - Open, 1 - Closed
 	//Printing Cartridge	: CR	0 - Absent, 1 - Present
 	//Printing Bed			: BD	0 - Absent, 1 - Present

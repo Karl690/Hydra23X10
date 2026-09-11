@@ -3366,9 +3366,9 @@ void M_Code_M260(void)
 }
 
 //Parameter Name   Command  Control Type   Air Handler Fan
-//M261 S###			1 - 100 – ON to preset percentage, 0 - OFF UV LED
-//M262 S###			1 - 100 – ON to preset percentage, 0 - Off FAN
-//M263 S###			1 – Engage, 0 – Disable  Door Lock
+//M261 S###			1 - 100 ï¿½ ON to preset percentage, 0 - OFF UV LED
+//M262 S###			1 - 100 ï¿½ ON to preset percentage, 0 - Off FAN
+//M263 S###			1 ï¿½ Engage, 0 ï¿½ Disable  Door Lock
 	
 
 void M_Code_M261(void)  // set FAN Duty cycle and enable
@@ -5910,6 +5910,127 @@ void M_Code_M749(void)  // exit the device bootloader
 	{
 		endDeviceBootloader();
 	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// STM32 Core UpdateOverCan (Head_App_Flasher) â€” uses existing CAN_MSG ids, new M-codes
+////////////////////////////////////////////////////////////////////////////////
+
+static byte parseCommentAs8Bytes(byte dest[8])
+{
+	char *hexPtr;
+	byte nibbleIndex;
+	byte value;
+
+	memset(dest, 0, 8);
+	hexPtr = GCodeArgComment;
+	if (*hexPtr == ';') hexPtr++;
+	nibbleIndex = 0;
+	while ((*hexPtr != 0) && (nibbleIndex < 16))
+	{
+		if (*hexPtr == ' ') { hexPtr++; continue; }
+		value = asciihex2bin(*hexPtr++);
+		if ((nibbleIndex & 1) == 0)
+			dest[nibbleIndex / 2] = (byte)(value << 4);
+		else
+			dest[nibbleIndex / 2] |= value;
+		nibbleIndex++;
+	}
+	return nibbleIndex;
+}
+
+static byte BocToolDevice(void)
+{
+	byte device;
+	inboxStruct *inboxPtr;
+
+	device = (byte)ARG_T; /* T11 = yoke 1 head 1, CAN address 11 */
+	inboxPtr = getInboxPointer(device);
+	inboxPtr->device = device;
+	inboxPtr->deviceRegistered = TRUE;
+	inboxPtr->bootloaderRunning = TRUE;
+	inboxPtr->canbusFormat = CANBUS_FORMAT_V1;
+	_errors.sent.flags.canDestinationUnknown = FALSE;
+	return device;
+}
+
+void M_Code_M860(void)  // identify BOC BIOS (CAN READ 0x01)
+{
+	// MCODE M860 <"T" tool>   T11 = yoke1 head1
+	byte device;
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	device = BocToolDevice();
+	canIssueReadRequest(device, CAN_MSG_DEVICE_INFO, NO_PAGE);
+}
+
+void M_Code_M861(void)  // EraseApp (CAN 0x34 page 0xFF)
+{
+	// MCODE M861 <"T" device> <"P" 666>
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
+	if ((uint32_t)ARG_P != KARLS_PASSWORD) { ReportInvalidMcodePArgInt(); return; }
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_COPY_BUFFER_TO_PAGE, 0xFF, BUFFERED_MSG, 0xE5E5E5E5u);
+}
+
+void M_Code_M862(void)  // write4WordsToApp staging (CAN 0x31 page 0 or 1)
+{
+	// MCODE M862 <"T" device> <"P" 0|1> ;<16 hex chars = 8 bytes>
+	byte payload[8];
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
+	(void)parseCommentAs8Bytes(payload);
+	canPackIntoTxQueue8x8(CAN_WRITE, BocToolDevice(), CAN_MSG_ACCESS_BUFFER, (byte)ARG_P, BUFFERED_MSG, payload);
+}
+
+void M_Code_M863(void)  // EraseSettings (CAN 0x34 page 0xFD)
+{
+	// MCODE M863 <"T" device> <"P" 666>
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
+	if ((uint32_t)ARG_P != KARLS_PASSWORD) { ReportInvalidMcodePArgInt(); return; }
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_COPY_BUFFER_TO_PAGE, 0xFD, BUFFERED_MSG, 0xE5E5E5E5u);
+}
+
+void M_Code_M864(void)  // Write2Settings (CAN 0x31 page 0xFE, 8 bytes)
+{
+	// MCODE M864 <"T" device> ;<16 hex chars>
+	byte payload[8];
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	(void)parseCommentAs8Bytes(payload);
+	canPackIntoTxQueue8x8(CAN_WRITE, BocToolDevice(), CAN_MSG_ACCESS_BUFFER, 0xFE, BUFFERED_MSG, payload);
+}
+
+void M_Code_M865(void)  // WriteCRC (CAN 0x35 WRITE, 4 bytes from comment)
+{
+	// MCODE M865 <"T" device> ;<8 hex digits CRC32>
+	byte payload[8];
+	uint32_t crc;
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	(void)parseCommentAs8Bytes(payload);
+	crc = ((uint32_t)payload[0] << 24) | ((uint32_t)payload[1] << 16) | ((uint32_t)payload[2] << 8) | payload[3];
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_PAGE_CHECKSUM, NO_PAGE, BUFFERED_MSG, crc);
+}
+
+void M_Code_M866(void)  // ReadCRC (CAN 0x35 READ)
+{
+	// MCODE M866 <"T" device>
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	canIssueReadRequest(BocToolDevice(), CAN_MSG_PAGE_CHECKSUM, NO_PAGE);
+}
+
+void M_Code_M867(void)  // WriteImageSize + reset (CAN 0x37)
+{
+	// MCODE M867 <"T" device> <"S" imageSizeBytes>
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	if (ARG_S_MISSING) { ReportMissingMcodeSArg(); return; }
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_START_PRIMARY_PROGRAM, NO_PAGE, BUFFERED_MSG, (uint32_t)ARG_S);
+}
+
+void M_Code_M859(void)  // global reset to BIOS 0x08000000 (CAN 0x37 page 0xFE)
+{
+	// MCODE M859 <"T" tool>
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_START_PRIMARY_PROGRAM, 0xFE, BUFFERED_MSG, 0u);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
