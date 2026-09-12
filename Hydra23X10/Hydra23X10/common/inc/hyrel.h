@@ -855,6 +855,7 @@ typedef enum {
 	DEVICE_CODEBASE_UNKNOWN         = 0,        // reserved
 	DEVICE_CODEBASE_MEDUSA          = 1,        // original code to cover all print heads/lasers/mill in one project
 	DEVICE_CODEBASE_PICKNPLACE      = 2,        // original code to cover the pick_n_place and probe heads
+	DEVICE_CODEBASE_BOOTLOADER      = 3,        // Core BOC BIOS, no APP
 // QQQQ ADD NEW CODEBASE(S) HERE
 	DEVICE_CODEBASE_UNPROGRAMMED    = 0xff      // reserved - unprogrammed state
 } devCodebase_t;
@@ -866,6 +867,7 @@ typedef enum {
 	DEVICE_TARGET_PICKNPLACE        = 3,        // original code to cover the pick_n_place and probe heads
 	DEVICE_TARGET_SONICATOR407      = 4,        // mcudev based sonicator
 	DEVICE_TARGET_CAN_MOTOR_103		= 5,
+	DEVICE_TARGET_BOC               = 6,        // Core BOC BIOS waiting for APP
 // QQQQ ADD NEW TARGET(S) HERE
 	DEVICE_TARGET_UNPROGRAMMED      = 0xff      // reserved - unprogrammed state
 } devTarget_t;
@@ -916,6 +918,7 @@ typedef enum {  // codes for soapstring[0]
 	SOAP_DEV_TYPE_RH_SYRINGE            = 'X',
 	SOAP_DEV_TYPE_SONICATOR             = 'Y',
 	SOAP_DEV_TYPE_CAN_MOTOR				= 'Z',
+	SOAP_DEV_TYPE_BOOTLOADER            = 0xBC, // Core BOC BIOS, no APP — not a SOAP char
 // QQQQ ADD NEW DEVICE(S) HERE
 	SOAP_DEV_TYPE_LAST_ENTRY,
 	SOAP_DEV_TYPE_BAD_COMBO             = 0xfe, //      used for init values if bad combo of devType/PCB/RTD is detected

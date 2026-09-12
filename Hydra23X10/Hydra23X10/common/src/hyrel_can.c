@@ -213,8 +213,9 @@ byte canMsgIdToNumBytes(byte msgId, canbusFormat_t canFmt)
 		case CAN_MSG_STEP_MOTOR :
 		case CAN_MSG_COPY_PAGE_TO_BUFFER :
 		case CAN_MSG_SET_POWER_LEVEL_ONLY :
-		case CAN_MSG_START_PRIMARY_PROGRAM :
 			return(CAN_BYTES_0);
+		case CAN_MSG_START_PRIMARY_PROGRAM :
+			return(CAN_BYTES_4); /* M867 imageSize in payload */
 		//-----------------------------------------------------------------------------------------------------
 		case CAN_MSG_MOTOR_ENABLE : //LEGACY
 		case CAN_MSG_DEVICE_POSITION :
@@ -1425,6 +1426,18 @@ void canAddToRxQueueNoReturn(void)
 void canProcessTxQueueNoReturn(void)
 {
 	canProcessTxQueue();
+}
+
+void canProcessTxQueueUntilEmpty(void)
+{
+	int spins;
+
+	for (spins = 0; spins < 100000; spins++)
+	{
+		if (_gs._canTxQ.numMsg == 0)
+			return;
+		(void)canProcessTxQueue();
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -945,6 +945,18 @@ void M_Code_M30(void)  // marks end of program
 	// MCODE M30
 	// MCODE
 	// MCODE    marks the end of a program
+	int bocDev;
+
+	for (bocDev = 0; bocDev < NUM_PHYSICAL_DEVICES; bocDev++)
+	{
+		if (_MailBoxes._inbox[bocDev].bootloaderRunning)
+		{
+			canProcessTxQueueUntilEmpty();
+			sprintf(_tmpStr, "APP flash writes complete (M30) T%d", _MailBoxes._inbox[bocDev].device);
+			sendInfo(_tmpStr);
+			break;
+		}
+	}
 
 #ifdef COLLECT_METRICS
 	if (_metrics.autoDumpOnM30)
@@ -5990,11 +6002,13 @@ void M_Code_M861(void)  // erase APP and/or settings (CAN 0x34)
 
 void M_Code_M862(void)  // write4WordsToApp staging (CAN 0x31 page 0 or 1)
 {
-	// MCODE M862 <"T" device> <"P" 0|1> ;<16 hex chars = 8 bytes>
+	// MCODE M862 <"T" device> <"A" byteOffset> <"P" 0|1> ;<16 hex chars = 8 bytes>
 	byte payload[8];
 	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
 	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
 	(void)parseCommentAs8Bytes(payload);
+	if (ARG_A_PRESENT)
+		canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_ACCESS_BUFFER, 0xFC, BUFFERED_MSG, (uint32_t)ARG_A);
 	canPackIntoTxQueue8x8(CAN_WRITE, BocToolDevice(), CAN_MSG_ACCESS_BUFFER, (byte)ARG_P, BUFFERED_MSG, payload);
 }
 
@@ -6024,6 +6038,9 @@ void M_Code_M865(void)  // WriteCRC (CAN 0x35 WRITE, 4 bytes from comment)
 	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
 	(void)parseCommentAs8Bytes(payload);
 	crc = ((uint32_t)payload[0] << 24) | ((uint32_t)payload[1] << 16) | ((uint32_t)payload[2] << 8) | payload[3];
+	canProcessTxQueueUntilEmpty(); /* all M862s on the wire before CRC */
+	sprintf(_tmpStr, "T%d write APP CRC 0x%08X", BocToolDevice(), (unsigned int)crc);
+	sendInfo(_tmpStr);
 	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_PAGE_CHECKSUM, NO_PAGE, BUFFERED_MSG, crc);
 }
 

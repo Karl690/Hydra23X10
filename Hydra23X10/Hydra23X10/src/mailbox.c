@@ -762,7 +762,7 @@ void startDeviceRegistration(canSwStruct *canRx)
 	if (isAPhysicalDevice(canRx->device))
 	{
 		if (canRx->payload.u8[0] == 0xBCu)
-		{	/* Core BOC BIOS still running — keep mailbox so M743/M859/flash use T, not outbox.device==0 */
+		{	/* Core BOC BIOS, no APP — register as BootLoader so Repetrel shows type waiting for APP */
 			inboxStruct *biosInboxPtr = getInboxPointer(canRx->device);
 			outboxStruct *biosOutboxPtr = getOutboxPointer(canRx->device);
 			initInboxStruct(biosInboxPtr);
@@ -771,12 +771,29 @@ void startDeviceRegistration(canSwStruct *canRx)
 			biosInboxPtr->fromCAN2 = canRx->fromCAN2;
 			biosInboxPtr->deviceRegistered = TRUE;
 			biosInboxPtr->commTicker = HH_COMM_WATCHDOG_START_VALUE;
-			biosInboxPtr->softwareCodebase = 0xBCu;
-			biosInboxPtr->registrationStep = 1; /* stay out of startDeviceRegistration on the 1 Hz BIOS announce */
+			biosInboxPtr->canbusFormat = CANBUS_FORMAT_V1;
+			biosInboxPtr->deviceType = SOAP_DEV_TYPE_BOOTLOADER;
+			biosInboxPtr->softwareCodebase = DEVICE_CODEBASE_BOOTLOADER;
+			biosInboxPtr->softwareCompileTarget = DEVICE_TARGET_BOC;
+			biosInboxPtr->softwareMajorVersion = 1;
+			biosInboxPtr->softwareMinorVersion = 3; /* BIOS V1.003 */
+			biosInboxPtr->softwareTweakVersion = ' ';
+			biosInboxPtr->registrationStep = 0; /* idle — do not run SOAP registration watchdog */
 			biosOutboxPtr->device = canRx->device;
+			biosOutboxPtr->canbusFormat = CANBUS_FORMAT_V1;
+			biosOutboxPtr->deviceFamily = DEVICE_FAMILY_UNKNOWN;
 			_MailBoxes._incompatibleDeviceDetected[canRx->device] = FALSE;
-			sprintf(_errorStr, "T%d in bootloader (no APP) — flash LIGHT or check APP CRC", canRx->device);
-			sendError(_errorStr);
+#ifdef ALLOW_NATIVE_LIGHTBURN
+			if (!_lightburnModeEnabled)
+#endif
+			{
+				sprintf(_rptStr, ">BL: %d", biosInboxPtr->device);
+				sendstringCr(_rptStr);
+				sprintf(_rptStr, ">RG:%d :", biosInboxPtr->device);
+				getDeviceRegistrationString(biosInboxPtr, _tmpStr);
+				strcat(_rptStr, _tmpStr);
+				sendstringCr(_rptStr);
+			}
 			return;
 		}
 		if (canRx->payload.u8[0] != CANBUS_FORMAT_V1)
@@ -1637,6 +1654,9 @@ void DeviceSoapstringWatchdog(void)
 					inboxPtr->registrationStep = 103; // pause
 					break;
 				default:
+					if ((inboxPtr->deviceType == SOAP_DEV_TYPE_BOOTLOADER) ||
+						(inboxPtr->softwareCodebase == DEVICE_CODEBASE_BOOTLOADER))
+						continue; /* bootloader is idle, not a stuck SOAP register */
 					skipBreak = inboxPtr->device; // record device address
 					break;
 				}

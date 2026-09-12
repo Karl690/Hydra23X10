@@ -85,6 +85,7 @@ const devInitStruct devInit[] = {
 { SOAP_DEV_TYPE_SONICATOR,      "Sonicator",    {{ SW_ALL_OPTIONS,  0,  ACT_HIGH,   MIN_DEG,    MAX_DEG,    100 },  { SW_ALL_OPTIONS,       0,  ACT_HIGH,   MIN_DEG,    MAX_DEG,    100 }}, MOTOR_20K,  10000, ADD_CPROBE,  PCB_405 },
 
 { SOAP_DEV_TYPE_CAN_MOTOR,      "CanMotor",     {{ SW_NOT_USED,  	0,  ACT_HIGH,   MIN_DEG,    MAX_DEG,    100 },  { SW_NOT_USED,			0,  ACT_HIGH,   MIN_DEG,    MAX_DEG,    100 }}, MOTOR_AXIS,  10000, ADD_NONE,   PCB_ENC },
+{ SOAP_DEV_TYPE_BOOTLOADER,     "BootLoader",   {{ SW_NOT_USED,      0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_NOT_USED,          0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 }}, MOTOR_NONE,     0, ADD_NONE,    PCB_ALL_HH },
 
 // THESE 4 ENTIRES MUST BE LEFT AS THE LAST 4 ENTRIES OF THE DECLARATION.
 { SOAP_DEV_TYPE_LAST_ENTRY,     "LAST_ENTRY",   {{ SW_UNKNOWN,      0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_UNKNOWN,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 }}, MOTOR_NONE,     0, ADD_CPROBE,  PCB_ALL_HH },
@@ -141,6 +142,7 @@ const devFamilyStruct devFamilies[] =
 	{ SOAP_DEV_TYPE_RH_SYRINGE          , DEVICE_FAMILY_HEATED_EXTRUDER },
 	{ SOAP_DEV_TYPE_SONICATOR           , DEVICE_FAMILY_STONE },
 	{ SOAP_DEV_TYPE_CAN_MOTOR           , DEVICE_FAMILY_MOTOR },
+	{ SOAP_DEV_TYPE_BOOTLOADER          , DEVICE_FAMILY_UNKNOWN },
 };
 #define INIT_NUM_FAMILIES (sizeof(devFamilies) / sizeof(devFamilyStruct))
 
@@ -187,6 +189,7 @@ const devCodebaseStrStruct devCodebases[] =
 	{ DEVICE_CODEBASE_UNKNOWN,          "Unknown" },
 	{ DEVICE_CODEBASE_MEDUSA,           "Medusa4" },
 	{ DEVICE_CODEBASE_PICKNPLACE,       "PickNPlace4" },
+	{ DEVICE_CODEBASE_BOOTLOADER,       "BootLoader" },
 	{ DEVICE_CODEBASE_UNPROGRAMMED,     "CODEBASE_NOT_PROGRAMMED" },
 };
 #define INIT_NUM_DEVICE_CODEBASES (sizeof(devCodebases) / sizeof(devCodebaseStrStruct))
@@ -200,6 +203,7 @@ const devTargetStrStruct devTargets[] =
 	{ DEVICE_CODEBASE_PICKNPLACE,   DEVICE_TARGET_PICKNPLACE,       "PICKNPLACE" },
 	{ DEVICE_CODEBASE_MEDUSA,       DEVICE_TARGET_SONICATOR407,     "Sonicator_407" },
 	{ DEVICE_CODEBASE_MEDUSA,       DEVICE_TARGET_CAN_MOTOR_103,    "Can_Motor_103" },
+	{ DEVICE_CODEBASE_BOOTLOADER,   DEVICE_TARGET_BOC,              "WaitingForAPP" },
 };
 #define INIT_NUM_DEVICE_CODEBASE_TARGETS (sizeof(devTargets) / sizeof(devTargetStrStruct))
 
@@ -208,6 +212,7 @@ const devTargetStrStruct devTargetsOLD[] =
 	{ DEVICE_CODEBASE_MEDUSA,       DEVICE_TARGET_MEDUSA103,        "Medusa103" },
 	{ DEVICE_CODEBASE_MEDUSA,       DEVICE_TARGET_MEDUSA405,        "Medusa405" },
 	{ DEVICE_CODEBASE_PICKNPLACE,   DEVICE_TARGET_PICKNPLACE,       "PICKNPLACE" },
+	{ DEVICE_CODEBASE_BOOTLOADER,   DEVICE_TARGET_BOC,              "WaitingForAPP" },
 };
 #define INIT_NUM_DEVICE_CODEBASE_TARGETS_OLD (sizeof(devTargetsOLD) / sizeof(devTargetStrStruct))
 ////////////////////////////////////////////////////////////////////////////////

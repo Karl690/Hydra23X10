@@ -1078,6 +1078,15 @@ void printDeviceErrorMessage(canSwStruct *canRx)
 	payloadUnion *payload;
 	payload = &canRx->payload;
 
+	if (canRx->page == 0xFEu)
+	{
+		sprintf(_rptStr, ">ER: %2d: APP CRC mismatch stored=0x%08X computed=0x%08X",
+			canRx->device, payload->u32[0], payload->u32[1]);
+		sendstringCr(_rptStr);
+		sendError(_rptStr);
+		return;
+	}
+
 	if (getMailboxNum(canRx->device) >= 64)
 	{
 		barf("Programming Error ... mailboxNum too great for bitfield");
@@ -1282,6 +1291,14 @@ byte canProcessRxQueue(void)
 			switch(canRx->page)
 			{
 			case CAN_EVENT_DEVICE_ANNOUNCE:         // unregistered hothead or hotbed announcing their presence to the system
+				if (inboxPtr->deviceRegistered &&
+					((inboxPtr->deviceType == SOAP_DEV_TYPE_BOOTLOADER) ||
+					 (inboxPtr->softwareCodebase == DEVICE_CODEBASE_BOOTLOADER)))
+				{
+					if (canRx->payload.u8[0] == CANBUS_FORMAT_V1)
+						startDeviceRegistration(canRx); /* APP came up — leave BootLoader */
+					break; /* 0xBC 1 Hz keep-alive: do not reset mailbox during Flash APP */
+				}
 				if (inboxPtr->registrationStep == 0)
 				{
 					startDeviceRegistration(canRx);
@@ -1534,7 +1551,9 @@ byte canProcessRxQueue(void)
 					{
 						sprintf(_errorStr,"canProcessRxQueue - PAGE_DATA_TO_HOST - page checksum does not match (%d) (%d - %d)", canRx->device, (int)_MailBoxes._pageChecksum, (int)workingBufferChecksum);
 						sendError(_errorStr);
-						break;
+						if ((tableInfoType)payload->u16[0] != SEND_DEVICE_SOAP_STRING)
+							break;
+						/* SOAP read failed (bootloader or DLC) — still finish register so GUI can leave BootLoader */
 					}
 #ifdef GB_SOAP_READ_PIN
 					if ((tableInfoType)payload->u16[0] == SEND_DEVICE_SOAP_STRING)
@@ -1720,6 +1739,11 @@ byte canProcessRxQueue(void)
 				_MailBoxes._pageChecksum = payload->u32[0];         // used for general table writing
 				inboxPtr->pageChecksum = payload->u32[0];       // used for specific query
 				inboxPtr->checksumedPage = canRx->page;         // used for specific query
+				if (inboxPtr->bootloaderRunning)
+				{
+					sprintf(_tmpStr, "T%d APP CRC readback 0x%08X", canRx->device, (unsigned int)payload->u32[0]);
+					sendInfo(_tmpStr);
+				}
 				if ((_gs._bl.started) && (canRx->device == _gs._bl.device))
 				{
 					_gs._bl.pageReceivedChecksum[canRx->page] = payload->u32[0];
