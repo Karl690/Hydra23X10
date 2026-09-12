@@ -141,8 +141,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_EngineHR_Hydra|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;./tinyusb/src;.;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED -D USE_TINYUSB %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -159,8 +159,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='X10|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;./tinyusb/src;.;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED -D USE_TINYUSB %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -313,6 +313,14 @@
     <ClCompile Include="src\pinInit.c" />
     <ClCompile Include="src\pnp.c" />
     <ClCompile Include="src\Serial.c" />
+    <ClCompile Include="src\usb_otg_cdc.c" />
+    <ClCompile Include="usb_descriptors.c" />
+    <ClCompile Include="tinyusb\src\tusb.c" />
+    <ClCompile Include="tinyusb\src\common\tusb_fifo.c" />
+    <ClCompile Include="tinyusb\src\device\usbd.c" />
+    <ClCompile Include="tinyusb\src\device\usbd_control.c" />
+    <ClCompile Include="tinyusb\src\class\cdc\cdc_device.c" />
+    <ClCompile Include="tinyusb\src\portable\synopsys\dwc2\dcd_dwc2.c" />
     <ClCompile Include="sysmem.c" />
     <ClCompile Include="usb_lib\src\usbd_cdc_core.c" />
     <ClCompile Include="usb_lib\src\usbd_cdc_vcp.c" />

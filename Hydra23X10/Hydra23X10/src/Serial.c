@@ -837,8 +837,8 @@ void PostAcknowledge(void)
 
 void ReceiveCharacter(char chr)
 {
-	if (processSoapstringCommands)
-		return;   // wait until finished booting
+	if (processSoapstringCommands && (chr != PING_CHAR) && (chr != ABORT_CHAR))
+		return;   /* wait until finished booting — ping/abort still accepted */
 	if (rawRxCharsInBuf == SERIAL_RX_RAW_BUFFER_SIZE)
 	{
 		if (_errors.sent.flags.rawRxBufferOverrun == FALSE)

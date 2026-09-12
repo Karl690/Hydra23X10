@@ -15,6 +15,7 @@
 #include "main.h"
 #include "gpio.h"
 #include "Serial.h"
+#include "usb_otg_cdc.h"
 #include "Hardwareinit.h"
 #include "mailbox.h"            // outboxStructure
 #include "Hydra_can.h"          // NUM_PRE_DEFINED_ALIASES
@@ -2317,6 +2318,7 @@ void printSerialInputStreamError(void)
 }
 void serialProcessor()
 {
+	UsbCdc_Service(); /* TinyUSB CDC → ReceiveCharacter (Robo_Grok harvest) */
 	buffer_t useBuffer;
 	if (_abortInProgress) return;
 	if (processSoapstringCommands && (soapstringCommandWaiting==0)) {return;} // still processing soapstring
@@ -2686,13 +2688,14 @@ void CommandProcessor()
 		case 748: M_Code_M748(); ContinueToNextStep(); break;//return; // process next line of intel hex format bootloader data (uses P, comment) <-- can't go in queue because of needing comment
 		case 749: M_Code_M749(); ContinueToNextStep(); break;//return; // exit the device bootloader
 		case 860: M_Code_M860(); ContinueToNextStep(); break; // BOC identify
-		case 861: M_Code_M861(); ContinueToNextStep(); break; // BOC EraseApp
+		case 861: M_Code_M861(); ContinueToNextStep(); break; // BOC erase A1=APP S1=settings
 		case 862: M_Code_M862(); ContinueToNextStep(); break; // BOC write4Words
 		case 863: M_Code_M863(); ContinueToNextStep(); break; // BOC EraseSettings
 		case 864: M_Code_M864(); ContinueToNextStep(); break; // BOC Write2Settings
 		case 865: M_Code_M865(); ContinueToNextStep(); break; // BOC WriteCRC
 		case 866: M_Code_M866(); ContinueToNextStep(); break; // BOC ReadCRC
-		case 859: M_Code_M859(); ContinueToNextStep(); break; // BOC global reset BIOS
+		case 858: M_Code_M858(); ContinueToNextStep(); break; // BOC erase all except BIOS
+		case 859: M_Code_M859(); ContinueToNextStep(); break; // BOC UpdateApp erase APP, stay in BIOS
 		case 867: M_Code_M867(); ContinueToNextStep(); break; // BOC imageSize + reset
 		case 750: AddCommandToQue(UNDEFINED);   break;//return; //M_Code_M750(); break;//return;    // unlock flash for erase/write access for the selected physical device (uses T)
 		case 751: AddCommandToQue(UNDEFINED);   break;//return; //M_Code_M751(); break;//return;    // lock flash to prevent erase/write access for the selected physical device (uses T)
@@ -6131,7 +6134,8 @@ int main(void)
 
 	wiggleDebugIO(0);
 	InitAllUARTS(SYSTEM_BAUD_RATE);
-//	USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
+	masterCommPort = UART6_MASTER; /* CH340 default; USB only if ping 0x07 on USB */
+	InitUsbCdc(); /* TinyUSB CDC — Robo_Grok strategy */
 	CAN_Config(CAN1);
 	CAN_Config(CAN2);
 

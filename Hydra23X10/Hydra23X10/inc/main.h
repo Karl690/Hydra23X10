@@ -966,7 +966,7 @@ extern const PFUNC F1HZ[];
 //#define SKIP_M190 // wait for hotbed temperature
 //#define SKIP_M191 // wait for chamber temperature
 //#define LASER_LOCAL_CONTROL_TESTING_ON_SYS30
-//#define GB_FAST_UART                   // crank up the UART rate to 115K
+#define GB_FAST_UART                   // 115200 — Robo_Grok serial strategy (was 38400)
 
 
 ////////////////////////////////////////////////////////////////////////////////

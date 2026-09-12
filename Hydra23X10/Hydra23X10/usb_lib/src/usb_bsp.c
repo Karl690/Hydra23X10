@@ -194,9 +194,11 @@ void OTG_FS_WKUP_IRQHandler(void) {
 	EXTI_ClearITPendingBit(EXTI_Line18);
 }
 
+#ifndef USE_TINYUSB
 void OTG_FS_IRQHandler(void) {
 	USBD_OTG_ISR_Handler (&USB_OTG_dev);
 }
+#endif /* USE_TINYUSB */
 
 #else
 extern uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev);

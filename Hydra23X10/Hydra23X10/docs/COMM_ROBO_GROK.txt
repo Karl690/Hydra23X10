@@ -1,0 +1,18 @@
+Hydra serial — Robo_Grok strategy (in progress)
+==============================================
+
+USB
+---
+TinyUSB DWC2 CDC (same stack as Robo_Grok_Core).
+  VID 0x0483  PID 0xA407  product "Robot407 Com"
+  Windows: docs/ROBOT_Com/ROBOT_Com.inf  (install_name.bat as admin)
+  InitUsbCdc() after UART init. UsbCdc_Service() in serialProcessor (1 kHz).
+  CDC RX → ReceiveCharacter() so existing G-code path is unchanged.
+
+UART (CH340)
+------------
+Hydra X10 CH340 is USART6 PC6/PC7 (not MEG407 USART1).
+GB_FAST_UART is on: 115200 8N1.
+Repetrel must use 115200 (was 38400). Ping is still 0x07.
+
+Jump table / COMPORT DMA harvest is next; USB CDC + 115200 is this sitting.

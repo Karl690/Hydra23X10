@@ -1,0 +1,75 @@
+; Names Robo_Grok USB CDC as "ROBOT Com".
+; Hardware ID: USB\VID_0483&PID_A407&MI_00
+;
+; Device Manager Browse wants the FOLDER that contains this file,
+; not the .inf itself. If the list is empty, Windows is blocking the
+; unsigned INF — use install_name.bat instead (Run as administrator).
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MFG%
+DriverVer=08/25/2026,1.0.0.0
+PnpLockdown=1
+
+[Manufacturer]
+%MFG%=DeviceList,NTamd64,NTamd64.10.0,NTx86,NTx86.10.0,NTARM64,NTARM64.10.0
+
+[DeviceList.NTamd64]
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407&MI_00
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407
+
+[DeviceList.NTamd64.10.0]
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407&MI_00
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407
+
+[DeviceList.NTx86]
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407&MI_00
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407
+
+[DeviceList.NTx86.10.0]
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407&MI_00
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407
+
+[DeviceList.NTARM64]
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407&MI_00
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407
+
+[DeviceList.NTARM64.10.0]
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407&MI_00
+%DEVNAME%=DriverInstall,USB\VID_0483&PID_A407
+
+[DriverInstall]
+Include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.NT.AddReg
+
+[DriverInstall.NT]
+Include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.NT.AddReg
+
+[DriverInstall.NT.AddReg]
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.Services]
+Include=mdmcpq.inf
+AddService=usbser,0x00000002,LowerFilter_Service_Inst
+
+[DriverInstall.NT.Services]
+Include=mdmcpq.inf
+AddService=usbser,0x00000002,LowerFilter_Service_Inst
+
+[DestinationDirs]
+DefaultDestDir=12
+
+[SourceDisksNames]
+1=%DISKNAME%,,,
+
+[SourceDisksFiles]
+
+[Strings]
+MFG="Robo_Grok"
+DEVNAME="ROBOT Com"
+DISKNAME="ROBOT Com"

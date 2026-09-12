@@ -761,6 +761,24 @@ void startDeviceRegistration(canSwStruct *canRx)
 {
 	if (isAPhysicalDevice(canRx->device))
 	{
+		if (canRx->payload.u8[0] == 0xBCu)
+		{	/* Core BOC BIOS still running — keep mailbox so M743/M859/flash use T, not outbox.device==0 */
+			inboxStruct *biosInboxPtr = getInboxPointer(canRx->device);
+			outboxStruct *biosOutboxPtr = getOutboxPointer(canRx->device);
+			initInboxStruct(biosInboxPtr);
+			bzero(biosOutboxPtr, sizeof(outboxStruct));
+			biosInboxPtr->device = canRx->device;
+			biosInboxPtr->fromCAN2 = canRx->fromCAN2;
+			biosInboxPtr->deviceRegistered = TRUE;
+			biosInboxPtr->commTicker = HH_COMM_WATCHDOG_START_VALUE;
+			biosInboxPtr->softwareCodebase = 0xBCu;
+			biosInboxPtr->registrationStep = 1; /* stay out of startDeviceRegistration on the 1 Hz BIOS announce */
+			biosOutboxPtr->device = canRx->device;
+			_MailBoxes._incompatibleDeviceDetected[canRx->device] = FALSE;
+			sprintf(_errorStr, "T%d in bootloader (no APP) — flash LIGHT or check APP CRC", canRx->device);
+			sendError(_errorStr);
+			return;
+		}
 		if (canRx->payload.u8[0] != CANBUS_FORMAT_V1)
 		{		// first check if this device's software is legal
 			int version;
@@ -798,18 +816,7 @@ void startDeviceRegistration(canSwStruct *canRx)
 		inboxPtr->fromCAN2 = canRx->fromCAN2;
 		inboxPtr->deviceRegistered = TRUE;
 		inboxPtr->commTicker = HH_COMM_WATCHDOG_START_VALUE; // reset because of bzero
-//		switch (canRx->payload.u8[0])
-//		{
-//		case  CANBUS_FORMAT_V2 :
-//			sprintf(_errorStr, "Incompatible version 5.X head (%d)", inboxPtr->device); sendError(_errorStr);
-//			return;
-//		case  CANBUS_FORMAT_V1 :
-//			inboxPtr->canbusFormat = CANBUS_FORMAT_V1; break;
-//		case CANBUS_FORMAT_V0 :
-//		default :
-//			sprintf(_errorStr, "Incompatible version 3.X head (%d)", inboxPtr->device); sendError(_errorStr);
-//			break;
-//		}
+		inboxPtr->canbusFormat = CANBUS_FORMAT_V1;
 
 		outboxPtr->device = inboxPtr->device;
 		outboxPtr->canbusFormat = inboxPtr->canbusFormat;

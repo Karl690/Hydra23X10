@@ -347,14 +347,15 @@ extern void M_Code_M747(void);  // erase page for bootloader
 extern void M_Code_M748(void);  // process next line of intel hex format bootloader data (uses P, comment)
 extern void M_Code_M749(void);  // exit the device bootloader
 extern void M_Code_M860(void);  // BOC identify CAN 0x01
-extern void M_Code_M861(void);  // BOC EraseApp
+extern void M_Code_M861(void);  // BOC erase APP (A1) and/or settings (S1)
 extern void M_Code_M862(void);  // BOC write4WordsToApp staging
 extern void M_Code_M863(void);  // BOC EraseSettings
 extern void M_Code_M864(void);  // BOC Write2Settings
 extern void M_Code_M865(void);  // BOC WriteCRC
 extern void M_Code_M866(void);  // BOC ReadCRC
 extern void M_Code_M867(void);  // BOC WriteImageSize + reset
-extern void M_Code_M859(void);  // BOC global reset to 0x08000000
+extern void M_Code_M859(void);  // BOC UpdateApp (stay in BIOS, erase APP)
+extern void M_Code_M858(void);  // BOC erase all except BIOS
 extern void M_Code_M750(void);  // unlock flash for erase/write access for the selected physical device (uses T)
 extern void M_Code_M751(void);  // lock flash to prevent erase/write access for the selected physical device (uses T)
 extern void M_Code_M752(void);  // write hardware type to flash (option bytes) using device bootloader (uses S, P)

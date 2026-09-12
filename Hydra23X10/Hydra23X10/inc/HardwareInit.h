@@ -19,11 +19,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 //power on defaults.   change with
-#ifdef GB_FAST_UART
-#define SYSTEM_BAUD_RATE 115200 //38400 // 115200 // 76800 // 57600 //38400 //115200//19200 //
-#else
-#define SYSTEM_BAUD_RATE 38400 // 115200 // 76800 // 57600 //38400 //115200//19200 //
-#endif
+#define SYSTEM_BAUD_RATE 115200 /* Robo_Grok; CH340 USART6 */
 #define LIGHTBURN_BAUD_RATE 38400 //250000
 
 

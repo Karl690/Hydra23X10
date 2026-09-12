@@ -5963,13 +5963,29 @@ void M_Code_M860(void)  // identify BOC BIOS (CAN READ 0x01)
 	canIssueReadRequest(device, CAN_MSG_DEVICE_INFO, NO_PAGE);
 }
 
-void M_Code_M861(void)  // EraseApp (CAN 0x34 page 0xFF)
+void M_Code_M861(void)  // erase APP and/or settings (CAN 0x34)
 {
-	// MCODE M861 <"T" device> <"P" 666>
+	// MCODE M861 T11 A1          ;erase AppFlash
+	// MCODE M861 T11 S1          ;erase SettingsFlash
+	// MCODE M861 T11 A1 S1       ;erase APP + settings (BIOS kept)
+	// MCODE    optional P666 still accepted
+	byte eraseApp;
+	byte eraseSettings;
+	byte page;
+
 	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
-	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
-	if ((uint32_t)ARG_P != KARLS_PASSWORD) { ReportInvalidMcodePArgInt(); return; }
-	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_COPY_BUFFER_TO_PAGE, 0xFF, BUFFERED_MSG, 0xE5E5E5E5u);
+	if (ARG_P_PRESENT && ((uint32_t)ARG_P != KARLS_PASSWORD)) { ReportInvalidMcodePArgInt(); return; }
+	eraseApp = (ARG_A_PRESENT && ((int)ARG_A == 1)) ? 1 : 0;
+	eraseSettings = (ARG_S_PRESENT && ((int)ARG_S == 1)) ? 1 : 0;
+	if ((eraseApp == 0) && (eraseSettings == 0))
+	{
+		ReportInvalidMcodeAArgInt();
+		return;
+	}
+	if ((eraseApp != 0) && (eraseSettings != 0)) page = 0xFC; /* all except BIOS */
+	else if (eraseApp != 0) page = 0xFF; /* APP + CRC */
+	else page = 0xFD; /* settings only */
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_COPY_BUFFER_TO_PAGE, page, BUFFERED_MSG, 0xE5E5E5E5u);
 }
 
 void M_Code_M862(void)  // write4WordsToApp staging (CAN 0x31 page 0 or 1)
@@ -6026,11 +6042,20 @@ void M_Code_M867(void)  // WriteImageSize + reset (CAN 0x37)
 	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_START_PRIMARY_PROGRAM, NO_PAGE, BUFFERED_MSG, (uint32_t)ARG_S);
 }
 
-void M_Code_M859(void)  // global reset to BIOS 0x08000000 (CAN 0x37 page 0xFE)
+void M_Code_M859(void)  // UpdateApp: stay in BIOS, erase APP (CAN 0x37 page 0xFE)
 {
 	// MCODE M859 <"T" tool>
 	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
-	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_START_PRIMARY_PROGRAM, 0xFE, BUFFERED_MSG, 0u);
+	canPackIntoTxQueueNoData(CAN_WRITE, BocToolDevice(), CAN_MSG_START_PRIMARY_PROGRAM, 0xFE, BUFFERED_MSG); /* Medusa expects 0 data bytes */
+}
+
+void M_Code_M858(void)  // erase APP + settings, keep BIOS (CAN 0x34 page 0xFC)
+{
+	// MCODE M858 <"T" tool> <"P" 666>
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	if (ARG_P_MISSING) { ReportMissingMcodePArg(); return; }
+	if ((uint32_t)ARG_P != KARLS_PASSWORD) { ReportInvalidMcodePArgInt(); return; }
+	canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_COPY_BUFFER_TO_PAGE, 0xFC, BUFFERED_MSG, 0xE5E5E5E5u);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
