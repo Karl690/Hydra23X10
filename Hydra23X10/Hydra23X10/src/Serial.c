@@ -32,6 +32,13 @@ static uint16_t uart6DmaRxTail = 0;
 uint32_t Uart6DmaBytesDrained = 0;
 static void ClearUsart6TxDmaFlags(void);
 
+/* MEG407MUX COMPORT overlay rings — SRAM only (not CCM). Live G-code path does not use these. */
+uint8_t Rx_BufferUSB[0x400] __attribute__((aligned(4)));
+uint8_t Tx_BufferUSB[0x400] __attribute__((aligned(4)));
+COMPORT COMUSB;
+COMPORT COM6_SSD;
+COMPORT *MasterCommPort = &COM6_SSD;
+
 ////////////////////////////////////////////////////////////////////////////////
 //  Local #defines (defines ONLY used in this module)
 ////////////////////////////////////////////////////////////////////////////////
@@ -169,6 +176,7 @@ void sendchar (char ch)
 		protectedIncrement(&normalTxCharsInBuf);
 		normalTxIndexIn++;
 		normalTxIndexIn %= SERIAL_TX_NORMAL_BUFFER_SIZE;
+		if (MasterCommPort != 0) MasterCommPort->NumberOfCharactersSent++; /* COMPORT overlay TX count */
 #ifdef COLLECT_METRICS
 		_metrics.total_charsTx++;
 		if (normalTxCharsInBuf > _metrics.max_normalTxCharsInBuf)
@@ -915,6 +923,41 @@ void InitUsart6DmaTx(void)
 	dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
 	dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
 	DMA_Init(DMA2_Stream6, &dma);
+	InitComPortsOverlay();
+}
+
+void InitComPortsOverlay(void)
+{
+	COM6_SSD.UartHandler = USART6;
+	COM6_SSD.dma_stream = DMA2_Stream1;
+	COM6_SSD.tx_dma_stream = DMA2_Stream6;
+	COM6_SSD.RxBuffer.buffer = uart6DmaRxBuffer;
+	COM6_SSD.RxBuffer.Buffer_Size = UART6_DMA_RX_SIZE;
+	COM6_SSD.TxBuffer.buffer = (uint8_t*)normalTxBuffer;
+	COM6_SSD.TxBuffer.Buffer_Size = SERIAL_TX_NORMAL_BUFFER_SIZE;
+	COM6_SSD.ComType = COMTYPE_EQUIP;
+
+	COMUSB.UartHandler = NULL;
+	COMUSB.RxBuffer.buffer = Rx_BufferUSB;
+	COMUSB.RxBuffer.Buffer_Size = 0x400;
+	COMUSB.TxBuffer.buffer = Tx_BufferUSB;
+	COMUSB.TxBuffer.Buffer_Size = 0x400;
+	COMUSB.ComType = COMTYPE_MAIN;
+
+	MasterCommPort = &COM6_SSD;
+}
+
+void SyncComPortsOverlay(void)
+{
+	COM6_SSD.RxBuffer.Head = UART6_DMA_RX_SIZE - DMA2_Stream1->NDTR;
+	COM6_SSD.RxBuffer.Tail = uart6DmaRxTail;
+	COM6_SSD.NumberOfCharactersReceived = Uart6DmaBytesDrained;
+	COM6_SSD.TxBuffer.Head = (uint32_t)normalTxIndexIn & COM_TX_INDEX_MASK;
+	COM6_SSD.TxBuffer.Tail = (uint32_t)normalTxIndexOut & COM_TX_INDEX_MASK;
+	COM6_SSD.TxBuffer.Ack = (pendingAcknowledge > 255) ? 255 : (uint32_t)pendingAcknowledge;
+	COM6_SSD.TxBuffer.TxAckWaiting = pendingAcknowledge; /* LCD; do not take address of bitfield Ack */
+	COM6_SSD.TxDmaCount = uart6TxDmaCount;
+	MasterCommPort = (masterCommPort == USB_MASTER) ? &COMUSB : &COM6_SSD;
 }
 
 void CheckForUart6TxDma(void)
@@ -922,7 +965,11 @@ void CheckForUart6TxDma(void)
 	uint32_t contig;
 	uint32_t savedPrimask;
 
-	if ((DMA2_Stream6->CR & DMA_SxCR_EN) != 0) return; /* DMA still moving bytes from the ring */
+	if ((DMA2_Stream6->CR & DMA_SxCR_EN) != 0)
+	{
+		SyncComPortsOverlay();
+		return; /* DMA still moving bytes from the ring */
+	}
 
 	if (uart6TxDmaCount)
 	{
@@ -938,7 +985,11 @@ void CheckForUart6TxDma(void)
 		ClearUsart6TxDmaFlags();
 	}
 
-	if ((USART6->SR & USART_FLAG_TXE) == 0) return;
+	if ((USART6->SR & USART_FLAG_TXE) == 0)
+	{
+		SyncComPortsOverlay();
+		return;
+	}
 
 	savedPrimask = __get_PRIMASK();
 	__disable_irq();
@@ -948,11 +999,13 @@ void CheckForUart6TxDma(void)
 		pendingAcknowledge--;
 		_gcodeAcksSent++;
 		__set_PRIMASK(savedPrimask);
+		SyncComPortsOverlay();
 		return;
 	}
 	if (normalTxCharsInBuf <= 0)
 	{
 		__set_PRIMASK(savedPrimask);
+		SyncComPortsOverlay();
 		return;
 	}
 	if (normalTxCharsInBuf == 1)
@@ -962,6 +1015,7 @@ void CheckForUart6TxDma(void)
 		normalTxIndexOut %= SERIAL_TX_NORMAL_BUFFER_SIZE;
 		normalTxCharsInBuf--;
 		__set_PRIMASK(savedPrimask);
+		SyncComPortsOverlay();
 		return;
 	}
 	contig = (uint32_t)(SERIAL_TX_NORMAL_BUFFER_SIZE - normalTxIndexOut);
@@ -977,6 +1031,7 @@ void CheckForUart6TxDma(void)
 	DMA2_Stream6->NDTR = contig;
 	DMA2_Stream6->CR |= (1u << 0); /* enable DMA first, then USART DMAT (F4 misses TXE if reversed) */
 	USART6->CR3 |= USART_CR3_DMAT;
+	SyncComPortsOverlay();
 }
 
 void DrainUartDmaRx(void)
@@ -998,6 +1053,7 @@ void DrainUartDmaRx(void)
 		Uart6DmaBytesDrained++;
 	}
 	uart6DmaRxTail = tail;
+	SyncComPortsOverlay();
 }
 
 void ReceiveCharacter(char chr)

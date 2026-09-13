@@ -1,5 +1,6 @@
 #ifndef Serial_HEADER // prevent double dipping
 #define Serial_HEADER
+#include "stm32f4xx.h" /* USART_TypeDef / DMA_Stream_TypeDef for COMPORT overlay */
 ////////////////////////////////////////////////////////////////////////////////
 //
 // File:    Serial.h
@@ -117,6 +118,78 @@ typedef enum {
 	SERIAL_PORT_UART4   = 4,
 	SERIAL_PORT_UART6   = 6,
 } serialPort_t;
+
+/* MEG407MUX COMPORT overlay — LCD/debug mirrors of USART6 + USB. Live path stays DrainUartDmaRx → ReceiveCharacter. */
+#define COM_TX_INDEX_BITS	12
+#define COM_TX_INDEX_MASK	0x0FFFu
+
+typedef enum {
+	COMTYPE_MAIN     = 0,
+	COMTYPE_AUX      = 1,
+	COMTYPE_EQUIP    = 2,
+	COMTYPE_CUSTOM   = 3,
+	COMTYPE_SECS
+} ComPortType;
+
+typedef struct {
+	uint8_t*  	buffer;
+	uint32_t    Buffer_Size;
+	union { /* one 32-bit SRAM word: Head[11:0] Tail[23:12] Ack[31:24] */
+		uint32_t HeadTailAck;
+		struct {
+			uint32_t Head : 12;
+			uint32_t Tail : 12;
+			uint32_t Ack  : 8;  /* do not take address of bitfield Ack */
+		};
+	};
+	uint16_t  	HeadRoom;
+	int         TxAckWaiting; /* addressable; LCD uses this, not Ack */
+	uint16_t  	ReadyForAtof;
+} ComBuffer;
+
+typedef struct {
+	uint8_t*  	buffer;
+	uint32_t    Buffer_Size;
+	union { /* aligned 32-bit SRAM word: Head low 16, Tail high 16 */
+		uint32_t HeadTail;
+		struct {
+			uint16_t Head;
+			uint16_t Tail;
+		};
+	};
+	uint16_t  	RxLineCount;
+	uint16_t  	HeadRoom;
+	uint16_t  	ReadyForAtof;
+	uint16_t  	ArgumentLength;
+	char *GCodeArgPtr;
+	uint8_t CommentFlag;
+} ComRxBuffer;
+
+typedef struct {
+	USART_TypeDef* UartHandler;
+	ComRxBuffer       RxBuffer;
+	ComBuffer RxUrgentBuffer;
+	ComBuffer       TxBuffer;
+	uint32_t      UrgentFlag;
+	int  TxAckWatchdogTimer;
+	uint32_t     CmdWaiting;
+	uint32_t     CMDReceivedCounter;
+	ComPortType      ComType;
+	uint8_t SerialDisplayEnabled;
+	uint8_t ReportCompressedStatusEnabled;
+	ComBuffer CommandLineBuffer;
+	uint32_t NumberOfCharactersReceived;
+	uint32_t NumberOfCharactersSent;
+	DMA_Stream_TypeDef *dma_stream;
+	DMA_Stream_TypeDef *tx_dma_stream;
+	uint16_t TxDmaCount;
+} COMPORT;
+
+extern COMPORT COMUSB;
+extern COMPORT COM6_SSD;
+extern COMPORT *MasterCommPort;
+extern void InitComPortsOverlay(void);
+extern void SyncComPortsOverlay(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Global Variables defined in Serial that can be referenced by other modules

@@ -56,6 +56,13 @@ void UsbCdc_Service(void)
 				changeMasterCommPort(USB_MASTER);
 			if (masterCommPort == USB_MASTER)
 				ReceiveCharacter((char)buf[i]);
+			if (COMUSB.RxBuffer.buffer != 0)
+			{
+				COMUSB.RxBuffer.buffer[COMUSB.RxBuffer.Head] = buf[i];
+				COMUSB.RxBuffer.Head++;
+				COMUSB.RxBuffer.Head &= (uint16_t)(COMUSB.RxBuffer.Buffer_Size - 1u); /* wrap Buffer_Size-1 */
+				COMUSB.NumberOfCharactersReceived++;
+			}
 		}
 	}
 }
