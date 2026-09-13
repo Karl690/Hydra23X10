@@ -1,4 +1,5 @@
 
+#include "stm32f4xx.h"
 #include "ADC.h"
 //#include "CAN/can.h"
 //#include "Execution/cmdprocessor.h"
@@ -8,6 +9,8 @@
 #include "RevisionHistory.h"
 #include "mailbox.h"
 #include "Hydra_can.h"
+#include "Serial.h"
+#include "main.h"
 //#include "taskmanager.h"
 //#include "Communication/parser.h"
 //#include "SETTINGS/settings.h"
@@ -223,22 +226,19 @@ LcdVariableInfo UsbGcodeArguments[] = {
 };
 
 LcdVariableInfo CMDQueValues[] = {
-//	{&DisplayIndex,            "CmdQue  ", FUNC_INT16,	COLOR_WHITE,	COLOR_MAGENTA, 	0},          ///Offset
-	{&cmdQue[0].X,"      X=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[0].Y,"      Y=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[0].Z,"      Z=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[0].E,"      E=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].Y,"      Y=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].Z,"      Z=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].E,"      E=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].F,"      F=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].S,"      S=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].M,"      M=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].G,"      G=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].P,"      P=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].Q,"      Q=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].I,"      I=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
-	{&cmdQue[3].J,"      J=", FUNC_FLOAT_QUEVAR,	COLOR_WHITE,	COLOR_MAGENTA, 	0},
+	{ &HeartBeat, "GCODE to sequencer", FUNC_TITLE, COLOR_YELLOW, COLOR_BLUE, 0, 0, 1, 1 },
+	{ &Uart6DmaBytesDrained, "DmaRx #", FUNC_INT32, COLOR_WHITE, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+	{ &normalCommandWaiting, "NormWait", FUNC_INT32, COLOR_WHITE, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+	{ &CommandsInQue, "CmdInQue", FUNC_INT32, COLOR_WHITE, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+	{ &CommandReadyToProcessFlag, "CmdReady", FUNC_INT32, COLOR_WHITE, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+	{ &SequencerCommandsRun, "SeqRan", FUNC_INT32, COLOR_WHITE, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+	{ &pendingAcknowledge, "PendAck", FUNC_INT32, COLOR_WHITE, COLOR_LIME, 0, VariableDisplayStart, 60, 1 },
+	{ &_MailBoxes._waitingFor.flags.u32, "Waiting", FUNC_HEX32, COLOR_WHITE, COLOR_YELLOW, 0, VariableDisplayStart, 60, 1 },
+	{ &cmdQue[0].G, "parse G=", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &cmdQue[0].X, "parse X=", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &cmdQue[0].Y, "parse Y=", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &cmdQue[0].Z, "parse Z=", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
+	{ &cmdQue[0].F, "parse F=", FUNC_FLOAT, COLOR_WHITE, COLOR_MAGENTA, 0, VariableDisplayStart, 60, 1 },
 	{(uint32_t)0,           "--------", FUNC_INT16, 	COLOR_YELLOW,	COLOR_MAGENTA, 	0},
 };
 LcdVariableInfo UsbUrgentGcodeArguments[] = {
@@ -257,28 +257,79 @@ LcdVariableInfo UsbUrgentGcodeArguments[] = {
 //	{(uint32_t)0,              				"--------", FUNC_INT16, 	COLOR_YELLOW,	COLOR_MAGENTA, 	0},
 };
 
+uint16_t TaskTime[SLICE_TIME_DISPLAY_SLOTS] = {0};
+uint16_t MaxTaskTime[SLICE_TIME_DISPLAY_SLOTS] = {0};
+
+void InitSliceTimeDisplay(void)
+{
+	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+	DWT->CYCCNT = 0;
+	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+	ClearSliceTimes();
+}
+
+void ClearSliceTimes(void)
+{
+	int slot;
+	for (slot = 0; slot < SLICE_TIME_DISPLAY_SLOTS; slot++)
+	{
+		TaskTime[slot] = 0;
+		MaxTaskTime[slot] = 0;
+	}
+}
+
+void RecordSliceTime(int sliceIndex, uint32_t startCycles)
+{
+	uint32_t usPerCycle = SystemCoreClock / 1000000u;
+	uint32_t elapsedUs;
+	if (usPerCycle == 0) usPerCycle = 168u; /* F407 168 MHz fallback */
+	elapsedUs = (DWT->CYCCNT - startCycles) / usPerCycle;
+	if (elapsedUs > 0xFFFFu) elapsedUs = 0xFFFFu;
+	if ((sliceIndex < 0) || (sliceIndex >= SLICE_TIME_DISPLAY_SLOTS)) return;
+	MaxTaskTime[sliceIndex] = (uint16_t)elapsedUs; /* last */
+	if ((uint16_t)elapsedUs > TaskTime[sliceIndex])
+		TaskTime[sliceIndex] = (uint16_t)elapsedUs; /* peak, Meg407 style */
+}
+
+/* Indices match SysTick: 1000Hz=1-7, 100Hz=9-17, 10Hz=19-27, 1Hz=28-37 */
 LcdVariableInfo TaskTimeTable1[] = {
-//	{&TaskTime[2],            "CNRXPRcs", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-//	{&MaxTaskTime[2],     	"Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE, 	0},
-//	//{&TaskTime[4],      	"CNTXPRcs", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 	(uint32_t)BootStepStrings},
-//	{&MaxTaskTime[4],  		"Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE, 	0},// i do not now which one of these to use
-//	{&TaskTime[1],            "Can Prcs", FUNC_INT16, 	COLOR_WHITE, 	COLOR_RED, 		0},//
-//	{&MaxTaskTime[1],         "Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE,		0},// //Percent must be 0 to 100.
-//	{&TaskTime[13],         	"Ang Calc", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-//	{&MaxTaskTime[13],        "Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE, 	0},
-	{(uint32_t)0,              			"--------", FUNC_INT16, 	COLOR_YELLOW,	COLOR_MAGENTA, 	0},
+	{ &HeartBeat, "1000Hz Task us peak", FUNC_TITLE, COLOR_YELLOW, COLOR_BLUE, 0, 0, 1, 1 },
+	{ &TaskTime[1], "1.serialProcessor", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[2], "2.CommandProcessor", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[3], "3.SequenceEngine", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[4], "4.canProcessRx", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[5], "5.canProcessTx", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[6], "6.motionQ_update", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[7], "7.loop_1000Hz", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &HeartBeat, "100Hz Task us peak", FUNC_TITLE, COLOR_YELLOW, COLOR_BLUE, 0, 0, 1, 1 },
+	{ &TaskTime[9], "1.initFromSoap", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[10], "2.readInputs", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[11], "3.motorFaultSens", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[12], "4.motorLimit1", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[13], "5.motorLimit2", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[14], "6.latheSpeedCtrl", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[15], "7.PnP_SetValves", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[16], "8.LatchPnPData", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[17], "9.loop_100Hz", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ (uint32_t)0, "--------", FUNC_INT16, COLOR_YELLOW, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
 };
 
 LcdVariableInfo TaskTimeTable2[] = {
-//	{&TaskTime[6],            "SWrk1000", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-//	{&MaxTaskTime[6],     	"Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE, 	0},
-//	//{&TaskTime[12],      		"SWork100", FUNC_INT16, 	COLOR_RED,	COLOR_RED, 	(uint32_t)BootStepStrings},
-//	{&MaxTaskTime[12],  		"Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE, 	0},// i do not now which one of these to use
-//	{&TaskTime[21],           "SWork10 ", FUNC_INT16, 	COLOR_WHITE,  	COLOR_RED, 		0},//
-//	{&MaxTaskTime[21],        "Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE,		0},// //Percent must be 0 to 100.
-//	{&TaskTime[28],         	"SW0rk1  ", FUNC_INT16, 	COLOR_WHITE,	COLOR_RED, 		0},
-//	{&MaxTaskTime[28],        "Max Time", FUNC_INT16, 	COLOR_WHITE,	COLOR_BLUE, 	0},
-	{(uint32_t)0,              			"--------", FUNC_INT16, 	COLOR_YELLOW,	COLOR_MAGENTA, 	0},
+	{ &HeartBeat, "10Hz Task us peak", FUNC_TITLE, COLOR_YELLOW, COLOR_BLUE, 0, 0, 1, 1 },
+	{ &TaskTime[19], "1.soapstringCtrl", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[20], "2.sendUpdateHost", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[21], "3.checkBlockWait", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[22], "4.EdgeTrigger", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[23], "5.checkAbortDone", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[24], "6.ReportXYZ", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[25], "7.ProcessRawADC", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[27], "9.loop_10Hz", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &HeartBeat, "1Hz Task us peak", FUNC_TITLE, COLOR_YELLOW, COLOR_BLUE, 0, 0, 1, 1 },
+	{ &TaskTime[28], "0.checkForMia", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[30], "2.ReportOsseo", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[33], "5.LaserPwrReq", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ &TaskTime[37], "9.loop_1Hz", FUNC_INT16, COLOR_WHITE, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
+	{ (uint32_t)0, "--------", FUNC_INT16, COLOR_YELLOW, COLOR_BLUE, 0, VariableDisplayStart, 60, 1 },
 };
 
 LcdVariableInfo ADCValueTable[] = {

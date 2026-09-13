@@ -146,8 +146,11 @@ void InitUSART6(unsigned int baudrate)
 	USART_Init(USART6, &USART_InitStructure);
 	USART_Cmd(USART6, ENABLE);
 
-	interruptSetupAndEnable(USART6_IRQn, NVIC_PREMPTION_PRIORITY_UARTS);
-	USART_ITConfig(USART6, USART_IT_RXNE, ENABLE);
+	(void)USART6->SR;
+	(void)USART6->DR; /* clear leftover RXNE/ORE before DMA owns DR */
+	USART_ITConfig(USART6, USART_IT_RXNE, DISABLE);
+	NVIC_DisableIRQ(USART6_IRQn);
+	InitUsart6DmaRx(); /* circular DMA RX, Meg407-style — no per-byte IRQ */
 }
 
 ////////////////////////////////////////////////////////////////////////////////

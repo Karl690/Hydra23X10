@@ -156,6 +156,12 @@
     <ToolchainSettingsContainer>
       <ARMCPU>cortex-m4</ARMCPU>
     </ToolchainSettingsContainer>
+    <PostBuildEvent>
+      <Command>if not exist "C:\Repetrel\bin\firmware\Hydra_CanBoot" mkdir "C:\Repetrel\bin\firmware\Hydra_CanBoot"
+copy /Y "$(TargetDir)$(TargetName).bin" "C:\Repetrel\bin\firmware\Hydra_CanBoot\"
+if exist "$(TargetDir)$(TargetName).hex" copy /Y "$(TargetDir)$(TargetName).hex" "C:\Repetrel\bin\firmware\Hydra_CanBoot\"
+if exist "$(ProjectDir)$(TargetName).dfu" copy /Y "$(ProjectDir)$(TargetName).dfu" "C:\Repetrel\bin\firmware\Hydra_CanBoot\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='X10|VisualGDB'">
     <ClCompile>
@@ -242,6 +248,12 @@
     <Link>
       <LinkerScript>link.ld</LinkerScript>
     </Link>
+    <PostBuildEvent>
+      <Command>if not exist "C:\Repetrel\bin\firmware\Hydra_CanBoot" mkdir "C:\Repetrel\bin\firmware\Hydra_CanBoot"
+copy /Y "$(TargetDir)$(TargetName).bin" "C:\Repetrel\bin\firmware\Hydra_CanBoot\"
+if exist "$(TargetDir)$(TargetName).hex" copy /Y "$(TargetDir)$(TargetName).hex" "C:\Repetrel\bin\firmware\Hydra_CanBoot\"
+if exist "$(ProjectDir)$(TargetName).dfu" copy /Y "$(ProjectDir)$(TargetName).dfu" "C:\Repetrel\bin\firmware\Hydra_CanBoot\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_EngineSR_30M|VisualGDB'">
     <ClCompile>

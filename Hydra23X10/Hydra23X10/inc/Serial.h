@@ -37,6 +37,8 @@
 #define JOG_Z_TABLE_DOWN             12
 #define CR_CHAR                      13 // '\r' (carriage return)
 #define REPETREL_COMM_WATCHDOG_CHAR  14
+#define JOG_DISPLAYplus              15 /* 0x0F — next LCD page, Meg407 */
+#define JOG_DISPLAYminus             16 /* 0x10 — previous LCD page */
 #define LIGHTBURN_STOP               0x18
 #define LARGEST_SPECIAL_CHAR         31 // anything below this will end a comment string
 
@@ -137,6 +139,7 @@ extern int  normalRxIndexIn;
 extern int  normalRxIndexOut;
 extern int  normalRxCharsInBuf;
 extern int  normalCommandWaiting;
+extern uint32_t Uart6DmaBytesDrained;
 
 extern char *normalTxBuffer;
 extern int normalTxCharsInBuf;
@@ -180,6 +183,8 @@ extern uint16_t laser_PsWaterProt        ;
 
 extern void PostAcknowledge(void);
 extern void ReceiveCharacter(char);
+extern void InitUsart6DmaRx(void); /* Meg407 circular DMA RX — USART6 only */
+extern void DrainUartDmaRx(void);  /* copy DMA ring into ReceiveCharacter, no RXNE IRQ */
 extern void checkForUSBRxData(void);
 extern void ProcessRawRxBuffer(void);
 extern void PCHAR(void);

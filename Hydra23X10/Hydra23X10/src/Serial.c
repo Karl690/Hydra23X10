@@ -19,9 +19,17 @@
 #include "gpio.h"
 #include "usbd_usr.h"
 #include "mailbox.h"
+#include "stm32f4xx_dma.h"
+#include "display/display.h"
 
 extern uint8_t USB_Rx_Buffer[];
 extern void releaseUsbBuffer(void);
+
+/* USART6 RX DMA — SRAM only (CCM is not DMA-capable on F407). ADC owns DMA2 Stream2. */
+#define UART6_DMA_RX_SIZE  512u
+static uint8_t uart6DmaRxBuffer[UART6_DMA_RX_SIZE] __attribute__((aligned(4)));
+static uint16_t uart6DmaRxTail = 0;
+uint32_t Uart6DmaBytesDrained = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Local #defines (defines ONLY used in this module)
@@ -835,6 +843,58 @@ void PostAcknowledge(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+void InitUsart6DmaRx(void)
+{
+	DMA_InitTypeDef dma;
+
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
+	USART6->CR3 &= (uint16_t)~USART_CR3_DMAR;
+	DMA_Cmd(DMA2_Stream1, DISABLE);
+	while ((DMA2_Stream1->CR & DMA_SxCR_EN) != 0) { } /* wait for stream off */
+	DMA_DeInit(DMA2_Stream1);
+	uart6DmaRxTail = 0;
+
+	dma.DMA_Channel = DMA_Channel_5; /* USART6_RX = DMA2 Stream1 Ch5 */
+	dma.DMA_PeripheralBaseAddr = (uint32_t)&USART6->DR;
+	dma.DMA_Memory0BaseAddr = (uint32_t)uart6DmaRxBuffer;
+	dma.DMA_DIR = DMA_DIR_PeripheralToMemory;
+	dma.DMA_BufferSize = UART6_DMA_RX_SIZE;
+	dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+	dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	dma.DMA_Mode = DMA_Mode_Circular;
+	dma.DMA_Priority = DMA_Priority_VeryHigh;
+	dma.DMA_FIFOMode = DMA_FIFOMode_Disable;
+	dma.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
+	dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+	dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+	DMA_Init(DMA2_Stream1, &dma);
+	DMA_Cmd(DMA2_Stream1, ENABLE);
+	USART6->CR3 |= USART_CR3_DMAR;
+}
+
+void DrainUartDmaRx(void)
+{
+	uint16_t head = UART6_DMA_RX_SIZE - (uint16_t)DMA2_Stream1->NDTR;
+	uint16_t tail = uart6DmaRxTail;
+	int copied = 0;
+
+	while ((tail != head) && (copied < RAW_CHARS_TO_PROCESS_PER_CALL))
+	{
+		char ch = (char)uart6DmaRxBuffer[tail];
+		tail++;
+		if (tail >= UART6_DMA_RX_SIZE) tail = 0;
+		if ((ch == PING_CHAR) || (ch == ABORT_CHAR))
+			changeMasterCommPort(UART6_MASTER);
+		if (masterCommPort == UART6_MASTER)
+			ReceiveCharacter(ch);
+		copied++;
+		Uart6DmaBytesDrained++;
+	}
+	uart6DmaRxTail = tail;
+}
+
 void ReceiveCharacter(char chr)
 {
 	if (processSoapstringCommands && (chr != PING_CHAR) && (chr != ABORT_CHAR))
@@ -1117,6 +1177,12 @@ void ProcessRawRxChar(char rawChar)
 		break;
 	case REPETREL_COMM_WATCHDOG_CHAR:   // (rawChar==14)
 		_repetrelCommWatchCount = REPETREL_COMM_WATCHDOG_START_VALUE;
+		break;
+	case JOG_DISPLAYplus:     /* 0x0F — same as Meg407 */
+		DisplayIndexIncrement();
+		break;
+	case JOG_DISPLAYminus:    /* 0x10 */
+		DisplayIndexDecrement();
 		break;
 	case DIRECT_START_CHAR:  //if (rawChar=='$')
 		if (!(_processingAComment || _processingASoapString))

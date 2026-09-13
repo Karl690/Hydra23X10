@@ -1,0 +1,7 @@
+Hydra23X10 compile output (SOP)
+
+After a successful EngineHR Hydra build, copy .bin / .hex / .dfu to:
+
+  C:\Repetrel\bin\firmware\Hydra_CanBoot
+
+Debug_EngineHR_Hydra and Release_EngineHR_Hydra post-build do this automatically.

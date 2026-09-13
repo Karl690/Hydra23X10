@@ -1199,6 +1199,12 @@ void unpackDeviceInfoPayload(inboxStruct *inboxPtr, canSwStruct *canRx)
 		inboxPtr->softwareMinorVersion  = payload->u8[2];
 		inboxPtr->softwareTweakVersion  = payload->u8[3];
 		inboxPtr->softwareCompileTarget = payload->u8[4];
+		if (payload->u8[0] == 0xBCu)
+		{
+			sprintf(_tmpStr, "T%d BOC BIOS present crc=0x%08X (M860)", canRx->device,
+				(unsigned int)payload->u32[1]);
+			sendInfo(_tmpStr);
+		}
 		if (payload->u8[5] == 0)
 			inboxPtr->softwareDebugVersion = ' ';
 		else
@@ -1699,6 +1705,7 @@ byte canProcessRxQueue(void)
 				inboxPtr->flashNumKBytes    = payload->u16[0];
 				inboxPtr->flashPageSize     = payload->u16[1];
 				inboxPtr->flashBaseAddr     = payload->u32[1];
+				sendInboxInfoToHost(canRx->device, SEND_DEVICE_FLASH_CONFIG); /* >RI FLC numKbytes=32|64|128 */
 				break;
 			case CAN_MSG_UNIQUE_ID :                // return of half device's 96-bit unique id
 				for (i=0; i<6; i++)

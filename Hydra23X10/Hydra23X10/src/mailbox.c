@@ -776,9 +776,10 @@ void startDeviceRegistration(canSwStruct *canRx)
 			biosInboxPtr->softwareCodebase = DEVICE_CODEBASE_BOOTLOADER;
 			biosInboxPtr->softwareCompileTarget = DEVICE_TARGET_BOC;
 			biosInboxPtr->softwareMajorVersion = 1;
-			biosInboxPtr->softwareMinorVersion = 3; /* BIOS V1.003 */
+			biosInboxPtr->softwareMinorVersion = 4; /* BIOS V1.004 */
 			biosInboxPtr->softwareTweakVersion = ' ';
 			biosInboxPtr->registrationStep = 0; /* idle — do not run SOAP registration watchdog */
+			biosInboxPtr->pageChecksum = canRx->payload.u32[1]; /* BIOS image CRC */
 			biosOutboxPtr->device = canRx->device;
 			biosOutboxPtr->canbusFormat = CANBUS_FORMAT_V1;
 			biosOutboxPtr->deviceFamily = DEVICE_FAMILY_UNKNOWN;
@@ -787,13 +788,26 @@ void startDeviceRegistration(canSwStruct *canRx)
 			if (!_lightburnModeEnabled)
 #endif
 			{
-				sprintf(_rptStr, ">BL: %d", biosInboxPtr->device);
+				{
+					byte biosKb = canRx->payload.u8[2];
+					byte flashKb = canRx->payload.u8[1]; /* 32=C6T6, 64=C8, 128=CB; old BIOS sent device id */
+					if ((biosKb != 6u) && (biosKb != 16u))
+						biosKb = 6u;
+					if ((flashKb != 32u) && (flashKb != 64u) && (flashKb != 128u))
+						flashKb = 0u;
+					biosInboxPtr->flashNumKBytes = flashKb;
+					sprintf(_rptStr, ">BL: %d:%d:%d", biosInboxPtr->device, biosKb, flashKb);
+				}
 				sendstringCr(_rptStr);
+				sprintf(_tmpStr, "T%d BOC BIOS present crc=0x%08X", biosInboxPtr->device,
+					(unsigned int)canRx->payload.u32[1]);
+				sendInfo(_tmpStr);
 				sprintf(_rptStr, ">RG:%d :", biosInboxPtr->device);
 				getDeviceRegistrationString(biosInboxPtr, _tmpStr);
 				strcat(_rptStr, _tmpStr);
 				sendstringCr(_rptStr);
 			}
+			readFlashConfigFromDevice(canRx->device); /* factory flash KB — C6T6=32 */
 			return;
 		}
 		if (canRx->payload.u8[0] != CANBUS_FORMAT_V1)

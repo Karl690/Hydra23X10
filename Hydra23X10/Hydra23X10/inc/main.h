@@ -2360,6 +2360,8 @@ extern GMCommandStructure *G1UnprimePtr;
 extern GMCommandStructure *LookAheadPointer;
 extern int PreProcessNextCodeFlag;
 extern int CommandsInQue;
+extern int CommandReadyToProcessFlag;
+extern uint32_t SequencerCommandsRun;
 extern int DeferredCommandsInQue;
 extern int LastCmdQueIndexAddedToMotionQ;
 extern boolean _needToProcessDeferredCommands;
@@ -2410,6 +2412,9 @@ extern const crashLog_struct _crashLog[];
 extern const int NUM_CRASHLOG_ENTRIES;
 extern sliceTimingStruct _sliceTiming;
 extern int _motionTimerCalls;
+void InitSliceTimeDisplay(void);
+void ClearSliceTimes(void);
+void RecordSliceTime(int sliceIndex, uint32_t startCycles);
 extern errorSentStruct _errors;
 extern int HostConnectionWatchDog;
 #ifdef ENABLE_CRASH_LOGGING

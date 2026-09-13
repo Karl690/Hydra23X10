@@ -5989,6 +5989,11 @@ void M_Code_M861(void)  // erase APP and/or settings (CAN 0x34)
 	if (ARG_P_PRESENT && ((uint32_t)ARG_P != KARLS_PASSWORD)) { ReportInvalidMcodePArgInt(); return; }
 	eraseApp = (ARG_A_PRESENT && ((int)ARG_A == 1)) ? 1 : 0;
 	eraseSettings = (ARG_S_PRESENT && ((int)ARG_S == 1)) ? 1 : 0;
+	if (ARG_A_PRESENT && ((int)ARG_A == 2))
+	{
+		canPackIntoTxQueue1x32(CAN_WRITE, BocToolDevice(), CAN_MSG_COPY_BUFFER_TO_PAGE, 0xF4, BUFFERED_MSG, 0u);
+		return;
+	}
 	if ((eraseApp == 0) && (eraseSettings == 0))
 	{
 		ReportInvalidMcodeAArgInt();
@@ -6882,6 +6887,7 @@ void M_Code_M778(void)  // enable slice time measurement (uses S)
 	// MCODE
 	// MCODE    enable slice time measurement
 
+	ClearSliceTimes(); /* LCD peak us, M778 */
 #ifdef SLICE_TIMING_MEASUREMENT
 	// reset the counters
 	initSliceTiming(FALSE);

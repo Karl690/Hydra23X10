@@ -87,12 +87,10 @@ void Format_Float3_3(uint8_t row, void* info, uint16_t* colorTable)
 }
 void Format_Float_QueVar(uint8_t row, void* info, uint16_t* colorTable)
 {
-//	varInfo = (LcdVariableInfo*)info;
-//	uint32_t addressOfVariableToDisplay = CmdQueDisplayOffset + varInfo->VariablePointer;
-//
-//	DrawString(LEFT_PADDING, PADDING,varInfo->Label, colorTable[varInfo->Color_1]);//label
-//	sprintf(strTempVal, "%.3f ", (float)(*((float*)addressOfVariableToDisplay)));
-//	DrawString(VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
+	varInfo = (LcdVariableInfo*)info;
+	DrawString(LEFT_PADDING, PADDING, varInfo->Label, colorTable[varInfo->Color_1]);
+	sprintf(strTempVal, "%.3f ", (float)(*((float*)varInfo->VariablePointer)));
+	DrawString(varInfo->XStart ? varInfo->XStart : VALUE_POS, PADDING, strTempVal, colorTable[varInfo->Color_2]);
 }
 
 //void Format_MemoryDumpAscii(uint8_t row, void* info)

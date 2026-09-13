@@ -61,8 +61,14 @@ extern LcdVariableInfo CanTxBufferTable[];
 extern LcdVariableInfo SecsStringTable[];
 extern LcdVariableInfo LcdVarsTable[];
 extern LcdVariableInfo CANMSGTable[];
+#define SLICE_TIME_DISPLAY_SLOTS  38 /* 8+10+10+10 Hydra slice groups */
+extern uint16_t TaskTime[SLICE_TIME_DISPLAY_SLOTS];  /* peak us, Meg407-style */
+extern uint16_t MaxTaskTime[SLICE_TIME_DISPLAY_SLOTS]; /* last us */
 extern LcdVariableInfo TaskTimeTable1[];
 extern LcdVariableInfo TaskTimeTable2[];
+void InitSliceTimeDisplay(void);
+void ClearSliceTimes(void);
+void RecordSliceTime(int sliceIndex, uint32_t startCycles);
 extern LcdVariableInfo SoapString1[];
 extern LcdVariableInfo GcodeArguments[];
 extern LcdVariableInfo ADCValueTable[];

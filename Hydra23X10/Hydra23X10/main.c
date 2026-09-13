@@ -195,6 +195,7 @@ char _GcodeArgStringParam[GCODE_STRING_ARG_LENGTH];
 
 int PreProcessNextCodeFlag=0;
 int CommandsInQue;
+uint32_t SequencerCommandsRun = 0;
 
 int toolNumberMap[] = { 11, 12, 13, 14, 15,           // 0 to 4 on yoke 1
 						21, 22, 23, 24, 25,           // 5 to 9 on yoke 2
@@ -1564,6 +1565,7 @@ void processEverySlice(void)
 	canAddToImmediateRxQueue();     // check if any incomingRX immediate messages
 	canAddToRxQueue();              // check if any incomingRX messages and add to rx queue
 
+	DrainUartDmaRx();       /* USART6 DMA ring → ReceiveCharacter (no RXNE IRQ) */
 	ProcessRawRxBuffer();   // grab and pending rx chars and move into proper buffer
 
 #ifdef ADD_ON_SPI_DISPLAY
@@ -1619,6 +1621,8 @@ void SysTick_Handler(void)
 #endif
 	if (_MailBoxes._waitingFor.flags.bit.sliceNeedsExtraTime) return;   // multi-slice routine, give it time
 
+	{
+	uint32_t sliceStartCycles = DWT->CYCCNT;
 	processEverySlice();
 	if (++_gs._ctrlIndex[HZ_1000] == NUM_1000HZ)
 	{
@@ -1639,23 +1643,28 @@ void SysTick_Handler(void)
 				}
 				_gs._sliceNum = _gs._ctrlIndex[HZ_1] * 1000;
 				F1HZ[_gs._ctrlIndex[HZ_1]]();
+				RecordSliceTime(NUM_1000HZ + NUM_100HZ + NUM_10HZ + (int)_gs._ctrlIndex[HZ_1], sliceStartCycles);
 			}
 			else
 			{
 				_gs._sliceNum = _gs._ctrlIndex[HZ_10] * 100;
 				F10HZ[_gs._ctrlIndex[HZ_10]]();
+				RecordSliceTime(NUM_1000HZ + NUM_100HZ + (int)_gs._ctrlIndex[HZ_10], sliceStartCycles);
 			}
 		}
 		else
 		{
 			_gs._sliceNum = _gs._ctrlIndex[HZ_100] * 10;
 			F100HZ[_gs._ctrlIndex[HZ_100]]();
+			RecordSliceTime(NUM_1000HZ + (int)_gs._ctrlIndex[HZ_100], sliceStartCycles);
 		}
 	}
 	else
 	{
 		_gs._sliceNum = _gs._ctrlIndex[HZ_1000];
 		F1000HZ[_gs._ctrlIndex[HZ_1000]]();
+		RecordSliceTime((int)_gs._ctrlIndex[HZ_1000], sliceStartCycles);
+	}
 	}
 }
 
@@ -3688,6 +3697,7 @@ void SequenceEngine()
 		if ((motionQ_notEmpty()) && (NextExecutionPtr->cmdType == SYNCS_WITH_MOTION))
 			return;  // this type of command will be processed later
 		// if we get here, we can process the next command
+		SequencerCommandsRun++;
 		processCommand(&cmdQue[CurrentCommandIndex]);
 	}
 }
@@ -6150,6 +6160,7 @@ int main(void)
 
 
 	_heartbeatRateControl = HEARTBEAT_MODE_NORMAL;
+	InitSliceTimeDisplay(); /* DWT us peak times for LCD TaskTime tables */
 	SysTick_Config(SystemCoreClock / SYSTICKS_PER_SECOND);//slice timer has lowest interrupt priority
 	InitTim3RpmInput(); //set up the rpm counter
 	__enable_irq();  // now everything is ready, so let interrupts occur
@@ -6175,7 +6186,7 @@ int main(void)
 		//case 1:UpdateScreen(&LCDSpi1, UsbGcodeArguments); break;
 		case 2:UpdateScreen(&LCDSpi1, CMDQueValues); break;
 		case 3:UpdateScreen(&LCDSpi1, TaskTimeTable1); break;
-		case 4:UpdateScreen(&LCDSpi1, ADCValueTable); break;
+		case 4:UpdateScreen(&LCDSpi1, TaskTimeTable2); break;
 		case 5:UpdateScreen(&LCDSpi1, BarValueTable); break;
 		case 6:UpdateScreen(&LCDSpi1, FaultValueTable); break;
 		case 7:UpdateScreen(&LCDSpi1, CanRxBufferTable); break;
