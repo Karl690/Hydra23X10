@@ -30,6 +30,7 @@ extern void releaseUsbBuffer(void);
 static uint8_t uart6DmaRxBuffer[UART6_DMA_RX_SIZE] __attribute__((aligned(4)));
 static uint16_t uart6DmaRxTail = 0;
 uint32_t Uart6DmaBytesDrained = 0;
+static void ClearUsart6TxDmaFlags(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Local #defines (defines ONLY used in this module)
@@ -69,10 +70,13 @@ int  normalRxIndexOut; 		// index of where to pull the next char
 int  normalRxCharsInBuf;	// total valid chars in buffer
 int  normalCommandWaiting;
 
-char *normalTxBuffer = (char *)SERIAL_TX_NORMAL_BUFFER_ADDR;
+/* SRAM: F407 DMA cannot read CCM. MEG407MUX Tx_Buffer lives in .DMASection. */
+static char normalTxStorage[SERIAL_TX_NORMAL_BUFFER_SIZE] __attribute__((aligned(4)));
+char *normalTxBuffer = normalTxStorage;
 int  normalTxIndexIn;		// index of where to store the next char
 int  normalTxIndexOut;		// index of where to pull the next char
 int  normalTxCharsInBuf;	// total valid chars in buffer
+static uint16_t uart6TxDmaCount = 0;
 
 char *echoTxBuffer = (char *)SERIAL_TX_ECHO_BUFFER_ADDR;
 int  echoTxIndexIn;			// index of where to store the next char
@@ -788,6 +792,11 @@ void resetSerialInputBuffer(void)
 void resetSerialOutputBuffer(void)
 {
 	uint32_t irq_disabled = interruptsOff();
+	USART6->CR3 &= (uint16_t)~USART_CR3_DMAT;
+	DMA_Cmd(DMA2_Stream6, DISABLE);
+	while ((DMA2_Stream6->CR & DMA_SxCR_EN) != 0) { }
+	ClearUsart6TxDmaFlags();
+	uart6TxDmaCount = 0;
 	normalTxIndexIn = 0;
 	normalTxIndexOut = 0;
 	normalTxCharsInBuf = 0;
@@ -872,6 +881,102 @@ void InitUsart6DmaRx(void)
 	DMA_Init(DMA2_Stream1, &dma);
 	DMA_Cmd(DMA2_Stream1, ENABLE);
 	USART6->CR3 |= USART_CR3_DMAR;
+}
+
+static void ClearUsart6TxDmaFlags(void)
+{
+	DMA2->HIFCR = (0x3Fu << 16); /* DMA2 Stream6 */
+}
+
+void InitUsart6DmaTx(void)
+{
+	DMA_InitTypeDef dma;
+
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
+	USART6->CR3 &= (uint16_t)~USART_CR3_DMAT;
+	DMA_Cmd(DMA2_Stream6, DISABLE);
+	while ((DMA2_Stream6->CR & DMA_SxCR_EN) != 0) { }
+	DMA_DeInit(DMA2_Stream6);
+	uart6TxDmaCount = 0;
+
+	dma.DMA_Channel = DMA_Channel_5; /* USART6_TX = DMA2 Stream6 Ch5 */
+	dma.DMA_PeripheralBaseAddr = (uint32_t)&USART6->DR;
+	dma.DMA_Memory0BaseAddr = (uint32_t)normalTxBuffer;
+	dma.DMA_DIR = DMA_DIR_MemoryToPeripheral;
+	dma.DMA_BufferSize = 1; /* armed per burst */
+	dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+	dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	dma.DMA_Mode = DMA_Mode_Normal; /* one-shot, not circular */
+	dma.DMA_Priority = DMA_Priority_High; /* below RX VeryHigh */
+	dma.DMA_FIFOMode = DMA_FIFOMode_Disable;
+	dma.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
+	dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+	dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+	DMA_Init(DMA2_Stream6, &dma);
+}
+
+void CheckForUart6TxDma(void)
+{
+	uint32_t contig;
+	uint32_t savedPrimask;
+
+	if ((DMA2_Stream6->CR & DMA_SxCR_EN) != 0) return; /* DMA still moving bytes from the ring */
+
+	if (uart6TxDmaCount)
+	{
+		savedPrimask = __get_PRIMASK();
+		__disable_irq();
+		normalTxIndexOut += (int)uart6TxDmaCount;
+		normalTxIndexOut %= SERIAL_TX_NORMAL_BUFFER_SIZE;
+		normalTxCharsInBuf -= (int)uart6TxDmaCount;
+		if (normalTxCharsInBuf < 0) normalTxCharsInBuf = 0;
+		uart6TxDmaCount = 0;
+		__set_PRIMASK(savedPrimask);
+		USART6->CR3 &= (uint16_t)~USART_CR3_DMAT;
+		ClearUsart6TxDmaFlags();
+	}
+
+	if ((USART6->SR & USART_FLAG_TXE) == 0) return;
+
+	savedPrimask = __get_PRIMASK();
+	__disable_irq();
+	if (pendingAcknowledge && roomInNormalRxBuffer() && roomInDirectRxBuffer())
+	{
+		USART6->DR = (uint32_t)ASCII_ACK; /* ACKs first; never arm DMA while ACK remains */
+		pendingAcknowledge--;
+		_gcodeAcksSent++;
+		__set_PRIMASK(savedPrimask);
+		return;
+	}
+	if (normalTxCharsInBuf <= 0)
+	{
+		__set_PRIMASK(savedPrimask);
+		return;
+	}
+	if (normalTxCharsInBuf == 1)
+	{
+		USART6->DR = (uint32_t)(uint8_t)normalTxBuffer[normalTxIndexOut];
+		normalTxIndexOut++;
+		normalTxIndexOut %= SERIAL_TX_NORMAL_BUFFER_SIZE;
+		normalTxCharsInBuf--;
+		__set_PRIMASK(savedPrimask);
+		return;
+	}
+	contig = (uint32_t)(SERIAL_TX_NORMAL_BUFFER_SIZE - normalTxIndexOut);
+	if (contig > (uint32_t)normalTxCharsInBuf)
+		contig = (uint32_t)normalTxCharsInBuf;
+	uart6TxDmaCount = (uint16_t)contig;
+	__set_PRIMASK(savedPrimask);
+
+	DMA2_Stream6->CR &= ~(1u << 0);
+	while ((DMA2_Stream6->CR & DMA_SxCR_EN) != 0) { }
+	ClearUsart6TxDmaFlags();
+	DMA2_Stream6->M0AR = (uint32_t)&normalTxBuffer[normalTxIndexOut];
+	DMA2_Stream6->NDTR = contig;
+	DMA2_Stream6->CR |= (1u << 0); /* enable DMA first, then USART DMAT (F4 misses TXE if reversed) */
+	USART6->CR3 |= USART_CR3_DMAT;
 }
 
 void DrainUartDmaRx(void)
@@ -1430,6 +1535,12 @@ void PrintCheck (void)
 {   // see if any chars to send to UART HW ....
 	// first see if any pending acks and if so AND ok to send, the send an ack
 	// else if regular chars to send and OK, then send that char
+
+	if (masterCommPort == UART6_MASTER)
+	{
+		CheckForUart6TxDma(); /* MEG407MUX: ACK polled, 2+ bytes one-shot DMA */
+		return;
+	}
 
 	if (pendingAcknowledge && roomInNormalRxBuffer() && roomInDirectRxBuffer())
 	{   // need to send an ACK AND enough room to receive more input data

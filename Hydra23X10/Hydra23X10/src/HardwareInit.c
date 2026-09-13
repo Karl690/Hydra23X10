@@ -151,6 +151,7 @@ void InitUSART6(unsigned int baudrate)
 	USART_ITConfig(USART6, USART_IT_RXNE, DISABLE);
 	NVIC_DisableIRQ(USART6_IRQn);
 	InitUsart6DmaRx(); /* circular DMA RX, Meg407-style — no per-byte IRQ */
+	InitUsart6DmaTx(); /* MEG407MUX one-shot DMA TX — ACK still polled DR */
 }
 
 ////////////////////////////////////////////////////////////////////////////////

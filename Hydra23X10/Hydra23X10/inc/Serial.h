@@ -184,7 +184,9 @@ extern uint16_t laser_PsWaterProt        ;
 extern void PostAcknowledge(void);
 extern void ReceiveCharacter(char);
 extern void InitUsart6DmaRx(void); /* Meg407 circular DMA RX — USART6 only */
+extern void InitUsart6DmaTx(void); /* MEG407MUX one-shot DMA TX — USART6 only */
 extern void DrainUartDmaRx(void);  /* copy DMA ring into ReceiveCharacter, no RXNE IRQ */
+extern void CheckForUart6TxDma(void); /* leftover slice: ACK polled, burst via DMA */
 extern void checkForUSBRxData(void);
 extern void ProcessRawRxBuffer(void);
 extern void PCHAR(void);
