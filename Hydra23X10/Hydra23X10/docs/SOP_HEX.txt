@@ -5,3 +5,17 @@ After a successful EngineHR Hydra build, copy .bin / .hex / .dfu to:
   C:\Repetrel\bin\firmware\Hydra_CanBoot
 
 Debug_EngineHR_Hydra and Release_EngineHR_Hydra post-build do this automatically.
+
+Publish
+-------
+RevisionHistory.h defines:
+
+  #define PublishFilePath "C:\\Users\\karl6\\Documents\\UploadFiles\\"
+
+After a successful STM32F407 compile, also copy Hydra23X10.bin to:
+
+  C:\Users\karl6\Documents\UploadFiles\firmware\HYREL\Hydra23X10_rev{MajorStep}.Bin
+
+Example at MajorStep 4.256k:
+
+  C:\Users\karl6\Documents\UploadFiles\firmware\HYREL\Hydra23X10_rev4.256k.Bin
