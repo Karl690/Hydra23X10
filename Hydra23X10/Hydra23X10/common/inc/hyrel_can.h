@@ -65,6 +65,10 @@ typedef enum {
 #define CAN_MSG_PRE_DEFINED_ALIASES         ((byte)0x04)
 #define CAN_MSG_USER_DEFINED_ALIASES        ((byte)0x05)
 #define CAN_MSG_STATUS                      ((byte)0x06)
+#define CAN_MSG_LAST_RESET                  ((byte)0x07)    /* last reset / HardFault RAM block */
+#define RESET_SRC_HARDFAULT                 (1u << 6)
+#define LAST_RESET_ORIGIN_BIOS              0u
+#define LAST_RESET_ORIGIN_APP               1u
 //#define CAN_MSG_HISTORY_RANGE_DEF         ((byte)0x07)    //NUKE DEPRECATE
 //#define CAN_MSG_HISTORY_RANGES                ((byte)0x08)    //NUKE DEPRECATE
 //#define CAN_MSG_HISTORY_COUNTERS          ((byte)0x09)    //NUKE DEPRECATE

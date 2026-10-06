@@ -243,6 +243,13 @@ void readUniqueIdFromDevice(byte device) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+void readLastResetFromDevice(byte device) {
+	canIssueReadRequest(device, CAN_MSG_LAST_RESET, 0);
+	canIssueReadRequest(device, CAN_MSG_LAST_RESET, 1);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 void readAliasListFromDevice(byte device) {
 	canIssueReadRequest(device, CAN_MSG_PRE_DEFINED_ALIASES, NO_PAGE);
 	canIssueReadRequest(device, CAN_MSG_USER_DEFINED_ALIASES, NO_PAGE);
@@ -1080,10 +1087,9 @@ void printDeviceErrorMessage(canSwStruct *canRx)
 
 	if (canRx->page == 0xFEu)
 	{
-		sprintf(_rptStr, ">ER: %2d: APP CRC mismatch stored=0x%08X computed=0x%08X",
+		sprintf(_rptStr, ">ER:%d:C3:04:FLASH Unit:APP CRC mismatch stored=0x%08X computed=0x%08X",
 			canRx->device, payload->u32[0], payload->u32[1]);
 		sendstringCr(_rptStr);
-		sendError(_rptStr);
 		return;
 	}
 
@@ -1099,8 +1105,18 @@ void printDeviceErrorMessage(canSwStruct *canRx)
 			if ((_MailBoxes.stickyErrorMsg[errorIndex] & (1 << getMailboxNum(canRx->device))) == 0)
 			{   // haven't seen this error yet for this device
 				_MailBoxes.stickyErrorMsg[errorIndex] |= (1 << getMailboxNum(canRx->device));   // mark that this error has now been seen
+			if ((payload->u8[0] == ERROR_UNIT_CAN) && (payload->u8[1] == ERROR_SWITCH_MSG_ID)
+				&& (payload->u8[5] == CAN_MSG_LAST_RESET))
+			{
+				break; /* pre-Medusa heads have no LastReset page; Hydra still queries 0x07 at register */
+			}
 			// page will contain the deviceType (0=BL)
-			sprintf(_rptStr, ">ER: %2d: %d: %s: %s ", canRx->device, canRx->page,  _deviceErrorDescriptionTable[errorIndex].unitStr, _deviceErrorDescriptionTable[errorIndex].codeStr);
+			/* Repetrel splits on ':' — unit/code must be C1-CA hex so ProcessCanErrorMsg can label them */
+			sprintf(_rptStr, ">ER:%d:%02X:%02X:%s:%s ", canRx->device,
+				_deviceErrorDescriptionTable[errorIndex].unit,
+				_deviceErrorDescriptionTable[errorIndex].code,
+				_deviceErrorDescriptionTable[errorIndex].unitStr,
+				_deviceErrorDescriptionTable[errorIndex].codeStr);
 
 			if (_deviceErrorDescriptionTable[errorIndex].argsAreTemperatures == TRUE)  // args are temperatures, need to scale
 			{
@@ -1161,10 +1177,11 @@ void printDeviceErrorMessage(canSwStruct *canRx)
 
 	if (errorIndex == NUM_DEVICE_ERROR_CODES) // didn't find it
 	{
-		sprintf(_rptStr, ">ER: %2d: %02x %02x %02x %02x %02x %02x %02x %02x", canRx->device,
+		sprintf(_rptStr, ">ER:%d:%02X:%02X:UNKNOWN UNIT:UNKNOWN CODE %02x %02x %02x %02x %02x %02x", canRx->device,
 				payload->u8[0], payload->u8[1], payload->u8[2], payload->u8[3],
 				payload->u8[4], payload->u8[5], payload->u8[6], payload->u8[7]);
 		sendstringCr(_rptStr);
+		return;
 	}
 
 	if ((_deviceErrorDescriptionTable[errorIndex].unit == ERROR_UNIT_CAN) && (_deviceErrorDescriptionTable[errorIndex].code == ERROR_COMM_TIMEOUT)) // special case to check
@@ -1539,6 +1556,7 @@ byte canProcessRxQueue(void)
 							sendError(_errorStr);
 						}
 						tryToCleanUpGuiAfterDeviceRegistration(inboxPtr->device);
+						reportLastResetToHost(inboxPtr);
 						break;
 					default:
 						break;
@@ -1729,10 +1747,38 @@ byte canProcessRxQueue(void)
 			case CAN_MSG_STATUS :                   // return of requested status page
 				//FUNCTIONALITY REMOVED receiveDeviceStatusPage(inboxPtr, canRx);
 				break;
+			case CAN_MSG_LAST_RESET :
+				if (canRx->page == 0)
+				{
+					inboxPtr->lastResetSource = payload->u32[0] & 0xFFu;
+					inboxPtr->lastResetOrigin = (payload->u32[0] >> 8) & 0xFFu;
+					inboxPtr->lastResetSliceIndex = payload->u32[0] >> 16;
+					inboxPtr->lastResetPc = payload->u32[1];
+					if (inboxPtr->lastResetSource != 0)
+					{
+						sprintf(_tmpStr, "LastReset T%d src=0x%02X origin=%u slice=%lu pc=0x%08lX",
+							inboxPtr->device,
+							(unsigned)inboxPtr->lastResetSource,
+							(unsigned)inboxPtr->lastResetOrigin,
+							(unsigned long)inboxPtr->lastResetSliceIndex,
+							(unsigned long)inboxPtr->lastResetPc);
+						sendInfo(_tmpStr);
+					}
+				}
+				else
+				{
+					inboxPtr->lastResetSliceCnt = payload->u32[0];
+					inboxPtr->lastResetCfsr = payload->u32[1];
+				}
+				reportLastResetToHost(inboxPtr);
+				break;
 			case CAN_MSG_PAGE_DEF :
-				if (inboxPtr->softwareMinorVersion >= 3)
+				if ((inboxPtr->softwareMajorVersion >= 5) || (inboxPtr->softwareMinorVersion >= 3))
 				{
 					inboxPtr->soapPage = payload->u16[0];
+					inboxPtr->pageDef[SOAPBOX_PAGE_INDEX] = payload->u16[0];
+					if (payload->u16[1] != 0)
+						inboxPtr->pageDef[SOAPBOX_PAGE_INDEX] = payload->u16[1];
 				}
 				else
 				{
@@ -1740,6 +1786,7 @@ byte canProcessRxQueue(void)
 					{
 						inboxPtr->pageDef[i] = payload->u16[i]; // pages numbers for tables, soap, historyA, historyB
 					}
+					inboxPtr->soapPage = inboxPtr->pageDef[SOAPBOX_PAGE_INDEX];
 				}
 				break;
 			case CAN_MSG_PAGE_CHECKSUM :

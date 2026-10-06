@@ -757,6 +757,76 @@ int getCanMotorIndexFromDeviceAddress(byte device)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+static const char *medusaSliceName(uint32_t sliceIndex)
+{
+	switch (sliceIndex)
+	{
+	case 0: return "1000Hz_ohNoMrBill";
+	case 1: return "canProcessRxQueue";
+	case 2: return "canProcessTxQueue";
+	case 3: return "loop_1000Hz_simple_work";
+	case 10: return "100Hz_ohNoMrBill";
+	case 20: return "100Hz_spare";
+	case 30: return "readManualSwitches";
+	case 40: return "am23xx_Control";
+	case 50: return "100Hz_spare";
+	case 60: return "100Hz_spare";
+	case 70: return "100Hz_spare";
+	case 80: return "SmoothDataUsingOlympicVotingAverage";
+	case 90: return "loop_100Hz_simple_work";
+	case 100: return "10Hz_ohNoMrBill";
+	case 200: return "checkLimits";
+	case 300: return "updateShutdownTimer";
+	case 400: return "sendHeartbeatAndStatus";
+	case 500: return "10Hz_spare";
+	case 600: return "10Hz_spare";
+	case 700: return "SetAllHssNextDutyCycleBasedOnTemperature";
+	case 800: return "BlinkHeartBeat";
+	case 900: return "loop_10Hz_simple_work";
+	case 1000: return "registerDeviceAndCheckCommWatchdog";
+	case 2000: return "1Hz_spare";
+	case 3000: return "1Hz_spare";
+	case 4000: return "1Hz_spare";
+	case 5000: return "1Hz_spare";
+	case 6000: return "1Hz_spare";
+	case 7000: return "1Hz_spare";
+	case 8000: return "1Hz_spare";
+	case 9000: return "loop_1Hz_simple_work";
+	default: return "unknown";
+	}
+}
+
+void reportLastResetToHost(inboxStruct *inboxPtr)
+{
+	const char *originName;
+	const char *sliceName;
+
+	if (inboxPtr == NULL) return;
+	if (inboxPtr->lastResetReported) return;
+	if ((inboxPtr->lastResetSource & RESET_SRC_HARDFAULT) == 0) return;
+
+	inboxPtr->lastResetReported = TRUE;
+	if (inboxPtr->lastResetOrigin == LAST_RESET_ORIGIN_BIOS) originName = "BIOS";
+	else originName = "APP";
+	if (inboxPtr->lastResetOrigin == LAST_RESET_ORIGIN_BIOS)
+	{
+		if (inboxPtr->lastResetSliceIndex == 0) sliceName = "bios_CanService";
+		else sliceName = "bios_systick";
+	}
+	else sliceName = medusaSliceName(inboxPtr->lastResetSliceIndex);
+
+	/* Colon-split for Repetrel: >ER:<device>:HF:<slice>:<labeled text> */
+	sprintf(_errorStr, ">ER:%d:HF:%lu:hard fault firmware error on head %d slice %lu (%s) pc=0x%08lX origin=%s",
+		inboxPtr->device,
+		(unsigned long)inboxPtr->lastResetSliceIndex,
+		inboxPtr->device,
+		(unsigned long)inboxPtr->lastResetSliceIndex,
+		sliceName,
+		(unsigned long)inboxPtr->lastResetPc,
+		originName);
+	sendstringCr(_errorStr);
+}
+
 void startDeviceRegistration(canSwStruct *canRx)
 {
 	if (isAPhysicalDevice(canRx->device))
@@ -808,6 +878,7 @@ void startDeviceRegistration(canSwStruct *canRx)
 				sendstringCr(_rptStr);
 			}
 			readFlashConfigFromDevice(canRx->device); /* factory flash KB — C6T6=32 */
+			readLastResetFromDevice(canRx->device);
 			return;
 		}
 		if (canRx->payload.u8[0] != CANBUS_FORMAT_V1)
@@ -822,8 +893,8 @@ void startDeviceRegistration(canSwStruct *canRx)
 
 			if (_MailBoxes._incompatibleDeviceDetected[canRx->device] == FALSE)
 			{   // only send the message once
-				//printReportGetLocationString(TRUE, canRx->device, _tmpStr);
-				sprintf(_errorStr, "Incompatible head software found (T%d, sw=%d.X)", canRx->device, version);
+				sprintf(_errorStr, "Incompatible head software found (T%d, sw=%d.X fmt=0x%02X)", canRx->device, version, (unsigned)canRx->payload.u8[0]);
+				sendError(_errorStr);
 				_MailBoxes._incompatibleDeviceDetected[canRx->device] = TRUE;
 			}
 			return;
@@ -843,6 +914,8 @@ void startDeviceRegistration(canSwStruct *canRx)
 		{
 			sendGB("register 1");
 		}
+		sprintf(_tmpStr, "announce T%d fmt=0x%02X", canRx->device, (unsigned)canRx->payload.u8[0]);
+		sendInfo(_tmpStr);
 		inboxPtr->device = canRx->device;
 		inboxPtr->fromCAN2 = canRx->fromCAN2;
 		inboxPtr->deviceRegistered = TRUE;
@@ -933,6 +1006,7 @@ void finishDeviceRegistration(byte device)
 
 	readAliasListFromDevice(device);
 	readControlWordFromDevice(device);
+	readLastResetFromDevice(device); /* APP LastReset block; older heads ignore 0x07 */
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1332,10 +1406,16 @@ uint16_t tableInfoTypeToPage(byte device, tableInfoType selection, uint16_t sele
 	switch (selection)
 	{
 	case SEND_DEVICE_SOAP_STRING :
-		if (getInboxPointer(device)->softwareMinorVersion >= 3)
+		if ((getInboxPointer(device)->softwareMajorVersion >= 5) || (getInboxPointer(device)->softwareMinorVersion >= 3))
 			page = getInboxPointer(device)->soapPage;
 		else
 			page = getInboxPointer(device)->pageDef[SOAPBOX_PAGE_INDEX];
+		if ((page == 0) || (page == 0xffff))
+		{
+			sprintf(_errorStr, "tableInfoTypeToPage - SOAP page unset for device %d", (int)device);
+			sendError(_errorStr);
+			return(0xffff);
+		}
 		break;
 	case SEND_DEVICE_RAW_PAGE_DATA  :
 		page = selectedPage;

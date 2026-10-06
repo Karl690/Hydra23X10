@@ -346,6 +346,7 @@ extern void M_Code_M746(void);  // start the bootloader for the selected physica
 extern void M_Code_M747(void);  // erase page for bootloader
 extern void M_Code_M748(void);  // process next line of intel hex format bootloader data (uses P, comment)
 extern void M_Code_M749(void);  // exit the device bootloader
+extern void M_Code_M857(void);  // force test HardFault on Medusa (CONTROL_WORD 0xFA17FA17)
 extern void M_Code_M860(void);  // BOC identify CAN 0x01
 extern void M_Code_M861(void);  // BOC erase APP (A1) and/or settings (S1)
 extern void M_Code_M862(void);  // BOC write4WordsToApp staging

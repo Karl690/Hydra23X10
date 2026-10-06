@@ -96,6 +96,7 @@ extern void readDevicePositionFromDevice(byte);
 extern void readDeviceInfoFromDevice(byte);
 extern void readFlashConfigFromDevice(byte);
 extern void readUniqueIdFromDevice(byte);
+extern void readLastResetFromDevice(byte);
 extern void readAliasListFromDevice(byte);
 extern void readHistoryRangeDefinitionFromDevice(byte);
 extern void readHistoryRangesFromDevice(byte);

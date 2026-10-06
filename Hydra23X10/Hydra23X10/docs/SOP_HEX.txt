@@ -8,19 +8,23 @@ Debug_EngineHR_Hydra and Release_EngineHR_Hydra post-build do this automatically
 
 Publish
 -------
+Copy .bin and .dfu into PublishFilePath only when the user tells Grok to PUBLISH.
+Compile does not copy them. Push does not copy them. The Repetrel Hydra_CanBoot
+copy above stays a post-build step. It is not the UploadFiles publish.
+Canonical text: ~/.grok/rules/sop.md
+
 RevisionHistory.h defines:
 
   #define PublishFilePath "C:\\Users\\karl6\\Documents\\UploadFiles\\"
 
-After a successful STM32F407 compile, also copy Hydra23X10.bin to:
+On PUBLISH, copy Hydra23X10.bin (and the .dfu when the build produced one) to:
 
-  C:\Users\karl6\Documents\UploadFiles\firmware\HYREL\Hydra23X10_rev{MajorStep}.Bin
+  C:\Users\karl6\Documents\UploadFiles\firmware\HYREL\Hydra23X10_rev{revision}.Bin
+  C:\Users\karl6\Documents\UploadFiles\firmware\HYREL\Hydra23X10_rev{revision}.dfu
 
-Example at MajorStep 4.256k:
+Examples already in that folder:
 
-  C:\Users\karl6\Documents\UploadFiles\firmware\HYREL\Hydra23X10_rev4.256k.Bin
+  Hydra23X10_rev26.008A.Bin
+  Hydra23X10_rev4.256k.Bin
 
-When a product has bootloader and APP configurations, compile both and publish:
-
-  BL_{Name}_V{n.nnn}.BIN
-  AP_{Name}_V{n.nnn}.BIN
+Use the revision string this product already publishes (HB revision or MajorStep).

@@ -210,6 +210,13 @@ typedef struct {
 	boolean     bootloaderRunning;                              // flag to indicate a reset was issued with the desire to start up the bootloader
 	int         registrationStep;                               // used for tracking the registration progress
 	uint16_t	motorTicksRev;									// used for heardbeat report conversion
+	uint32_t    lastResetSource;
+	uint32_t    lastResetOrigin;
+	uint32_t    lastResetSliceIndex;
+	uint32_t    lastResetPc;
+	uint32_t    lastResetSliceCnt;
+	uint32_t    lastResetCfsr;
+	boolean     lastResetReported;
 } inboxStruct;
 
 typedef struct {
@@ -379,6 +386,7 @@ extern boolean validCanMotorDeviceAddress(byte device);
 extern MotorStructure *getMotorPtrFromDeviceAddress(byte device);
 extern int getCanMotorIndexFromDeviceAddress(byte device);
 extern void startDeviceRegistration(canSwStruct *);
+extern void reportLastResetToHost(inboxStruct *);
 extern boolean matchesAnAlias(byte, inboxStruct *);;
 extern void sendSingleLineReport(byte);
 extern void sendInboxInfoToHost(deviceInfoType, byte);

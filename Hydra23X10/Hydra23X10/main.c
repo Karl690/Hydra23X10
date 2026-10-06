@@ -1694,7 +1694,7 @@ void checkAndClearFlashStatus(void)
 			sprintf(_errorStr, "FLASH ACCESS ERROR (SR=0x%04x) (loop %u.%u.%u.%u)", (uint16_t)FLASH->SR, _gs._ctrlIndex[HZ_1],_gs._ctrlIndex[HZ_10], _gs._ctrlIndex[HZ_100], _gs._ctrlIndex[HZ_1000]);
 			sendError(_errorStr);
 		}
-		FLASH->SR = 0x0c;	// clear error flags in order to proceed
+		FLASH->SR = (FLASH_SR_WRPERR | FLASH_SR_PGAERR | FLASH_SR_PGPERR | FLASH_SR_PGSERR);	/* write-1-to-clear; 0x0c left PGSERR set */
 	}
 }
 
@@ -2696,6 +2696,7 @@ void CommandProcessor()
 		case 747: M_Code_M747(); ContinueToNextStep(); break;//return; // prepare device for download (uses P)
 		case 748: M_Code_M748(); ContinueToNextStep(); break;//return; // process next line of intel hex format bootloader data (uses P, comment) <-- can't go in queue because of needing comment
 		case 749: M_Code_M749(); ContinueToNextStep(); break;//return; // exit the device bootloader
+		case 857: M_Code_M857(); ContinueToNextStep(); break; // test HardFault on Medusa
 		case 860: M_Code_M860(); ContinueToNextStep(); break; // BOC identify
 		case 861: M_Code_M861(); ContinueToNextStep(); break; // BOC erase A1=APP S1=settings
 		case 862: M_Code_M862(); ContinueToNextStep(); break; // BOC write4Words

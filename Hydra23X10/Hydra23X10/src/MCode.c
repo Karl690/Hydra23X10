@@ -5966,6 +5966,26 @@ static byte BocToolDevice(void)
 	return device;
 }
 
+void M_Code_M857(void)  // force test HardFault on a Medusa head
+{
+	// MCODE M857 T11   ; IMMEDIATE CONTROL_WORD 0xFA17FA17 — APP crashes in loop_100Hz_simple_work
+	byte device;
+	inboxStruct *inboxPtr;
+	if (ARG_T_MISSING) { ReportMissingMcodeTArg(); return; }
+	device = (byte)ARG_T;
+	inboxPtr = getInboxPointer(device);
+	inboxPtr->device = device;
+	inboxPtr->canbusFormat = CANBUS_FORMAT_V1;
+	_errors.sent.flags.canDestinationUnknown = FALSE;
+	{
+		byte packRet;
+		packRet = canPackIntoTxQueue2x32(CAN_WRITE, device, CAN_MSG_CONTROL_WORD, NO_PAGE, IMMEDIATE_MSG, 0xFA17FA17u, 0xFA17FA17u);
+		canProcessTxQueueUntilEmpty();
+		sprintf(_tmpStr, "M857 test HardFault sent to T%d ret=%d", device, packRet);
+		sendInfo(_tmpStr);
+	}
+}
+
 void M_Code_M860(void)  // identify BOC BIOS (CAN READ 0x01)
 {
 	// MCODE M860 <"T" tool>   T11 = yoke1 head1
