@@ -918,6 +918,7 @@ typedef enum {  // codes for soapstring[0]
 	SOAP_DEV_TYPE_RH_SYRINGE            = 'X',
 	SOAP_DEV_TYPE_SONICATOR             = 'Y',
 	SOAP_DEV_TYPE_CAN_MOTOR				= 'Z',
+	SOAP_DEV_TYPE_YELLOWSTONE           = '[', /* next code after 'Z'; ':' stays skipped */
 	SOAP_DEV_TYPE_BOOTLOADER            = 0xBC, // Core BOC BIOS, no APP — not a SOAP char
 // QQQQ ADD NEW DEVICE(S) HERE
 	SOAP_DEV_TYPE_LAST_ENTRY,

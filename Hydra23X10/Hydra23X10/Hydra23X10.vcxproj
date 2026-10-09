@@ -185,8 +185,8 @@ if exist "$(ProjectDir)$(TargetName).dfu" copy /Y "$(ProjectDir)$(TargetName).df
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='X10_Release|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>./cmsis;./cmsis_boot;./cmsis_lib/inc;./common/inc;./inc;./usb_lib/inc;./common/lcd;./tinyusb/src;.;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-D COMPILE_FOR_SYSTEM -D STM32F4XX_HYREL -D USE_HYDRA_IO -D STM32F4XX -D FPU_USED -D USE_TINYUSB %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>DEBUG=0;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>O0</Optimization>
     </ClCompile>

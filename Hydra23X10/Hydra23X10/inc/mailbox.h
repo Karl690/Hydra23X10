@@ -397,6 +397,7 @@ extern boolean deviceIsACanAxisMotor(byte device);
 extern boolean deviceIsABttCanAxisMotor(byte device);
 extern boolean deviceHasAClosedLoopStepper(byte device);
 extern boolean deviceIsAFilamentDispenser(byte device);
+extern boolean deviceIsAnSdsHead(byte device);
 extern uint16_t tableInfoTypeToPage(byte, tableInfoType, uint16_t);
 extern void transferSystemInfoFromHost(systemInfoType selection);
 extern void transferSystemInfoToHost(systemInfoType selection);

@@ -4667,13 +4667,17 @@ void M_Code_M698(void)  // humiture control (uses T, V)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void M_Code_M699(void)  // hx711 control (uses T,Z,R,V,C,O,S,I,J,P,W)
+void M_Code_M699(void)  // hx711 control (uses T,Z,R,V,C,O,S,I,J,P,W,A)
 {
 	// MCODE M699 <"T" toolSelector> ["Z" setZero/tare] ["R" reportRaw]
+	// MCODE M699 <"T" toolSelector> ["A" gramsOnCell] ; tare first, then A50 calibrates 50 g
 	// MCODE M699 <"T" toolSelector> ["V" gainSelection] ["C" calibTemp] ["O" calibOfs]  ["S" calibScale] ["I" tempCompOfsPerDeg] ["J" tempCompScalePerDeg]  [<"P" password "W1 {save}>]
 	// MCODE M699 <"T" toolSelector> ["U" pointIndex] ["W" weight grams] ; send 4 specific points and part will self calibrate
 	// MCODE    if TArg is not present, the prior selected device/alias is used
-	// MCODE    if ZArg == 1, set tare to -1*current value; (auto saves config to flash)
+	// MCODE    Z and A go to the selected head. MK1 uses them. A head with no HX711 ignores those init indexes.
+	// MCODE    SDS and filament dispensers also take R, V, C, O, S, I, J, U, W, P.
+	// MCODE    if ZArg == 1, set tare to the current counts
+	// MCODE    if AArg is present, that many grams are on the cell; head sets grams per count
 	// MCODE    if RArg == 1, report raw sensor value with heartbeat (auto saves config to flash)
 	// MCODE    else report result of gram calculation
 	// MCODE
@@ -4700,10 +4704,18 @@ void M_Code_M699(void)  // hx711 control (uses T,Z,R,V,C,O,S,I,J,P,W)
 
 	outboxStruct *localOutboxPtr = ConvertArgTtoHotheadOutboxPtr();
 
-	if (deviceIsAFilamentDispenser(localOutboxPtr->device))
-	{
-		if (ARG_Z_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_ADD, DEV_INIT_INDEX_ADD_HX711_TARE, iFitWithinRange((uint16_t)ARG_Z, 0, 1));
+	if (localOutboxPtr == 0) return;
 
+	/* Z tares. A is grams sitting on the cell. Any selected head. No HX711 ignores the index. A stays in RAM. */
+	if (ARG_Z_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_ADD, DEV_INIT_INDEX_ADD_HX711_TARE, iFitWithinRange((uint16_t)ARG_Z, 0, 1));
+	if (ARG_A_PRESENT)
+	{
+		float gramsOnCell = ARG_A; /* M699 A50: 50 g is on the cell */
+		canSendOutboxInitValue2x32(localOutboxPtr, DEV_INIT_AREA_ADD, DEV_INIT_INDEX_ADD_HX711_TEMP_COMP_SET_POINT, 0, *(uint32_t *)&gramsOnCell);
+	}
+
+	if (deviceIsAFilamentDispenser(localOutboxPtr->device) || deviceIsAnSdsHead(localOutboxPtr->device))
+	{
 		if (ARG_R_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_ADD, DEV_INIT_INDEX_ADD_HX711_REPORT_MODE, iFitWithinRange((uint16_t)ARG_R, 0, 1));
 		if (ARG_Z_PRESENT || ARG_R_PRESENT)
 			canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_ADD, DEV_INIT_INDEX_ADD_HX711_SAVE_CONFIGURATION, 0);

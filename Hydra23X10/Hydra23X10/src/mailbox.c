@@ -330,6 +330,19 @@ boolean deviceIsAFilamentDispenser(byte device)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+boolean deviceIsAnSdsHead(byte device)
+{
+	soapDevType_t deviceType = getInboxPointer(device)->deviceType;
+	return (deviceType == SOAP_DEV_TYPE_SDS)
+		|| (deviceType == SOAP_DEV_TYPE_SDS_5)
+		|| (deviceType == SOAP_DEV_TYPE_SDS_10)
+		|| (deviceType == SOAP_DEV_TYPE_SDS_30)
+		|| (deviceType == SOAP_DEV_TYPE_SDS_60)
+		|| (deviceType == SOAP_DEV_TYPE_SDS_150);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 void initInboxStruct(inboxStruct *inboxPtr)
 {
 	byte i;
@@ -2038,7 +2051,7 @@ void sendSingleLineReport(byte line)
 				break;
 			case DEVICE_FAMILY_HEATED_EXTRUDER :
 			case DEVICE_FAMILY_UNHEATED_EXTRUDER :
-				if (getOutboxPointer(inboxPtr->device)->hardInitPtr->sw[HH_HTR_SWITCH].type == SW_TEMP_HEAT_COOL)	// heated/chilled head (dual temp to report)
+				if ((inboxPtr->deviceType == SOAP_DEV_TYPE_YELLOWSTONE) || (getOutboxPointer(inboxPtr->device)->hardInitPtr->sw[HH_HTR_SWITCH].type == SW_TEMP_HEAT_COOL))	// YellowStone reports RTD2; heated/chilled head reports both temps
 					sprintf(tmpStr1, "%d %d %d %d",
 							(payload->i16[0] / field0scale), 		// temperature or rawadc
 							payload->i16[1], 						// HSS2 duty cycle

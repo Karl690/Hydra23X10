@@ -41,6 +41,7 @@ const devInitStruct devInit[] = {
 { SOAP_DEV_TYPE_VOLCANO_25,     "Volcano_25",   {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        100,    100 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_VOLCANO_50,     "Volcano_50",   {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        100,    100 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_KRAKATOA_15,    "Krakatoa_15",  {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        200,     80 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
+{ SOAP_DEV_TYPE_YELLOWSTONE,    "YellowStone",  {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        450,     80 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_TAMBORA_15,     "Tambora_15",   {{ SW_DC,           0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT,         1,  ACT_HIGH,   MIN_DEG,        300,    100 }}, MOTOR_20K,      0, ADD_CPROBE,  PCB_MJW },
 { SOAP_DEV_TYPE_RH_SYRINGE,     "RH_Syringe",   {{ SW_ON_OFF,       0,  ACT_HIGH,   MAX_DEG,    MIN_DEG,    100 },  { SW_TEMP_HEAT_COOL,    1,  ACT_HIGH,      -100,        100,    100 }}, MOTOR_20K,      0, ADD_NONE,    PCB_J   },
 
@@ -108,6 +109,7 @@ const devFamilyStruct devFamilies[] =
 	{ SOAP_DEV_TYPE_VOLCANO_25          , DEVICE_FAMILY_HEATED_EXTRUDER },
 	{ SOAP_DEV_TYPE_VOLCANO_50          , DEVICE_FAMILY_HEATED_EXTRUDER },
 	{ SOAP_DEV_TYPE_KRAKATOA_15         , DEVICE_FAMILY_HEATED_EXTRUDER },
+	{ SOAP_DEV_TYPE_YELLOWSTONE         , DEVICE_FAMILY_HEATED_EXTRUDER },
 	{ SOAP_DEV_TYPE_LASER_2             , DEVICE_FAMILY_LASER },
 	{ SOAP_DEV_TYPE_SKIP_COLON          , DEVICE_FAMILY_UNKNOWN },
 	{ SOAP_DEV_TYPE_LASER_5             , DEVICE_FAMILY_LASER },
@@ -569,8 +571,8 @@ void initSendDefaultSwitchParams(outboxStruct *outboxPtr, int switchNum)
 
 	int16_t     powerFactor             = 65;
 	int16_t     deltaTempBiasCoeff      = 5;
-	uint16_t    maxOvershoot            = (outboxPtr->hardInitPtr->devType == SOAP_DEV_TYPE_KRAKATOA_15) ? 0 : 5;
-	int16_t     denominator             = (outboxPtr->hardInitPtr->devType == SOAP_DEV_TYPE_KRAKATOA_15) ? 100 : 300;
+	uint16_t    maxOvershoot            = ((outboxPtr->hardInitPtr->devType == SOAP_DEV_TYPE_KRAKATOA_15) || (outboxPtr->hardInitPtr->devType == SOAP_DEV_TYPE_YELLOWSTONE)) ? 0 : 5;
+	int16_t     denominator             = ((outboxPtr->hardInitPtr->devType == SOAP_DEV_TYPE_KRAKATOA_15) || (outboxPtr->hardInitPtr->devType == SOAP_DEV_TYPE_YELLOWSTONE)) ? 100 : 300;
 	uint16_t    fanDcToHtrDcScaleFactor = (switchNum = HH_HTR_SWITCH) ? (50 / 100) * (1 << 7) : 0;  // 50% in a 1.7 format if heater;
 
 	canSendOutboxInitValue1x16(outboxPtr, devInitAreaSwX, DEV_INIT_INDEX_SWx_MIN_TEMP,      swPtr->minTemp << TEMP_FRAC_BITS);
