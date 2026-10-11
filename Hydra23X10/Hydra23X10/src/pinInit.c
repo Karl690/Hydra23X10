@@ -76,9 +76,9 @@ void pinInitAll(void)
 //		pinInit(OSC_OUT);   // undefined
 //		pinInit(OSC32_IN);
 //		pinInit(OSC32_OUT);
-	// pinInit(OTG_FS_DM);
-	// pinInit(OTG_FS_DP);
-	//pinInit(OTG_FS_ID);
+	pinInit(OTG_FS_DM);
+	pinInit(OTG_FS_DP);
+	//pinInit(OTG_FS_ID); /* PA10 is C_DIR */
 
 
 //		pinInit(SPI3_CS);

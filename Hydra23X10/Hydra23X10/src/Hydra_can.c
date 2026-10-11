@@ -1438,9 +1438,34 @@ byte canProcessRxQueue(void)
 			case CAN_EVENT_MOTION_LIMIT2_STATE_CHANGE :
 				sprintf(_rptStr, "(%d) CAN_EVENT_MOTION_LIMIT2_STATE_CHANGE (%lu)", canRx->device, payload->u32[0]); sendInfo(_rptStr); break;
 			case CAN_EVENT_ENCODER_CALIBRATION_PASS :
-				sprintf(_rptStr, "(%d) CAN_EVENT_ENCODER_CALIBRATION_PASS (%lu)", canRx->device, payload->u32[0]); sendInfo(_rptStr); break;
 			case CAN_EVENT_ENCODER_CALIBRATION_FAIL :
-				sprintf(_rptStr, "(%d) CAN_EVENT_ENCODER_CALIBRATION_FAIL (%lu)", canRx->device, payload->u32[0]); sendInfo(_rptStr); break;
+			{
+				const char *resultWord = (canRx->page == CAN_EVENT_ENCODER_CALIBRATION_PASS) ? "PASS" : "FAIL";
+				if (payload->u8[1] == 0xA5)
+				{
+					const char *reasonWord = "unknown";
+					switch (payload->u8[0])
+					{
+					case 0: reasonWord = "stopped"; break;
+					case 5: reasonWord = "ok"; break;
+					case 6: reasonWord = "no-motion"; break;
+					case 7: reasonWord = "bad-shape"; break;
+					case 8: reasonWord = "flash"; break;
+					case 9: reasonWord = "table-size"; break;
+					case 10: reasonWord = "table-shape"; break;
+					case 11: reasonWord = "position"; break;
+					}
+					sprintf(_rptStr, "(%d) calibration %s reason %s plus %+d deg back %+d deg worse %u deg",
+							canRx->device, resultWord, reasonWord,
+							(int)payload->i16[1], (int)payload->i16[2], payload->u16[3]);
+				}
+				else
+				{
+					sprintf(_rptStr, "(%d) CAN_EVENT_ENCODER_CALIBRATION_%s (%lu)", canRx->device, resultWord, payload->u32[0]);
+				}
+				sendInfo(_rptStr);
+				break;
+			}
 			case CAN_EVENT_ENCODER_CONFIG_SAVE_PASS :
 				sprintf(_rptStr, "(%d) CAN_EVENT_ENCODER_CONFIG_SAVE_PASS", canRx->device); sendInfo(_rptStr); break;
 			case CAN_EVENT_ENCODER_CONFIG_SAVE_FAIL :

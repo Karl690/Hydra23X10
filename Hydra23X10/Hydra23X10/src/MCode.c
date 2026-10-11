@@ -40,7 +40,6 @@
 #include "MotorDriver.h"
 #include "HardwareInit.h"
 #include "bootloader.h"  //NUKE? GB XXX gregkarl -- can we strip out the HH bootloader code?
-#include "usbd_core.h"
 #include "gui.h"
 #include "pnp.h"
 #ifdef HYDRA_DIAGS
@@ -6464,8 +6463,6 @@ void M_Code_M765(void)  // read X, Y, Z and dial indicator
 
 ////////////////////////////////////////////////////////////////////////////////
 
-extern USB_OTG_CORE_HANDLE      USB_OTG_dev;
-
 void M_Code_M766(void)  // start the system bootloader process
 {
 	// MCODE M766  jump to system bootloader
@@ -6492,9 +6489,7 @@ void M_Code_M766(void)  // start the system bootloader process
 	//      *((unsigned long *)0x2000FFF0) = 0xDEADBEEF; // 64KBSTM32F103//set up the semiphore telling them to jump to DFU mode
 	//
 
-	USBD_DeInit(&USB_OTG_dev);
-
-	DisableAllMotionMotors();
+	DisableAllMotionMotors(); /* the peripheral reset below drops USB */
 
 	SysTick->CTRL = 0;  // disable systick timer
 	SysTick->LOAD = 0;
@@ -7319,13 +7314,14 @@ void M_Code_M787(void)  // calibrate can based closed-loop motor (uses T, P, C, 
 
 void M_Code_M788(void)  // reset can based closed-loop axis motor (uses T, F, D, P)
 {
-	// MCODE M788 <"T" toolSelector> [F restoreFactoryDefaults] [D deviceReset] [P resetPosition] [C canReset]
+	// MCODE M788 <"T" toolSelector> [F restoreFactoryDefaults] [D deviceReset] [P resetPosition] [C canReset] [H1 release coils]
 	// MCODE
 	// MCODE	if argT missing, error;
 	// MCODE    if argF==1, reset factory defaults
 	// MCODE    if argD==1, "power-on-reset" of device
 	// MCODE    if argC==1, force device to re-check in with system
 	// MCODE    if argP==1, reset the desired position to match the current encoder position
+	// MCODE    if argH==1, coast both coils on a CAN axis motor. The shaft is free until M17 or the next calibration.
 	// MCODE    if NO ARGS are specified, behavior same as D1
 	// MCODE
 	// MCODE    calibrate can based closed-loop motor
@@ -7349,6 +7345,10 @@ void M_Code_M788(void)  // reset can based closed-loop axis motor (uses T, F, D,
 	else if (ARG_C_PRESENT && (ARG_C == 1.0f))
 	{
 		sendSetSwResetBit(localOutboxPtr->device);
+	}
+	else if (ARG_H_PRESENT && (ARG_H == 1.0f))
+	{
+		if (validCanMotorDeviceAddress(localOutboxPtr->device) || deviceIsACanAxisMotor(localOutboxPtr->device)) canPackIntoTxQueueNoData(CAN_WRITE, localOutboxPtr->device, CAN_MSG_CLOSED_LOOP_MOTOR_CONTROL, CLOSED_LOOP_MOTOR_RELEASE, BUFFERED_MSG); /* coils off; do not reset the device */
 	}
 	else
 	{

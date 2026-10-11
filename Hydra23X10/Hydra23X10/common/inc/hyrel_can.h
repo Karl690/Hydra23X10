@@ -206,6 +206,7 @@ typedef enum {
 #define CLOSED_LOOP_SERVO_INIT_BY_FORCE				12
 #define CLOSED_LOOP_SERVO_RUN						13
 #define CLOSED_LOOP_SERVO_STOP						14
+#define CLOSED_LOOP_MOTOR_RELEASE					15 /* M788 H1. Coast the coils. Pages 1 through 14 stay the older frames. */
 
 typedef enum {
 	CAN_EVENT_DEVICE_ANNOUNCE           = 0,

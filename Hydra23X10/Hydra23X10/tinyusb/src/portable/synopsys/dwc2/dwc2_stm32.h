@@ -48,6 +48,11 @@ extern "C" {
 
 #elif CFG_TUSB_MCU == OPT_MCU_STM32F4
   #include "stm32f4xx.h"
+  /* This cmsis stm32f4xx.h has OTG_FS_IRQn and not the FS register base.
+     Without the base, port 0 has no controller and the PHY stays powered down. */
+  #ifndef USB_OTG_FS_PERIPH_BASE
+  #define USB_OTG_FS_PERIPH_BASE           0x50000000UL
+  #endif
   #define EP_MAX_FS       USB_OTG_FS_MAX_IN_ENDPOINTS
   #define EP_FIFO_SIZE_FS USB_OTG_FS_TOTAL_FIFO_SIZE
 
@@ -264,6 +269,11 @@ static inline void dwc2_phy_update(dwc2_regs_t* dwc2, uint8_t hs_phy_type) {
 #endif
 
     dwc2->gusbcfg = (dwc2->gusbcfg & ~GUSBCFG_TRDT_Msk) | (turnaround << GUSBCFG_TRDT_Pos);
+#if CFG_TUSB_MCU == OPT_MCU_STM32F4
+    /* ST CoreInit writes GCCFG after the core reset. PWRDWN powers the FS PHY.
+       Bit 21 is NOVBUSSENS. PA9 is not VBUS on this board. */
+    dwc2->stm32_gccfg |= STM32_GCCFG_PWRDWN | (1u << 21);
+#endif
   }
 }
 

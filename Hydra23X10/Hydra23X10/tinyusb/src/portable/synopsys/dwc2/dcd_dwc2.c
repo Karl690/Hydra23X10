@@ -1028,9 +1028,14 @@ static void handle_rxflvl_irq(uint8_t rhport) {
       }
       break;
 
-    default:    // Invalid
-      TU_BREAKPOINT();
+    default: {
+      /* Unknown status. Drain bcnt so RXFLVL can clear. A breakpoint here
+         halts the core while the probe is still attached, and then neither
+         port can send an ACK. */
+      uint16_t words = (uint16_t)((bcnt + 3u) >> 2);
+      while (words--) (void)(*rx_fifo); /* drop the unread payload */
       break;
+    }
   }
 }
 

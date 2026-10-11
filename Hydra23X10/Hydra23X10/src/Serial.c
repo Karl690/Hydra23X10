@@ -1594,26 +1594,45 @@ void PrintCheck (void)
 
 	if (masterCommPort == UART6_MASTER)
 	{
-		CheckForUart6TxDma(); /* MEG407MUX: ACK polled, 2+ bytes one-shot DMA */
+		CheckForUart6TxDma(); /* ACK is written to USART6 in this call, then the burst may use DMA */
 		return;
 	}
 
-	if (pendingAcknowledge && roomInNormalRxBuffer() && roomInDirectRxBuffer())
-	{   // need to send an ACK AND enough room to receive more input data
+	{
+		boolean queued = FALSE;
+
+		if (pendingAcknowledge && roomInNormalRxBuffer() && roomInDirectRxBuffer())
+		{
+			if (masterCommPort != BOOTUP)
+			{
 #ifdef ALLOW_NATIVE_LIGHTBURN
-		if (_lightburnModeEnabled)
-			sendstringCr("ok"); // just add to buffer .... no choice with new USB implementation
-		else
-			sendchar(ASCII_ACK); // just add to buffer .... no choice with new USB implementation
-#else //!ALLOW_NATIVE_LIGHTBURN
-		sendchar(ASCII_ACK); // just add to buffer .... no choice with new USB implementation
-#endif //!ALLOW_NATIVE_LIGHTBURN
-		pendingAcknowledge--;  // no need to protect decr... all routines called via sysTick
-		_gcodeAcksSent++;   // for GB_STRING reporting
+				if (_lightburnModeEnabled)
+				{
+					if (normalTxCharsInBuf < (SERIAL_TX_NORMAL_BUFFER_SIZE - 3))
+					{
+						sendstringCr("ok"); /* "ok" plus the terminator, only when all three fit */
+						queued = TRUE;
+					}
+				}
+				else
+#endif
+				if (normalTxCharsInBuf < (SERIAL_TX_NORMAL_BUFFER_SIZE - 1))
+				{
+					sendchar(ASCII_ACK);
+					queued = TRUE;
+				}
+			}
+			if (queued)
+			{
+				pendingAcknowledge--; /* a rejected byte must stay pending or Repetrel counts forever */
+				_gcodeAcksSent++;
+			}
+		}
 	}
-	else if (normalTxCharsInBuf)
-	{   // ok if you get here then we have characters in the queue waiting to go out
-		// only send to the current comm master port
+	/* UART3/UART4 clock one byte this slice, including the slice that just queued 0x06.
+	   USB master is drained by UsbCdc_Service. UART6 returned above. */
+	if ((masterCommPort != USB_MASTER) && (masterCommPort != BOOTUP) && normalTxCharsInBuf)
+	{
 		if (transmitCharToHw(*(normalTxBuffer + normalTxIndexOut)))
 		{
 			protectedDecrement(&normalTxCharsInBuf);
