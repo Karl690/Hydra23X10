@@ -7185,8 +7185,8 @@ void M_Code_M785(void)  // Set motor parameters (uses T,U,A,R,B,P,C,O,S,W) (V1)
 	// MCODE    if JArg is present, set the starting pulse rate for manual feeding
 	// MCODE    if AArg is present, set the incremental pulse rate for manual feeding
 	// MCODE    if BArg is present, set the currentBoost on the motor driver chip
-	// MCODE    if CArg is present, set the maxCurremt draw of the motor as a percentage 0 to 100
-	// MCODE    if HArg is present, set the minCurremt draw of the motor as a percentage 0 to 100
+	// MCODE    if CArg is present, a CanMotor (type Z) takes Motor milliamps. Other closed-loop heads take percent 0 to 100.
+	// MCODE    if HArg is present, a CanMotor (type Z) takes Cal milliamps. Other closed-loop heads take percent 0 to 100.
 	// MCODE    if OArg is present, set the control mechanism of the motor (0=open-loop; 1=btt pid; 2=sim-pid; 3=pos-pid; 4=velo-pid; 5=exp pid)
 	// MCODE    if SArg is present, set the # microsteps per rev (ie, 2K) (for closed loop steppers)
 	// MCODE    if PArg is present, set the default update period in sec (1/rate) for accel incr
@@ -7210,8 +7210,16 @@ void M_Code_M785(void)  // Set motor parameters (uses T,U,A,R,B,P,C,O,S,W) (V1)
 
 	if (deviceHasAClosedLoopStepper(localOutboxPtr->device))
 	{
-		if (ARG_C_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CURRENT_MAX_PCT, convertFloatPowerPctToUnsignedint(fFitWithinRange(ARG_C/100.0f, 0.0f, 1.0f), HH_U16_POWER_PCT_FRAC_BITS));
-		if (ARG_H_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CURRENT_MIN_PCT, convertFloatPowerPctToUnsignedint(fFitWithinRange(ARG_H/100.0f, 0.0f, 1.0f), HH_U16_POWER_PCT_FRAC_BITS));
+		if (deviceIsACanAxisMotor(localOutboxPtr->device))
+		{	/* C is Motor ma. H is Cal ma. The motor scales 3300 mA to 100% VREF. */
+			if (ARG_C_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CURRENT_MAX_PCT, (uint16_t)iFitWithinRange((int32_t)ARG_C, 0, 65535));
+			if (ARG_H_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CURRENT_MIN_PCT, (uint16_t)iFitWithinRange((int32_t)ARG_H, 0, 65535));
+		}
+		else
+		{
+			if (ARG_C_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CURRENT_MAX_PCT, convertFloatPowerPctToUnsignedint(fFitWithinRange(ARG_C/100.0f, 0.0f, 1.0f), HH_U16_POWER_PCT_FRAC_BITS));
+			if (ARG_H_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CURRENT_MIN_PCT, convertFloatPowerPctToUnsignedint(fFitWithinRange(ARG_H/100.0f, 0.0f, 1.0f), HH_U16_POWER_PCT_FRAC_BITS));
+		}
 		if (ARG_O_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_CONTROL_METHOD, (uint16_t)(ARG_O));
 		if (ARG_D_PRESENT) canSendOutboxInitValue1x16(localOutboxPtr, DEV_INIT_AREA_MTR, DEV_INIT_INDEX_MTR_FULL_STEPS_PER_REV, (uint16_t)(360.0f/ARG_D));
 
