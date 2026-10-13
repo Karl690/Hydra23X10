@@ -809,15 +809,27 @@ static const char *medusaSliceName(uint32_t sliceIndex)
 	}
 }
 
+#define HARD_FAULT_REPORT_INTERVAL_MS 10000u
+static uint32_t hardFaultReportMs[256]; /* 0 = this device has not reported a hard fault yet */
+
 void reportLastResetToHost(inboxStruct *inboxPtr)
 {
 	const char *originName;
 	const char *sliceName;
+	uint32_t nowMs;
 
 	if (inboxPtr == NULL) return;
 	if (inboxPtr->lastResetReported) return;
 	if ((inboxPtr->lastResetSource & RESET_SRC_HARDFAULT) == 0) return;
 
+	nowMs = _gs._milliseconds;
+	if ((hardFaultReportMs[inboxPtr->device] != 0u)
+		&& ((nowMs - hardFaultReportMs[inboxPtr->device]) < HARD_FAULT_REPORT_INTERVAL_MS))
+	{
+		inboxPtr->lastResetReported = TRUE; /* reboot cleared the flag; still inside the 10 s window */
+		return;
+	}
+	hardFaultReportMs[inboxPtr->device] = (nowMs == 0u) ? 1u : nowMs; /* keep 0 as never-reported */
 	inboxPtr->lastResetReported = TRUE;
 	if (inboxPtr->lastResetOrigin == LAST_RESET_ORIGIN_BIOS) originName = "BIOS";
 	else originName = "APP";
@@ -828,16 +840,14 @@ void reportLastResetToHost(inboxStruct *inboxPtr)
 	}
 	else sliceName = medusaSliceName(inboxPtr->lastResetSliceIndex);
 
-	/* Colon-split for Repetrel: >ER:<device>:HF:<slice>:<labeled text> */
-	sprintf(_errorStr, ">ER:%d:HF:%lu:hard fault firmware error on head %d slice %lu (%s) pc=0x%08lX origin=%s",
-		inboxPtr->device,
-		(unsigned long)inboxPtr->lastResetSliceIndex,
+	/* >IN goes to Repetrel System LOG. >ER opens the error popup. */
+	sprintf(_tmpStr, "hard fault head %d slice %lu (%s) pc=0x%08lX origin=%s",
 		inboxPtr->device,
 		(unsigned long)inboxPtr->lastResetSliceIndex,
 		sliceName,
 		(unsigned long)inboxPtr->lastResetPc,
 		originName);
-	sendstringCr(_errorStr);
+	sendInfo(_tmpStr);
 }
 
 void startDeviceRegistration(canSwStruct *canRx)

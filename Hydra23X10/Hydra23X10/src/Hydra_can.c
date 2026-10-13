@@ -1779,16 +1779,6 @@ byte canProcessRxQueue(void)
 					inboxPtr->lastResetOrigin = (payload->u32[0] >> 8) & 0xFFu;
 					inboxPtr->lastResetSliceIndex = payload->u32[0] >> 16;
 					inboxPtr->lastResetPc = payload->u32[1];
-					if (inboxPtr->lastResetSource != 0)
-					{
-						sprintf(_tmpStr, "LastReset T%d src=0x%02X origin=%u slice=%lu pc=0x%08lX",
-							inboxPtr->device,
-							(unsigned)inboxPtr->lastResetSource,
-							(unsigned)inboxPtr->lastResetOrigin,
-							(unsigned long)inboxPtr->lastResetSliceIndex,
-							(unsigned long)inboxPtr->lastResetPc);
-						sendInfo(_tmpStr);
-					}
 				}
 				else
 				{
