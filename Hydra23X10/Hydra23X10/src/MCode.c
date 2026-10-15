@@ -4380,6 +4380,46 @@ void M_Code_M632(void)  // PickNPlace control (uses T, S, H, P, V, F, D, W)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+
+void M_Code_M634(void)  // MK1 fiber cutter servo pulse (uses T, P, S)
+{
+	// MCODE M634 <"T" head> ["P" PA2 usec] ["S" PA3 usec]
+	// MCODE    50 Hz hobby servo. Pulse is 500 to 2500 usec. Center is 1500.
+	// MCODE    P loads PA2 (TIM2 CH3). S loads PA3 (TIM2 CH4). Omit one to leave that servo.
+	// MCODE    Sent only when the selected head registered as MK1.
+
+	if (ARG_T_MISSING)
+		ReportMissingMcodeTArg();
+	else if (ARG_P_PRESENT || ARG_S_PRESENT)
+	{
+		outboxStruct *localOutboxPtr = ConvertArgTtoHotheadOutboxPtr();
+		inboxStruct *inbox = getInboxPointer(localOutboxPtr->device);
+		if ((inbox->deviceRegistered == FALSE) || (inbox->deviceType != SOAP_DEV_TYPE_MK1))
+		{
+			sprintf(_errorStr, "M634 is the MK1 fiber cutter (head %d is not MK1)", localOutboxPtr->device);
+			sendInfo(_errorStr);
+		}
+		else
+		{
+			byte page = 0;
+			uint16_t pa2PulseUsec = MK1_SERVO_PULSE_CENTER_USEC;
+			uint16_t pa3PulseUsec = MK1_SERVO_PULSE_CENTER_USEC;
+			if (ARG_P_PRESENT)
+			{
+				pa2PulseUsec = (uint16_t)iFitWithinRange((int)ARG_P, MK1_SERVO_PULSE_MIN_USEC, MK1_SERVO_PULSE_MAX_USEC);
+				page |= MK1_SERVO_PAGE_LOAD_PA2;
+			}
+			if (ARG_S_PRESENT)
+			{
+				pa3PulseUsec = (uint16_t)iFitWithinRange((int)ARG_S, MK1_SERVO_PULSE_MIN_USEC, MK1_SERVO_PULSE_MAX_USEC);
+				page |= MK1_SERVO_PAGE_LOAD_PA3;
+			}
+			canPackIntoTxQueue2x16(CAN_WRITE, localOutboxPtr->device, CAN_MSG_MK1_SERVO_PULSE, page, BUFFERED_MSG, pa2PulseUsec, pa3PulseUsec);
+		}
+	}
+	SendCurrentMcodeExecutionNotice(TRUE);
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 void M_Code_M660(void)  //set tool diameter and length (uses H, D, Z)

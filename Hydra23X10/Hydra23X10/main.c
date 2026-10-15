@@ -2622,6 +2622,7 @@ void CommandProcessor()
 		case 630: AddCommandToQue(SINGLE_STEP);break;//return;// canbus touch probe control (uses T, S, D, P)
 		case 631: AddCommandToQue(SINGLE_STEP); break;//return;  // PickNPlace data (uses T, H, P, A, B, C, D)
 		case 632: AddCommandToQue(SINGLE_STEP); break;//return;  // PickNPlace control (uses T, S, H, P, V, F, D,)
+		case 634: AddCommandToQue(SINGLE_STEP); break;//return;  // MK1 fiber cutter servo usec (uses T, P, S)
 
 		case 660: AddCommandToQue(IMPACTS_DESTINATION_CALC); break;//return;//set tool length and diameter
 		case 670: M_Code_M670(); ContinueToNextStep(); break;//return;//turn on DD light with Duty Sarg
@@ -3902,6 +3903,7 @@ void processCommand(GMCommandStructure *cmdPtr)
 		case 630: M_Code_M630();  break;//return;// canbus touch probe control (uses T, S, D, P)
 		case 631: M_Code_M631();  break;//return;// PickNPlace data (uses T, H, P, A, B, C, D)
 		case 632: M_Code_M632();  break;//return;// PickNPlace control (uses T, S, H, P, V, F, D,)
+		case 634: M_Code_M634();  break;//return;// MK1 fiber cutter servo usec (uses T, P, S)
 
 		case 660: M_Code_M660();  break;//return;//set tool length and diameter
 		case 670: M_Code_M670();  break;//return;

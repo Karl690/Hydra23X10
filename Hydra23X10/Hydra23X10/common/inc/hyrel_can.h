@@ -153,6 +153,14 @@ typedef enum {
 #define CAN_MSG_STRING                      ((byte)0x4c)
 #define CAN_MSG_DISPLAY_CONTROL             ((byte)0x4d)
 
+#define CAN_MSG_MK1_SERVO_PULSE             ((byte)0x55)    /* MK1 fiber cutter: PA2 and PA3 hobby-servo pulse */
+#define MK1_SERVO_PAGE_LOAD_PA2             ((byte)0x01)    /* payload u16[0] is PA2 microseconds */
+#define MK1_SERVO_PAGE_LOAD_PA3             ((byte)0x02)    /* payload u16[1] is PA3 microseconds */
+#define MK1_SERVO_PULSE_MIN_USEC            500
+#define MK1_SERVO_PULSE_MAX_USEC            2500
+#define MK1_SERVO_PULSE_CENTER_USEC         1500
+#define MK1_SERVO_PERIOD_USEC               20000           /* 50 Hz */
+
 #ifdef HYDRA_DIAGS
 #define CAN_MSG_DIAG_IO_INIT                ((byte)0x50)    // 8 bytes; page 0xff
 #define CAN_MSG_DIAG_IO_WRITE               ((byte)0x51)    // 1 byte;  page 0xff
